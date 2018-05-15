@@ -1,3 +1,4 @@
+package IdentityClasses;
 
 public class Game {
 
