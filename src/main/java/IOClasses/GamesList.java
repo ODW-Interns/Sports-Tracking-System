@@ -1,7 +1,9 @@
-package IdentityClasses;
+package IOClasses;
 
 
 import java.util.ArrayList;
+
+import IdentityClasses.Game;
 
 
 public class GamesList extends ArrayList<Game> {
