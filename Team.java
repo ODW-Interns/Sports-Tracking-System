@@ -11,9 +11,9 @@ public class Team {
 	}
 	
 	public Team(String team, String loc, int players){
-		teamName = team;
-		location = loc;
-		numPlayers = players;
+		setTeamName(team);
+		setLocation(loc);
+		setNumPlayers(players);
 	}
 
 	public String getTeamName() {
