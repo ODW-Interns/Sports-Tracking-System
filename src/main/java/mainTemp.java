@@ -10,8 +10,12 @@ import java.io.InputStream;
 
 import IOClasses.FileReader;
 import IOClasses.GamesList;
+
+import IOClasses.NBAFileReader;
+
 import IOClasses.TeamListFileReader;
 import IOClasses.TeamsList;
+
 
 public class mainTemp {
 
@@ -23,7 +27,7 @@ public class mainTemp {
 		
 		GamesList listofGames = new GamesList();
 		String filename = "16-17_NBA_RegSzn.txt";
-		FileReader in = new FileReader();
+		NBAFileReader in = new NBAFileReader();
 		InputStream is = mainTemp.class.getResourceAsStream(filename);
 		in.readData(is, listofGames);
 		is.close();
