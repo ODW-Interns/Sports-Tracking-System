@@ -94,7 +94,7 @@ public class FileReader {
 				} catch (Exception e_) {
 					System.err.println("setAttendance:" + e_.toString());
 				}
-
+ 
 				listofGames_.add(game);
 			}
 		} catch (Exception e_) {
