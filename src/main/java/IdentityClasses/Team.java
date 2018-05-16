@@ -2,16 +2,16 @@ package IdentityClasses;
 
 public class Team {
 
-	private String teamName; 
+	private String teamName;
 	private String location;
 	private int numPlayers;
-	
+
 	public Team() {
 		// Call Constructor
 		this("general", "general", 0);
 	}
-	
-	public Team(String team, String loc, int players){
+
+	public Team(String team, String loc, int players) {
 		setTeamName(team);
 		setLocation(loc);
 		setNumPlayers(players);
@@ -40,8 +40,5 @@ public class Team {
 	public void setNumPlayers(int players) {
 		numPlayers = players;
 	}
-	
-	
-	
 
 }
