@@ -10,7 +10,12 @@ import java.io.InputStream;
 
 import IOClasses.FileReader;
 import IOClasses.GamesList;
+
 import IOClasses.NBAFileReader;
+
+import IOClasses.TeamListFileReader;
+import IOClasses.TeamsList;
+
 
 public class mainTemp {
 
@@ -19,12 +24,26 @@ public class mainTemp {
 	public static void main(String[] args) throws IOException {
 		// TODO Auto-generated method stub
 
+		
 		GamesList listofGames = new GamesList();
 		String filename = "16-17_NBA_RegSzn.txt";
 		NBAFileReader in = new NBAFileReader();
 		InputStream is = mainTemp.class.getResourceAsStream(filename);
 		in.readData(is, listofGames);
 		is.close();
+		
+		
+		TeamsList listofTeams = new TeamsList();
+		String file2name = "NBA_Teams.txt";
+		TeamListFileReader in2 = new TeamListFileReader();
+		InputStream is2 = mainTemp.class.getResourceAsStream(file2name);
+		in2.readData(is2, listofTeams);
+		is2.close();
+		
+		System.out.println(listofTeams.get(7).getLocation());
+		System.out.println(listofTeams.get(7).getNum_players());
+		System.out.println(listofTeams.get(7).getTeamName());
+
 
 		System.out.println("TEST PRINT");
 		for (int i = 0; i < listofGames.size(); i++) {
@@ -37,7 +56,6 @@ public class mainTemp {
 			// System.out.print(listofGames.get(i).getAttendence());
 			// System.out.println();
 
-		}
+		}	
 	}
-
 }
