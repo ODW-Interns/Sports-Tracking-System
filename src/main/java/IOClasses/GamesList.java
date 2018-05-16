@@ -9,7 +9,7 @@ public class GamesList extends ArrayList<Game> {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	//private static final long serialVersionUID = 1L;
 
 	public GamesList() {
 	}
