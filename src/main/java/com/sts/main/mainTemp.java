@@ -4,7 +4,7 @@ package com.sts.main;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import io.FileReader;
+import io.AbstractGameReader;
 import io.GamesList;
 import io.NBAFileReader;
 import io.TeamListFileReader;

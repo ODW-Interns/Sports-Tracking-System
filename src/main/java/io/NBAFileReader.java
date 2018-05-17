@@ -6,10 +6,14 @@ import java.util.StringTokenizer;
 
 import model.Game;
 
-public class NBAFileReader extends FileReader {
+public class NBAFileReader extends AbstractGameReader {
 
-	private static final String DELIM = "\t";
+	private static final String DELIM = "|";
 	
+	/** 
+	 * (non-Javadoc)
+	 */
+	@Override
 	public void readFromFileWithPreviousGames(Reader is_, GamesList listofGames_) {
 		try (BufferedReader reader = new BufferedReader(is_)) {
 			StringTokenizer tokenizer;
