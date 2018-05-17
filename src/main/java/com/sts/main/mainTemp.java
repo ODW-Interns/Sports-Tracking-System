@@ -24,7 +24,7 @@ public class mainTemp {
 
 		
 		GamesList listofGames = new GamesList();
-		String filename = "16-17_NBA_RegSzn.txt";
+		String filename = "17-18NBA_RegSzn.txt";
 		NBAPastGamesFileReader in = new NBAPastGamesFileReader();
 		InputStream is = mainTemp.class.getResourceAsStream(filename);
 		in.readData(is, listofGames);
@@ -37,6 +37,14 @@ public class mainTemp {
 		InputStream is2 = mainTemp.class.getResourceAsStream(file2name);
 		in2.readData(is2, listofTeams);
 		is2.close();
+		
+		TeamsList listofUpcoming = new UpcomingList();
+		String file3name = "NBA_Upcoming.txt";
+		UpcomingFileReader in3 = new UpcomingFileReader();
+		InputStream is3 = mainTemp.class.getResourceAsStream(file3name);
+		in3.readData(is3, listofTeams);
+		is3.close();
+		
 		
 		System.out.println(listofTeams.get(7).getLocation());
 		System.out.println(listofTeams.get(7).getNum_players());

@@ -6,15 +6,13 @@ import java.util.StringTokenizer;
 
 import model.Game;
 
-public class NBAPastGamesFileReader extends AbstractGameReader {
-
-	private static final String DELIM = "|";
+public class UpcomingFileReader {
 	
-	/** 
-	 * (non-Javadoc)
-	 */
-	@Override
-	public void readFromFileWithPreviousGames(Reader is_, GamesList listofGames_) {
+	private static final String DELIM ="|";
+	
+	
+	
+	public void readFromFileWithGames(Reader is_, UpcomingList listofUpcoming_) {
 		try (BufferedReader reader = new BufferedReader(is_)) {
 			StringTokenizer tokenizer;
 			String line;
@@ -48,41 +46,22 @@ public class NBAPastGamesFileReader extends AbstractGameReader {
 					continue;
 				}
 
-				try {
-					String awayScoreString = tokenizer.nextToken();
-					int aTScore = Integer.parseInt(awayScoreString);
-					game.setaTeamScore(aTScore);
-				} catch (Exception e_) {
-					System.err.println("setaTeamScore:" + e_.toString());
-				}
 
 				try {
 					game.sethTeam(tokenizer.nextToken());
 				} catch (Exception e_) {
 					System.err.println("sethTeam:" + e_.toString());
 				}
-				try {
-					String homeScoreString = tokenizer.nextToken();
-					int homeScore = Integer.parseInt(homeScoreString);
-					game.setaTeamScore(homeScore);
-				} catch (Exception e_) {
-					System.err.println("sethTeamScore:" + e_.toString());
-				}
+				
 
-				try {
-					String attendanceString = tokenizer.nextToken();
-					attendanceString = attendanceString.replace(",", "");
-					int attend = Integer.parseInt(attendanceString);
-					game.setAttendence(attend);
-				} catch (Exception e_) {
-					System.err.println("setAttendance:" + e_.toString());
-				}
+				
  
-				listofGames_.add(game);
+				listofUpcoming_.add(game);
 			}
 		} catch (Exception e_) {
 			e_.printStackTrace();
 		}
 		
 	}
+
 }

@@ -15,12 +15,13 @@ public abstract class AbstractGameReader {
             throw new RuntimeException("No catalog provided");
 
         try (InputStreamReader sr = new InputStreamReader(is_)) {
-            readFromFileWithPreviousGames(sr, listofGames_);
+            readFromFileWithGames(sr, listofGames_);
         }
         catch (Exception e_) {
             e_.printStackTrace();
         }
     }
 
-    abstract void readFromFileWithPreviousGames(Reader is_, GamesList listofGames_);
+    abstract void readFromFileWithGames(Reader is_, GamesList listofPastGames_);
+
 }
