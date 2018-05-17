@@ -1,20 +1,20 @@
+package com.sts.main;
 
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import IdentityClasses.Game;
-import IdentityClasses.Team;
+
+import io.FileReader;
+import io.GamesList;
+import io.NBAFileReader;
+import io.TeamListFileReader;
+import io.TeamsList;
 
 import java.io.IOException;
 import java.io.InputStream;
 
-import IOClasses.FileReader;
-import IOClasses.GamesList;
-
-import IOClasses.NBAFileReader;
-
-import IOClasses.TeamListFileReader;
-import IOClasses.TeamsList;
+import model.Game;
+import model.Team;
 
 
 public class mainTemp {
