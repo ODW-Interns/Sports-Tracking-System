@@ -1,4 +1,4 @@
-package IOClasses;
+package io;
 
 import java.io.BufferedReader;
 import java.io.Reader;

@@ -1,4 +1,4 @@
-package IOClasses;
+package io;
 
 import java.util.ArrayList;
 
