@@ -4,17 +4,15 @@ package com.sts.main;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import io.AbstractGameReader;
+
 import io.GamesList;
-import io.NBAFileReader;
+import io.NBAPastGamesFileReader;
 import io.TeamListFileReader;
 import io.TeamsList;
 
 import java.io.IOException;
 import java.io.InputStream;
 
-import model.Game;
-import model.Team;
 
 
 public class mainTemp {
@@ -27,7 +25,7 @@ public class mainTemp {
 		
 		GamesList listofGames = new GamesList();
 		String filename = "16-17_NBA_RegSzn.txt";
-		NBAFileReader in = new NBAFileReader();
+		NBAPastGamesFileReader in = new NBAPastGamesFileReader();
 		InputStream is = mainTemp.class.getResourceAsStream(filename);
 		in.readData(is, listofGames);
 		is.close();

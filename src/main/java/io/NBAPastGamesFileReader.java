@@ -6,7 +6,7 @@ import java.util.StringTokenizer;
 
 import model.Game;
 
-public class NBAFileReader extends AbstractGameReader {
+public class NBAPastGamesFileReader extends AbstractGameReader {
 
 	private static final String DELIM = "|";
 	
