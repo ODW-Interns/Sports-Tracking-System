@@ -6,7 +6,7 @@ import java.util.StringTokenizer;
 
 import model.Game;
 
-public class NBAGamesFileReader extends AbstractGameReader {
+public class PastGamesFileReader extends AbstractGameReader {
 
 	private static final String DELIM = "|";
 	
@@ -64,7 +64,7 @@ public class NBAGamesFileReader extends AbstractGameReader {
 				try {
 					String homeScoreString = tokenizer.nextToken();
 					int homeScore = Integer.parseInt(homeScoreString);
-					game.setaTeamScore(homeScore);
+					game.sethTeamScore(homeScore);
 				} catch (Exception e_) {
 					System.err.println("sethTeamScore:" + e_.toString());
 				}

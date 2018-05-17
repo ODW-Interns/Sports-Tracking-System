@@ -6,13 +6,13 @@ import java.util.StringTokenizer;
 
 import model.Game;
 
-public class UpcomingFileReader {
+public class UpcomingFileReader extends AbstractGameReader {
 	
 	private static final String DELIM ="|";
 	
 	
 	
-	public void readFromFileWithGames(Reader is_, UpcomingList listofUpcoming_) {
+	public void readFromFileWithGames(Reader is_, GamesList listofUpcoming_) {
 		try (BufferedReader reader = new BufferedReader(is_)) {
 			StringTokenizer tokenizer;
 			String line;

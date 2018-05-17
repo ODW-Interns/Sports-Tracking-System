@@ -12,7 +12,7 @@ import model.Team;
 
 public class TeamListFileReader {
 	
-	private static final String DELIM = ",";
+	private static final String DELIM = "|";
 	
 	public TeamListFileReader() {
 	

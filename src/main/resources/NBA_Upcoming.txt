@@ -10,39 +10,39 @@ Wed, Oct 26, 2018|8:00|Denver Nuggets|New Orleans Pelicans|
 Wed, Oct 26, 2018|7:00|Miami Heat|Orlando Magic|
 Wed, Oct 26, 2018|8:00|Oklahoma City Thunder|Philadelphia 76ers|
 Wed, Oct 26, 2018|10:00|Sacramento Kings|Phoenix Suns|
-Wed, Oct 26, 2018|7:30 |Detroit Pistons|Toronto Raptors|
+Wed, Oct 26, 2018|7:30|Detroit Pistons|Toronto Raptors|
 Thu, Oct 27, 2018|7:30|Washington Wizards|Atlanta Hawks|
-Thu, Oct 27, 2018|8:00 |Boston Celtics|Chicago Bulls|
-Thu, Oct 27, 2018|10:30 |Los Angeles Clippers|Portland Trail Blazers|
-Thu, Oct 27, 2018|10:30 |San Antonio Spurs|Sacramento Kings|
-Fri, Oct 28, 2018|7:30 |Indiana Pacers|Brooklyn Nets|
-Fri, Oct 28, 2018|8:30 |Houston Rockets|Dallas Mavericks|
-Fri, Oct 28, 2018|7:30 |Orlando Magic|Detroit Pistons|
-Fri, Oct 28, 2018|8:00 |Charlotte Hornets|Miami Heat|
-Fri, Oct 28, 2018|9:30 |Golden State Warriors|New Orleans Pelicans|
-Fri, Oct 28, 2018|8:00 |Phoenix Suns|Oklahoma City Thunder|
-Fri, Oct 28, 2018|7:00 |Cleveland Cavaliers|Toronto Raptors|
-Fri, Oct 28, 2018|9:00 |Los Angeles Lakers|Utah Jazz|
-Sat, Oct 29, 2018|8:00 |Indiana Pacers|Chicago Bulls|
-Sat, Oct 29, 2018|7:00 |Boston Celtics|Charlotte Hornets|
-Sat, Oct 29, 2018|7:30 |Orlando Magic|Cleveland Cavaliers|
-Sat, Oct 29, 2018|9:00 |Portland Trail Blazers|Denver Nuggets|
-Sat, Oct 29, 2018|8:00 |Brooklyn Nets|Milwaukee Bucks|
-Sat, Oct 29, 2018|7:30 |Memphis Grizzlies|New York Knicks|
-Sat, Oct 29, 2018|12:30 |Atlanta Hawks|Philadelphia 76ers|
-Sat, Oct 29, 2018|10:30 |Minnesota Timberwolves|Sacramento Kings|
-Sat, Oct 29, 2018|8:00 |New Orleans Pelicans|San Antonio Spurs|
-Sun, Oct 30, 2018|6:00 |Milwaukee Bucks|Detroit Pistons|
-Sun, Oct 30, 2018|8:00 |Dallas Mavericks|Houston Rockets|
-Sun, Oct 30, 2018|4:30 |Utah Jazz|Los Angeles Clippers|
-Sun, Oct 30, 2018|8:00 |Washington Wizards|Memphis Grizzlies|
-Sun, Oct 30, 2018|6:00 |San Antonio Spurs|Miami Heat|
-Sun, Oct 30, 2018|7:00 |Los Angeles Lakers|Oklahoma City Thunder|
-Sun, Oct 30, 2018|6:00 |Golden State Warriors|Phoenix Suns|
-Mon, Oct 31, 2018|7:30 |Sacramento Kings|Atlanta Hawks|
-Mon, Oct 31, 2018|7:30 |Chicago Bulls|Brooklyn Nets|
-Mon, Oct 31, 2018|10:30 |Phoenix Suns|Los Angeles Clippers|
-Mon, Oct 31, 2018|7:30 |Denver Nuggets|Toronto Raptors|
+Thu, Oct 27, 2018|8:00|Boston Celtics|Chicago Bulls|
+Thu, Oct 27, 2018|10:30|Los Angeles Clippers|Portland Trail Blazers|
+Thu, Oct 27, 2018|10:30|San Antonio Spurs|Sacramento Kings|
+Fri, Oct 28, 2018|7:30|Indiana Pacers|Brooklyn Nets|
+Fri, Oct 28, 2018|8:30|Houston Rockets|Dallas Mavericks|
+Fri, Oct 28, 2018|7:30|Orlando Magic|Detroit Pistons|
+Fri, Oct 28, 2018|8:00|Charlotte Hornets|Miami Heat|
+Fri, Oct 28, 2018|9:30|Golden State Warriors|New Orleans Pelicans|
+Fri, Oct 28, 2018|8:00|Phoenix Suns|Oklahoma City Thunder|
+Fri, Oct 28, 2018|7:00|Cleveland Cavaliers|Toronto Raptors|
+Fri, Oct 28, 2018|9:00|Los Angeles Lakers|Utah Jazz|
+Sat, Oct 29, 2018|8:00|Indiana Pacers|Chicago Bulls|
+Sat, Oct 29, 2018|7:00|Boston Celtics|Charlotte Hornets|
+Sat, Oct 29, 2018|7:30|Orlando Magic|Cleveland Cavaliers|
+Sat, Oct 29, 2018|9:00|Portland Trail Blazers|Denver Nuggets|
+Sat, Oct 29, 2018|8:00|Brooklyn Nets|Milwaukee Bucks|
+Sat, Oct 29, 2018|7:30|Memphis Grizzlies|New York Knicks|
+Sat, Oct 29, 2018|12:30|Atlanta Hawks|Philadelphia 76ers|
+Sat, Oct 29, 2018|10:30|Minnesota Timberwolves|Sacramento Kings|
+Sat, Oct 29, 2018|8:00|New Orleans Pelicans|San Antonio Spurs|
+Sun, Oct 30, 2018|6:00|Milwaukee Bucks|Detroit Pistons|
+Sun, Oct 30, 2018|8:00|Dallas Mavericks|Houston Rockets|
+Sun, Oct 30, 2018|4:30|Utah Jazz|Los Angeles Clippers|
+Sun, Oct 30, 2018|8:00|Washington Wizards|Memphis Grizzlies|
+Sun, Oct 30, 2018|6:00|San Antonio Spurs|Miami Heat|
+Sun, Oct 30, 2018|7:00|Los Angeles Lakers|Oklahoma City Thunder|
+Sun, Oct 30, 2018|6:00|Golden State Warriors|Phoenix Suns|
+Mon, Oct 31, 2018|7:30|Sacramento Kings|Atlanta Hawks|
+Mon, Oct 31, 2018|7:30|Chicago Bulls|Brooklyn Nets|
+Mon, Oct 31, 2018|10:30|Phoenix Suns|Los Angeles Clippers|
+Mon, Oct 31, 2018|7:30|Denver Nuggets|Toronto Raptors|
 Tue, Nov 1, 2018|6:00|Houston Rockets|Cleveland Cavaliers|
 Tue, Nov 1, 2018|7:30|New York Knicks|Detroit Pistons|
 Tue, Nov 1, 2018|7:00|Los Angeles Lakers|Indiana Pacers|
