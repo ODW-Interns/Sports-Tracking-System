@@ -1,4 +1,10 @@
 /target/
+*.class
 *.project
-*.settings
-*.classpath
+/.settings/
+.classpath
+.project
+.settings
+*.log
+*~
+

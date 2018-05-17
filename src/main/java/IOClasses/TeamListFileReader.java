@@ -7,7 +7,7 @@ import java.io.InputStreamReader;
 import java.io.Reader;
 import java.util.StringTokenizer;
 
-import IdentityClasses.Team;
+import model.Team;
 
 
 public class TeamListFileReader {

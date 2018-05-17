@@ -7,7 +7,6 @@ import java.io.InputStreamReader;
 import java.io.Reader;
 import java.util.StringTokenizer;
 
-import IdentityClasses.Game;
 
 public abstract class FileReader {
 

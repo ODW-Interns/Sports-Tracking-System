@@ -2,7 +2,7 @@ package IOClasses;
 
 import java.util.ArrayList;
 
-import IdentityClasses.Game;
+import model.Game;
 
 public class GamesList extends ArrayList<Game> {
 

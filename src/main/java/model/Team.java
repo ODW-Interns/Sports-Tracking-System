@@ -1,4 +1,4 @@
-package IdentityClasses;
+package model;
 
 public class Team {
 

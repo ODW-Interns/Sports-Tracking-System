@@ -2,8 +2,7 @@ package IOClasses;
 
 import java.util.ArrayList;
 
-//import IdentityClasses.Game;
-import IdentityClasses.Team;
+import model.Team;
 
 public class TeamsList extends ArrayList<Team>{
 	private final int NBAplayers =12;

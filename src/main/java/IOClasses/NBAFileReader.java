@@ -4,7 +4,7 @@ import java.io.BufferedReader;
 import java.io.Reader;
 import java.util.StringTokenizer;
 
-import IdentityClasses.Game;
+import model.Game;
 
 public class NBAFileReader extends FileReader {
 
