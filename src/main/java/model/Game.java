@@ -1,86 +1,145 @@
 package model;
 
-public class Game {
+public class Game implements Comparable<Game> {
 
-	private String date;
-	private String time;
-	// private String location;
-	private String hTeam, aTeam;
-	private int hTeamScore, aTeamScore, attendence;
+    private String date;
+    private String time;
+    // private String location;
+    private String homeTeam;
+    private String awayTeam;
+    private int homeTeamScore;
+    private int awayTeamScore;
+    private int attendence;
 
-	public Game() {
-		this("general", "general", "general", 0, "general", 0, 0);
-	}
+    /**
+     *
+     */
+    public Game() {
+        this("general", "general", "general", 0, "general", 0, 0);
+    }
 
-	public Game(String date, String time, String aTeam, int aTeamScore, String hTeam, int hTeamScore, int attendence) {
+    /**
+     *
+     */
+    public Game(String date_, String time_, String aTeam_, int aTeamScore, String hTeam_, int hTeamScore_, int attendence_) {
+        setDate(date_);
+        setTime(time_);
+        sethTeam(hTeam_);
+        setaTeam(aTeam_);
+        setaTeamScore(aTeamScore);
+        sethTeamScore(hTeamScore_);
+        setAttendence(attendence_);
+    }
 
-		setDate(date);
-		setTime(time);
-		sethTeam(hTeam);
-		setaTeam(aTeam);
-		setaTeamScore(aTeamScore);
-		sethTeamScore(hTeamScore);
-		setAttendence(attendence);
-	}
+    /**
+     * 
+     */
+    public String getDate() {
+        return date;
+    }
 
-	public String getDate() {
-		return date;
-	}
+    /**
+     * 
+     */
+    public void setDate(String dat) {
+        date = dat;
+    }
 
-	public void setDate(String dat) {
-		date = dat;
-	}
+    /**
+     * 
+     */
+    public String getTime() {
+        return time;
+    }
 
-	public String getTime() {
-		return time;
-	}
+    /**
+     * 
+     */
+    public void setTime(String tim) {
+        time = tim;
+    }
 
-	public void setTime(String tim) {
-		time = tim;
-	}
+    /**
+     * 
+     */
+    public String gethTeam() {
+        return homeTeam;
+    }
 
-	/*
-	 * public String getLocation() { return location; } public void
-	 * setLocation(String loc) { location = loc; }
-	 */
-	public String gethTeam() {
-		return hTeam;
-	}
+    /**
+     * 
+     */
+    public void sethTeam(String hT) {
+        homeTeam = hT;
+    }
 
-	public void sethTeam(String hT) {
-		hTeam = hT;
-	}
+    /**
+     * 
+     */
+    public String getaTeam() {
+        return awayTeam;
+    }
 
-	public String getaTeam() {
-		return aTeam;
-	}
+    /**
+     * 
+     */
+    public void setaTeam(String aT) {
+        awayTeam = aT;
+    }
 
-	public void setaTeam(String aT) {
-		aTeam = aT;
-	}
+    /**
+     * 
+     */
+    public int gethTeamScore() {
+        return homeTeamScore;
+    }
 
-	public int gethTeamScore() {
-		return hTeamScore;
-	}
+    /**
+     * 
+     */
+    public void sethTeamScore(int hTScore) {
+        homeTeamScore = hTScore;
+    }
 
-	public void sethTeamScore(int hTScore) {
-		hTeamScore = hTScore;
-	}
+    /**
+     * 
+     */
+    public int getaTeamScore() {
+        return awayTeamScore;
+    }
 
-	public int getaTeamScore() {
-		return aTeamScore;
-	}
+    public void setaTeamScore(int aTScore) {
+        awayTeamScore = aTScore;
+    }
 
-	public void setaTeamScore(int aTScore) {
-		aTeamScore = aTScore;
-	}
+    /**
+     * 
+     */
+    public int getAttendence() {
+        return attendence;
+    }
 
-	public int getAttendence() {
-		return attendence;
-	}
+    /**
+     * 
+     */
+    public void setAttendence(int att) {
+        attendence = att;
+    }
 
-	public void setAttendence(int att) {
-		attendence = att;
-	}
+    /** 
+     * (non-Javadoc)
+     */
+    @Override
+    public String toString() {
+        return "Game [date=" + date + ", time=" + time + ", homeTeam=" + homeTeam + ", awayTeam=" + awayTeam + ", homeTeamScore=" + homeTeamScore + ", awayTeamScore=" + awayTeamScore + ", attendence=" + attendence + "]";
+    }
+
+    /** 
+     * TODO: fix this
+     */
+    @Override
+    public int compareTo(Game o_) {
+        return 0;
+    }
 
 }
