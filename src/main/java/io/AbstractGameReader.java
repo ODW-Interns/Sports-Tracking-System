@@ -5,8 +5,14 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
 
+import lists.GamesList;
+
+/*
+ * Abstract class used by classes that will read from files with games listed
+ * */
 public abstract class AbstractGameReader {
 
+	//method to check that the input file and Games List structure exists
     public void readData(InputStream is_, GamesList listofGames_) throws FileNotFoundException, RuntimeException {
         if (is_ == null)
             throw new FileNotFoundException();
@@ -22,6 +28,7 @@ public abstract class AbstractGameReader {
         }
     }
 
+    //Abstract method for classes to implement to read and add to GamesList
     abstract void readFromFileWithGames(Reader is_, GamesList listofPastGames_);
 
 }

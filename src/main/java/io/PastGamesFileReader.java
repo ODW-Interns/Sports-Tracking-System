@@ -4,8 +4,10 @@ import java.io.BufferedReader;
 import java.io.Reader;
 import java.util.StringTokenizer;
 
+import lists.GamesList;
 import model.Game;
 
+//class to read from file with past/finished games
 public class PastGamesFileReader extends AbstractGameReader {
 
 	private static final String DELIM = "|";

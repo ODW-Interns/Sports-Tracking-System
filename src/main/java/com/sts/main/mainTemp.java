@@ -5,11 +5,13 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 
-import io.GamesList;
+
+import lists.GamesList;
 import io.PastGamesFileReader;
 import io.TeamListFileReader;
-import io.TeamsList;
+import lists.TeamsList;
 import io.UpcomingFileReader;
+
 
 import java.io.IOException;
 import java.io.InputStream;
