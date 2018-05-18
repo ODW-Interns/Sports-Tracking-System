@@ -2,22 +2,31 @@ package control;
 
 import io.StoreDataFromInputFile;
 import lists.GamesList;
+import model.RealTimeDataChecker;
+import model.Team;
 import view.ConsolePrinter;
 import view.PrintToLog;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.StringTokenizer;
 
 public class SportsSystem {
 
-	SportsSystem() throws RuntimeException, IOException{
+	SportsSystem() throws RuntimeException, IOException, ParseException{
 		startSystem();
 	}
 	
-	public static void startSystem() throws RuntimeException, IOException {
+	public static void startSystem() throws RuntimeException, IOException, ParseException {
 		int sportChosen = -1;	
 		int request = -1;
+		int numOfInvalidUpcomingGames = 0;
 		// List of Games from the past NBA season
-		GamesList listofPastGames = StoreDataFromInputFile.storeDataIntoGameList("/17-18NBA_RegSzn.txt");
+		GamesList listofPastGames = StoreDataFromInputFile.storeDataIntoPastGameList("/17-18NBA_RegSzn.txt");
+		GamesList listofUpcomingGames = StoreDataFromInputFile.storeDataIntoUpcomingGameList("/NBA_Upcoming.txt");
 		System.out.println("<<<<<<<<<<Welcome to the Sports Tracking System>>>>>>>>>>");
 		
 		/*
@@ -35,10 +44,20 @@ public class SportsSystem {
 				do {
 					request = ControllerToHandleUserInput.readRequestByUser();
 					switch(request) {
+					case 0: 	
+							numOfInvalidUpcomingGames = RealTimeDataChecker.thereAreInvalidUpcomingGames(listofUpcomingGames);
+							if(numOfInvalidUpcomingGames > 0) {
+								RealTimeDataChecker.refreshDataLists(numOfInvalidUpcomingGames, listofUpcomingGames, listofPastGames);
+							}
+							break;
 					case 1: // Print to Log
-						System.out.println("1 was selected");
-						PrintToLog.logGamesList(listofPastGames);
-						break;
+							System.out.println("1 was selected");
+							numOfInvalidUpcomingGames = RealTimeDataChecker.thereAreInvalidUpcomingGames(listofUpcomingGames);
+							if(numOfInvalidUpcomingGames > 0) {
+								RealTimeDataChecker.refreshDataLists(numOfInvalidUpcomingGames, listofUpcomingGames, listofPastGames);
+							}
+							PrintToLog.logGamesList(listofPastGames);
+							break;
 					}
 				}while(request != 0);
 			ConsolePrinter.printOutOptionsForSport();
@@ -46,7 +65,11 @@ public class SportsSystem {
 			}
 		}
 	}
-	public static void main(String[] args) throws RuntimeException, IOException {
+	
+	
+	
+	
+	public static void main(String[] args) throws RuntimeException, IOException, ParseException {
 		SportsSystem system = new SportsSystem(); // Entry, starts system
 		
 

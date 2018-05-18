@@ -11,10 +11,10 @@ public class ConsolePrinter {
 	}
 	
 	public static void printOutOptionsForSport() {
+		System.out.println("Enter 0 to go back to main menu");
 		System.out.println("What would you like to do?");
 		System.out.println("Enter 1 to see all games played from last season");
-		System.out.println("Enter 2 to see all upcoming games");
-		System.out.println("Enter B to go back to main menu");
+		System.out.println("Enter 2 to see all upcoming games");	
 	}
 	
 }
