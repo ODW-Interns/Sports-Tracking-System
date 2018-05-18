@@ -9,7 +9,7 @@ import lists.GamesList;
 
 public class PrintToLog {
 
-	private static final Logger logger = LoggerFactory.getLogger(mainTemp.class);
+	private static final Logger logger = LoggerFactory.getLogger(PrintToLog.class);
 	
 	public static void logGamesList(GamesList list) {
 		for (int i = 0; i < list.size(); i++) {

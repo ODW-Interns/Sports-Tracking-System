@@ -1,22 +1,11 @@
 package control;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import com.sts.main.mainTemp;
-
-import io.NBAPastGamesFileReader;
 import io.StoreDataFromInputFile;
-import io.TeamListFileReader;
 import lists.GamesList;
-import lists.TeamsList;
 import view.ConsolePrinter;
 import view.PrintToLog;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.InputStream;
-import java.util.Scanner;
 
 public class SportsSystem {
 
@@ -26,29 +15,39 @@ public class SportsSystem {
 	
 	public static void startSystem() throws RuntimeException, IOException {
 		int sportChosen = -1;	
-		String request;
-		GamesList listofGames = StoreDataFromInputFile.storeDataIntoGameList("/16-17_NBA_RegSzn.txt");
-		System.out.println(listofGames.size());
+		int request = -1;
+		// List of Games from the past NBA season
+		GamesList listofPastGames = StoreDataFromInputFile.storeDataIntoGameList("/17-18NBA_RegSzn.txt");
 		System.out.println("<<<<<<<<<<Welcome to the Sports Tracking System>>>>>>>>>>");
+		
+		/*
+		 * Prompt user for input
+		 * 1)(Main Menu)Prompts the user for the sport they want to track first
+		 * 2)Asks the user if they want to see a list of games in the last season or upcoming games
+		 * for the sport chosen
+		 * 
+		 * To Stop System -> User has to enter 0 in the main menu
+		 * */
 		
 		while(sportChosen != 0){
 			sportChosen = ControllerToHandleUserInput.readSportsChosenByUser();
-			if(ControllerToHandleUserInput.sportChosenIsValid(sportChosen)){
+			if(ControllerToHandleUserInput.sportChosenIsValid(sportChosen) && sportChosen != 0){
 				do {
 					request = ControllerToHandleUserInput.readRequestByUser();
 					switch(request) {
-					case "1": // Print to Log
-						PrintToLog.logGamesList(listofGames);
+					case 1: // Print to Log
+						System.out.println("1 was selected");
+						PrintToLog.logGamesList(listofPastGames);
 						break;
 					}
-				}while(request != "B");
+				}while(request != 0);
 			ConsolePrinter.printOutOptionsForSport();
 			
 			}
 		}
 	}
 	public static void main(String[] args) throws RuntimeException, IOException {
-		SportsSystem system = new SportsSystem();
+		SportsSystem system = new SportsSystem(); // Entry, starts system
 		
 
 	}

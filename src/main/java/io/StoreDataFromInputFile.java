@@ -13,7 +13,7 @@ public class StoreDataFromInputFile {
 	
 	public static GamesList storeDataIntoGameList(String inputfile_) throws RuntimeException, IOException {
 		GamesList listofGames = new GamesList();
-		NBAPastGamesFileReader in = new NBAPastGamesFileReader();
+		PastGamesFileReader in = new PastGamesFileReader();
 		InputStream is = StoreDataFromInputFile.class.getResourceAsStream(inputfile_);
 		in.readData(is, listofGames);
 		is.close();

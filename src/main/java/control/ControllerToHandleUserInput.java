@@ -5,6 +5,9 @@ import java.util.Scanner;
 
 import view.ConsolePrinter;
 
+/*Class to handle and validate
+ * all user input from the console
+ */
 public class ControllerToHandleUserInput {
 	
 	public static Scanner s = new Scanner(System.in);
@@ -12,9 +15,15 @@ public class ControllerToHandleUserInput {
 	ControllerToHandleUserInput(){
 	}
 	
+	// method to return a valid input by the user in the main menu
 	public static int readSportsChosenByUser() {
 		int sportsChosenByUser = 0;
 		boolean valid = false;
+	
+		/*catches invalid input and prompts user again to 
+		 * enter a valid input
+		 * */
+		
 		while(!valid) {
 			ConsolePrinter.printOutSportsToChooseFrom();
 			try {
@@ -33,13 +42,19 @@ public class ControllerToHandleUserInput {
 		return sportsChosenByUser;
 	}
 	
-	public static String readRequestByUser() {
-		String optionChosen = "";
+	//method to return valid request by user
+	public static int readRequestByUser() {
+		int optionChosen = -1;
 		boolean valid = false;
+		
+		/*catches invalid input and prompts user again to 
+		 * enter a valid input
+		 * */
+		
 		while(!valid) {
 			ConsolePrinter.printOutOptionsForSport();
 			try {
-				optionChosen = s.nextLine();
+				optionChosen = s.nextInt();
 				if(ControllerToHandleUserInput.requestByUserIsValid(optionChosen)) {
 					valid = true;
 				}
@@ -55,6 +70,7 @@ public class ControllerToHandleUserInput {
 		return optionChosen;
 	}
 	
+	//method that returns true if input in main menu is valid
 	public static boolean sportChosenIsValid(int sport) {
 		if(sport < 0 || sport > 4)
 			return false;
@@ -62,8 +78,9 @@ public class ControllerToHandleUserInput {
 			return true;
 	}
 	
-	public static boolean requestByUserIsValid(String request) {
-		if(request != "1" || request != "2" || request != "B") {
+	//method that returns true if the request made is valid
+	public static boolean requestByUserIsValid(int request) {
+		if(request != 1 && request != 2 && request != 0) {
 			return false;
 		}
 		else
