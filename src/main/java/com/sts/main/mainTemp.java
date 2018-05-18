@@ -4,11 +4,10 @@ package com.sts.main;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-
-import io.GamesList;
 import io.NBAPastGamesFileReader;
 import io.TeamListFileReader;
-import io.TeamsList;
+import lists.GamesList;
+import lists.TeamsList;
 
 import java.io.IOException;
 import java.io.InputStream;
