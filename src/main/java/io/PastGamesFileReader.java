@@ -29,6 +29,7 @@ public class PastGamesFileReader extends AbstractGameReader {
 				game = new Game();
 				tokenizer = new StringTokenizer(line, DELIM);
 
+				//Read in the date and set date in game object
 				try {
 					game.setDate(tokenizer.nextToken());
 				} catch (Exception e_) {
@@ -36,6 +37,7 @@ public class PastGamesFileReader extends AbstractGameReader {
 					continue;
 				}
 
+				//Read in the time and set time in game object
 				try {
 					game.setTime(tokenizer.nextToken());
 				} catch (Exception e_) {
@@ -43,6 +45,7 @@ public class PastGamesFileReader extends AbstractGameReader {
 					continue;
 				}
 
+				//Read in the away team and set in game object
 				try {
 					game.setaTeam(tokenizer.nextToken());
 				} catch (Exception e_) {
@@ -50,6 +53,7 @@ public class PastGamesFileReader extends AbstractGameReader {
 					continue;
 				}
 
+				//Read in the away team's score for the game and set in game object
 				try {
 					String awayScoreString = tokenizer.nextToken();
 					int aTScore = Integer.parseInt(awayScoreString);
@@ -58,11 +62,14 @@ public class PastGamesFileReader extends AbstractGameReader {
 					System.err.println("setaTeamScore:" + e_.toString());
 				}
 
+				//Read in the home team and set in game object
 				try {
 					game.sethTeam(tokenizer.nextToken());
 				} catch (Exception e_) {
 					System.err.println("sethTeam:" + e_.toString());
 				}
+				
+				//Read in the home team's score for the game set in game object
 				try {
 					String homeScoreString = tokenizer.nextToken();
 					int homeScore = Integer.parseInt(homeScoreString);
@@ -71,6 +78,7 @@ public class PastGamesFileReader extends AbstractGameReader {
 					System.err.println("sethTeamScore:" + e_.toString());
 				}
 
+				//Read in the game attendance and set in game object
 				try {
 					String attendanceString = tokenizer.nextToken();
 					attendanceString = attendanceString.replace(",", "");
@@ -80,6 +88,7 @@ public class PastGamesFileReader extends AbstractGameReader {
 					System.err.println("setAttendance:" + e_.toString());
 				}
  
+				//Add game object to the list of games provided
 				listofGames_.add(game);
 			}
 		} catch (Exception e_) {

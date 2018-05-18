@@ -26,6 +26,7 @@ public class SportsSystem {
 		int numOfInvalidUpcomingGames = 0;
 		// List of Games from the past NBA season
 		GamesList listofPastGames = StoreDataFromInputFile.storeDataIntoPastGameList("/17-18NBA_RegSzn.txt");
+		// List of upcoming Games in the NBA
 		GamesList listofUpcomingGames = StoreDataFromInputFile.storeDataIntoUpcomingGameList("/NBA_Upcoming.txt");
 		System.out.println("<<<<<<<<<<Welcome to the Sports Tracking System>>>>>>>>>>");
 		
@@ -38,19 +39,22 @@ public class SportsSystem {
 		 * To Stop System -> User has to enter 0 in the main menu
 		 * */
 		
-		while(sportChosen != 0){
-			sportChosen = ControllerToHandleUserInput.readSportsChosenByUser();
+		//While the system is on
+		while(sportChosen != 0){ // (MAIN MENU)
+			sportChosen = ControllerToHandleUserInput.readSportsChosenByUser(); // read in valid input from user
 			if(ControllerToHandleUserInput.sportChosenIsValid(sportChosen) && sportChosen != 0){
-				do {
+				do { 
+					// Inside individual sport category
 					request = ControllerToHandleUserInput.readRequestByUser();
 					switch(request) {
-					case 0: 	
+					case 0:  // Refresh & Go back to Main Menu	
 							numOfInvalidUpcomingGames = RealTimeDataChecker.thereAreInvalidUpcomingGames(listofUpcomingGames);
 							if(numOfInvalidUpcomingGames > 0) {
 								RealTimeDataChecker.refreshDataLists(numOfInvalidUpcomingGames, listofUpcomingGames, listofPastGames);
 							}
 							break;
-					case 1: // Print to Log
+					case 1: //1. Refresh Both upcoming games and finished games list
+							//2.Print to Log
 							System.out.println("1 was selected");
 							numOfInvalidUpcomingGames = RealTimeDataChecker.thereAreInvalidUpcomingGames(listofUpcomingGames);
 							if(numOfInvalidUpcomingGames > 0) {
@@ -59,8 +63,10 @@ public class SportsSystem {
 							PrintToLog.logGamesList(listofPastGames);
 							break;
 					}
-				}while(request != 0);
-			ConsolePrinter.printOutOptionsForSport();
+				}while(request != 0);	
+				//Back in Main Menu
+				//Print options for user and prompts for input with menu
+			ConsolePrinter.printOutOptionsForSport(); 
 			
 			}
 		}

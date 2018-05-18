@@ -8,9 +8,8 @@ import com.sts.main.mainTemp;
 import lists.GamesList;
 
 public class StoreDataFromInputFile {
-
-	public StoreDataFromInputFile(){}
 	
+	//method to store data from past games file and place into a list of games and return list
 	public static GamesList storeDataIntoPastGameList(String inputfile_) throws RuntimeException, IOException {
 		GamesList listofGames = new GamesList();
 		PastGamesFileReader in = new PastGamesFileReader();
@@ -21,6 +20,7 @@ public class StoreDataFromInputFile {
 		return listofGames;
 	}
 	
+	//method to store data from upcoming games file and place into a list of games and return list
 	public static GamesList storeDataIntoUpcomingGameList(String inputfile_) throws RuntimeException, IOException {
 		GamesList listofGames = new GamesList();
 		UpcomingFileReader in = new UpcomingFileReader();

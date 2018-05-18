@@ -12,7 +12,7 @@ public class UpcomingFileReader extends AbstractGameReader {
 	private static final String DELIM ="|";
 	
 	
-	
+	//method to read from file with upcoming games
 	public void readFromFileWithGames(Reader is_, GamesList listofUpcoming_) {
 		try (BufferedReader reader = new BufferedReader(is_)) {
 			StringTokenizer tokenizer;
@@ -26,6 +26,7 @@ public class UpcomingFileReader extends AbstractGameReader {
 				game = new Game();
 				tokenizer = new StringTokenizer(line, DELIM);
 
+				//read in date and set in game 
 				try {
 					game.setDate(tokenizer.nextToken());
 				} catch (Exception e_) {
@@ -33,6 +34,7 @@ public class UpcomingFileReader extends AbstractGameReader {
 					continue;
 				}
 
+				//read in time and set in game 
 				try {
 					game.setTime(tokenizer.nextToken());
 				} catch (Exception e_) {
@@ -40,6 +42,7 @@ public class UpcomingFileReader extends AbstractGameReader {
 					continue;
 				}
 
+				//read in away team and set in game
 				try {
 					game.setaTeam(tokenizer.nextToken());
 				} catch (Exception e_) {
@@ -47,16 +50,14 @@ public class UpcomingFileReader extends AbstractGameReader {
 					continue;
 				}
 
-
+				//read in home team and set in game
 				try {
 					game.sethTeam(tokenizer.nextToken());
 				} catch (Exception e_) {
 					System.err.println("sethTeam:" + e_.toString());
 				}
 				
-
-				
- 
+				//add to upcoming games list
 				listofUpcoming_.add(game);
 			}
 		} catch (Exception e_) {

@@ -15,10 +15,10 @@ public class TeamListFileReader {
 	
 	private static final String DELIM = "|";
 	
-	public TeamListFileReader() {
-	
-	}
+	public TeamListFileReader() {}
 
+	//method to verify the input file and list of teams exists
+	//If so, proceed to read from the file and add to the list
 	public void readData(InputStream is_, TeamsList listofTeams_) throws FileNotFoundException, RuntimeException {
 		if (is_ == null)
 			throw new FileNotFoundException();
@@ -33,7 +33,7 @@ public class TeamListFileReader {
 		}
 	}
 		
-	
+	//method to read from an input file and add to the list of teams
 	public void readFromFileAndAddtoList(Reader is_, TeamsList listofTeams_) {
 		try (BufferedReader reader = new BufferedReader(is_)) {
 			StringTokenizer tokenizer;
