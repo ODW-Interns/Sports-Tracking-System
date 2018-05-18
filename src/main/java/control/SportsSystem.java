@@ -38,6 +38,8 @@ public class SportsSystem {
 					case 1: // Print to Log
 						System.out.println("1 was selected");
 						PrintToLog.logGamesList(listofPastGames);
+						//call second log
+						PrintToLog.secondLogGamesList(listofPastGames);
 						break;
 					}
 				}while(request != 0);
