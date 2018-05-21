@@ -1,7 +1,5 @@
 package view;
 
-import lists.TeamsList;
-
 //class:used to print out to console
 public class ConsolePrinter {
 

@@ -7,11 +7,8 @@ import java.io.InputStreamReader;
 import java.io.Reader;
 import java.util.StringTokenizer;
 
-import lists.GamesList;
-import lists.PlayersList;
 import lists.TeamsList;
 import model.Player;
-import model.Team;
 
 public class PlayerListFileReader {
 
@@ -26,7 +23,7 @@ public class PlayerListFileReader {
             throw new FileNotFoundException();
 
         if (listofTeams_ == null)
-            throw new RuntimeException("No catalog provided");
+            throw new RuntimeException("No list of teams provided");
 
         try (InputStreamReader sr = new InputStreamReader(is_)) {
             readFromRostersFileAndAddtoTeamsLists(sr, listofTeams_);
@@ -44,7 +41,6 @@ public class PlayerListFileReader {
 				Player player;
 				
 				int i = 0; // index for iterating through list of teams
-				int j = 0; // index for iterating through list of players for every team
 				while ((line = reader.readLine()) != null) {
 					// don't process empty lines
 					if ("".equals(line))
@@ -76,14 +72,10 @@ public class PlayerListFileReader {
 							System.err.println("Last Name: " + e_.toString());
 							continue;
 						}
-						System.out.println("Here");
-						System.out.println(listofTeams_.size());
-						System.out.println(i);
-						listofTeams_.get(i).getListOfPLayers().add(player);
-						j++;
-						
+				
+						listofTeams_.get(i).getListOfPLayers().add(player);						
 					}
-					j = 0;
+					
 					i++;
 					//add a function to convert players number from string to int
 				

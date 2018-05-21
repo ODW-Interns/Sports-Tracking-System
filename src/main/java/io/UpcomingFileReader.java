@@ -2,18 +2,19 @@ package io;
 
 import java.io.BufferedReader;
 import java.io.Reader;
+import java.util.ArrayList;
 import java.util.StringTokenizer;
 
 import lists.GamesList;
 import model.Game;
 
-public class UpcomingFileReader extends AbstractGameReader {
+public class UpcomingFileReader extends AbstractFileReader {
 	
 	private static final String DELIM ="|";
 	
 	
 	//method to read from file with upcoming games
-	public void readFromFileWithGames(Reader is_, GamesList listofUpcoming_) {
+	public void readFromFileForLists(Reader is_, ArrayList listofUpcoming_) {
 		try (BufferedReader reader = new BufferedReader(is_)) {
 			StringTokenizer tokenizer;
 			String line;
@@ -58,7 +59,7 @@ public class UpcomingFileReader extends AbstractGameReader {
 				}
 				
 				//add to upcoming games list
-				listofUpcoming_.add(game);
+				((GamesList)listofUpcoming_).add(game);
 			}
 		} catch (Exception e_) {
 			e_.printStackTrace();

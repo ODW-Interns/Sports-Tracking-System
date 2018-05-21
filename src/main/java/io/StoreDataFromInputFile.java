@@ -1,5 +1,4 @@
 package io;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 
@@ -36,7 +35,7 @@ public class StoreDataFromInputFile {
 	//method to store players data into list of players and return the list
 	
 	
-	public static PlayersList storeDataIntoPlaersList(String inputfile_, TeamsList listofTeams) throws RuntimeException, IOException {
+	public static PlayersList storeDataIntoPlayersList(String inputfile_, TeamsList listofTeams) throws RuntimeException, IOException {
 		PlayersList listofPlayers = new PlayersList();
 		PlayerListFileReader in = new PlayerListFileReader();
 		InputStream is = StoreDataFromInputFile.class.getResourceAsStream(inputfile_);

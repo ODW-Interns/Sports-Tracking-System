@@ -1,21 +1,14 @@
 package control;
 
-import io.PlayerListFileReader;
 import io.StoreDataFromInputFile;
 import lists.GamesList;
-import lists.PlayersList;
 import lists.TeamsList;
 import model.RealTimeDataChecker;
-import model.Team;
 import view.ConsolePrinter;
 import view.PrintToLog;
 
-import java.io.BufferedReader;
 import java.io.IOException;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.StringTokenizer;
 
 public class SportsSystem {
 
@@ -33,7 +26,7 @@ public class SportsSystem {
 		GamesList listofUpcomingGames = StoreDataFromInputFile.storeDataIntoUpcomingGameList("/NBA_Upcoming.txt");
 		// List of Players in NBA teams 
 		TeamsList listofNBATeams = StoreDataFromInputFile.storeDataIntoTeamsList("/NBA_Teams.txt");
-		StoreDataFromInputFile.storeDataIntoPlaersList("/AllCurrentNBARosters.txt", listofNBATeams);
+		StoreDataFromInputFile.storeDataIntoPlayersList("/AllCurrentNBARosters.txt", listofNBATeams);
 				
 		System.out.println("<<<<<<<<<<Welcome to the Sports Tracking System>>>>>>>>>>");
 		

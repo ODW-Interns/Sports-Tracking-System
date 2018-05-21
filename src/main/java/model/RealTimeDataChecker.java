@@ -74,7 +74,6 @@ public class RealTimeDataChecker {
 		Date formattedDate = parseDateAndFormat(upcomingList_.get(0).getDate(), upcomingList_.get(0).getTime());
 		Date current = new Date();
 		int gamesInvalid = 0;
-		int i = 0;
 		while(current.after(formattedDate)) {
 			gamesInvalid++;
 			formattedDate = parseDateAndFormat(upcomingList_.get(gamesInvalid).getDate(), upcomingList_.get(gamesInvalid).getTime());
