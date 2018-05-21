@@ -50,21 +50,22 @@ public class SportsSystem {
 		
 		//While the system is on
 		while(sportChosen != 0){ // (MAIN MENU)
+			PrintToLog.printMainMenuAlert();
 			sportChosen = ControllerToHandleUserInput.readSportsChosenByUser(); // read in valid input from user
+			PrintToLog.printSportCategory(sportChosen);
 			if(ControllerToHandleUserInput.sportChosenIsValid(sportChosen) && sportChosen != 0){
 				do { 
 					// Inside individual sport category
+					// Refresh
+					numOfInvalidUpcomingGames = RealTimeDataChecker.thereAreInvalidUpcomingGames(listofUpcomingGames);
+					if(numOfInvalidUpcomingGames > 0) {
+					RealTimeDataChecker.refreshDataLists(numOfInvalidUpcomingGames, listofUpcomingGames, listofPastGames);
+					}
 					request = ControllerToHandleUserInput.readRequestByUser();
 					switch(request) {
 
-					case 0:  // Refresh & Go back to Main Menu	
-							numOfInvalidUpcomingGames = RealTimeDataChecker.thereAreInvalidUpcomingGames(listofUpcomingGames);
-							if(numOfInvalidUpcomingGames > 0) {
-								RealTimeDataChecker.refreshDataLists(numOfInvalidUpcomingGames, listofUpcomingGames, listofPastGames);
-							}
-							break;
 					case 1: //1. Refresh Both upcoming games and finished games list
-							//2.Print to Log
+							//2.Print to Log the list of finished games
 							System.out.println("1 was selected");
 							numOfInvalidUpcomingGames = RealTimeDataChecker.thereAreInvalidUpcomingGames(listofUpcomingGames);
 							if(numOfInvalidUpcomingGames > 0) {
@@ -72,8 +73,17 @@ public class SportsSystem {
 							}
 							PrintToLog.logGamesList(listofPastGames);
 							break;
+					case 2: // 1. Refresh both upcoming games and finished gams list
+							// 2. Print to Log the list of upcoming games
+							numOfInvalidUpcomingGames = RealTimeDataChecker.thereAreInvalidUpcomingGames(listofUpcomingGames);
+							if(numOfInvalidUpcomingGames > 0) {
+								RealTimeDataChecker.refreshDataLists(numOfInvalidUpcomingGames, listofUpcomingGames, listofPastGames);
+							}
+							PrintToLog.logGamesList(listofUpcomingGames);
+							break;
 
 					}
+					
 				}while(request != 0);	
 				//Back in Main Menu
 				//Print options for user and prompts for input with menu

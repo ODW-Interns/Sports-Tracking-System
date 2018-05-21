@@ -3,7 +3,6 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 
-import com.sts.main.mainTemp;
 
 import lists.GamesList;
 import lists.PlayersList;
