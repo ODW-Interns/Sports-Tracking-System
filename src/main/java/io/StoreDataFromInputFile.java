@@ -6,6 +6,8 @@ import java.io.InputStream;
 import com.sts.main.mainTemp;
 
 import lists.GamesList;
+import lists.PlayersList;
+import lists.TeamsList;
 
 public class StoreDataFromInputFile {
 	
@@ -29,6 +31,32 @@ public class StoreDataFromInputFile {
 		is.close();
 		
 		return listofGames;
+		
+	}
+	
+	//method to store players data into list of players and return the list
+	
+	
+	public static PlayersList storeDataIntoPlaersList(String inputfile_, TeamsList listofTeams) throws RuntimeException, IOException {
+		PlayersList listofPlayers = new PlayersList();
+		PlayerListFileReader in = new PlayerListFileReader();
+		InputStream is = StoreDataFromInputFile.class.getResourceAsStream(inputfile_);
+		in.readData(is,listofTeams);
+		is.close();
+		
+		return listofPlayers;
+	}
+	
+	
+	
+	public static TeamsList storeDataIntoTeamsList(String inputfile_) throws RuntimeException, IOException {
+		TeamsList listofTeams = new TeamsList();
+		TeamListFileReader in = new TeamListFileReader();
+		InputStream is = StoreDataFromInputFile.class.getResourceAsStream(inputfile_);
+		in.readData(is, listofTeams);
+		is.close();
+		
+		return listofTeams;
 	}
 	
 
