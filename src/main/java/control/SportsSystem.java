@@ -47,6 +47,7 @@ public class SportsSystem {
 					// Inside individual sport category
 					request = ControllerToHandleUserInput.readRequestByUser();
 					switch(request) {
+
 					case 0:  // Refresh & Go back to Main Menu	
 							numOfInvalidUpcomingGames = RealTimeDataChecker.thereAreInvalidUpcomingGames(listofUpcomingGames);
 							if(numOfInvalidUpcomingGames > 0) {
@@ -62,6 +63,7 @@ public class SportsSystem {
 							}
 							PrintToLog.logGamesList(listofPastGames);
 							break;
+
 					}
 				}while(request != 0);	
 				//Back in Main Menu

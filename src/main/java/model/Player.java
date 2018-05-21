@@ -9,14 +9,15 @@ public class Player {
 	
 	//Default Constructor
 	public Player() {
-		this("N/A", "N/A", "N/A", -1);
+		this("N/A", "N/A", -1);
 	}
 
-	//Constructor with given arguments
-	public Player(String first_, String last_, String pos_, int jersey_){
+	
+	public Player(String first_, String last_, int jersey_){
+
 		firstName = first_;
 		lastName = last_;
-		position = pos_;
+		
 		jerseyNum = jersey_;
 	}
 
@@ -50,15 +51,5 @@ public class Player {
 		jerseyNum = jersey_;
 	}
 
-	//method to retrieve position of player
-	public String getPosition() {
-		return position;
-	}
-
-	//method to set postition of player
-	public void setPosition(String pos_) {
-		position = pos_;
-	}
-	
 	
 }

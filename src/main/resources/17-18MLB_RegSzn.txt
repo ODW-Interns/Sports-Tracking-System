@@ -1,0 +1,1230 @@
+Oct 25 2017|7:30|New York Mets|88|Chicago Cabs|117|20,562|
+Oct 25 2017|10:30|Tampa Bay Rays|129|Detroit Tigers|100|19,596|
+Oct 25 2017|10:00|Toronto Blue Jays|104|Seattle Mariners|113|19,446|
+Oct 26 2017|7:30|Baltimore Orioles|117|Atlanta Braves|122|18,624|
+Oct 26 2017|7:00|Cincinnati Reds|121|Kansas City Royals|130|17,923|
+Oct 26 2017|10:30|Houston Astors|114|Los Angeles Dodgers|120|18,997|
+Oct 26 2017|8:00|Minnesota Twins|98|Oakland Athletics|102|18,119|
+Oct 26 2017|8:00|Boston Red Socks|107|Milwaukee Brewers|96|18,717|
+Oct 26 2017|8:00|Cleveland Indians|107|New York Yankees|102|15,869|
+Oct 26 2017|7:00|Miami Marlins|108|San Diego Pardes|96|19,298|
+Oct 26 2017|8:00|Pittsburgh Pirates|103|Philadelphia Phillies|97|20,487|
+Oct 26 2017|10:00|St. Louis Cardinals|113|San Francisco Giants|94|18,055|
+Oct 26 2017|7:30|Colorado Rockies|91|Texas Rangers|109|19,800|
+Oct 27 2017|7:30|Washington Nationals|99|Arizona Diamondback|114|19,049|
+Oct 27 2017|8:00|Atlanta Braves|99|Chicago White Socks|105|21,501|
+Oct 27 2017|10:30|Los Angeles Angels|114|Seattle Mariners|106|19,500|
+Oct 27 2017|10:30|Tampa Bay Rays|102|St. Louis Cardinals|94|17,608|
+Oct 28 2017|7:30|Kansas City Royals|94|Baltimore Orioles|103|17,732|
+Oct 28 2017|8:30|Houston Astors|106|Cincinnati Reds|98|20,163|
+Oct 28 2017|7:30|San Diego Pardes|82|Colorado Rockies|108|19,122|
+Oct 28 2017|8:00|Boston Red Socks|97|Miami Marlins|91|19,600|
+Oct 28 2017|9:30|Detroit Tigers|122|New York Yankees|114|18,217|
+Oct 28 2017|8:00|San Francisco Giants|110|Pittsburgh Pirates|113|18,203|
+Oct 28 2017|7:00|Chicago Cabs|94|Texas Rangers|91|19,800|
+Oct 28 2017|9:00|Los Angeles Dodgers|89|Toronto Blue Jays|96|19,911|
+Oct 29 2017|8:00|Kansas City Royals|101|Chicago White Socks|118|21,373|
+Oct 29 2017|7:00|Atlanta Braves|104|Boston Red Socks|98|18,708|
+Oct 29 2017|7:30|San Diego Pardes|99|Chicago Cabs|105|20,562|
+Oct 29 2017|9:00|Seattle Mariners|115|Cleveland Indians|113|18,055|
+Oct 29 2017|8:00|Baltimore Orioles|108|Milwaukee Brewers|110|12,570|
+Oct 29 2017|7:30|Oakland Athletics|104|New York Mets|111|19,812|
+Oct 29 2017|12:30|Arizona Diamondback|104|Philadelphia |72|16,312|
+Oct 29 2017|10:30|Minnesota Twins|103|St. Louis Cardinals|106|17,608|
+Oct 29 2017|8:00|New York Yankees|79|Tampa Bay Rays|98|18,418|
+Oct 30 2017|6:00|Milwaukee Brewers|83|Colorado Rockies|98|15,161|
+Oct 30 2017|8:00|Cincinnati Reds|92|Houston Astors|93|18,055|
+Oct 30 2017|4:30|Toronto Blue Jays|75|Los Angeles Angels|88|19,060|
+Oct 30 2017|8:00|Washington Nationals|103|Oakland Athletics|112|15,573|
+Oct 30 2017|6:00|Tampa Bay Rays|106|Miami Marlins|99|19,678|
+Oct 30 2017|7:00|Los Angeles Dodgers|96|Pittsburgh Pirates|113|18,203|
+Oct 30 2017|6:00|Detroit Tigers|106|San Francisco Giants|100|17,011|
+Oct 31 2017|7:30|St. Louis Cardinals|95|Arizona Diamondback|106|12,501|
+Oct 31 2017|7:30|Chicago White Socks|118|Baltimore Orioles|88|15,842|
+Oct 31 2017|10:30|San Francisco Giants|98|Los Angeles Angels|116|19,060|
+Oct 31 2017|7:30|Cleveland Indians|102|Texas Rangers|105|19,800
+Nov 1 2017|6:00|Houston Astors|120|Chicago Cabs|128|20,562|
+Nov 1 2017|7:30|New York Mets|89|Colorado Rockies|102|13,087|
+Nov 1 2017|7:00|Los Angeles Dodgers|108|Kansas City Royals|115|15,348|
+Nov 1 2017|7:30|St. Louis Cardinals|96|Miami Marlins|108|19,612|
+Nov 1 2017|8:00|Oakland Athletics|80|Minnesota Twins|116|14,774|
+Nov 1 2017|8:00|Milwaukee Brewers|117|New York Yankees|113|15,515|
+Nov 1 2017|7:00|San Diego Pardes|103|Philadelphia |101|12,529|
+Nov 1 2017|10:00|Detroit Tigers|127|Seattle Mariners|104|19,393|
+Nov 1 2017|8:30|Toronto Blue Jays|106|Tampa Bay Rays|91|18,418|
+Nov 2 2017|7:30|Los Angeles Dodgers|123|Arizona Diamondback|116|13,800|
+Nov 2 2017|8:00|Chicago White Socks|100|Atlanta Braves|107|18,624|
+Nov 2 2017|7:30|Colorado Rockies|101|Baltimore Orioles|109|13,650|
+Nov 2 2017|7:00|Philadelphia |93|Boston Red Socks|109|15,275|
+Nov 2 2017|10:30|Pittsburgh Pirates|85|Los Angeles Angels|83|19,060|
+Nov 2 2017|8:00|New York Yankees|83|Oakland Athletics|89|15,881|
+Nov 2 2017|7:30|Houston Astors|118|New York Mets|99|19,812|
+Nov 2 2017|10:00|Seattle Mariners|115|San Francisco Giants|118|17,284|
+Nov 2 2017|9:00|Cincinnati Reds|81|Toronto Blue Jays|97|19,318|
+Nov 2 2017|7:00|Texas Rangers|113|Washington Nationals|103|19,581|
+Nov 3 2017|8:00|Atlanta Braves|122|Chicago Cabs|128|20,562|
+Nov 3 2017|10:30|Pittsburgh Pirates|96|Detroit Tigers|122|19,596|
+Nov 3 2017|8:00|Kansas City Royals|107|Milwaukee Brewers|125|11,374|
+Nov 3 2017|8:00|Cleveland Indians|102|Minnesota Twins|99|11,219|
+Nov 3 2017|7:00|St. Louis Cardinals|94|San Diego Pardes|102|17,026|
+Nov 4 2017|7:30|Boston Red Socks|99|Baltimore Orioles|95|15,775|
+Nov 4 2017|8:00|New York Mets|117|Chicago White Socks|104|22,376|
+Nov 4 2017|8:30|Seattle Mariners|105|Cincinnati Reds|95|19,475|
+Nov 4 2017|10:30|Detroit Tigers|97|Los Angeles Dodgers|117|18,997|
+Nov 4 2017|8:00|Los Angeles Angels|99|Oakland Athletics|88|17,115|
+Nov 4 2017|8:00|San Francisco Giants|112|New York Yankees|111|15,379|
+Nov 4 2017|7:30|Miami Marlins|87|Texas Rangers|96|19,800|
+Nov 4 2017|9:00|Tampa Bay Rays|100|Toronto Blue Jays|86|19,911|
+Nov 4 2017|7:00|Arizona Diamondback|92|Washington Nationals|95|14,663|
+Nov 5 2017|7:30|Houston Astors|97|Arizona Diamondback|112|16,895|
+Nov 5 2017|7:00|Cleveland Indians|86|Colorado Rockies|103|16,218|
+Nov 5 2017|7:00|Chicago White Socks|94|Kansas City Royals|111|17,020|
+Nov 5 2017|8:00|St. Louis Cardinals|91|Milwaukee Brewers|117|16,021|
+Nov 5 2017|6:00|Minnesota Twins|92|Pittsburgh Pirates|112|18,203|
+Nov 5 2017|7:00|Washington Nationals|86|San Diego Pardes|88|18,846|
+Nov 5 2017|7:00|Chicago Cabs|102|Philadelphia |101|20,497|
+Nov 5 2017|8:30|Los Angeles Angels|116|Tampa Bay Rays|92|18,418|
+Nov 6 2017|7:30|Cleveland Indians|123|Atlanta Braves|107|17,452|
+Nov 6 2017|7:00|Milwaukee Brewers|75|Cincinnati Reds|86|19,345|
+Nov 6 2017|9:30|San Francisco Giants|108|Los Angeles Dodgers|119|18,997|
+Nov 6 2017|3:30|Seattle Mariners|100|Oakland Athletics|94|16,233|
+Nov 6 2017|12:00|Toronto Blue Jays|114|New York Mets|109|19,812|
+Nov 6 2017|6:00|St. Louis Cardinals|96|Texas Rangers|91|19,800|
+Nov 7 2017|8:00|San Diego Pardes|80|Chicago White Socks|112|21,320|
+Nov 7 2017|7:00|Kansas City Royals|100|Boston Red Socks|122|16,880|
+Nov 7 2017|10:30|New York Yankees|106|Detroit Tigers|116|19,596|
+Nov 7 2017|10:30|Colorado Rockies|82|Los Angeles Angels|114|19,060|
+Nov 7 2017|8:00|Miami Marlins|85|Pittsburgh Pirates|97|18,203|
+Nov 7 2017|7:00|Toronto Blue Jays|109|Philadelphia |84|14,168|
+Nov 7 2017|7:00|Houston Astors|114|Washington Nationals|106|13,173|
+Nov 8 2017|7:30|Minnesota Twins|110|Baltimore Orioles|119|13,610|
+Nov 8 2017|7:00|Arizona Diamondback|110|Chicago Cabs|106|20,562|
+Nov 8 2017|10:30|Cincinnati Reds|109|Los Angeles Dodgers|97|18,997|
+Nov 8 2017|8:00|Cleveland Indians|107|Oakland Athletics|108|15,109|
+Nov 8 2017|10:00|San Francisco Giants|121|Seattle Mariners|124|19,239|
+Nov 8 2017|10:30|New York Yankees|94|St. Louis Cardinals|102|17,608|
+Nov 9 2017|7:30|Chicago White Socks|107|Arizona Diamondback|115|16,354|
+Nov 9 2017|7:00|Toronto Blue Jays|98|Boston Red Socks|104|15,712|
+Nov 9 2017|10:30|Cincinnati Reds|95|Detroit Tigers|116|19,596|
+Nov 9 2017|7:00|Philadelphia |115|Kansas City Royals|122|15,360|
+Nov 9 2017|10:30|Seattle Mariners|80|Los Angeles Angels|111|19,060|
+Nov 9 2017|7:00|Baltimore Orioles|96|New York Mets|110|19,812|
+Nov 9 2017|8:00|Texas Rangers|112|Pittsburgh Pirates|102|18,203|
+Nov 9 2017|7:00|Minnesota Twins|123|San Diego Pardes|107|17,102|
+Nov 9 2017|9:00|Colorado Rockies|100|San Francisco Giants|107|16,719|
+Nov 9 2017|9:30|Houston Astors|101|Tampa Bay Rays|99|18,418|
+Nov 9 2017|7:00|Atlanta Braves|93|Washington Nationals|118|12,675|
+Nov 10 2017|9:00|Detroit Tigers|125|Cleveland Indians|101|17,569|
+Nov 10 2017|8:00|Chicago White Socks|98|Miami Marlins|95|19,600|
+Nov 10 2017|8:00|New York Yankees|112|Milwaukee Brewers|106|12,159|
+Nov 10 2017|10:30|Los Angeles Dodgers|101|St. Louis Cardinals|91|17,608|
+Nov 11 2017|7:30|New York Mets|87|Atlanta Braves|115|18,624|
+Nov 11 2017|7:00|Texas Rangers|113|Boston Red Socks|111|18,107|
+Nov 11 2017|8:00|Los Angeles Angels|110|Pittsburgh Pirates|108|18,203|
+Nov 11 2017|7:00|Toronto Blue Jays|87|San Diego Pardes|74|18,846|
+Nov 11 2017|7:00|Kansas City Royals|105|Philadelphia |109|17,643|
+Nov 11 2017|10:00|St. Louis Cardinals|120|Seattle Mariners|122|19,918|
+Nov 11 2017|8:30|Colorado Rockies|86|Tampa Bay Rays|96|18,418|
+Nov 11 2017|7:00|Chicago Cabs|105|Washington Nationals|94|20,356|
+Nov 12 2017|7:30|Philadelphia |96|Arizona Diamondback|117|17,399|
+Nov 12 2017|8:00|Washington Nationals|95|Chicago White Socks|106|21,962|
+Nov 12 2017|9:00|Colorado Rockies|106|Cleveland Indians|95|13,997|
+Nov 12 2017|8:00|Tampa Bay Rays|106|Houston Astors|100|18,055|
+Nov 12 2017|7:00|Atlanta Braves|105|Kansas City Royals|99|17,923|
+Nov 12 2017|8:00|Toronto Blue Jays|102|Miami Marlins|91|19,600|
+Nov 12 2017|8:30|Oakland Athletics|96|Milwaukee Brewers|106|14,327|
+Nov 12 2017|8:00|Los Angeles Angels|119|Minnesota Twins|105|14,494|
+Nov 12 2017|7:00|Los Angeles Dodgers|126|New York Yankees|99|17,138|
+Nov 12 2017|9:00|Baltimore Orioles|122|San Francisco Giants|104|17,126|
+Nov 12 2017|7:30|New York Mets|107|Texas Rangers|118|19,800|
+Nov 13 2017|3:30|Boston Red Socks|93|Chicago Cabs|100|20,562|
+Nov 13 2017|8:00|San Francisco Giants|120|Detroit Tigers|133|19,596|
+Nov 13 2017|7:00|Los Angeles Dodgers|99|Minnesota Twins|125|14,432|
+Nov 13 2017|7:00|San Diego Pardes|119|Pittsburgh Pirates|117|18,203|
+Nov 13 2017|9:00|Cleveland Indians|105|Seattle Mariners|112|19,362|
+Nov 14 2017|7:30|Pittsburgh Pirates|88|Colorado Rockies|104|14,172|
+Nov 14 2017|8:00|Philadelphia |88|Houston Astors|115|13,183|
+Nov 14 2017|7:00|San Diego Pardes|69|Kansas City Royals|88|14,825|
+Nov 14 2017|10:30|Baltimore Orioles|95|Los Angeles Angels|127|19,060|
+Nov 14 2017|8:00|Atlanta Braves|105|New York Yankees|106|15,001|
+Nov 14 2017|7:30|Cincinnati Reds|77|New York Mets|93|19,812|
+Nov 14 2017|8:30|Miami Marlins|90|Tampa Bay Rays|94|18,418|
+Nov 14 2017|9:00|Oakland Athletics|102|Toronto Blue Jays|96|18,176|
+Nov 15 2017|7:00|Texas Rangers|117|Chicago Cabs|121|20,562|
+Nov 15 2017|10:30|Baltimore Orioles|118|Los Angeles Dodgers|125|18,426|
+Nov 15 2017|7:30|Arizona Diamondback|93|Miami Marlins|90|19,600|
+Nov 15 2017|8:00|Boston Red Socks|115|Minnesota Twins|108|10,349|
+Nov 15 2017|10:00|Chicago White Socks|113|Seattle Mariners|88|19,393|
+Nov 16 2017|7:30|Milwaukee Brewers|100|Arizona Diamondback|107|14,656|
+Nov 16 2017|7:30|Cincinnati Reds|83|Atlanta Braves|90|18,624|
+Nov 16 2017|9:00|San Francisco Giants|104|Cleveland Indians|120|10,247|
+Nov 16 2017|7:00|Chicago Cabs|93|Kansas City Royals|103|17,022|
+Nov 16 2017|10:30|Oakland Athletics|111|Los Angeles Angels|107|19,060|
+Nov 16 2017|7:30|Colorado Rockies|102|New York Mets|105|19,812|
+Nov 16 2017|8:00|Houston Astors|103|Pittsburgh Pirates|105|18,203|
+Nov 16 2017|7:00|New York Yankees|82|San Diego Pardes|89|16,127|
+Nov 16 2017|7:00|Washington Nationals|102|Philadelphia |109|14,863|
+Nov 16 2017|10:30|Tampa Bay Rays|110|St. Louis Cardinals|105|17,608|
+Nov 16 2017|8:00|Detroit Tigers|127|Texas Rangers|121|21,050|
+Nov 17 2017|8:00|Seattle Mariners|109|Houston Astors|126|15,550|
+Nov 17 2017|7:30|Milwaukee Brewers|73|Miami Marlins|96|19,600|
+Nov 17 2017|8:00|Philadelphia |86|Minnesota Twins|110|16,866|
+Nov 17 2017|10:30|Chicago White Socks|85|Toronto Blue Jays|77|19,911|
+Nov 17 2017|7:00|New York Mets|112|Washington Nationals|119|16,704|
+Nov 18 2017|8:00|Detroit Tigers|104|Atlanta Braves|88|18,624|
+Nov 18 2017|7:00|Arizona Diamondback|96|Boston Red Socks|100|17,989|
+Nov 18 2017|7:30|Colorado Rockies|81|Chicago Cabs|104|20,562|
+Nov 18 2017|8:30|Oakland Athletics|80|Cincinnati Reds|64|19,715|
+Nov 18 2017|9:00|Texas Rangers|113|Cleveland Indians|111|12,476|
+Nov 18 2017|7:00|San Francisco Giants|116|Kansas City Royals|96|16,780|
+Nov 18 2017|10:30|Tampa Bay Rays|116|Los Angeles Dodgers|107|18,997|
+Nov 18 2017|8:00|Seattle Mariners|101|New York Yankees|113|15,552|
+Nov 18 2017|8:00|Baltimore Orioles|105|Pittsburgh Pirates|124|18,203|
+Nov 18 2017|10:30|Los Angeles Angels|121|St. Louis Cardinals|115|17,608|
+Nov 19 2017|7:00|Atlanta Braves|94|Colorado Rockies|92|16,107|
+Nov 19 2017|5:00|Toronto Blue Jays|102|Houston Astors|111|14,760|
+Nov 19 2017|10:30|Chicago White Socks|95|Los Angeles Angels|102|19,060|
+Nov 19 2017|8:00|Minnesota Twins|71|Oakland Athletics|93|17,112|
+Nov 19 2017|8:30|Detroit Tigers|124|Milwaukee Brewers|121|18,717|
+Nov 19 2017|7:00|Boston Red Socks|116|New York Yankees|121|15,739|
+Nov 19 2017|7:00|Cincinnati Reds|87|San Diego Pardes|95|18,846|
+Nov 19 2017|7:30|San Francisco Giants|105|Philadelphia |120|18,125|
+Nov 19 2017|7:00|Miami Marlins|114|Washington Nationals|111|15,848|
+Nov 20 2017|3:30|Seattle Mariners|129|Baltimore Orioles|109|16,608|
+Nov 20 2017|9:00|Toronto Blue Jays|91|Cleveland Indians|105|12,565|
+Nov 20 2017|9:30|Chicago White Socks|118|Los Angeles Dodgers|110|18,997|
+Nov 20 2017|12:00|Arizona Diamondback|94|New York Mets|104|19,812|
+Nov 20 2017|7:00|Kansas City Royals|115|Pittsburgh Pirates|111|18,203|
+Nov 20 2017|9:00|Texas Rangers|99|St. Louis Cardinals|102|17,608|
+Nov 21 2017|7:00|Oakland Athletics|105|Boston Red Socks|90|14,181|
+Nov 21 2017|7:30|Houston Astors|99|Colorado Rockies|96|13,632|
+Nov 21 2017|7:00|Detroit Tigers|120|Kansas City Royals|83|17,923|
+Nov 21 2017|10:30|Texas Rangers|115|Los Angeles Angels|123|19,060|
+Nov 21 2017|8:00|San Diego Pardes|89|Milwaukee Brewers|93|12,306|
+Nov 21 2017|8:00|Atlanta Braves|99|Minnesota Twins|93|13,167|
+Nov 21 2017|7:00|Miami Marlins|94|Philadelphia |101|16,477|
+Nov 21 2017|8:30|Cincinnati Reds|91|Tampa Bay Rays|96|18,418|
+Nov 21 2017|7:00|San Francisco Giants|101|Washington Nationals|106|12,790|
+Nov 22 2017|7:30|New York Yankees|112|Arizona Diamondback|94|19,120|
+Nov 22 2017|9:00|Chicago White Socks|107|Cleveland Indians|110|14,328|
+Nov 22 2017|10:30|Pittsburgh Pirates|109|Los Angeles Dodgers|111|18,997|
+Nov 22 2017|7:30|Seattle Mariners|103|New York Mets|107|19,812|
+Nov 23 2017|7:30|Atlanta Braves|111|Baltimore Orioles|92|16,210|
+Nov 23 2017|7:00|Tampa Bay Rays|119|Boston Red Socks|114|18,515|
+Nov 23 2017|7:00|Seattle Mariners|125|Chicago Cabs|137|20,562|
+Nov 23 2017|8:30|Los Angeles Angels|124|Cincinnati Reds|104|20,042|
+Nov 23 2017|7:30|Miami Marlins|84|Colorado Rockies|107|14,520|
+Nov 23 2017|10:30|Los Angeles Dodgers|106|Detroit Tigers|149|19,596|
+Nov 23 2017|8:00|Texas Rangers|115|Houston Astors|102|18,055|
+Nov 23 2017|7:00|Arizona Diamondback|96|Kansas City Royals|85|16,032|
+Nov 23 2017|9:30|Minnesota Twins|96|New York Yankees|117|15,555|
+Nov 23 2017|7:00|San Francisco Giants|92|San Diego Pardes|87|17,069|
+Nov 23 2017|7:00|Oakland Athletics|104|Philadelphia |99|15,880|
+Nov 23 2017|10:30|Pittsburgh Pirates|101|St. Louis Cardinals|116|17,608|
+Nov 23 2017|9:00|Cleveland Indians|83|Toronto Blue Jays|108|19,229|
+Nov 25 2017|1:00|Tampa Bay Rays|109|Atlanta Braves|103|18,624|
+Nov 25 2017|7:30|Cincinnati Reds|90|Chicago Cabs|128|20,562|
+Nov 25 2017|9:00|Pittsburgh Pirates|132|Cleveland Indians|129|14,327|
+Nov 25 2017|7:30|Los Angeles Angels|97|Colorado Rockies|108|17,023|
+Nov 25 2017|8:00|Baltimore Orioles|97|Kansas City Royals|118|16,083|
+Nov 25 2017|10:30|Detroit Tigers|109|Los Angeles Dodgers|85|18,997|
+Nov 25 2017|8:00|Miami Marlins|90|Oakland Athletics|81|17,222|
+Nov 25 2017|8:00|Texas Rangers|105|Milwaukee Brewers|99|16,223|
+Nov 25 2017|7:30|Boston Red Socks|111|New York Mets|113|19,812|
+Nov 25 2017|7:00|Washington Nationals|94|San Diego Pardes|91|17,103|
+Nov 25 2017|7:30|Chicago White Socks|105|Philadelphia |89|18,234|
+Nov 25 2017|9:00|Minnesota Twins|98|San Francisco Giants|85|16,728|
+Nov 25 2017|10:00|New York Yankees|104|Seattle Mariners|119|19,393|
+Nov 25 2017|10:30|Houston Astors|117|St. Louis Cardinals|104|17,608|
+Nov 25 2017|8:00|Arizona Diamondback|68|Toronto Blue Jays|95|19,911|
+Nov 26 2017|7:00|New York Mets|102|Boston Red Socks|107|19,195|
+Nov 26 2017|10:30|Minnesota Twins|102|Detroit Tigers|115|19,596|
+Nov 26 2017|8:00|Oakland Athletics|110|Miami Marlins|107|19,600|
+Nov 26 2017|8:00|Colorado Rockies|88|Pittsburgh Pirates|106|18,203|
+Nov 26 2017|7:00|Tampa Bay Rays|112|Washington Nationals|100|17,066|
+Nov 27 2017|6:00|St. Louis Cardinals|122|Baltimore Orioles|105|13,646|
+Nov 27 2017|7:00|New York Yankees|81|Cincinnati Reds|91|19,302|
+Nov 27 2017|6:00|Los Angeles Angels|70|Kansas City Royals|91|15,572|
+Nov 27 2017|9:30|Arizona Diamondback|94|Los Angeles Dodgers|109|18,997|
+Nov 27 2017|6:00|Milwaukee Brewers|104|San Diego Pardes|96|16,521|
+Nov 27 2017|1:00|Chicago Cabs|112|Philadelphia |108|19,311|
+Nov 27 2017|3:30|Cleveland Indians|120|San Francisco Giants|114|15,365|
+Nov 27 2017|9:00|Houston Astors|130|Seattle Mariners|114|19,393|
+Nov 28 2017|10:30|Arizona Diamondback|100|Detroit Tigers|105|19,596|
+Nov 28 2017|8:00|Boston Red Socks|104|Oakland Athletics|85|13,143|
+Nov 28 2017|7:30|Atlanta Braves|112|Miami Marlins|104|19,600|
+Nov 28 2017|8:00|Toronto Blue Jays|112|Minnesota Twins|103|9,384|
+Nov 28 2017|7:30|Pittsburgh Pirates|112|New York Mets|103|19,812|
+Nov 28 2017|7:30|Philadelphia |95|Texas Rangers|122|19,800|
+Nov 28 2017|7:00|St. Louis Cardinals|95|Washington Nationals|101|12,571|
+Nov 29 2017|7:30|Los Angeles Angels|122|Baltimore Orioles|127|15,681|
+Nov 29 2017|7:00|Colorado Rockies|112|Boston Red Socks|89|14,266|
+Nov 29 2017|8:00|Chicago Cabs|101|Milwaukee Brewers|118|16,559|
+Nov 29 2017|8:00|Los Angeles Dodgers|88|New York Yankees|105|14,024|
+Nov 29 2017|8:30|San Diego Pardes|95|Tampa Bay Rays|83|18,418|
+Nov 29 2017|9:00|Houston Astors|101|Toronto Blue Jays|120|19,911|
+Nov 30 2017|7:30|Colorado Rockies|121|Atlanta Braves|114|17,338|
+Nov 30 2017|8:00|Los Angeles Dodgers|96|Chicago White Socks|90|21,773|
+Nov 30 2017|8:30|Tampa Bay Rays|94|Cincinnati Reds|87|19,245|
+Nov 30 2017|9:00|Miami Marlins|106|Cleveland Indians|98|11,471|
+Nov 30 2017|8:00|New York Mets|106|Minnesota Twins|104|13,987|
+Nov 30 2017|8:00|Washington Nationals|115|Pittsburgh Pirates|126|18,203|
+Nov 30 2017|9:00|Arizona Diamondback|107|San Francisco Giants|109|15,909|
+Nov 30 2017|10:00|Kansas City Royals|109|Seattle Mariners|131|19,107|
+Nov 30 2017|7:30|Oakland Athletics|105|Texas Rangers|120|19,800
+Dec 1 2017|7:30|Milwaukee Brewers|111|Baltimore Orioles|93|12,675|
+Dec 1 2017|7:00|Cincinnati Reds|87|Boston Red Socks|97|14,471|
+Dec 1 2017|8:00|Los Angeles Angels|113|Chicago Cabs|94|20,562|
+Dec 1 2017|10:30|Houston Astors|132|Detroit Tigers|127|19,596|
+Dec 1 2017|8:00|San Diego Pardes|94|Oakland Athletics|95|13,344|
+Dec 1 2017|9:00|Miami Marlins|111|Toronto Blue Jays|110|19,073|
+Dec 2 2017|8:00|Colorado Rockies|121|Arizona Diamondback|85|15,500|
+Dec 2 2017|7:30|St. Louis Cardinals|92|Atlanta Braves|97|18,624|
+Dec 2 2017|8:00|Chicago Cabs|105|Chicago White Socks|111|21,775|
+Dec 2 2017|10:30|Houston Astors|128|Cleveland Indians|110|15,549|
+Dec 2 2017|8:00|Los Angeles Angels|114|New York Yankees|96|16,538|
+Dec 2 2017|7:30|Minnesota Twins|114|New York Mets|118|19,812|
+Dec 2 2017|7:00|San Diego Pardes|105|Philadelphia |88|13,711|
+Dec 2 2017|8:30|Washington Nationals|105|Tampa Bay Rays|107|18,418|
+Dec 2 2017|7:30|Los Angeles Dodgers|80|Texas Rangers|113|19,800|
+Dec 3 2017|7:00|Minnesota Twins|125|Boston Red Socks|120|16,982|
+Dec 3 2017|8:30|Chicago White Socks|82|Cincinnati Reds|107|19,857|
+Dec 3 2017|10:30|San Francisco Giants|109|Detroit Tigers|138|19,596|
+Dec 3 2017|8:00|Los Angeles Dodgers|100|Oakland Athletics|103|17,017|
+Dec 3 2017|5:00|Baltimore Orioles|103|Milwaukee Brewers|112|15,565|
+Dec 3 2017|7:30|Atlanta Braves|107|Philadelphia |106|17,063|
+Dec 3 2017|10:00|Miami Marlins|92|Seattle Mariners|99|19,393|
+Dec 3 2017|7:30|Arizona Diamondback|84|Texas Rangers|128|19,800|
+Dec 3 2017|9:00|Cleveland Indians|98|Toronto Blue Jays|105|19,911|
+Dec 4 2017|6:00|San Diego Pardes|98|Colorado Rockies|92|15,206|
+Dec 4 2017|9:30|Kansas City Royals|111|Los Angeles Angels|102|19,060|
+Dec 4 2017|7:30|St. Louis Cardinals|98|New York Mets|106|19,812|
+Dec 4 2017|7:00|New York Yankees|92|Pittsburgh Pirates|101|18,203|
+Dec 5 2017|7:30|Pittsburgh Pirates|102|Arizona Diamondback|99|14,654|
+Dec 5 2017|7:30|Washington Nationals|118|Baltimore Orioles|113|12,529|
+Dec 5 2017|8:00|Seattle Mariners|112|Chicago White Socks|110|21,351|
+Dec 5 2017|8:30|Boston Red Socks|109|Cincinnati Reds|101|19,228|
+Dec 5 2017|10:30|Kansas City Royals|106|Detroit Tigers|142|19,596|
+Dec 5 2017|8:00|Atlanta Braves|106|Houston Astors|107|15,730|
+Dec 5 2017|10:30|Toronto Blue Jays|107|Los Angeles Dodgers|101|18,279|
+Dec 5 2017|8:00|Tampa Bay Rays|97|Milwaukee Brewers|96|14,256|
+Dec 5 2017|8:00|Oakland Athletics|110|New York Yankees|108|13,795|
+Dec 5 2017|7:00|Cleveland Indians|106|Philadelphia |98|11,815|
+Dec 5 2017|7:30|Chicago Cabs|116|Texas Rangers|112|19,800|
+Dec 6 2017|7:30|Chicago White Socks|91|Colorado Rockies|102|14,305|
+Dec 6 2017|8:00|Philadelphia |91|Oakland Athletics|96|13,521|
+Dec 6 2017|7:30|New York Mets|114|Miami Marlins|103|19,610|
+Dec 6 2017|8:00|Tampa Bay Rays|105|Minnesota Twins|91|12,585|
+Dec 6 2017|9:00|San Francisco Giants|105|Toronto Blue Jays|112|18,997|
+Dec 6 2017|7:00|San Diego Pardes|124|Washington Nationals|116|12,116|
+Dec 7 2017|7:30|Miami Marlins|95|Arizona Diamondback|103|11,326|
+Dec 7 2017|7:30|Cleveland Indians|111|Baltimore Orioles|116|14,159|
+Dec 7 2017|7:00|Colorado Rockies|77|Boston Red Socks|87|15,141|
+Dec 7 2017|8:30|St. Louis Cardinals|120|Cincinnati Reds|89|19,711|
+Dec 7 2017|8:00|Los Angeles Dodgers|95|Houston Astors|134|16,141|
+Dec 7 2017|10:30|Detroit Tigers|115|Los Angeles Angels|98|19,239|
+Dec 7 2017|8:00|Seattle Mariners|107|Milwaukee Brewers|115|14,033|
+Dec 7 2017|8:00|Chicago Cabs|126|New York Mets|94|19,812|
+Dec 7 2017|7:00|Atlanta Braves|117|San Diego Pardes|87|17,009|
+Dec 7 2017|9:00|Kansas City Royals|109|San Francisco Giants|94|17,452|
+Dec 8 2017|9:30|Tampa Bay Rays|91|Chicago White Socks|95|21,489|
+Dec 8 2017|8:00|Seattle Mariners|86|Oakland Athletics|88|14,317|
+Dec 8 2017|8:00|Philadelphia |99|New York Yankees|88|14,158|
+Dec 8 2017|7:00|Minnesota Twins|110|Texas Rangers|124|19,800|
+Dec 8 2017|9:00|Detroit Tigers|106|Toronto Blue Jays|99|19,911|
+Dec 8 2017|7:00|Cleveland Indians|85|Washington Nationals|92|12,645|
+Dec 9 2017|7:30|Texas Rangers|101|Atlanta Braves|94|18,624|
+Dec 9 2017|7:00|San Diego Pardes|88|Boston Red Socks|109|15,707|
+Dec 9 2017|7:30|Miami Marlins|84|Chicago Cabs|114|20,562|
+Dec 9 2017|8:30|Kansas City Royals|103|Cincinnati Reds|111|19,486|
+Dec 9 2017|10:30|San Francisco Giants|119|Los Angeles Dodgers|115|18,997|
+Dec 9 2017|8:00|Arizona Diamondback|114|Milwaukee Brewers|110|16,289|
+Dec 9 2017|8:00|Colorado Rockies|117|Minnesota Twins|90|14,109|
+Dec 9 2017|8:00|Houston Astors|102|Pittsburgh Pirates|99|18,203|
+Dec 9 2017|10:30|New York Mets|103|St. Louis Cardinals|100|17,608|
+Dec 10 2017|8:00|Miami Marlins|100|Chicago White Socks|105|21,450|
+Dec 10 2017|7:30|Boston Red Socks|105|Chicago Cabs|116|20,562|
+Dec 10 2017|8:00|Cincinnati Reds|87|Houston Astors|109|15,761|
+Dec 10 2017|7:00|Seattle Mariners|111|Kansas City Royals|118|16,211|
+Dec 10 2017|10:30|New York Yankees|105|Los Angeles Angels|133|19,060|
+Dec 10 2017|8:00|Detroit Tigers|89|Oakland Athletics|110|18,119|
+Dec 10 2017|7:00|Cleveland Indians|121|San Diego Pardes|113|17,010|
+Dec 10 2017|8:30|Baltimore Orioles|101|Tampa Bay Rays|130|18,418|
+Dec 10 2017|9:00|St. Louis Cardinals|84|Toronto Blue Jays|104|19,331|
+Dec 10 2017|7:00|Milwaukee Brewers|105|Washington Nationals|110|14,816|
+Dec 11 2017|6:00|Philadelphia |97|Colorado Rockies|79|7,244|
+Dec 11 2017|9:30|New York Mets|118|Los Angeles Dodgers|112|18,997|
+Dec 11 2017|7:00|Detroit Tigers|116|Minnesota Twins|108|18,452|
+Dec 11 2017|7:00|Atlanta Braves|96|Pittsburgh Pirates|99|18,203|
+Dec 11 2017|8:30|New York Yankees|120|San Francisco Giants|119|16,949|
+Dec 12 2017|8:30|Cleveland Indians|92|Cincinnati Reds|112|19,425|
+Dec 12 2017|8:00|Baltimore Orioles|118|Houston Astors|122|13,619|
+Dec 12 2017|7:00|Boston Red Socks|94|Kansas City Royals|110|14,138|
+Dec 12 2017|10:30|Seattle Mariners|120|Los Angeles Angels|121|19,060|
+Dec 12 2017|7:30|Washington Nationals|101|Miami Marlins|112|19,600|
+Dec 12 2017|10:30|Los Angeles Dodgers|92|St. Louis Cardinals|116|17,608|
+Dec 12 2017|7:30|Milwaukee Brewers|100|Texas Rangers|122|19,800|
+Dec 13 2017|7:30|San Diego Pardes|131|Arizona Diamondback|120|13,585|
+Dec 13 2017|8:00|Minnesota Twins|99|Chicago White Socks|94|21,146|
+Dec 13 2017|7:00|Oakland Athletics|86|Chicago Cabs|103|20,562|
+Dec 13 2017|8:00|Detroit Tigers|113|New York Yankees|109|17,789|
+Dec 13 2017|9:00|New York Mets|111|San Francisco Giants|113|16,429|
+Dec 13 2017|10:30|Pittsburgh Pirates|95|Seattle Mariners|114|19,505|
+Dec 14 2017|7:30|Los Angeles Dodgers|97|Baltimore Orioles|107|17,732|
+Dec 14 2017|8:30|Colorado Rockies|95|Cincinnati Reds|85|19,687|
+Dec 14 2017|8:00|St. Louis Cardinals|98|Houston Astors|132|15,039|
+Dec 14 2017|8:00|Chicago Cabs|85|Oakland Athletics|93|17,449|
+Dec 14 2017|7:00|Kansas City Royals|89|Miami Marlins|95|19,600|
+Dec 14 2017|7:00|Los Angeles Angels|113|San Diego Pardes|108|18,846|
+Dec 14 2017|7:00|Texas Rangers|123|Philadelphia |114|16,192|
+Dec 14 2017|9:30|Atlanta Braves|101|Tampa Bay Rays|108|18,418|
+Dec 14 2017|9:00|Pittsburgh Pirates|89|Toronto Blue Jays|109|19,911|
+Dec 14 2017|7:00|Boston Red Socks|106|Washington Nationals|109|13,447|
+Dec 15 2017|9:00|Seattle Mariners|120|Cleveland Indians|132|10,022|
+Dec 15 2017|10:30|New York Mets|90|Detroit Tigers|103|19,596|
+Dec 15 2017|8:00|Chicago White Socks|97|Milwaukee Brewers|108|16,704|
+Dec 15 2017|8:00|Kansas City Royals|95|New York Yankees|102|15,472|
+Dec 15 2017|9:00|Tampa Bay Rays|107|San Francisco Giants|92|17,165|
+Dec 16 2017|7:30|Boston Red Socks|88|Atlanta Braves|96|18,624|
+Dec 16 2017|8:00|Milwaukee Brewers|95|Chicago White Socks|69|21,324|
+Dec 16 2017|8:00|New York Yankees|100|Houston Astors|122|16,728|
+Dec 16 2017|8:00|St. Louis Cardinals|96|Oakland Athletics|92|15,987|
+Dec 16 2017|8:00|Los Angeles Angels|102|Miami Marlins|98|19,600|
+Dec 16 2017|7:00|Baltimore Orioles|111|San Diego Pardes|118|17,668|
+Dec 16 2017|8:00|Los Angeles Dodgers|100|Philadelphia |89|20,491|
+Dec 16 2017|7:30|Arizona Diamondback|125|Texas Rangers|121|19,800|
+Dec 16 2017|10:30|Cincinnati Reds|100|Toronto Blue Jays|103|18,721|
+Dec 16 2017|7:00|Colorado Rockies|108|Washington Nationals|122|15,573|
+Dec 17 2017|7:30|Boston Red Socks|107|Arizona Diamondback|99|17,918|
+Dec 17 2017|7:30|Los Angeles Dodgers|108|Chicago Cabs|119|20,562|
+Dec 17 2017|9:00|New York Mets|114|Cleveland Indians|127|12,042|
+Dec 17 2017|7:00|Kansas City Royals|105|Colorado Rockies|90|15,231|
+Dec 17 2017|10:30|Seattle Mariners|90|Detroit Tigers|135|19,596|
+Dec 17 2017|8:00|Houston Astors|111|Minnesota Twins|109|14,689|
+Dec 17 2017|5:00|San Francisco Giants|101|Pittsburgh Pirates|114|18,203|
+Dec 18 2017|4:00|St. Louis Cardinals|79|Cincinnati Reds|99|19,504|
+Dec 18 2017|6:00|Toronto Blue Jays|82|Oakland Athletics|73|15,862|
+Dec 18 2017|6:00|Atlanta Braves|105|Miami Marlins|95|19,600|
+Dec 18 2017|6:00|Texas Rangers|109|San Diego Pardes|79|17,251|
+Dec 18 2017|6:00|Baltimore Orioles|107|Philadelphia |108|16,460|
+Dec 18 2017|7:00|New York Yankees|100|Tampa Bay Rays|113|18,615|
+Dec 18 2017|3:30|Los Angeles Angels|110|Washington Nationals|117|17,380|
+Dec 19 2017|8:00|Colorado Rockies|82|Chicago White Socks|113|21,400|
+Dec 19 2017|9:00|Cincinnati Reds|107|Cleveland Indians|117|12,581|
+Dec 19 2017|7:00|Washington Nationals|105|Kansas City Royals|107|17,686|
+Dec 19 2017|8:00|San Francisco Giants|108|Minnesota Twins|115|12,008|
+Dec 19 2017|8:00|Arizona Diamondback|110|Pittsburgh Pirates|108|18,203|
+Dec 20 2017|7:00|Los Angeles Dodgers|113|Boston Red Socks|117|19,093|
+Dec 20 2017|10:30|Toronto Blue Jays|74|Detroit Tigers|104|19,596|
+Dec 20 2017|8:00|Tampa Bay Rays|102|Houston Astors|100|18,055|
+Dec 20 2017|10:30|Cleveland Indians|102|Los Angeles Angels|119|19,060|
+Dec 20 2017|8:00|Atlanta Braves|112|Oakland Athletics|109|16,519|
+Dec 20 2017|7:30|San Diego Pardes|136|Miami Marlins|130|19,600|
+Dec 20 2017|8:00|Chicago Cabs|114|Milwaukee Brewers|108|17,053|
+Dec 20 2017|7:30|Kansas City Royals|111|New York Mets|118|19,812|
+Dec 20 2017|7:00|New York Yankees|108|Philadelphia |93|16,322|
+Dec 20 2017|10:30|Seattle Mariners|121|St. Louis Cardinals|126|17,608|
+Dec 20 2017|7:30|Baltimore Orioles|104|Texas Rangers|116|19,800|
+Dec 21 2017|7:30|Minnesota Twins|92|Arizona Diamondback|84|17,578|
+Dec 21 2017|8:00|Washington Nationals|107|Chicago White Socks|97|21,358|
+Dec 21 2017|7:00|Milwaukee Brewers|102|Chicago Cabs|113|20,562|
+Dec 21 2017|7:30|Oakland Athletics|98|Colorado Rockies|86|16,033|
+Dec 21 2017|8:00|Pittsburgh Pirates|121|New York Yankees|110|16,375|
+Dec 21 2017|9:00|Houston Astors|125|San Francisco Giants|111|18,055|
+Dec 21 2017|10:00|Cincinnati Reds|96|Seattle Mariners|95|19,393|
+Dec 21 2017|9:00|St. Louis Cardinals|94|Toronto Blue Jays|93|19,195|
+Dec 22 2017|7:30|Detroit Tigers|117|Baltimore Orioles|101|17,732|
+Dec 22 2017|7:00|Atlanta Braves|109|Kansas City Royals|102|17,577|
+Dec 22 2017|10:30|Tampa Bay Rays|101|Los Angeles Angels|106|19,060|
+Dec 22 2017|8:00|Los Angeles Dodgers|107|Miami Marlins|115|19,712|
+Dec 22 2017|7:30|San Diego Pardes|95|New York Mets|106|19,812|
+Dec 23 2017|7:30|Pittsburgh Pirates|117|Atlanta Braves|112|18,624|
+Dec 23 2017|7:00|Chicago White Socks|91|Boston Red Socks|103|19,249|
+Dec 23 2017|7:30|Baltimore Orioles|99|Chicago Cabs|119|20,562|
+Dec 23 2017|9:00|Arizona Diamondback|109|Cleveland Indians|108|13,823|
+Dec 23 2017|7:30|Detroit Tigers|119|Colorado Rockies|113|21,012|
+Dec 23 2017|10:30|Cincinnati Reds|90|Los Angeles Angels|88|19,060|
+Dec 23 2017|8:00|Houston Astors|109|Oakland Athletics|115|17,454|
+Dec 23 2017|8:00|Washington Nationals|96|Milwaukee Brewers|123|15,921|
+Dec 23 2017|8:00|St. Louis Cardinals|109|Minnesota Twins|105|13,288|
+Dec 23 2017|8:00|Miami Marlins|87|New York Yankees|91|16,322|
+Dec 23 2017|7:00|Los Angeles Dodgers|90|San Diego Pardes|109|18,846|
+Dec 23 2017|9:00|Philadelphia |116|San Francisco Giants|123|16,535|
+Dec 23 2017|10:00|Tampa Bay Rays|110|Seattle Mariners|90|19,393|
+Dec 23 2017|9:00|Texas Rangers|104|Toronto Blue Jays|98|19,911|
+Dec 25 2017|2:30|Detroit Tigers|108|Chicago Cabs|109|20,562|
+Dec 25 2017|10:30|Los Angeles Angels|102|Los Angeles Dodgers|111|18,997|
+Dec 25 2017|12:00|Atlanta Braves|119|New York Mets|114|19,812|
+Dec 25 2017|8:00|Minnesota Twins|100|Pittsburgh Pirates|112|18,203|
+Dec 25 2017|5:00|Chicago White Socks|100|Tampa Bay Rays|119|18,428|
+Dec 26 2017|7:30|Boston Red Socks|118|Baltimore Orioles|120|17,732|
+Dec 26 2017|8:00|Kansas City Royals|85|Chicago White Socks|90|21,922|
+Dec 26 2017|7:30|Chicago Cabs|90|Colorado Rockies|106|18,123|
+Dec 26 2017|8:00|San Francisco Giants|115|Houston Astors|131|18,055|
+Dec 26 2017|10:30|Cleveland Indians|106|Los Angeles Angels|102|19,060|
+Dec 26 2017|8:00|Arizona Diamondback|90|Minnesota Twins|104|15,617|
+Dec 26 2017|8:00|Cincinnati Reds|104|New York Yankees|111|15,764|
+Dec 26 2017|7:00|Oakland Athletics|102|San Diego Pardes|112|17,104|
+Dec 26 2017|10:00|Texas Rangers|95|Seattle Mariners|91|19,393|
+Dec 26 2017|10:30|Philadelphia |100|St. Louis Cardinals|102|17,608|
+Dec 26 2017|7:00|Milwaukee Brewers|102|Washington Nationals|107|15,773|
+Dec 27 2017|7:30|Oakland Athletics|103|Atlanta Braves|113|18,624|
+Dec 27 2017|8:30|Houston Astors|123|Cincinnati Reds|107|20,425|
+Dec 27 2017|10:30|Toronto Blue Jays|102|Los Angeles Dodgers|100|18,997|
+Dec 27 2017|7:30|Pittsburgh Pirates|106|Miami Marlins|94|19,977|
+Dec 28 2017|7:30|New York Mets|98|Arizona Diamondback|102|19,066|
+Dec 28 2017|8:00|Baltimore Orioles|99|Chicago White Socks|101|21,957|
+Dec 28 2017|9:00|Minnesota Twins|103|Cleveland Indians|105|15,093|
+Dec 28 2017|7:30|Milwaukee Brewers|119|Colorado Rockies|94|17,222|
+Dec 28 2017|10:30|Texas Rangers|111|Detroit Tigers|121|19,596|
+Dec 28 2017|8:00|Los Angeles Angels|98|New York Yankees|102|16,647|
+Dec 28 2017|7:00|Boston Red Socks|120|San Diego Pardes|101|18,273|
+Dec 28 2017|10:00|St. Louis Cardinals|89|Seattle Mariners|102|19,665|
+Dec 28 2017|8:30|San Francisco Giants|98|Tampa Bay Rays|119|18,418|
+Dec 28 2017|7:00|Kansas City Royals|105|Washington Nationals|111|16,172|
+Dec 29 2017|7:00|Miami Marlins|82|Boston Red Socks|91|19,471|
+Dec 29 2017|8:00|Atlanta Braves|118|Chicago Cabs|124|20,562|
+Dec 29 2017|10:30|Cincinnati Reds|101|Los Angeles Dodgers|89|18,997|
+Dec 29 2017|8:00|Pittsburgh Pirates|80|Oakland Athletics|114|18,119|
+Dec 29 2017|9:00|Texas Rangers|91|San Francisco Giants|99|18,055|
+Dec 29 2017|9:00|Philadelphia |83|Toronto Blue Jays|100|19,911|
+Dec 30 2017|8:00|Colorado Rockies|98|Arizona Diamondback|105|19,009|
+Dec 30 2017|7:30|Miami Marlins|114|Atlanta Braves|117|18,624|
+Dec 30 2017|9:00|Philadelphia |124|Cleveland Indians|122|13,619|
+Dec 30 2017|10:30|Cincinnati Reds|99|Detroit Tigers|108|19,596|
+Dec 30 2017|8:00|Los Angeles Angels|116|Houston Astors|140|18,055|
+Dec 30 2017|4:00|Chicago White Socks|101|Kansas City Royals|111|17,923|
+Dec 30 2017|8:00|Milwaukee Brewers|99|Minnesota Twins|116|17,779|
+Dec 30 2017|8:00|New York Mets|92|New York Yankees|104|18,124|
+Dec 30 2017|8:30|Seattle Mariners|94|Tampa Bay Rays|110|18,418|
+Dec 30 2017|7:00|Baltimore Orioles|95|Washington Nationals|118|16,461|
+Dec 31 2017|7:00|Milwaukee Brewers|116|Chicago White Socks|96|21,838|
+Dec 31 2017|7:00|Chicago Cabs|121|Boston Red Socks|109|19,519|
+Dec 31 2017|8:00|New York Mets|122|Houston Astors|129|18,055|
+Dec 31 2017|8:00|Los Angeles Angels|88|Pittsburgh Pirates|114|18,203|
+Dec 31 2017|5:00|Oakland Athletics|112|St. Louis Cardinals|98|17,608|
+Dec 31 2017|8:00|San Francisco Giants|86|Toronto Blue Jays|91|19,911
+Jan 1 2018|6:00|Tampa Bay Rays|112|Arizona Diamondback|114|18,088|
+Jan 1 2018|6:00|San Diego Pardes|104|Kansas City Royals|117|17,530|
+Jan 1 2018|9:30|Texas Rangers|123|Los Angeles Dodgers|114|18,997|
+Jan 1 2018|6:00|Colorado Rockies|107|Miami Marlins|98|19,844|
+Jan 1 2018|7:00|Seattle Mariners|95|Minnesota Twins|89|15,804|
+Jan 2 2018|7:30|Toronto Blue Jays|101|Baltimore Orioles|89|15,634|
+Jan 2 2018|8:00|Boston Red Socks|111|Chicago White Socks|118|21,612|
+Jan 2 2018|7:00|New York Yankees|82|Chicago Cabs|90|20,562|
+Jan 2 2018|10:30|Cleveland Indians|119|Detroit Tigers|127|19,596|
+Jan 2 2018|8:00|Washington Nationals|91|Houston Astors|101|16,569|
+Jan 2 2018|10:30|San Francisco Giants|98|Los Angeles Angels|109|19,060|
+Jan 2 2018|7:00|Pittsburgh Pirates|94|Milwaukee Brewers|98|17,423|
+Jan 2 2018|7:30|San Diego Pardes|115|New York Mets|103|19,812|
+Jan 3 2018|7:30|Toronto Blue Jays|104|Atlanta Braves|115|18,624|
+Jan 3 2018|8:30|Washington Nationals|105|Cincinnati Reds|113|19,318|
+Jan 3 2018|9:00|St. Louis Cardinals|120|Cleveland Indians|113|11,018|
+Jan 3 2018|7:30|Kansas City Royals|121|Colorado Rockies|116|13,435|
+Jan 3 2018|10:30|Oakland Athletics|102|Los Angeles Dodgers|116|18,997|
+Jan 3 2018|7:00|Minnesota Twins|91|Philadelphia |93|17,124|
+Jan 3 2018|9:00|Miami Marlins|90|San Francisco Giants|99|16,772|
+Jan 3 2018|8:30|Texas Rangers|82|Tampa Bay Rays|110|18,418|
+Jan 4 2018|7:00|Pittsburgh Pirates|112|Boston Red Socks|123|18,418|
+Jan 4 2018|8:00|Chicago White Socks|106|Chicago Cabs|94|20,562|
+Jan 4 2018|10:30|Seattle Mariners|117|Detroit Tigers|125|19,596|
+Jan 4 2018|10:30|Oakland Athletics|106|Los Angeles Angels|115|19,060|
+Jan 4 2018|7:30|Milwaukee Brewers|105|New York Mets|104|19,812|
+Jan 4 2018|7:00|Arizona Diamondback|111|San Diego Pardes|92|18,846|
+Jan 4 2018|10:30|Miami Marlins|107|St. Louis Cardinals|102|17,608|
+Jan 5 2018|8:30|San Francisco Giants|102|Cincinnati Reds|95|19,570|
+Jan 5 2018|9:00|Tampa Bay Rays|127|Cleveland Indians|99|14,391|
+Jan 5 2018|7:30|Boston Red Socks|114|Colorado Rockies|115|13,723|
+Jan 5 2018|8:00|Pittsburgh Pirates|116|Houston Astors|118|18,055|
+Jan 5 2018|7:00|Baltimore Orioles|109|Kansas City Royals|121|16,421|
+Jan 5 2018|8:00|Arizona Diamondback|99|New York Yankees|94|15,003|
+Jan 5 2018|10:30|Los Angeles Dodgers|109|Seattle Mariners|118|19,403|
+Jan 5 2018|7:30|Toronto Blue Jays|93|Texas Rangers|101|19,800|
+Jan 6 2018|7:30|Philadelphia |106|Atlanta Braves|110|18,624|
+Jan 6 2018|7:30|Chicago Cabs|116|Baltimore Orioles|108|17,732|
+Jan 6 2018|10:30|Oakland Athletics|128|Detroit Tigers|119|19,596|
+Jan 6 2018|10:30|Miami Marlins|100|Los Angeles Dodgers|127|18,997|
+Jan 6 2018|8:00|New York Mets|116|Milwaukee Brewers|111|18,717|
+Jan 6 2018|7:00|Houston Astors|100|San Diego Pardes|93|19,272|
+Jan 6 2018|10:30|Los Angeles Angels|106|St. Louis Cardinals|98|17,608|
+Jan 6 2018|7:00|Minnesota Twins|105|Washington Nationals|112|18,686|
+Jan 7 2018|7:30|New York Yankees|108|Atlanta Braves|117|18,624|
+Jan 7 2018|8:00|Texas Rangers|118|Chicago White Socks|123|21,195|
+Jan 7 2018|8:30|Arizona Diamondback|97|Cincinnati Reds|82|19,655|
+Jan 7 2018|7:00|New York Mets|109|Kansas City Royals|123|17,367|
+Jan 7 2018|8:00|Toronto Blue Jays|94|Minnesota Twins|92|13,945|
+Jan 7 2018|8:00|Cleveland Indians|106|Pittsburgh Pirates|121|18,203|
+Jan 7 2018|8:30|Boston Red Socks|85|Tampa Bay Rays|102|18,418|
+Jan 8 2018|12:00|Philadelphia |105|Baltimore Orioles|95|16,123|
+Jan 8 2018|3:30|Miami Marlins|86|Los Angeles Angels|98|19,060|
+Jan 8 2018|9:30|San Diego Pardes|95|Los Angeles Dodgers|111|18,997|
+Jan 8 2018|8:00|Toronto Blue Jays|79|Oakland Athletics|88|16,112|
+Jan 8 2018|2:00|Washington Nationals|107|Milwaukee Brewers|101|15,311|
+Jan 8 2018|8:30|Chicago Cabs|120|San Francisco Giants|116|18,055|
+Jan 8 2018|9:00|Colorado Rockies|125|Seattle Mariners|124|13,506|
+Jan 8 2018|9:00|Detroit Tigers|117|St. Louis Cardinals|106|17,608|
+Jan 8 2018|6:00|Houston Astors|129|Texas Rangers|122|19,800|
+Jan 9 2018|8:00|Pittsburgh Pirates|109|Chicago White Socks|94|21,923|
+Jan 9 2018|8:00|Cincinnati Reds|92|Minnesota Twins|101|9,625|
+Jan 9 2018|7:30|New York Yankees|110|New York Mets|96|19,812|
+Jan 10 2018|7:30|Arizona Diamondback|117|Baltimore Orioles|97|13,279|
+Jan 10 2018|10:30|Miami Marlins|95|Detroit Tigers|107|19,596|
+Jan 10 2018|8:00|Boston Red Socks|114|Houston Astors|121|16,196|
+Jan 10 2018|10:30|Seattle Mariners|108|Los Angeles Dodgers|87|18,483|
+Jan 10 2018|10:30|Colorado Rockies|94|St. Louis Cardinals|100|17,608|
+Jan 10 2018|8:30|Milwaukee Brewers|109|Tampa Bay Rays|107|18,418|
+Jan 10 2018|7:30|Atlanta Braves|106|Texas Rangers|114|19,800|
+Jan 10 2018|9:00|Chicago Cabs|92|Toronto Blue Jays|100|19,911|
+Jan 10 2018|7:00|Chicago White Socks|99|Washington Nationals|101|14,361|
+Jan 11 2018|8:00|Washington Nationals|108|Atlanta Braves|117|18,624|
+Jan 11 2018|10:30|San Diego Pardes|96|Los Angeles Angels|105|19,060|
+Jan 11 2018|8:00|Houston Astors|105|Minnesota Twins|119|13,858|
+Jan 11 2018|8:00|Oakland Athletics|95|Pittsburgh Pirates|103|18,203|
+Jan 11 2018|7:00|New York Mets|97|Philadelphia |98|18,755|
+Jan 11 2018|10:30|Chicago Cabs|86|Seattle Mariners|102|19,393|
+Jan 12 2018|7:30|New York Yankees|104|Baltimore Orioles|95|14,352|
+Jan 12 2018|3:00|Kansas City Royals|112|Cleveland Indians|140|18,689|
+Jan 12 2018|10:30|Colorado Rockies|107|Detroit Tigers|127|19,596|
+Jan 12 2018|8:00|Chicago White Socks|89|New York Mets|104|19,812|
+Jan 12 2018|10:00|Cincinnati Reds|113|San Francisco Giants|108|19,874|
+Jan 12 2018|8:30|Los Angeles Dodgers|94|Tampa Bay Rays|134|18,418|
+Jan 13 2018|8:00|Atlanta Braves|103|Arizona Diamondback|101|18,216|
+Jan 13 2018|8:00|Oakland Athletics|110|Houston Astors|105|18,055|
+Jan 13 2018|8:00|Miami Marlins|108|Milwaukee Brewers|116|17,483|
+Jan 13 2018|8:00|Pittsburgh Pirates|86|Minnesota Twins|96|16,644|
+Jan 13 2018|7:00|Boston Red Socks|93|Philadelphia |102|18,215|
+Jan 13 2018|10:00|San Diego Pardes|115|Seattle Mariners|109|19,344|
+Jan 13 2018|10:30|Chicago Cabs|120|St. Louis Cardinals|108|17,608|
+Jan 13 2018|7:30|Baltimore Orioles|113|Texas Rangers|132|19,800|
+Jan 13 2018|10:30|Colorado Rockies|77|Toronto Blue Jays|110|19,911|
+Jan 14 2018|5:00|New York Yankees|99|Chicago White Socks|107|21,916|
+Jan 14 2018|3:30|Los Angeles Dodgers|97|Los Angeles Angels|113|19,060|
+Jan 14 2018|6:00|Tampa Bay Rays|105|San Francisco Giants|108|20,532|
+Jan 14 2018|9:00|San Diego Pardes|107|Toronto Blue Jays|114|19,911|
+Jan 14 2018|8:00|Philadelphia |93|Washington Nationals|109|17,880|
+Jan 15 2018|3:00|Milwaukee Brewers|98|Arizona Diamondback|111|14,231|
+Jan 15 2018|6:00|Houston Astors|137|Baltimore Orioles|112|17,732|
+Jan 15 2018|2:00|Minnesota Twins|87|Cincinnati Reds|98|19,655|
+Jan 15 2018|9:30|Colorado Rockies|102|Los Angeles Dodgers|97|18,997|
+Jan 15 2018|9:00|Chicago White Socks|108|Oakland Athletics|104|18,119|
+Jan 15 2018|9:00|Pittsburgh Pirates|122|St. Louis Cardinals|118|17,608|
+Jan 15 2018|3:00|New York Mets|101|Texas Rangers|116|19,800|
+Jan 16 2018|7:30|Boston Red Socks|98|Atlanta Braves|108|18,624|
+Jan 16 2018|5:00|San Diego Pardes|112|Cleveland Indians|125|11,217|
+Jan 16 2018|8:00|Chicago Cabs|91|Detroit Tigers|126|19,596|
+Jan 16 2018|4:00|New York Yankees|95|Kansas City Royals|98|15,525|
+Jan 16 2018|10:30|Pittsburgh Pirates|98|Los Angeles Angels|120|19,060|
+Jan 16 2018|3:30|Philadelphia |113|Milwaukee Brewers|104|13,261|
+Jan 16 2018|1:00|Arizona Diamondback|108|New York Mets|107|19,812|
+Jan 16 2018|9:00|Toronto Blue Jays|106|San Francisco Giants|101|16,767|
+Jan 16 2018|2:00|Seattle Mariners|101|Washington Nationals|120|17,395|
+Jan 17 2018|7:30|Texas Rangers|119|Baltimore Orioles|109|12,874|
+Jan 17 2018|8:00|Cincinnati Reds|99|Chicago White Socks|98|21,294|
+Jan 17 2018|10:30|Cleveland Indians|127|Los Angeles Dodgers|121|18,412|
+Jan 17 2018|7:30|Houston Astors|103|Miami Marlins|109|19,600|
+Jan 17 2018|8:30|Minnesota Twins|114|Tampa Bay Rays|122|18,418|
+Jan 18 2018|7:30|New York Mets|117|Atlanta Braves|106|18,624|
+Jan 18 2018|7:00|Seattle Mariners|85|Boston Red Socks|107|15,451|
+Jan 18 2018|8:00|Arizona Diamondback|95|Colorado Rockies|118|15,159|
+Jan 18 2018|10:30|Pittsburgh Pirates|100|Detroit Tigers|121|19,596|
+Jan 18 2018|8:00|Milwaukee Brewers|92|Houston Astors|111|15,782|
+Jan 18 2018|8:00|San Diego Pardes|98|New York Yankees|118|15,818|
+Jan 18 2018|7:00|Texas Rangers|89|Philadelphia |94|17,223|
+Jan 18 2018|10:30|Kansas City Royals|106|St. Louis Cardinals|100|17,608|
+Jan 18 2018|7:00|Oakland Athletics|101|Washington Nationals|104|15,079|
+Jan 19 2018|7:00|San Francisco Giants|103|Chicago Cabs|118|20,562|
+Jan 19 2018|10:30|Minnesota Twins|104|Los Angeles Angels|101|19,060|
+Jan 19 2018|7:30|Cincinnati Reds|95|Miami Marlins|99|19,600|
+Jan 19 2018|8:00|Washington Nationals|113|New York Mets|110|19,812|
+Jan 19 2018|8:30|Cleveland Indians|104|Tampa Bay Rays|118|18,418|
+Jan 20 2018|8:00|Chicago White Socks|93|Arizona Diamondback|102|16,328|
+Jan 20 2018|7:00|Texas Rangers|78|Boston Red Socks|113|18,378|
+Jan 20 2018|8:30|Toronto Blue Jays|112|Cincinnati Reds|107|19,421|
+Jan 20 2018|8:00|Detroit Tigers|125|Houston Astors|108|18,055|
+Jan 20 2018|10:30|Kansas City Royals|95|Los Angeles Dodgers|108|18,997|
+Jan 20 2018|8:00|St. Louis Cardinals|91|Oakland Athletics|107|16,991|
+Jan 20 2018|8:00|Baltimore Orioles|143|New York Yankees|114|17,004|
+Jan 20 2018|7:00|Milwaukee Brewers|96|San Diego Pardes|112|19,307|
+Jan 20 2018|7:00|Seattle Mariners|92|Philadelphia |93|19,476|
+Jan 21 2018|7:00|Philadelphia |93|Arizona Diamondback|110|15,116|
+Jan 21 2018|5:00|Seattle Mariners|127|Atlanta Braves|123|18,624|
+Jan 21 2018|9:00|St. Louis Cardinals|99|Chicago White Socks|102|21,606|
+Jan 21 2018|7:00|Baltimore Orioles|105|Boston Red Socks|112|18,583|
+Jan 21 2018|8:30|Tampa Bay Rays|118|Chicago Cabs|115|20,562|
+Jan 21 2018|9:00|Los Angeles Angels|98|Cleveland Indians|123|16,056|
+Jan 21 2018|6:00|Washington Nationals|112|Colorado Rockies|113|18,231|
+Jan 21 2018|8:00|Houston Astors|119|Oakland Athletics|95|18,119|
+Jan 21 2018|7:30|Milwaukee Brewers|97|Miami Marlins|109|19,600|
+Jan 21 2018|7:30|San Francisco Giants|107|New York Mets|105|19,812|
+Jan 21 2018|9:00|Kansas City Royals|100|Toronto Blue Jays|109|19,911|
+Jan 22 2018|3:30|Los Angeles Dodgers|73|Cincinnati Reds|122|19,484|
+Jan 22 2018|7:00|Cleveland Indians|108|Minnesota Twins|111|12,788|
+Jan 22 2018|12:00|Detroit Tigers|118|San Diego Pardes|98|18,846|
+Jan 22 2018|6:00|San Francisco Giants|115|Texas Rangers|103|19,800|
+Jan 23 2018|7:30|Los Angeles Angels|115|Arizona Diamondback|105|12,853|
+Jan 23 2018|7:30|Tampa Bay Rays|112|Baltimore Orioles|86|16,643|
+Jan 23 2018|7:00|Washington Nationals|109|Boston Red Socks|99|15,285|
+Jan 23 2018|7:30|St. Louis Cardinals|109|Colorado Rockies|104|14,017|
+Jan 23 2018|8:00|New York Mets|109|Kansas City Royals|103|16,015|
+Jan 23 2018|7:30|Detroit Tigers|102|Miami Marlins|105|19,600|
+Jan 23 2018|8:00|Houston Astors|114|Milwaukee Brewers|127|14,016|
+Jan 23 2018|8:00|Chicago Cabs|122|New York Yankees|124|17,758|
+Jan 23 2018|9:00|Pittsburgh Pirates|97|Toronto Blue Jays|95|19,911|
+Jan 24 2018|9:00|Toronto Blue Jays|93|Cleveland Indians|103|10,867|
+Jan 24 2018|7:00|Chicago White Socks|100|San Diego Pardes|92|18,846|
+Jan 24 2018|7:00|Los Angeles Angels|110|Philadelphia |121|17,591|
+Jan 24 2018|9:00|Minnesota Twins|112|San Francisco Giants|111|17,241|
+Jan 24 2018|7:00|Tampa Bay Rays|108|Texas Rangers|106|19,800|
+Jan 24 2018|7:00|Atlanta Braves|108|Washington Nationals|123|16,387|
+Jan 25 2018|7:30|Houston Astors|109|Atlanta Braves|120|18,624|
+Jan 25 2018|7:30|Miami Marlins|109|Baltimore Orioles|106|14,929|
+Jan 25 2018|8:00|Arizona Diamondback|119|Chicago White Socks|114|21,445|
+Jan 25 2018|8:00|Detroit Tigers|113|Boston Red Socks|103|19,639|
+Jan 25 2018|7:00|St. Louis Cardinals|116|Chicago Cabs|112|20,562|
+Jan 25 2018|8:30|New York Mets|95|Cincinnati Reds|103|19,750|
+Jan 25 2018|8:00|Texas Rangers|99|Oakland Athletics|101|15,904|
+Jan 25 2018|8:00|Philadelphia |114|Milwaukee Brewers|109|13,663|
+Jan 25 2018|8:00|Pittsburgh Pirates|114|New York Yankees|105|15,277|
+Jan 25 2018|10:30|Los Angeles Dodgers|98|Seattle Mariners|105|19,393|
+Jan 26 2018|9:00|San Francisco Giants|120|Cleveland Indians|127|12,231|
+Jan 26 2018|8:00|Kansas City Royals|109|Minnesota Twins|103|14,862|
+Jan 26 2018|8:00|Cincinnati Reds|98|Pittsburgh Pirates|109|18,203|
+Jan 26 2018|10:30|Los Angeles Dodgers|88|Toronto Blue Jays|96|19,911|
+Jan 27 2018|8:00|Washington Nationals|112|Arizona Diamondback|86|16,968|
+Jan 27 2018|7:30|San Diego Pardes|98|Atlanta Braves|128|18,624|
+Jan 27 2018|8:00|Miami Marlins|100|Chicago White Socks|88|22,082|
+Jan 27 2018|7:30|Baltimore Orioles|116|Chicago Cabs|124|20,562|
+Jan 27 2018|7:00|St. Louis Cardinals|111|Kansas City Royals|115|17,522|
+Jan 27 2018|8:00|Tampa Bay Rays|103|New York Yankees|119|17,757|
+Jan 27 2018|7:30|Boston Red Socks|107|New York Mets|110|19,812|
+Jan 27 2018|8:00|Houston Astors|123|Philadelphia |118|20,588|
+Jan 27 2018|10:00|Oakland Athletics|109|Seattle Mariners|112|19,558|
+Jan 27 2018|7:30|Milwaukee Brewers|86|Texas Rangers|102|19,800|
+Jan 28 2018|7:00|St. Louis Cardinals|109|Boston Red Socks|106|18,597|
+Jan 28 2018|8:30|Los Angeles Angels|98|Detroit Tigers|144|19,596|
+Jan 28 2018|7:30|Colorado Rockies|103|Miami Marlins|116|19,600|
+Jan 28 2018|8:00|Atlanta Braves|112|Milwaukee Brewers|108|18,717|
+Jan 28 2018|9:00|Baltimore Orioles|109|Minnesota Twins|129|14,798|
+Jan 28 2018|9:00|Cleveland Indians|123|San Francisco Giants|112|18,055|
+Jan 28 2018|9:00|Oakland Athletics|102|Toronto Blue Jays|95|19,911|
+Jan 29 2018|3:00|New York Mets|139|Arizona Diamondback|142|413,643|
+Jan 29 2018|7:00|Philadelphia |108|Chicago White Socks|121|21,606|
+Jan 29 2018|3:30|Pittsburgh Pirates|91|Chicago Cabs|107|20,562|
+Jan 29 2018|6:00|Houston Astors|101|Kansas City Royals|120|17,923|
+Jan 29 2018|6:00|Washington Nationals|107|New York Yankees|94|16,779|
+Jan 29 2018|9:00|Detroit Tigers|113|Seattle Mariners|111|19,393|
+Jan 29 2018|7:00|Cincinnati Reds|105|Tampa Bay Rays|101|18,418|
+Jan 29 2018|6:00|San Diego Pardes|114|Texas Rangers|113|19,800|
+Jan 30 2018|8:00|Colorado Rockies|109|Atlanta Braves|113|18,188|
+Jan 30 2018|8:30|Chicago Cabs|97|Cincinnati Reds|104|20,202|
+Jan 30 2018|7:30|Baltimore Orioles|96|Miami Marlins|104|19,600|
+Jan 30 2018|8:00|San Diego Pardes|105|Minnesota Twins|111|11,124|
+Jan 30 2018|6:00|St. Louis Cardinals|119|Philadelphia |122|15,840|
+Jan 30 2018|10:30|Oakland Athletics|115|San Francisco Giants|96|16,332|
+Jan 31 2018|8:00|St. Louis Cardinals|83|Houston Astors|105|15,187|
+Jan 31 2018|10:30|Cleveland Indians|116|Los Angeles Dodgers|120|18,997|
+Jan 31 2018|10:00|Boston Red Socks|98|Seattle Mariners|115|19,393|
+Jan 31 2018|8:30|Pittsburgh Pirates|94|Tampa Bay Rays|108|18,418|
+Jan 31 2018|7:00|New York Yankees|106|Texas Rangers|108|19,800|
+Jan 31 2018|7:00|New York Mets|101|Washington Nationals|117|16,683|
+Feb 1 2018|7:30|Texas Rangers|104|Atlanta Braves|109|18,624|
+Feb 1 2018|7:30|New York Mets|95|Baltimore Orioles|90|17,732|
+Feb 1 2018|7:00|Minnesota Twins|97|Chicago Cabs|125|20,562|
+Feb 1 2018|8:30|Philadelphia |95|Cincinnati Reds|113|19,263|
+Feb 1 2018|9:00|Oakland Athletics|119|Cleveland Indians|99|12,020|
+Feb 1 2018|7:30|New York Yankees|98|Colorado Rockies|118|14,262|
+Feb 1 2018|10:30|Boston Red Socks|111|Detroit Tigers|126|19,596|
+Feb 1 2018|7:30|Arizona Diamondback|93|Miami Marlins|116|19,600|
+Feb 1 2018|9:30|Chicago White Socks|128|Pittsburgh Pirates|100|18,203|
+Feb 1 2018|7:00|Kansas City Royals|98|San Diego Pardes|88|16,662|
+Feb 1 2018|9:00|Los Angeles Angels|124|San Francisco Giants|114|16,191|
+Feb 1 2018|9:00|Milwaukee Brewers|88|Toronto Blue Jays|104|19,694|
+Feb 2 2018|8:00|Arizona Diamondback|113|Houston Astors|108|15,602|
+Feb 2 2018|10:30|Detroit Tigers|133|Los Angeles Angels|120|19,385|
+Feb 2 2018|8:30|Philadelphia |86|Tampa Bay Rays|102|18,418|
+Feb 2 2018|7:00|Los Angeles Dodgers|108|Washington Nationals|116|16,473|
+Feb 3 2018|8:00|Los Angeles Dodgers|107|Atlanta Braves|113|18,624|
+Feb 3 2018|7:30|Kansas City Royals|106|Baltimore Orioles|97|14,557|
+Feb 3 2018|9:00|Milwaukee Brewers|117|Cleveland Indians|121|18,792|
+Feb 3 2018|7:30|Minnesota Twins|108|Colorado Rockies|116|16,934|
+Feb 3 2018|8:00|Chicago White Socks|117|Houston Astors|121|18,055|
+Feb 3 2018|8:00|Oakland Athletics|102|Pittsburgh Pirates|114|18,203|
+Feb 3 2018|7:00|Texas Rangers|94|San Diego Pardes|102|17,141|
+Feb 3 2018|10:30|Cincinnati Reds|108|Seattle Mariners|104|19,393|
+Feb 3 2018|10:30|San Francisco Giants|105|St. Louis Cardinals|103|17,608|
+Feb 4 2018|7:00|San Diego Pardes|86|Arizona Diamondback|113|16,691|
+Feb 4 2018|7:00|Colorado Rockies|84|Kansas City Royals|105|17,660|
+Feb 4 2018|7:30|Philadelphia |102|Miami Marlins|125|19,754|
+Feb 4 2018|9:00|Oakland Athletics|107|Minnesota Twins|99|15,081|
+Feb 4 2018|8:30|Chicago Cabs|111|New York Mets|104|19,812|
+Feb 4 2018|9:00|Milwaukee Brewers|137|San Francisco Giants|112|17,192|
+Feb 4 2018|10:30|Detroit Tigers|106|St. Louis Cardinals|109|17,608|
+Feb 4 2018|9:00|Cleveland Indians|97|Tampa Bay Rays|121|18,418|
+Feb 4 2018|9:00|Boston Red Socks|98|Toronto Blue Jays|105|19,911|
+Feb 4 2018|7:00|New York Yankees|91|Washington Nationals|105|19,651|
+Feb 5 2018|2:00|Los Angeles Angels|102|Atlanta Braves|107|18,624|
+Feb 5 2018|12:00|Texas Rangers|103|Baltimore Orioles|95|14,245|
+Feb 5 2018|3:00|Seattle Mariners|99|Pittsburgh Pirates|105|18,203|
+Feb 6 2018|7:30|Toronto Blue Jays|120|Arizona Diamondback|95|13,126|
+Feb 6 2018|9:00|Cincinnati Reds|87|Cleveland Indians|110|13,047|
+Feb 6 2018|7:30|Philadelphia |96|Colorado Rockies|113|14,731|
+Feb 6 2018|7:00|Pittsburgh Pirates|90|Kansas City Royals|93|16,123|
+Feb 6 2018|9:30|Tampa Bay Rays|74|Oakland Athletics|89|16,708|
+Feb 6 2018|8:00|Miami Marlins|115|Minnesota Twins|113|12,502|
+Feb 6 2018|8:00|San Francisco Giants|106|New York Yankees|111|15,888|
+Feb 6 2018|7:00|Los Angeles Dodgers|121|New York Mets|107|19,812|
+Feb 6 2018|10:30|Chicago White Socks|112|St. Louis Cardinals|107|17,608|
+Feb 6 2018|7:30|Los Angeles Angels|109|Texas Rangers|118|19,800|
+Feb 6 2018|7:00|Chicago Cabs|140|Washington Nationals|135|20,356|
+Feb 7 2018|7:00|Baltimore Orioles|107|Boston Red Socks|111|15,322|
+Feb 7 2018|8:30|Seattle Mariners|114|Cincinnati Reds|113|19,326|
+Feb 7 2018|8:00|San Diego Pardes|104|Houston Astors|128|15,514|
+Feb 8 2018|7:30|Cleveland Indians|106|Arizona Diamondback|117|14,222|
+Feb 8 2018|7:30|Washington Nationals|114|Baltimore Orioles|110|13,179|
+Feb 8 2018|7:30|Los Angeles Dodgers|102|Colorado Rockies|121|15,121|
+Feb 8 2018|10:30|Chicago White Socks|92|Detroit Tigers|123|19,596|
+Feb 8 2018|7:00|Chicago Cabs|132|Kansas City Royals|117|17,580|
+Feb 8 2018|8:00|San Francisco Giants|91|Oakland Athletics|110|16,044|
+Feb 8 2018|8:00|Miami Marlins|106|Milwaukee Brewers|88|14,211|
+Feb 8 2018|8:00|Texas Rangers|109|Minnesota Twins|112|13,832|
+Feb 8 2018|8:00|Toronto Blue Jays|127|New York Yankees|94|14,508|
+Feb 8 2018|8:00|Los Angeles Angels|119|New York Mets|115|19,812|
+Feb 8 2018|7:00|Tampa Bay Rays|111|Philadelphia |103|19,233|
+Feb 8 2018|10:30|Atlanta Braves|92|St. Louis Cardinals|108|17,608|
+Feb 9 2018|7:00|Houston Astors|107|Boston Red Socks|95|16,270|
+Feb 9 2018|8:30|Toronto Blue Jays|105|Cincinnati Reds|112|19,883|
+Feb 9 2018|8:00|Chicago Cabs|109|Pittsburgh Pirates|118|18,203|
+Feb 9 2018|7:00|Philadelphia |112|San Diego Pardes|111|17,829|
+Feb 9 2018|10:30|Atlanta Braves|120|Seattle Mariners|111|19,393|
+Feb 10 2018|7:30|Miami Marlins|108|Baltimore Orioles|99|15,382|
+Feb 10 2018|7:30|Tampa Bay Rays|103|Colorado Rockies|92|17,222|
+Feb 10 2018|8:00|Detroit Tigers|122|Oakland Athletics|107|18,119|
+Feb 10 2018|8:00|Los Angeles Dodgers|122|Milwaukee Brewers|114|16,380|
+Feb 10 2018|8:00|New York Yankees|122|Minnesota Twins|106|16,093|
+Feb 10 2018|7:30|Cleveland Indians|131|New York Mets|123|19,812|
+Feb 10 2018|10:30|Chicago White Socks|97|San Francisco Giants|115|18,055|
+Feb 10 2018|10:30|Arizona Diamondback|107|St. Louis Cardinals|108|17,608|
+Feb 10 2018|8:00|Kansas City Royals|107|Washington Nationals|112|19,503|
+Feb 11 2018|5:00|Los Angeles Angels|107|Boston Red Socks|102|19,483|
+Feb 11 2018|7:30|Cleveland Indians|109|Chicago Cabs|125|20,562|
+Feb 11 2018|9:00|San Diego Pardes|80|Cincinnati Reds|112|20,052|
+Feb 11 2018|9:00|San Francisco Giants|102|Houston Astors|133|18,055|
+Feb 11 2018|7:00|Milwaukee Brewers|116|Kansas City Royals|100|17,923|
+Feb 11 2018|8:30|Detroit Tigers|130|Pittsburgh Pirates|114|18,203|
+Feb 11 2018|7:30|Miami Marlins|109|Philadelphia |117|20,698|
+Feb 11 2018|10:00|Atlanta Braves|112|Toronto Blue Jays|104|19,911|
+Feb 12 2018|3:30|Chicago White Socks|89|Minnesota Twins|117|19,356|
+Feb 12 2018|3:30|Tampa Bay Rays|90|New York Mets|94|19,812|
+Feb 12 2018|9:00|New York Yankees|99|St. Louis Cardinals|105|17,608|
+Feb 12 2018|6:00|Colorado Rockies|102|Texas Rangers|101|19,800|
+Feb 13 2018|7:30|Oakland Athletics|112|Baltimore Orioles|103|13,597|
+Feb 13 2018|7:00|Philadelphia |105|Boston Red Socks|99|15,775|
+Feb 13 2018|8:30|Atlanta Braves|111|Cincinnati Reds|98|20,159|
+Feb 13 2018|9:00|Detroit Tigers|110|Cleveland Indians|132|19,941|
+Feb 13 2018|7:00|Tampa Bay Rays|110|Kansas City Royals|106|15,203|
+Feb 13 2018|7:30|San Diego Pardes|116|Miami Marlins|107|19,600|
+Feb 13 2018|8:00|Colorado Rockies|89|Milwaukee Brewers|102|13,397|
+Feb 13 2018|9:00|New York Yankees|110|San Francisco Giants|108|16,321|
+Feb 13 2018|10:30|Arizona Diamondback|109|Seattle Mariners|104|19,475|
+Feb 13 2018|9:00|Los Angeles Angels|88|Toronto Blue Jays|72|19,521|
+Feb 13 2018|8:00|Pittsburgh Pirates|98|Washington Nationals|120|20,356|
+Feb 14 2018|8:00|Texas Rangers|94|Chicago White Socks|105|21,220|
+Feb 14 2018|10:30|St. Louis Cardinals|97|Los Angeles Dodgers|96|19,997|
+Feb 14 2018|8:00|Chicago Cabs|116|Minnesota Twins|108|17,738|
+Feb 15 2018|7:30|Philadelphia |108|Atlanta Braves|116|18,624|
+Feb 15 2018|7:30|Milwaukee Brewers|129|Baltimore Orioles|125|16,182|
+Feb 15 2018|7:00|Kansas City Royals|104|Chicago Cabs|113|20,562|
+Feb 15 2018|9:00|Minnesota Twins|112|Cleveland Indians|99|13,924|
+Feb 15 2018|7:30|Cincinnati Reds|91|Colorado Rockies|98|13,549|
+Feb 15 2018|10:30|St. Louis Cardinals|86|Detroit Tigers|109|19,596|
+Feb 15 2018|8:00|Miami Marlins|117|Houston Astors|109|16,967|
+Feb 15 2018|10:30|Arizona Diamondback|84|Los Angeles Angels|99|19,060|
+Feb 15 2018|8:00|New York Yankees|95|Oakland Athletics|91|16,145|
+Feb 15 2018|9:30|New York Mets|105|Pittsburgh Pirates|116|18,203|
+Feb 15 2018|7:00|Tampa Bay Rays|107|San Diego Pardes|79|17,101|
+Feb 15 2018|9:00|Los Angeles Dodgers|101|San Francisco Giants|137|18,055|
+Feb 15 2018|7:30|Boston Red Socks|85|Texas Rangers|90|19,800|
+Feb 15 2018|9:00|Seattle Mariners|88|Toronto Blue Jays|111|19,590|
+Feb 16 2018|8:00|Atlanta Braves|103|Chicago White Socks|104|21,866|
+Feb 16 2018|7:00|Washington Nationals|111|Kansas City Royals|98|17,233|
+Feb 23 2018|8:00|New York Mets|104|Chicago Cabs|119|20,562|
+Feb 23 2018|7:30|Boston Red Socks|108|Colorado Rockies|114|14,913|
+Feb 23 2018|10:30|Los Angeles Angels|113|Detroit Tigers|123|19,596|
+Feb 23 2018|8:00|Houston Astors|129|New York Yankees|99|18,470|
+Feb 23 2018|7:00|Seattle Mariners|112|San Diego Pardes|103|17,487|
+Feb 23 2018|10:30|Cleveland Indians|100|St. Louis Cardinals|116|17,608|
+Feb 24 2018|8:00|Miami Marlins|108|Arizona Diamondback|90|18,122|
+Feb 24 2018|8:00|San Francisco Giants|121|Chicago White Socks|128|21,641|
+Feb 24 2018|9:00|Baltimore Orioles|109|Cleveland Indians|129|17,143|
+Feb 24 2018|7:00|Oakland Athletics|92|Kansas City Royals|102|17,923|
+Feb 24 2018|10:30|Tampa Bay Rays|105|Los Angeles Angels|97|19,060|
+Feb 24 2018|8:00|Toronto Blue Jays|109|Milwaukee Brewers|95|16,064|
+Feb 24 2018|8:00|Cincinnati Reds|84|Minnesota Twins|97|15,948|
+Feb 24 2018|8:00|Los Angeles Dodgers|93|Pittsburgh Pirates|110|18,203|
+Feb 24 2018|7:00|Washington Nationals|112|Philadelphia |120|19,277|
+Feb 24 2018|8:00|Atlanta Braves|97|Texas Rangers|107|19,800|
+Feb 25 2018|8:30|Chicago White Socks|117|Chicago Cabs|99|20,562|
+Feb 25 2018|8:30|New York Yankees|83|Cincinnati Reds|96|20,411|
+Feb 25 2018|10:30|Baltimore Orioles|95|Detroit Tigers|112|19,596|
+Feb 25 2018|9:00|Minnesota Twins|130|Houston Astors|142|18,055|
+Feb 25 2018|8:00|Kansas City Royals|95|Miami Marlins|113|19,600|
+Feb 25 2018|7:30|Philadelphia |109|New York Mets|110|19,812|
+Feb 25 2018|7:00|Arizona Diamondback|86|San Diego Pardes|105|18,498|
+Feb 25 2018|5:00|Boston Red Socks|99|St. Louis Cardinals|85|17,608|
+Feb 26 2018|5:00|Oakland Athletics|105|Cleveland Indians|98|18,024|
+Feb 26 2018|6:00|Atlanta Braves|104|Colorado Rockies|98|20,141|
+Feb 26 2018|9:30|Boston Red Socks|121|Los Angeles Angels|124|19,060|
+Feb 26 2018|3:30|Tampa Bay Rays|119|Los Angeles Dodgers|98|18,997|
+Feb 26 2018|3:30|San Francisco Giants|96|Milwaukee Brewers|100|16,051|
+Feb 26 2018|7:00|New York Yankees|110|Pittsburgh Pirates|118|18,203|
+Feb 26 2018|6:00|Seattle Mariners|106|Texas Rangers|112|19,800|
+Feb 26 2018|5:00|Toronto Blue Jays|102|Washington Nationals|92|19,648|
+Feb 27 2018|7:30|Arizona Diamondback|114|Atlanta Braves|98|18,624|
+Feb 27 2018|7:00|Milwaukee Brewers|95|Chicago Cabs|102|20,562|
+Feb 27 2018|8:30|Miami Marlins|89|Cincinnati Reds|96|19,539|
+Feb 27 2018|9:30|Kansas City Royals|117|Houston Astors|108|18,055|
+Feb 27 2018|7:00|Texas Rangers|92|New York Mets|91|19,812|
+Feb 27 2018|7:00|Detroit Tigers|119|Philadelphia |108|20,585|
+Feb 27 2018|10:30|Minnesota Twins|102|St. Louis Cardinals|88|17,608|
+Feb 28 2018|8:00|Cleveland Indians|125|Chicago White Socks|107|21,015|
+Feb 28 2018|7:30|Seattle Mariners|113|Colorado Rockies|120|13,502|
+Feb 28 2018|10:30|Boston Red Socks|109|Los Angeles Dodgers|104|18,997|
+Feb 28 2018|8:00|San Francisco Giants|112|Oakland Athletics|130|15,871|
+Feb 28 2018|8:00|Toronto Blue Jays|106|Pittsburgh Pirates|109|18,203|
+Feb 28 2018|7:00|Detroit Tigers|108|Washington Nationals|112|20,356|
+Mar 1 2018|7:30|Cincinnati Reds|95|Arizona Diamondback|100|12,483|
+Mar 1 2018|8:00|Chicago Cabs|99|Atlanta Braves|103|18,624|
+Mar 1 2018|10:30|Houston Astors|122|Los Angeles Angels|103|19,060|
+Mar 1 2018|7:30|Philadelphia |98|Miami Marlins|125|19,609|
+Mar 1 2018|8:00|Cleveland Indians|110|Milwaukee Brewers|98|13,214|
+Mar 1 2018|8:00|Colorado Rockies|86|New York Yankees|109|14,406|
+Mar 1 2018|7:00|New York Mets|101|San Diego Pardes|90|16,005|
+Mar 1 2018|10:30|Baltimore Orioles|109|St. Louis Cardinals|100|17,608|
+Mar 1 2018|8:30|Kansas City Royals|99|Tampa Bay Rays|100|18,418|
+Mar 1 2018|7:30|Washington Nationals|105|Texas Rangers|96|19,800|
+Mar 1 2018|9:00|Minnesota Twins|107|Toronto Blue Jays|80|19,127|
+Mar 2 2018|8:00|Detroit Tigers|87|Chicago White Socks|94|22,253|
+Mar 2 2018|9:00|Boston Red Socks|103|San Francisco Giants|120|16,572|
+Mar 2 2018|10:30|Pittsburgh Pirates|109|Seattle Mariners|114|19,875|
+Mar 3 2018|7:00|Chicago Cabs|135|Arizona Diamondback|130|18,877|
+Mar 3 2018|8:30|Oakland Athletics|100|Cincinnati Reds|104|19,480|
+Mar 3 2018|10:30|Atlanta Braves|115|Los Angeles Dodgers|95|18,997|
+Mar 3 2018|8:00|Los Angeles Angels|101|Milwaukee Brewers|112|16,208|
+Mar 3 2018|9:30|Tampa Bay Rays|101|New York Yankees|98|17,669|
+Mar 3 2018|7:00|Miami Marlins|99|San Diego Pardes|110|17,136|
+Mar 3 2018|7:00|New York Mets|102|Philadelphia |105|18,518|
+Mar 3 2018|9:00|Pittsburgh Pirates|111|San Francisco Giants|118|18,055|
+Mar 3 2018|9:00|Baltimore Orioles|97|Toronto Blue Jays|112|19,911|
+Mar 3 2018|7:00|Texas Rangers|114|Washington Nationals|106|20,356|
+Mar 4 2018|8:30|Los Angeles Angels|101|Chicago White Socks|91|22,807|
+Mar 4 2018|9:00|Boston Red Socks|112|Cleveland Indians|102|14,708|
+Mar 4 2018|9:00|Oakland Athletics|108|Houston Astors|123|18,055|
+Mar 4 2018|8:00|Chicago Cabs|92|Miami Marlins|120|19,600|
+Mar 4 2018|8:00|Texas Rangers|94|Milwaukee Brewers|101|16,775|
+Mar 4 2018|6:00|Colorado Rockies|136|Philadelphia |106|19,523|
+Mar 4 2018|10:00|Baltimore Orioles|116|Seattle Mariners|130|19,638|
+Mar 4 2018|9:00|Minnesota Twins|90|Tampa Bay Rays|97|18,418|
+Mar 5 2018|1:00|Kansas City Royals|97|Arizona Diamondback|96|15,366|
+Mar 5 2018|8:30|Pittsburgh Pirates|89|Cincinnati Reds|104|20,232|
+Mar 5 2018|9:30|New York Yankees|105|Los Angeles Dodgers|97|18,997|
+Mar 5 2018|3:30|Detroit Tigers|112|New York Mets|105|19,812|
+Mar 5 2018|5:00|Atlanta Braves|106|San Francisco Giants|109|16,790|
+Mar 5 2018|6:00|Toronto Blue Jays|110|St. Louis Cardinals|109|17,608|
+Mar 5 2018|5:00|San Diego Pardes|114|Washington Nationals|115|19,195|
+Mar 6 2018|7:30|Detroit Tigers|119|Arizona Diamondback|111|18,890|
+Mar 6 2018|8:00|Kansas City Royals|88|Boston Red Socks|100|16,387|
+Mar 6 2018|7:00|Miami Marlins|106|Chicago Cabs|98|20,562|
+Mar 6 2018|9:00|St. Louis Cardinals|96|Cleveland Indians|108|11,614|
+Mar 6 2018|7:30|Chicago White Socks|95|Colorado Rockies|109|16,039|
+Mar 6 2018|10:30|Atlanta Braves|102|Los Angeles Angels|116|19,283|
+Mar 6 2018|8:00|Baltimore Orioles|122|Oakland Athletics|109|15,505|
+Mar 6 2018|7:00|New York Mets|113|San Diego Pardes|105|16,046|
+Mar 6 2018|7:00|Milwaukee Brewers|112|Philadelphia |98|18,351|
+Mar 6 2018|8:30|Houston Astors|110|Tampa Bay Rays|112|18,418|
+Mar 6 2018|9:00|New York Yankees|83|Toronto Blue Jays|88|19,649|
+Mar 7 2018|8:30|Los Angeles Dodgers|111|Cincinnati Reds|122|20,484|
+Mar 7 2018|8:00|Seattle Mariners|126|Pittsburgh Pirates|121|18,203|
+Mar 7 2018|9:00|Washington Nationals|131|San Francisco Giants|127|16,372|
+Mar 8 2018|7:30|Baltimore Orioles|105|Arizona Diamondback|110|11,931|
+Mar 8 2018|9:00|Washington Nationals|123|Cleveland Indians|113|12,323|
+Mar 8 2018|10:30|Atlanta Braves|99|Detroit Tigers|86|19,596|
+Mar 8 2018|8:00|Toronto Blue Jays|115|Houston Astors|108|16,230|
+Mar 8 2018|8:00|Colorado Rockies|98|Kansas City Royals|115|14,353|
+Mar 8 2018|7:30|Boston Red Socks|101|Miami Marlins|108|19,600|
+Mar 8 2018|8:00|New York Mets|93|Milwaukee Brewers|104|13,767|
+Mar 8 2018|8:00|Los Angeles Angels|91|Minnesota Twins|107|14,933|
+Mar 8 2018|8:00|Texas Rangers|94|New York Yankees|87|14,543|
+Mar 8 2018|7:00|Chicago White Socks|91|San Diego Pardes|98|16,063|
+Mar 8 2018|8:30|St. Louis Cardinals|104|Tampa Bay Rays|114|18,418|
+Mar 9 2018|7:30|Chicago Cabs|101|Colorado Rockies|106|19,421|
+Mar 9 2018|8:00|Los Angeles Angels|114|Oakland Athletics|98|16,642|
+Mar 9 2018|8:00|Tampa Bay Rays|92|Pittsburgh Pirates|102|18,203|
+Mar 9 2018|10:30|Los Angeles Dodgers|122|San Francisco Giants|110|17,552|
+Mar 9 2018|10:00|Philadelphia |108|Seattle Mariners|114|19,240|
+Mar 10 2018|8:00|Texas Rangers|99|Arizona Diamondback|105|16,078|
+Mar 10 2018|8:00|Houston Astors|115|Chicago White Socks|94|21,995|
+Mar 10 2018|7:00|San Diego Pardes|81|Boston Red Socks|121|17,444|
+Mar 10 2018|9:00|Baltimore Orioles|96|Cincinnati Reds|105|20,022|
+Mar 10 2018|9:00|Atlanta Braves|99|Cleveland Indians|119|17,147|
+Mar 10 2018|8:00|Kansas City Royals|85|Milwaukee Brewers|99|16,177|
+Mar 10 2018|8:00|Detroit Tigers|102|Minnesota Twins|103|20,412|
+Mar 10 2018|10:30|Washington Nationals|130|St. Louis Cardinals|122|17,608|
+Mar 11 2018|7:00|New York Yankees|125|Boston Red Socks|122|18,196|
+Mar 11 2018|9:00|San Francisco Giants|100|Cincinnati Reds|98|20,324|
+Mar 11 2018|5:00|New York Mets|92|Colorado Rockies|112|19,607|
+Mar 11 2018|3:30|Philadelphia |100|Los Angeles Angels|112|19,060|
+Mar 11 2018|9:00|Arizona Diamondback|107|Oakland Athletics|90|17,523|
+Mar 11 2018|8:00|Texas Rangers|89|Miami Marlins|104|19,745|
+Mar 11 2018|8:00|Minnesota Twins|95|Milwaukee Brewers|102|18,717|
+Mar 11 2018|3:00|Toronto Blue Jays|104|Pittsburgh Pirates|112|18,203|
+Mar 11 2018|7:00|Chicago Cabs|116|San Diego Pardes|104|18,846|
+Mar 11 2018|10:00|Washington Nationals|125|Seattle Mariners|124|19,482|
+Mar 11 2018|10:30|Cleveland Indians|105|St. Louis Cardinals|92|17,608|
+Mar 11 2018|8:30|Detroit Tigers|85|Tampa Bay Rays|107|18,418|
+Mar 12 2018|3:30|Chicago White Socks|80|Atlanta Braves|100|18,624|
+Mar 12 2018|6:00|New York Mets|112|Baltimore Orioles|120|17,732|
+Mar 12 2018|9:00|Chicago Cabs|112|Houston Astors|117|18,055|
+Mar 12 2018|6:00|Miami Marlins|98|Kansas City Royals|102|17,923|
+Mar 12 2018|9:30|Philadelphia |118|Los Angeles Dodgers|116|18,997|
+Mar 12 2018|9:00|Seattle Mariners|110|San Francisco Giants|101|16,664|
+Mar 13 2018|7:00|Chicago White Socks|115|Boston Red Socks|109|16,489|
+Mar 13 2018|10:30|Los Angeles Dodgers|101|Cleveland Indians|129|17,344|
+Mar 13 2018|8:00|Milwaukee Brewers|93|Oakland Athletics|113|16,770|
+Mar 13 2018|8:00|Washington Nationals|104|Minnesota Twins|119|15,747|
+Mar 13 2018|10:30|San Diego Pardes|115|St. Louis Cardinals|120|17,608|
+Mar 13 2018|8:00|Arizona Diamondback|99|Tampa Bay Rays|107|18,418|
+Mar 13 2018|7:30|Cincinnati Reds|78|Texas Rangers|100|19,800|
+Mar 13 2018|9:00|Los Angeles Angels|108|Toronto Blue Jays|114|19,911|
+Mar 14 2018|7:30|Pittsburgh Pirates|122|Baltimore Orioles|104|13,911|
+Mar 14 2018|7:00|Colorado Rockies|96|Chicago Cabs|128|20,562|
+Mar 14 2018|10:30|Philadelphia |104|Detroit Tigers|106|19,596|
+Mar 14 2018|8:00|Seattle Mariners|77|New York Yankees|100|15,530|
+Mar 14 2018|7:30|Kansas City Royals|81|New York Mets|87|18,261|
+Mar 15 2018|7:30|Minnesota Twins|104|Atlanta Braves|117|18,624|
+Mar 15 2018|8:00|Oakland Athletics|98|Chicago White Socks|91|21,583|
+Mar 15 2018|7:30|Toronto Blue Jays|97|Colorado Rockies|83|14,033|
+Mar 15 2018|8:00|Los Angeles Dodgers|100|Houston Astors|139|18,055|
+Mar 15 2018|7:00|Boston Red Socks|77|Kansas City Royals|98|14,169|
+Mar 15 2018|10:30|Milwaukee Brewers|97|Los Angeles Angels|96|19,060|
+Mar 15 2018|7:30|New York Yankees|112|Miami Marlins|120|19,678|
+Mar 15 2018|10:00|St. Louis Cardinals|107|San Francisco Giants|101|17,196|
+Mar 15 2018|8:00|Seattle Mariners|110|Tampa Bay Rays|106|18,418|
+Mar 15 2018|7:00|Cincinnati Reds|112|Washington Nationals|107|17,844|
+Mar 16 2018|7:30|Oakland Athletics|103|Arizona Diamondback|91|17,063|
+Mar 16 2018|7:00|Toronto Blue Jays|83|Chicago Cabs|91|20,562|
+Mar 16 2018|9:00|Los Angeles Angels|114|Cleveland Indians|129|14,179|
+Mar 16 2018|10:30|San Diego Pardes|92|Detroit Tigers|122|19,596|
+Mar 16 2018|7:30|Baltimore Orioles|121|New York Mets|110|19,812|
+Mar 16 2018|7:00|Pittsburgh Pirates|123|Texas Rangers|102|19,800|
+Mar 17 2018|7:30|Atlanta Braves|98|Baltimore Orioles|95|17,732|
+Mar 17 2018|7:30|Texas Rangers|87|Colorado Rockies|75|16,541|
+Mar 17 2018|10:30|Milwaukee Brewers|107|Los Angeles Dodgers|103|18,997|
+Mar 17 2018|8:00|Minnesota Twins|105|Miami Marlins|123|19,600|
+Mar 17 2018|8:00|Houston Astors|112|New York Yankees|128|17,972|
+Mar 17 2018|7:00|Cincinnati Reds|74|Philadelphia |116|17,642|
+Mar 17 2018|10:00|San Diego Pardes|109|San Francisco Giants|103|16,880|
+Mar 17 2018|7:00|Chicago White Socks|107|Washington Nationals|112|20,356|
+Mar 18 2018|6:00|Seattle Mariners|113|Arizona Diamondback|97|16,543|
+Mar 18 2018|9:00|Toronto Blue Jays|86|Chicago White Socks|95|21,953|
+Mar 18 2018|7:00|Washington Nationals|93|Boston Red Socks|98|19,361|
+Mar 18 2018|9:30|Houston Astors|109|Cleveland Indians|105|17,512|
+Mar 18 2018|10:30|Milwaukee Brewers|92|Detroit Tigers|117|19,596|
+Mar 18 2018|8:30|Chicago Cabs|78|Los Angeles Angels|108|19,379|
+Mar 18 2018|9:00|Tampa Bay Rays|96|Oakland Athletics|104|18,119|
+Mar 18 2018|3:00|St. Louis Cardinals|94|Pittsburgh Pirates|110|18,203|
+Mar 19 2018|12:00|Cincinnati Reds|111|Baltimore Orioles|104|14,045|
+Mar 19 2018|4:30|San Francisco Giants|95|Colorado Rockies|112|19,588|
+Mar 19 2018|9:30|Chicago Cabs|125|Los Angeles Dodgers|120|18,997|
+Mar 19 2018|6:00|Seattle Mariners|115|Miami Marlins|104|19,600|
+Mar 19 2018|6:00|Minnesota Twins|109|New York Yankees|123|16,111|
+Mar 19 2018|1:00|Atlanta Braves|99|Philadelphia |105|19,446|
+Mar 19 2018|7:00|St. Louis Cardinals|102|Tampa Bay Rays|118|18,418|
+Mar 19 2018|6:00|Kansas City Royals|91|Texas Rangers|116|19,800|
+Mar 20 2018|7:30|Washington Nationals|102|Atlanta Braves|110|18,624|
+Mar 20 2018|7:00|Arizona Diamondback|90|Boston Red Socks|105|14,278|
+Mar 20 2018|8:00|Cleveland Indians|124|Houston Astors|125|16,080|
+Mar 20 2018|7:00|Toronto Blue Jays|100|Kansas City Royals|107|15,458|
+Mar 20 2018|10:30|New York Mets|105|Los Angeles Angels|114|19,060|
+Mar 20 2018|8:00|Detroit Tigers|111|Pittsburgh Pirates|95|18,203|
+Mar 20 2018|7:00|Philadelphia |109|San Diego Pardes|112|16,236|
+Mar 21 2018|7:30|Colorado Rockies|96|Baltimore Orioles|98|14,343|
+Mar 21 2018|8:30|Detroit Tigers|112|Cincinnati Reds|87|20,453|
+Mar 21 2018|10:30|Los Angeles Angels|133|Los Angeles Dodgers|109|18,724|
+Mar 21 2018|7:30|San Francisco Giants|97|Miami Marlins|112|19,600|
+Mar 21 2018|9:30|Tampa Bay Rays|100|Minnesota Twins|93|13,742|
+Mar 21 2018|8:00|Oakland Athletics|82|New York Yankees|95|15,973|
+Mar 21 2018|10:00|Milwaukee Brewers|93|Seattle Mariners|90|19,525|
+Mar 21 2018|7:00|Chicago White Socks|120|Texas Rangers|122|19,800|
+Mar 22 2018|7:30|Kansas City Royals|100|Atlanta Braves|109|18,624|
+Mar 22 2018|8:00|Colorado Rockies|95|Chicago White Socks|117|21,503|
+Mar 22 2018|9:00|Chicago Cabs|113|Cleveland Indians|126|19,718|
+Mar 22 2018|8:00|Philadelphia |97|Pittsburgh Pirates|122|18,203|
+Mar 22 2018|7:00|Boston Red Socks|109|San Diego Pardes|102|16,034|
+Mar 22 2018|10:30|Milwaukee Brewers|116|St. Louis Cardinals|98|17,608|
+Mar 22 2018|10:30|New York Mets|101|Toronto Blue Jays|108|19,911|
+Mar 22 2018|8:00|Arizona Diamondback|100|Washington Nationals|104|18,137|
+Mar 23 2018|7:30|San Francisco Giants|98|Baltimore Orioles|126|15,141|
+Mar 23 2018|8:30|Los Angeles Angels|95|Cincinnati Reds|97|19,703|
+Mar 23 2018|7:30|Texas Rangers|101|Miami Marlins|84|19,745|
+Mar 23 2018|10:00|New York Mets|95|Seattle Mariners|110|19,020|
+Mar 23 2018|8:30|Oakland Athletics|90|Tampa Bay Rays|97|18,418|
+Mar 24 2018|7:30|San Francisco Giants|120|Atlanta Braves|130|18,624|
+Mar 24 2018|8:00|Philadelphia |117|Chicago White Socks|107|21,558|
+Mar 24 2018|7:00|Chicago Cabs|112|Boston Red Socks|105|19,511|
+Mar 24 2018|10:30|St. Louis Cardinals|100|Detroit Tigers|114|19,596|
+Mar 24 2018|8:00|New York Yankees|107|Houston Astors|117|18,055|
+Mar 24 2018|7:00|Cleveland Indians|125|Kansas City Royals|117|17,923|
+Mar 24 2018|10:30|Minnesota Twins|119|Los Angeles Dodgers|130|18,997|
+Mar 24 2018|8:00|Arizona Diamondback|97|Milwaukee Brewers|100|16,786|
+Mar 24 2018|7:00|Colorado Rockies|87|San Diego Pardes|115|18,076|
+Mar 24 2018|7:00|Baltimore Orioles|108|Washington Nationals|129|19,616|
+Mar 25 2018|7:30|Washington Nationals|127|Chicago Cabs|115|20,562|
+Mar 25 2018|8:30|Texas Rangers|94|Cincinnati Reds|86|19,934|
+Mar 25 2018|3:30|Toronto Blue Jays|95|Los Angeles Angels|108|19,060|
+Mar 25 2018|10:00|Minnesota Twins|100|Seattle Mariners|112|19,580|
+Mar 25 2018|8:30|New York Mets|98|Tampa Bay Rays|106|18,418|
+Mar 26 2018|1:00|Baltimore Orioles|107|Arizona Diamondback|92|15,921|
+Mar 26 2018|6:00|Miami Marlins|108|Atlanta Braves|112|18,624|
+Mar 26 2018|1:00|San Francisco Giants|106|Boston Red Socks|120|17,292|
+Mar 26 2018|8:00|New York Yankees|115|Cleveland Indians|90|19,850|
+Mar 26 2018|8:00|Oakland Athletics|94|Detroit Tigers|106|19,596|
+Mar 26 2018|3:30|Pittsburgh Pirates|125|Houston Astors|137|18,055|
+Mar 26 2018|6:00|Philadelphia |94|Kansas City Royals|107|16,467|
+Mar 26 2018|3:30|St. Louis Cardinals|98|Los Angeles Angels|97|19,060|
+Mar 26 2018|9:30|Seattle Mariners|97|Los Angeles Dodgers|81|18,698|
+Mar 26 2018|3:30|Chicago White Socks|109|Milwaukee Brewers|94|17,669|
+Mar 27 2018|8:30|Pittsburgh Pirates|92|Cincinnati Reds|91|19,970|
+Mar 27 2018|7:30|Colorado Rockies|95|New York Mets|109|19,812|
+Mar 27 2018|10:30|Oakland Athletics|90|St. Louis Cardinals|91|17,608|
+Mar 27 2018|8:00|Chicago Cabs|74|Tampa Bay Rays|103|18,418|
+Mar 27 2018|7:30|San Diego Pardes|112|Texas Rangers|131|19,800|
+Mar 27 2018|10:30|New York Yankees|100|Toronto Blue Jays|108|18,924|
+Mar 28 2018|7:30|San Francisco Giants|91|Arizona Diamondback|95|13,412|
+Mar 28 2018|7:30|Philadelphia |106|Baltimore Orioles|101|15,471|
+Mar 28 2018|7:00|Milwaukee Brewers|118|Boston Red Socks|108|16,505|
+Mar 28 2018|7:30|Miami Marlins|97|Colorado Rockies|96|17,160|
+Mar 28 2018|8:00|Detroit Tigers|113|Houston Astors|106|18,055|
+Mar 28 2018|7:00|Minnesota Twins|115|Kansas City Royals|114|17,534|
+Mar 28 2018|10:30|Washington Nationals|119|Los Angeles Dodgers|108|18,997|
+Mar 28 2018|10:00|Cleveland Indians|113|Seattle Mariners|122|20,003|
+Mar 29 2018|7:30|Milwaukee Brewers|103|Atlanta Braves|100|18,624|
+Mar 29 2018|10:30|Washington Nationals|124|Los Angeles Angels|133|19,060|
+Mar 29 2018|8:00|Kansas City Royals|97|Oakland Athletics|110|16,367|
+Mar 29 2018|8:00|Cincinnati Reds|118|New York Yankees|121|16,000|
+Mar 29 2018|7:30|Miami Marlins|105|New York Mets|88|19,812|
+Mar 29 2018|7:00|Pittsburgh Pirates|114|San Diego Pardes|106|18,408|
+Mar 29 2018|7:00|Arizona Diamondback|99|Philadelphia |92|15,212|
+Mar 29 2018|10:30|Toronto Blue Jays|112|St. Louis Cardinals|82|17,608|
+Mar 29 2018|9:30|Detroit Tigers|110|Tampa Bay Rays|98|18,418|
+Mar 29 2018|7:30|Boston Red Socks|110|Texas Rangers|106|19,800|
+Mar 30 2018|8:00|Chicago Cabs|93|Chicago White Socks|99|22,282|
+Mar 30 2018|7:30|Baltimore Orioles|89|Colorado Rockies|90|15,804|
+Mar 30 2018|8:00|Los Angeles Dodgers|104|Minnesota Twins|119|18,179|
+Mar 30 2018|10:00|Los Angeles Angels|124|San Francisco Giants|118|16,736|
+Mar 30 2018|10:30|Houston Astors|107|Seattle Mariners|117|20,049|
+Mar 31 2018|7:30|San Diego Pardes|116|Atlanta Braves|117|18,624|
+Mar 31 2018|7:00|Cleveland Indians|114|Boston Red Socks|122|18,353|
+Mar 31 2018|7:30|Philadelphia |105|Chicago Cabs|122|20,562|
+Mar 31 2018|10:30|Houston Astors|98|Detroit Tigers|107|19,596|
+Mar 31 2018|8:00|Cincinnati Reds|90|Oakland Athletics|99|17,317|
+Mar 31 2018|8:00|New York Mets|98|Miami Marlins|94|19,600|
+Mar 31 2018|8:00|Colorado Rockies|105|Milwaukee Brewers|108|18,717|
+Mar 31 2018|8:00|St. Louis Cardinals|89|New York Yankees|117|17,304|
+Mar 31 2018|8:00|Tampa Bay Rays|100|Pittsburgh Pirates|95|18,203|
+Mar 31 2018|7:00|Kansas City Royals|100|Texas Rangers|111|19,800|
+Mar 31 2018|9:00|Washington Nationals|88|Toronto Blue Jays|95|19,911|
+Apr 1 2018|6:00|San Diego Pardes|111|Baltimore Orioles|121|15,976|
+Apr 1 2018|5:00|Arizona Diamondback|104|Chicago White Socks|106|22,019|
+Apr 1 2018|3:30|Los Angeles Dodgers|104|Los Angeles Angels|115|19,060|
+Apr 1 2018|8:00|St. Louis Cardinals|123|Minnesota Twins|117|18,960|
+Apr 1 2018|10:00|San Francisco Giants|117|Seattle Mariners|130|18,915|
+Apr 2 2018|6:00|Arizona Diamondback|82|Baltimore Orioles|91|15,040|
+Apr 2 2018|6:00|Kansas City Royals|130|Chicago Cabs|135|20,562|
+Apr 2 2018|8:00|Washington Nationals|115|Detroit Tigers|139|19,596|
+Apr 2 2018|3:30|Oakland Athletics|103|Los Angeles Dodgers|108|18,997|
+Apr 2 2018|6:00|Cleveland Indians|116|Miami Marlins|113|19,600|
+Apr 2 2018|3:30|Cincinnati Reds|109|Milwaukee Brewers|105|18,717|
+Apr 2 2018|6:00|Chicago White Socks|117|New York Yankees|110|18,306|
+Apr 2 2018|1:00|Atlanta Braves|110|New York Mets|94|19,812|
+Apr 2 2018|3:00|Boston Red Socks|113|Pittsburgh Pirates|101|18,203|
+Apr 2 2018|9:00|Houston Astors|123|San Francisco Giants|116|17,378|
+Apr 2 2018|3:30|Toronto Blue Jays|103|Tampa Bay Rays|109|18,418|
+Apr 2 2018|6:00|Philadelphia |105|Texas Rangers|113|19,800|
+Apr 3 2018|7:00|Seattle Mariners|109|Minnesota Twins|110|14,677|
+Apr 4 2018|7:00|San Diego Pardes|102|Chicago Cabs|122|20,562|
+Apr 4 2018|10:30|Minnesota Twins|107|Detroit Tigers|121|19,596|
+Apr 4 2018|7:00|Texas Rangers|90|Kansas City Royals|108|16,524|
+Apr 4 2018|8:00|Cleveland Indians|134|New York Yankees|131|16,050|
+Apr 4 2018|8:00|Chicago White Socks|91|New York Mets|100|19,812|
+Apr 4 2018|8:00|Milwaukee Brewers|79|Pittsburgh Pirates|110|18,203|
+Apr 4 2018|7:00|Baltimore Orioles|141|Philadelphia |118|14,580|
+Apr 4 2018|10:30|Cincinnati Reds|87|St. Louis Cardinals|98|17,608|
+Apr 4 2018|8:30|Oakland Athletics|89|Tampa Bay Rays|95|18,418|
+Apr 4 2018|9:00|Seattle Mariners|87|Toronto Blue Jays|106|19,911|
+Apr 4 2018|7:00|Boston Red Socks|111|Washington Nationals|118|18,614|
+Apr 5 2018|8:00|Chicago Cabs|114|Atlanta Braves|91|18,624|
+Apr 5 2018|7:00|Miami Marlins|112|Boston Red Socks|99|17,758|
+Apr 5 2018|7:30|Texas Rangers|105|Colorado Rockies|102|17,578|
+Apr 5 2018|8:00|Cleveland Indians|104|Houston Astors|110|18,055|
+Apr 5 2018|10:30|Cincinnati Reds|101|Los Angeles Angels|112|19,060|
+Apr 5 2018|8:00|Pittsburgh Pirates|103|Oakland Athletics|100|17,298|
+Apr 5 2018|10:00|Detroit Tigers|120|San Francisco Giants|111|18,055|
+Apr 5 2018|8:30|Los Angeles Dodgers|102|Tampa Bay Rays|95|18,418|
+Apr 6 2018|8:00|Atlanta Braves|116|Arizona Diamondback|123|18,688|
+Apr 6 2018|7:00|Milwaukee Brewers|89|Kansas City Royals|104|17,010|
+Apr 6 2018|7:30|Washington Nationals|106|New York Mets|103|19,812|
+Apr 6 2018|7:00|Baltimore Orioles|107|San Diego Pardes|115|18,095|
+Apr 6 2018|7:00|Chicago White Socks|102|Philadelphia |90|15,177|
+Apr 6 2018|10:30|Minnesota Twins|98|Seattle Mariners|105|19,393|
+Apr 7 2018|7:30|Arizona Diamondback|114|Chicago Cabs|100|20,562|
+Apr 7 2018|8:30|Tampa Bay Rays|102|Cincinnati Reds|89|20,133|
+Apr 7 2018|9:00|New York Yankees|106|Cleveland Indians|122|16,348|
+Apr 7 2018|8:00|Colorado Rockies|114|Houston Astors|109|18,055|
+Apr 7 2018|10:30|St. Louis Cardinals|94|Los Angeles Dodgers|98|18,997|
+Apr 7 2018|8:00|New York Mets|88|Oakland Athletics|101|17,631|
+Apr 7 2018|10:00|Pittsburgh Pirates|99|San Francisco Giants|120|18,055|
+Apr 7 2018|7:30|Miami Marlins|94|Texas Rangers|96|19,800|
+Apr 7 2018|9:00|Minnesota Twins|113|Toronto Blue Jays|120|19,911|
+Apr 8 2018|5:00|Chicago White Socks|106|Baltimore Orioles|107|17,732|
+Apr 8 2018|6:00|Atlanta Braves|121|Boston Red Socks|114|19,407|
+Apr 8 2018|10:30|New York Yankees|101|Detroit Tigers|123|19,596|
+Apr 8 2018|6:00|Kansas City Royals|127|San Diego Pardes|112|18,846|
+Apr 8 2018|7:00|Milwaukee Brewers|90|Philadelphia |82|16,301|
+Apr 8 2018|10:00|Toronto Blue Jays|86|Seattle Mariners|101|19,865|
+Apr 8 2018|8:30|Los Angeles Angels|98|Tampa Bay Rays|87|18,420|
+Apr 8 2018|7:00|Miami Marlins|106|Washington Nationals|103|20,365|
+Apr 9 2018|3:30|Chicago Cabs|125|Arizona Diamondback|126|18,835|
+Apr 9 2018|5:00|Pittsburgh Pirates|106|Cleveland Indians|105|19,718|
+Apr 9 2018|9:30|Minnesota Twins|109|Los Angeles Dodgers|110|18,997|
+Apr 9 2018|6:00|Colorado Rockies|103|Oakland Athletics|90|16,521|
+Apr 9 2018|12:00|Texas Rangers|110|New York Mets|97|19,812|
+Apr 9 2018|6:00|Cincinnati Reds|111|San Francisco Giants|124|18,055|
+Apr 9 2018|6:00|Houston Astors|135|St. Louis Cardinals|128|17,608|
+Apr 10 2018|7:30|Baltimore Orioles|105|Atlanta Braves|114|18,624|
+Apr 10 2018|8:00|San Diego Pardes|75|Chicago White Socks|122|21,545|
+Apr 10 2018|8:00|Washington Nationals|105|Colorado Rockies|101|21,012|
+Apr 10 2018|10:30|Toronto Blue Jays|105|Detroit Tigers|99|19,596|
+Apr 10 2018|10:30|Houston Astors|96|Los Angeles Angels|125|19,163|
+Apr 10 2018|7:30|Chicago Cabs|121|Miami Marlins|124|19,673|
+Apr 10 2018|8:00|Boston Red Socks|79|Milwaukee Brewers|89|18,717|
+Apr 10 2018|7:00|Kansas City Royals|120|Philadelphia |111|14,622|
+Apr 10 2018|10:00|Tampa Bay Rays|98|Seattle Mariners|99|19,393|
+Apr 11 2018|7:30|Boston Red Socks|76|Arizona Diamondback|103|14,205|
+Apr 11 2018|8:30|Cleveland Indians|109|Cincinnati Reds|91|20,333|
+Apr 11 2018|10:30|New York Yankees|96|Los Angeles Dodgers|108|18,997|
+Apr 11 2018|8:00|Pittsburgh Pirates|100|Minnesota Twins|98|19,356|
+Apr 11 2018|10:30|San Francisco Giants|104|St. Louis Cardinals|129|17,608|
+Apr 12 2018|8:00|Milwaukee Brewers|94|Atlanta Braves|112|18,624|
+Apr 12 2018|8:00|Baltimore Orioles|73|Chicago White Socks|112|21,648|
+Apr 12 2018|8:00|Texas Rangers|98|Chicago Cabs|83|20,562|
+Apr 12 2018|10:30|Los Angeles Dodgers|94|Detroit Tigers|109|19,596|
+Apr 12 2018|8:00|Minnesota Twins|118|Houston Astors|123|18,055|
+Apr 12 2018|8:00|Arizona Diamondback|86|Kansas City Royals|104|17,923|
+Apr 12 2018|10:30|St. Louis Cardinals|95|Los Angeles Angels|115|19,060|
+Apr 12 2018|8:00|Cincinnati Reds|100|Oakland Athletics|93|16,274|
+Apr 12 2018|8:00|Washington Nationals|102|Miami Marlins|110|19,963|
+Apr 12 2018|8:00|Philadelphia |113|New York Mets|114|19,812|
+Apr 12 2018|8:00|Cleveland Indians|111|Pittsburgh Pirates|105|18,203|
+Apr 12 2018|8:00|Colorado Rockies|109|San Diego Pardes|113|19,458|
+Apr 12 2018|10:30|New York Yankees|103|Seattle Mariners|100|19,521|
+Apr 12 2018|9:00|Tampa Bay Rays|97|Toronto Blue Jays|101|19,911|

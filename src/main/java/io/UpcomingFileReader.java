@@ -50,7 +50,7 @@ public class UpcomingFileReader extends AbstractGameReader {
 					continue;
 				}
 
-				//read in home team and set in game
+
 				try {
 					game.sethTeam(tokenizer.nextToken());
 				} catch (Exception e_) {

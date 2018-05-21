@@ -11,7 +11,8 @@ import lists.GamesList;
 public class PrintToLog {
 
 	private static final Logger logger = LoggerFactory.getLogger(PrintToLog.class);
-	
+	private static final Logger secondLogger = LoggerFactory.getLogger(PrintToLog.class);
+
 	public static void logGamesList(GamesList list) {
 		for (int i = 0; i < list.size(); i++) {
 			logger.info(list.get(i).toString());
@@ -19,5 +20,14 @@ public class PrintToLog {
 		logger.info("Successfully logged all games requested");
 		
 	}
+	
+	public static void secondLogGamesList(GamesList list) {
+		for (int i = 0; i < list.size(); i++) {
+			secondLogger.info(list.get(i).toString());
+		}
+		secondLogger.info("Successfully logged all games requested");
+		
+	}
+
 
 }
