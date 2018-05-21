@@ -1,10 +1,15 @@
 package view;
 
+import java.util.Iterator;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 
 import lists.GamesList;
+import lists.TeamsList;
+import model.Player;
+import model.Team;
 
 //class used to log to a file
 public class PrintToLog {
@@ -13,15 +18,17 @@ public class PrintToLog {
 	private static final Logger secondLogger = LoggerFactory.getLogger(PrintToLog.class);
 
 	public static void logGamesList(GamesList list) {
+		logger.info("Printing All Games Requested");
 		for (int i = 0; i < list.size(); i++) {
 			logger.info(list.get(i).toString());
 		}
 		logger.info("Successfully logged all games requested");
-		
+		logger.info("\n");
 	}
 	
 
 	public static void secondLogGamesList(GamesList list) {
+		logger.info("Printing All Games Requested");
 		for (int i = 0; i < list.size(); i++) {
 			secondLogger.info(list.get(i).toString());
 		}
@@ -48,5 +55,20 @@ public class PrintToLog {
 		logger.info("====================MAIN MENU PAGE====================");
 	}
 
+	public static void logAllRosters(TeamsList teams_) {
+		logger.info("Printing current rosters for all teams");
+		Iterator<Team> teamIterator = teams_.iterator();
+		
+		while(teamIterator.hasNext()) {
+			Team currentTeam = teamIterator.next();
+			logger.info("Current roster of the:");
+			logger.info(currentTeam.toString());
+			Iterator<Player> playerIterator = currentTeam.getListOfPLayers().iterator();
+			while(playerIterator.hasNext()) {
+				logger.info(playerIterator.next().toString() + ",");
+			}
+		}
+		logger.info("\n");
+	}
 
 }

@@ -80,7 +80,7 @@ public class ControllerToHandleUserInput {
 	
 	//method that returns true if the request made is valid
 	public static boolean requestByUserIsValid(int request) {
-		if(request != 1 && request != 2 && request != 0) {
+		if(request != 1 && request != 2 && request != 0 && request != 3) {
 			return false;
 		}
 		else

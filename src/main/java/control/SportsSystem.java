@@ -32,11 +32,9 @@ public class SportsSystem {
 		// List of upcoming Games in the NBA
 		GamesList listofUpcomingGames = StoreDataFromInputFile.storeDataIntoUpcomingGameList("/NBA_Upcoming.txt");
 		// List of Players in NBA teams 
-		TeamsList listofTeams = StoreDataFromInputFile.storeDataIntoTeamsList("/NBA_Teams.txt");
-		StoreDataFromInputFile.storeDataIntoPlaersList("/AllCurrentNBARosters.txt", listofTeams);
-		for(int i = 0; i < listofTeams.get(0).getListOfPLayers().size(); i++)
-			System.out.println(listofTeams.get(0).getListOfPLayers().get(i).toString());
-		
+		TeamsList listofNBATeams = StoreDataFromInputFile.storeDataIntoTeamsList("/NBA_Teams.txt");
+		StoreDataFromInputFile.storeDataIntoPlaersList("/AllCurrentNBARosters.txt", listofNBATeams);
+				
 		System.out.println("<<<<<<<<<<Welcome to the Sports Tracking System>>>>>>>>>>");
 		
 		/*
@@ -81,7 +79,8 @@ public class SportsSystem {
 							}
 							PrintToLog.logGamesList(listofUpcomingGames);
 							break;
-
+					case 3: //Print out all teams & let user choose from team to see current roster
+							PrintToLog.logAllRosters(listofNBATeams);
 					}
 					
 				}while(request != 0);	

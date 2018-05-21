@@ -72,6 +72,6 @@ public class Team {
 	 @Override
 	    public String toString() {
 	        return "Team [Name = " + teamName + " Location = "+
-	    location +" # of Players = " + numPlayers+ "]";
+	    location + "]";
 	    	}
 }

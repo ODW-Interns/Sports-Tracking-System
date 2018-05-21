@@ -1,5 +1,7 @@
 package view;
 
+import lists.TeamsList;
+
 //class:used to print out to console
 public class ConsolePrinter {
 
@@ -17,9 +19,10 @@ public class ConsolePrinter {
 		System.out.println("What would you like to do?");
 		System.out.println("Enter 1 to see all games played from last season");
 		System.out.println("Enter 2 to see all upcoming games");	
-		System.out.println("Enter 3 to pick from a list of teams to view their roster");
+		System.out.println("Enter 3 to see all the current rosters of all teams");
 		
 	}
+	
 	
 	
 }
