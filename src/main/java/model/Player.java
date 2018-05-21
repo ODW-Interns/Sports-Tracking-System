@@ -8,13 +8,13 @@ public class Player {
 	String position;
 	
 	public Player() {
-		this("N/A", "N/A", "N/A", -1);
+		this("N/A", "N/A", -1);
 	}
 	
-	public Player(String first_, String last_, String pos_, int jersey_){
+	public Player(String first_, String last_, int jersey_){
 		firstName = first_;
 		lastName = last_;
-		position = pos_;
+		
 		jerseyNum = jersey_;
 	}
 
@@ -42,13 +42,5 @@ public class Player {
 		jerseyNum = jersey_;
 	}
 
-	public String getPosition() {
-		return position;
-	}
-
-	public void setPosition(String pos_) {
-		position = pos_;
-	}
-	
 	
 }

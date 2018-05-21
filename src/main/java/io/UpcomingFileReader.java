@@ -47,7 +47,7 @@ public class UpcomingFileReader extends AbstractGameReader {
 					continue;
 				}
 
-
+				
 				try {
 					game.sethTeam(tokenizer.nextToken());
 				} catch (Exception e_) {
