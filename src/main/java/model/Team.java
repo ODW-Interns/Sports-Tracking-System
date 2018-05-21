@@ -1,11 +1,14 @@
 package model;
 
+import lists.PlayersList;
+
 public class Team {
 
 	private String teamName;
 	private String location;
 	private int numPlayers;
-
+	private PlayersList listofPlayers;
+	
 	public Team() {
 		// Default Constructor
 		this("general", "general", 0);
@@ -16,6 +19,7 @@ public class Team {
 		setTeamName(team);
 		setLocation(loc);
 		setNumPlayers(players);
+		listofPlayers = new PlayersList();
 	}
 
 	/*
@@ -49,6 +53,7 @@ public class Team {
 	/*
 	 * method to retrieve the number of players on the team
 	 */
+	
 	public int getNum_players() {
 		return numPlayers;
 	}
@@ -59,5 +64,14 @@ public class Team {
 	public void setNumPlayers(int players) {
 		numPlayers = players;
 	}
+	
+	public PlayersList getListOfPLayers() {
+		return listofPlayers;
+	}
 
+	 @Override
+	    public String toString() {
+	        return "Team [Name = " + teamName + " Location = "+
+	    location +" # of Players = " + numPlayers+ "]";
+	    	}
 }

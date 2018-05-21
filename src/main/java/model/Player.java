@@ -51,5 +51,10 @@ public class Player {
 		jerseyNum = jersey_;
 	}
 
+	@Override
+	 public String toString() {
+	     return "Player [Firstname = " + getFirstName() + " Lastname = "+
+	    getLastName() + " Jersey Number = " + getJerseyNum() +  "]";
+	   }
 	
 }
