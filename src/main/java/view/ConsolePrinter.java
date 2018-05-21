@@ -17,6 +17,9 @@ public class ConsolePrinter {
 		System.out.println("What would you like to do?");
 		System.out.println("Enter 1 to see all games played from last season");
 		System.out.println("Enter 2 to see all upcoming games");	
+		System.out.println("Enter 3 to pick from a list of teams to view their roster");
+		
 	}
+	
 	
 }

@@ -3,7 +3,6 @@ package view;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.sts.main.mainTemp;
 
 import lists.GamesList;
 
@@ -21,12 +20,32 @@ public class PrintToLog {
 		
 	}
 	
+
 	public static void secondLogGamesList(GamesList list) {
 		for (int i = 0; i < list.size(); i++) {
 			secondLogger.info(list.get(i).toString());
 		}
 		secondLogger.info("Successfully logged all games requested");
 		
+	}
+	
+	public static void printSportCategory(int sportChosen) {
+		String sport;
+		if(sportChosen == 1)
+			sport = "NBA";
+		else if(sportChosen == 2)
+			sport = "NFL";
+		else if(sportChosen == 3)
+			sport = "MLB";
+		else if(sportChosen == 4)
+			sport = "NHL";
+		else return;
+		
+		logger.info("<<<<<<<<<<Currently In " + sport + " Category>>>>>>>>>>", sport);
+	}
+	
+	public static void printMainMenuAlert() {
+		logger.info("====================MAIN MENU PAGE====================");
 	}
 
 

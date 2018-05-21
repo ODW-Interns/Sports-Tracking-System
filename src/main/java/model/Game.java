@@ -1,5 +1,7 @@
 package model;
 
+import lists.PlayersList;
+
 //
 public class Game implements Comparable<Game> {
 
@@ -11,6 +13,9 @@ public class Game implements Comparable<Game> {
     private int awayTeamScore;
     private int attendence;
 
+    private PlayersList listOfAwayPlayers;
+    private PlayersList listofHomePlayers;
+    
     /**
      *Default Constructor
      */
@@ -108,7 +113,7 @@ public class Game implements Comparable<Game> {
         return awayTeamScore;
     }
 
-    /*
+    /**
      * method to set away team's score
      */
     public void setaTeamScore(int aTScore) {
@@ -127,6 +132,21 @@ public class Game implements Comparable<Game> {
      */
     public void setAttendence(int att) {
         attendence = att;
+    }
+    
+    /*
+     * retrieve the list of away players for game
+     */
+    
+    public PlayersList getAwayTeamRoster() {
+    	return listOfAwayPlayers;
+    }
+    
+    /*
+     * retrieve the list of home players for game
+     */
+    public PlayersList getHomeTeamRoster() {
+    	return listofHomePlayers;
     }
 
     /** 
