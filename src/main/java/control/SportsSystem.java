@@ -2,22 +2,32 @@ package control;
 
 import io.StoreDataFromInputFile;
 import lists.GamesList;
+import model.RealTimeDataChecker;
+import model.Team;
 import view.ConsolePrinter;
 import view.PrintToLog;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.StringTokenizer;
 
 public class SportsSystem {
 
-	SportsSystem() throws RuntimeException, IOException{
+	SportsSystem() throws RuntimeException, IOException, ParseException{
 		startSystem();
 	}
 	
-	public static void startSystem() throws RuntimeException, IOException {
+	public static void startSystem() throws RuntimeException, IOException, ParseException {
 		int sportChosen = -1;	
 		int request = -1;
+		int numOfInvalidUpcomingGames = 0;
 		// List of Games from the past NBA season
-		GamesList listofPastGames = StoreDataFromInputFile.storeDataIntoGameList("/17-18NBA_RegSzn.txt");
+		GamesList listofPastGames = StoreDataFromInputFile.storeDataIntoPastGameList("/17-18NBA_RegSzn.txt");
+		// List of upcoming Games in the NBA
+		GamesList listofUpcomingGames = StoreDataFromInputFile.storeDataIntoUpcomingGameList("/NBA_Upcoming.txt");
 		System.out.println("<<<<<<<<<<Welcome to the Sports Tracking System>>>>>>>>>>");
 		
 		/*
@@ -29,26 +39,45 @@ public class SportsSystem {
 		 * To Stop System -> User has to enter 0 in the main menu
 		 * */
 		
-		while(sportChosen != 0){
-			sportChosen = ControllerToHandleUserInput.readSportsChosenByUser();
+		//While the system is on
+		while(sportChosen != 0){ // (MAIN MENU)
+			sportChosen = ControllerToHandleUserInput.readSportsChosenByUser(); // read in valid input from user
 			if(ControllerToHandleUserInput.sportChosenIsValid(sportChosen) && sportChosen != 0){
-				do {
+				do { 
+					// Inside individual sport category
 					request = ControllerToHandleUserInput.readRequestByUser();
 					switch(request) {
-					case 1: // Print to Log
-						System.out.println("1 was selected");
-						PrintToLog.logGamesList(listofPastGames);
-						//call second log
-						PrintToLog.secondLogGamesList(listofPastGames);
-						break;
+
+					case 0:  // Refresh & Go back to Main Menu	
+							numOfInvalidUpcomingGames = RealTimeDataChecker.thereAreInvalidUpcomingGames(listofUpcomingGames);
+							if(numOfInvalidUpcomingGames > 0) {
+								RealTimeDataChecker.refreshDataLists(numOfInvalidUpcomingGames, listofUpcomingGames, listofPastGames);
+							}
+							break;
+					case 1: //1. Refresh Both upcoming games and finished games list
+							//2.Print to Log
+							System.out.println("1 was selected");
+							numOfInvalidUpcomingGames = RealTimeDataChecker.thereAreInvalidUpcomingGames(listofUpcomingGames);
+							if(numOfInvalidUpcomingGames > 0) {
+								RealTimeDataChecker.refreshDataLists(numOfInvalidUpcomingGames, listofUpcomingGames, listofPastGames);
+							}
+							PrintToLog.logGamesList(listofPastGames);
+							break;
+
 					}
-				}while(request != 0);
-			ConsolePrinter.printOutOptionsForSport();
+				}while(request != 0);	
+				//Back in Main Menu
+				//Print options for user and prompts for input with menu
+			ConsolePrinter.printOutOptionsForSport(); 
 			
 			}
 		}
 	}
-	public static void main(String[] args) throws RuntimeException, IOException {
+	
+	
+	
+	
+	public static void main(String[] args) throws RuntimeException, IOException, ParseException {
 		SportsSystem system = new SportsSystem(); // Entry, starts system
 		
 

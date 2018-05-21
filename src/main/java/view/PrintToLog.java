@@ -7,6 +7,7 @@ import com.sts.main.mainTemp;
 
 import lists.GamesList;
 
+//class used to log to a file
 public class PrintToLog {
 
 	private static final Logger logger = LoggerFactory.getLogger(PrintToLog.class);

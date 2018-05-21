@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import model.Team;
 
+//class inheriting from ArrayList that contains Team objects
 public class TeamsList extends ArrayList<Team>{
 	private final int NBAplayers =12;
 	//private static final long serialVersionUID = 1L;
