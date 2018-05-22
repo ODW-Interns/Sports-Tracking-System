@@ -6,7 +6,7 @@ import java.util.Date;
 
 import org.junit.Test;
 
-import model.RealTimeDataChecker;
+import control.RealTimeDataChecker;
 
 public class CovertingStringToIntTest {
 

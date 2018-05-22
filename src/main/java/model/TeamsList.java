@@ -12,12 +12,7 @@ public class TeamsList extends ArrayList<Team>{
 	}
 
 	public void addNBATeam(String city_, String mascot_) {
-		Team addedTeam = new Team(city_, mascot_, 0);
-		addToList(addedTeam);
-	}
-	
-	public void addToList(Team team_) {
-		add(team_);
+		add(new Team(city_, mascot_, 0));
 	}
 
 }

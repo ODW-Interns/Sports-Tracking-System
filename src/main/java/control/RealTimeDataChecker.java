@@ -1,9 +1,11 @@
-package model;
+package control;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.StringTokenizer;
+
+import model.GamesList;
 
 //class to handle and check data in real time
 public class RealTimeDataChecker {
