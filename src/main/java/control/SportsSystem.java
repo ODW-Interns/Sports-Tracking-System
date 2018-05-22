@@ -26,7 +26,7 @@ public class SportsSystem {
 		// List of Players in NBA teams 
 		TeamsList listofNBATeams = StoreDataFromInputFile.storeDataIntoTeamsList("/NBA_Teams.txt");
 		StoreDataFromInputFile.storeDataIntoPlayersList("/AllCurrentNBARosters.txt", listofNBATeams);
-				
+		StoreDataFromInputFile.storeDataIntoGamesList("/PlayersList.txt", listofPastGames);
 		System.out.println("<<<<<<<<<<Welcome to the Sports Tracking System>>>>>>>>>>");
 		
 		/*

@@ -11,7 +11,23 @@ public class Game implements Comparable<Game> {
     private int awayTeamScore;
     private int attendence;
 
-    private PlayersList listOfAwayPlayers;
+    public PlayersList getListOfAwayPlayers() {
+		return listOfAwayPlayers;
+	}
+
+	public void setListOfAwayPlayers(PlayersList listOfAwayPlayers) {
+		this.listOfAwayPlayers = listOfAwayPlayers;
+	}
+
+	public PlayersList getListofHomePlayers() {
+		return listofHomePlayers;
+	}
+
+	public void setListofHomePlayers(PlayersList listofHomePlayers) {
+		this.listofHomePlayers = listofHomePlayers;
+	}
+
+	private PlayersList listOfAwayPlayers;
     private PlayersList listofHomePlayers;
     
     /**
@@ -32,8 +48,13 @@ public class Game implements Comparable<Game> {
         setaTeamScore(aTeamScore);
         sethTeamScore(hTeamScore_);
         setAttendence(attendence_);
+        listOfAwayPlayers = new PlayersList();
+        listofHomePlayers = new PlayersList();
     }
 
+    
+    
+    
     /**
      * method to return the String date
      */
@@ -152,9 +173,13 @@ public class Game implements Comparable<Game> {
      */
     @Override
     public String toString() {
-        return "Game [date=" + date + ", time=" + time + ", homeTeam=" + homeTeam + ", awayTeam=" + awayTeam + ", homeTeamScore=" + homeTeamScore + ", awayTeamScore=" + awayTeamScore + ", attendence=" + attendence + "]";
+        return "Game [date=" + date + ", time=" + time + ", homeTeam=" + homeTeam +", awayTeam=" + awayTeam+
+        		", homeTeamScore=" + homeTeamScore + ", awayTeamScore=" + awayTeamScore + 
+        		", attendence=" + attendence + "First Home Player :" + getHomeTeamRoster().get(0).toString()+"]";
     }
 
+    
+    
     @Override
     public int compareTo(Game o_) {
     	if(this.attendence > o_.attendence) {
@@ -164,5 +189,6 @@ public class Game implements Comparable<Game> {
     		return 0;
         	
     }
+    
 
 }

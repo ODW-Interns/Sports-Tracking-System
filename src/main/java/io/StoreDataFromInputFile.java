@@ -56,5 +56,11 @@ public class StoreDataFromInputFile {
 		return listofTeams;
 	}
 	
+	public static void storeDataIntoGamesList(String inputfile_, GamesList listofGames_) throws IOException {
+		PastGamesPlayersFileReader in = new PastGamesPlayersFileReader();
+		InputStream is_ = StoreDataFromInputFile.class.getResourceAsStream(inputfile_);
+		in.readData(is_, listofGames_);
+		is_.close();
+	}
 
 }
