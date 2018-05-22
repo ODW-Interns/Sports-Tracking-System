@@ -21,7 +21,7 @@ public class RealTimeDataCheckerClassTest {
 	public static void setLists(){
 		Game game1 = new Game("May 2 2018" , "12:00", "Washington Wizards", 89, "Cleveland Cavaliers", 97, 12387);
 		Game game2 = new Game("May 3 2018" , "8:00", "Houston Rockets", 80, "Golden State Warriors", 141, 13890);
-		Game game3 = new Game("May 27 2018" , "3:00", "Boston Celtics", 102, "Toronto Raptors", 91, 13789);
+		Game game3 = new Game("May 23 2018" , "3:00", "Boston Celtics", 102, "Toronto Raptors", 91, 13789);
 		upComingGamesListTest.add(game1);
 		upComingGamesListTest.add(game2);
 		upComingGamesListTest.add(game3);
@@ -29,9 +29,9 @@ public class RealTimeDataCheckerClassTest {
 	
 	@Test
 	public void testToCheckIfUpcomingListsAndPastListsGetsUpdated() throws ParseException {
-	
+		
 		int invalidGames = RealTimeDataChecker.thereAreInvalidUpcomingGames(upComingGamesListTest);
-		assertEquals("There should be 2 passed games in upcoming games list", 2, invalidGames);
+		assertEquals("There should be 3 passed games in upcoming games list", 2, invalidGames);
 		RealTimeDataChecker.refreshDataLists(invalidGames, upComingGamesListTest, pastGamesListTest);
 		assertEquals("After refresh, upcoming games list should be size of: 1", 1, upComingGamesListTest.size());
 		assertEquals("After refresh, past games list should be size of: 2", 2, pastGamesListTest.size());

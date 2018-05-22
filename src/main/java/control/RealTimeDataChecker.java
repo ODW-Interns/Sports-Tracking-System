@@ -3,9 +3,12 @@ package control;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.StringTokenizer;
 
+import model.Game;
 import model.GamesList;
+import model.Team;
 
 //class to handle and check data in real time
 public class RealTimeDataChecker {
@@ -28,23 +31,24 @@ public class RealTimeDataChecker {
 		int maxAttendance = 13000;
 		
 		for(int i = 0; i < numInvalid; i++) {
-			dateToCheck = parseDateAndFormat(upcoming_.get(i).getDate(), upcoming_.get(i).getTime());
+			dateToCheck = parseDateAndFormat(upcoming_.get(0).getDate(), upcoming_.get(0).getTime());
+			System.out.println("Date to Check" + dateToCheck);
 			if(current.after(dateToCheck)){
 				//temporary refresh fix before implementing DB
 				randomHomeScore = generateRandomScore(minScore, maxScore);
 				randomAwayScore = generateRandomScore(minScore, maxScore);
 				randomAttendance = generateRandomAttendance(minAttendance, maxAttendance);
-				upcoming_.get(i).setaTeamScore(randomAwayScore);
-				upcoming_.get(i).sethTeamScore(randomHomeScore);
-				upcoming_.get(i).setAttendence(randomAttendance);
+				upcoming_.get(0).setaTeamScore(randomAwayScore);
+				upcoming_.get(0).sethTeamScore(randomHomeScore);
+				upcoming_.get(0).setAttendence(randomAttendance);
 				/*
 				 * If there exists a game in the upcoming games list whose date is 
 				 * has already been passed, then these lists need to be updated.
 				 * 1)Delete the game from the upcoming list
 				 * 2)Append game to end of the past games list
 				 */
-				past_.add(upcoming_.get(i));
-				upcoming_.remove(upcoming_.get(i));
+				past_.add(upcoming_.get(0));
+				upcoming_.remove(upcoming_.get(0));
 			}
 		}
 	}
@@ -70,14 +74,20 @@ public class RealTimeDataChecker {
 	
 	public static int thereAreInvalidUpcomingGames(GamesList upcomingList_) throws ParseException {
 		
-		Date formattedDate = parseDateAndFormat(upcomingList_.get(0).getDate(), upcomingList_.get(0).getTime());
 		Date current = new Date();
+		Date formattedDate;
 		int gamesInvalid = 0;
-		formattedDate = parseDateAndFormat(upcomingList_.get(gamesInvalid).getDate(), upcomingList_.get(gamesInvalid).getTime());
-
-		while(current.after(formattedDate)) {
-			gamesInvalid++;
-			formattedDate = parseDateAndFormat(upcomingList_.get(gamesInvalid).getDate(), upcomingList_.get(gamesInvalid).getTime());
+		
+		Game game = new Game();
+		Iterator<Game> gameIterator = upcomingList_.iterator();
+		while(gameIterator.hasNext()) {
+			game = gameIterator.next();
+			
+			if(current.after(RealTimeDataChecker.parseDateAndFormat(game.getDate(), game.getTime()))){
+				gamesInvalid++;
+			}
+			else 
+				break;
 		}
 		
 		return gamesInvalid;
