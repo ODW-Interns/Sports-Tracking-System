@@ -2,10 +2,9 @@ package io;
 import java.io.IOException;
 import java.io.InputStream;
 
-
-import lists.GamesList;
-import lists.PlayersList;
-import lists.TeamsList;
+import model.GamesList;
+import model.PlayersList;
+import model.TeamsList;
 
 public class StoreDataFromInputFile {
 	

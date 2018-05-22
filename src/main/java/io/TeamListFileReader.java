@@ -5,8 +5,8 @@ import java.io.Reader;
 import java.util.ArrayList;
 import java.util.StringTokenizer;
 
-import lists.TeamsList;
 import model.Team;
+import model.TeamsList;
 
 
 public class TeamListFileReader extends AbstractFileReader {

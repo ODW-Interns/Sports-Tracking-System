@@ -5,8 +5,6 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.StringTokenizer;
 
-import lists.GamesList;
-
 //class to handle and check data in real time
 public class RealTimeDataChecker {
 	

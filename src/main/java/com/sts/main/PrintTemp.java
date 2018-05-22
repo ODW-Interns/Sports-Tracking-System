@@ -1,6 +1,6 @@
 package com.sts.main;
 
-import lists.PlayersList;
+import model.PlayersList;
 
 public class PrintTemp {
 

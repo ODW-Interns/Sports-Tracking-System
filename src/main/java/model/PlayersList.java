@@ -1,8 +1,6 @@
-package lists;
+package model;
 
 import java.util.ArrayList;
-
-import model.Player;
 
 public class PlayersList extends ArrayList<Player> {
 	
