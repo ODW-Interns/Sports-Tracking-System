@@ -5,8 +5,8 @@ import java.io.Reader;
 import java.util.ArrayList;
 import java.util.StringTokenizer;
 
-import lists.GamesList;
 import model.Game;
+import model.GamesList;
 
 //class to read from file with past/finished games
 public class PastGamesFileReader extends AbstractFileReader {

@@ -5,8 +5,8 @@ import java.io.Reader;
 import java.util.ArrayList;
 import java.util.StringTokenizer;
 
-import lists.GamesList;
 import model.Game;
+import model.GamesList;
 
 public class UpcomingFileReader extends AbstractFileReader {
 	

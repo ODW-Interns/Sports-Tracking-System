@@ -5,11 +5,10 @@ import java.util.Iterator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-
-import lists.GamesList;
-import lists.TeamsList;
+import model.GamesList;
 import model.Player;
 import model.Team;
+import model.TeamsList;
 
 //class used to log to a file
 public class PrintToLog {

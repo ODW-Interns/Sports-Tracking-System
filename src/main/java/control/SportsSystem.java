@@ -1,9 +1,8 @@
 package control;
 
 import io.StoreDataFromInputFile;
-import lists.GamesList;
-import lists.TeamsList;
-import model.RealTimeDataChecker;
+import model.GamesList;
+import model.TeamsList;
 import view.ConsolePrinter;
 import view.PrintToLog;
 

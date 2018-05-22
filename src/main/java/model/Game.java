@@ -1,7 +1,5 @@
 package model;
 
-import lists.PlayersList;
-
 //
 public class Game implements Comparable<Game> {
 

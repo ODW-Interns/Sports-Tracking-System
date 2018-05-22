@@ -8,9 +8,9 @@ import java.util.Date;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import lists.GamesList;
+import model.GamesList;
 import model.Game;
-import model.RealTimeDataChecker;
+import control.RealTimeDataChecker;
 
 public class RealTimeDataCheckerClassTest {
 
@@ -36,13 +36,13 @@ public class RealTimeDataCheckerClassTest {
 		assertEquals("After refresh, upcoming games list should be size of: 1", 1, upComingGamesListTest.size());
 		assertEquals("After refresh, past games list should be size of: 2", 2, pastGamesListTest.size());
 	}
-	/*
+	
 	@Test
 	public void returnsRightDataTest() throws ParseException {
 		Date formattedDate = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").parse("21/05/2018 1:00:00");
 		assertEquals("Date has to match", formattedDate , RealTimeDataChecker.parseDateAndFormat("May 21 2018", "1:00"));
-	}*/
-/*
+	}
+
 	@Test
 	public void convertingFromWordMonthToNumberMonthTest() {
 		assertEquals("Should return 1", "1" , RealTimeDataChecker.convertMonthStringtoNum("JaNauarY"));
@@ -58,6 +58,6 @@ public class RealTimeDataCheckerClassTest {
 		assertEquals("Should return 11", "11" , RealTimeDataChecker.convertMonthStringtoNum("NovemBER"));
 		assertEquals("Should return 12", "12" , RealTimeDataChecker.convertMonthStringtoNum("deCEM"));
 		
-	}*/
+	}
 	
 }

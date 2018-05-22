@@ -1,8 +1,6 @@
-package lists;
+package model;
 
 import java.util.ArrayList;
-
-import model.Player;
 
 public class PlayersList extends ArrayList<Player> {
 	
@@ -10,12 +8,8 @@ public class PlayersList extends ArrayList<Player> {
 	
 	public void addPlayer(String first_, String last_, int jersey_) {
 		
-		Player addedPlayer =new Player(first_, last_, jersey_);
-		addToList(addedPlayer);
+		add(new Player(first_, last_, jersey_));
 	}
-public void addToList(Player player_) {
-	add(player_);
-}
 
 
 }
