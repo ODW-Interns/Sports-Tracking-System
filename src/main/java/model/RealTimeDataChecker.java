@@ -14,7 +14,6 @@ public class RealTimeDataChecker {
 	public static void refreshDataLists(int numInvalid, GamesList upcoming_, GamesList past_) throws ParseException {
 		Date current = new Date();
 		Date dateToCheck;
-		
 		/*
 		 * Following variables are used to generate random scores
 		 * and attendance for a temporary solution to test if the data
@@ -74,6 +73,8 @@ public class RealTimeDataChecker {
 		Date formattedDate = parseDateAndFormat(upcomingList_.get(0).getDate(), upcomingList_.get(0).getTime());
 		Date current = new Date();
 		int gamesInvalid = 0;
+		formattedDate = parseDateAndFormat(upcomingList_.get(gamesInvalid).getDate(), upcomingList_.get(gamesInvalid).getTime());
+
 		while(current.after(formattedDate)) {
 			gamesInvalid++;
 			formattedDate = parseDateAndFormat(upcomingList_.get(gamesInvalid).getDate(), upcomingList_.get(gamesInvalid).getTime());
@@ -111,30 +112,29 @@ public class RealTimeDataChecker {
 	public static String convertMonthStringtoNum(String month) {
 		
 		month = month.substring(0, 3);
-
-		if(month.equals("Jan"))
+		if(month.toUpperCase().equals("JAN"))
 			return "1";
-		else if(month.equals("Feb"))
+		else if(month.toUpperCase().equals("FEB"))
 			return "2";
-		else if(month.equals("Mar"))
+		else if(month.toUpperCase().equals("MAR"))
 			return "3";
-		else if(month.equals("Apr"))
+		else if(month.toUpperCase().equals("APR"))
 			return "4";
-		else if(month.equals("May"))
+		else if(month.toUpperCase().equals("MAY"))
 			return "5";
-		else if(month.equals("Jun"))
+		else if(month.toUpperCase().equals("JUN"))
 			return "6";
-		else if(month.equals("Jul"))
+		else if(month.toUpperCase().equals("JUL"))
 			return "7";
-		else if(month.equals("Aug"))
+		else if(month.toUpperCase().equals("AUG"))
 			return "8";
-		else if(month.equals("Sep"))
+		else if(month.toUpperCase().equals("SEP"))
 			return "9";
-		else if(month.equals("Oct"))
+		else if(month.toUpperCase().equals("OCT"))
 			return "10";
-		else if(month.equals("Nov"))
+		else if(month.toUpperCase().equals("NOV"))
 			return "11";
-		else if(month.equals("Dec"))
+		else if(month.toUpperCase().equals("DEC"))
 			return "12";
 		else 
 			return month;
