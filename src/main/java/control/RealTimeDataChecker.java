@@ -8,7 +8,6 @@ import java.util.StringTokenizer;
 
 import model.Game;
 import model.GamesList;
-import model.Team;
 
 //class to handle and check data in real time
 public class RealTimeDataChecker {
@@ -75,7 +74,6 @@ public class RealTimeDataChecker {
 	public static int thereAreInvalidUpcomingGames(GamesList upcomingList_) throws ParseException {
 		
 		Date current = new Date();
-		Date formattedDate;
 		int gamesInvalid = 0;
 		
 		Game game = new Game();
