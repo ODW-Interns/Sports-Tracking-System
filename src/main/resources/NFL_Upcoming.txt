@@ -1,0 +1,14 @@
+Sep 9 2018|10:00|Pittsburgh Steelers|Cleveland Browns|
+Sep 9 2018|10:00|Cincinnati Bengals|Indianapolis Colts|
+Sep 9 2018|10:00|Tennessee Titans|Miami Dolphins|
+Sep 9 2018|10:30|SanFrancisco 49ers|Minnesota Vikings|
+Sep 9 2018|11:00|Houston Texans|NewEngland Patriots|
+Sep 16 2018|1:30|Tampa Buccaneers|Orleans Saints|
+Sep 16 2018|1:00|Minnesota Timberwolves|Memphis Grizzlies|
+Sep 16 2018|1:00|Buffalo Bills|Baltimore Ravens|
+Sep 16 2018|1:00|Kansas City Chiefs|LA Chargers|
+Sep 16 2018|2:00|Seattle Seahawks|Denver Broncos|
+Sep 16 2018|2:00|Washington Redskins|Arizona Cardinals|
+Sep 16 2018|2:00|Dallas Cowboys|Carolina Panthers|
+Sep 16 2018|2:30|Chicago Bears|Detroit Lions|
+
