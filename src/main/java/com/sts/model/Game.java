@@ -2,6 +2,7 @@ package com.sts.model;
 
 import java.time.Duration;
 import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
 
 //
 public class Game implements Comparable<Game> {
@@ -161,7 +162,20 @@ public class Game implements Comparable<Game> {
      */
     @Override
     public String toString() {
-        return "Game [date=" + date + ", homeTeam=" + homeTeam + ", awayTeam=" + awayTeam + "]";
+        StringBuilder str = new StringBuilder("Game [");
+        str.append("date=");
+        if ( getDate()!=null )
+        {
+            str.append(DateTimeFormatter.ofPattern("yyyy-MM-dd").format(getDate()));
+        }
+        else
+        {
+            str.append("UNK");
+        }
+        
+        str.append(", homeTeam=").append(getHomeTeam());
+        str.append(", awayTeam=").append(getAwayTeam());
+        return str.toString();
     }
 
     /***

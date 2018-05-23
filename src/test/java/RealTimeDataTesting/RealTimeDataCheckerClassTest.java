@@ -12,6 +12,7 @@ import org.junit.Test;
 import com.sts.control.RealTimeDataChecker;
 import com.sts.model.GamesList;
 
+@Ignore
 public class RealTimeDataCheckerClassTest {
 
 	private static GamesList upComingGamesListTest = new GamesList();

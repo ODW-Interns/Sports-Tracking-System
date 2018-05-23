@@ -9,6 +9,7 @@ import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 import java.util.StringTokenizer;
 import java.util.concurrent.ConcurrentHashMap;
@@ -17,7 +18,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.sts.model.Game;
-import com.sts.model.GamesList;
 import com.sts.model.Team;
 import com.sts.model.exception.DuplicateTeamException;
 
@@ -49,7 +49,7 @@ public class GamesFileReader extends AbstractFileReader<Game> {
      */
     private ZonedDateTime parseDate(String str_) {
         try {
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MMM-dd@kk:mm");
+            DateTimeFormatter formatter =DateTimeFormatter.ISO_DATE_TIME;
             return ZonedDateTime.parse(str_, formatter);
         }
         catch (DateTimeParseException exc) {
@@ -85,6 +85,7 @@ public class GamesFileReader extends AbstractFileReader<Game> {
         Team lclTeam = _teamMaps.get(teamStr_);
         if (lclTeam == null) {
             lclTeam = new Team();
+            lclTeam.setTeamName(teamStr_);
             _teamMaps.put(teamStr_, lclTeam);
             if (_logger.isInfoEnabled())
                 _logger.info("New team identified:{}. adding to mapping Team:{}", teamStr_, lclTeam);
@@ -171,6 +172,7 @@ public class GamesFileReader extends AbstractFileReader<Game> {
                 //
                 if (game.getDate().isAfter(ZonedDateTime.now())) {
                     // this is a game in the future, do not process any more data
+                    addGame(game, listOfGames_);
                     continue;
                 }
 
@@ -201,17 +203,32 @@ public class GamesFileReader extends AbstractFileReader<Game> {
                 }
 
 
-                //
-                //Add game object to the list of games provided
-                //
-                ((GamesList)listOfGames_).add(game);
-                if (_logger.isTraceEnabled())
-                    _logger.trace("Adding new game to past list: {}", game.toString());
+                addGame(game, listOfGames_);
             }
         }
         catch (Exception e_) {
             e_.printStackTrace();
         }
-
+    }
+    
+    
+    
+    /**
+     * 
+     */
+    private void addGame(Game game_, List<Game> list_)
+    {
+        if (!game_.isValidGame())
+        {
+            _logger.error("Refusing to add invalid game: {}", game_);
+            return;
+        }
+        
+        //
+        //Add game object to the list of games provided
+        //
+        list_.add(game_);
+        if (_logger.isTraceEnabled())
+            _logger.trace("Adding new game to past list: {}", game_.toString());
     }
 }
