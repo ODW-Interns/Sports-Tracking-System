@@ -2,9 +2,12 @@ package control;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.ZonedDateTime;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.StringTokenizer;
+
+import org.slf4j.LoggerFactory;
 
 import model.Game;
 import model.GamesList;
@@ -12,7 +15,9 @@ import model.GamesList;
 //class to handle and check data in real time
 public class RealTimeDataChecker {
 	
-	//method to refresh data to see any updates from games lists
+	/**
+	 * KAGR: this needs fixing
+	 */
 	public static void refreshDataLists(int numInvalid, GamesList upcoming_, GamesList past_) throws ParseException {
 		Date current = new Date();
 		Date dateToCheck;
@@ -20,7 +25,7 @@ public class RealTimeDataChecker {
 		 * Following variables are used to generate random scores
 		 * and attendance for a temporary solution to test if the data
 		 * checker works correctly
-		 */
+		 *
 		int randomHomeScore;
 		int randomAwayScore;
 		int randomAttendance;
@@ -40,16 +45,16 @@ public class RealTimeDataChecker {
 				upcoming_.get(0).setaTeamScore(randomAwayScore);
 				upcoming_.get(0).sethTeamScore(randomHomeScore);
 				upcoming_.get(0).setAttendence(randomAttendance);
-				/*
+				*
 				 * If there exists a game in the upcoming games list whose date is 
 				 * has already been passed, then these lists need to be updated.
 				 * 1)Delete the game from the upcoming list
 				 * 2)Append game to end of the past games list
-				 */
+				 *
 				past_.add(upcoming_.get(0));
 				upcoming_.remove(upcoming_.get(0));
 			}
-		}
+		}*/
 	}
 	
 	//method to generate a random score to place into game
@@ -70,27 +75,28 @@ public class RealTimeDataChecker {
 	 * have already passed. If there are any, return the number of upcoming
 	 * games that have already passed.
 	 */
-	
-	public static int thereAreInvalidUpcomingGames(GamesList upcomingList_) throws ParseException {
-		
-		Date current = new Date();
-		int gamesInvalid = 0;
-		
-		Game game = new Game();
-		Iterator<Game> gameIterator = upcomingList_.iterator();
-		while(gameIterator.hasNext()) {
-			game = gameIterator.next();
-			
-			if(current.after(RealTimeDataChecker.parseDateAndFormat(game.getDate(), game.getTime()))){
-				gamesInvalid++;
-			}
-			else 
-				break;
-		}
-		
-		return gamesInvalid;
-		
-	}
+    public static int thereAreInvalidUpcomingGames(GamesList upcomingList_) throws ParseException {
+
+        ZonedDateTime now = ZonedDateTime.now();
+        int gamesInvalid = 0;
+
+        Game game = new Game();
+        Iterator<Game> gameIterator = upcomingList_.iterator();
+        while (gameIterator.hasNext()) {
+            game = gameIterator.next();
+            if (now.isAfter(game.getDate())) {
+                gamesInvalid++;
+                LoggerFactory.getLogger(RealTimeDataChecker.class.getName()).warn("identified old game: {}", game);
+            }
+        }
+        
+        
+        if ( gamesInvalid > 0 )
+            LoggerFactory.getLogger(RealTimeDataChecker.class.getName()).warn("Total number of games passed:{}", gamesInvalid);
+        
+        // done
+        return gamesInvalid;
+    }
 	
 	/*
 	 * method to take the date string and parse/format into a Java Date object
@@ -118,6 +124,10 @@ public class RealTimeDataChecker {
 	
 	//method to convert word month to the number of the month
 	public static String convertMonthStringtoNum(String month) {
+		if ( month == null ) 
+		    throw new RuntimeException("Bad params");
+		if ( month.length()<3 ) 
+		    throw new RuntimeException("Bad params size");
 		
 		month = month.substring(0, 3);
 		if(month.toUpperCase().equals("JAN"))
