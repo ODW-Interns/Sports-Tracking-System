@@ -161,8 +161,7 @@ public class Game implements Comparable<Game> {
      */
     @Override
     public String toString() {
-        StringBuilder str = new StringBuilder();
-        return str.toString(); 
+        return "Game [date=" + date + ", homeTeam=" + homeTeam + ", awayTeam=" + awayTeam + "]";
     }
 
     /***
