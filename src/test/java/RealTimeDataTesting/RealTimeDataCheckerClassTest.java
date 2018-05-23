@@ -1,16 +1,16 @@
 package RealTimeDataTesting;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Test;
 
-import model.GamesList;
-import model.Game;
 import control.RealTimeDataChecker;
+import model.GamesList;
 
 public class RealTimeDataCheckerClassTest {
 
@@ -18,13 +18,14 @@ public class RealTimeDataCheckerClassTest {
    	private static GamesList pastGamesListTest = new GamesList();
 	
 	@BeforeClass
+	@Ignore
 	public static void setLists(){
-		Game game1 = new Game("May 2 2018" , "12:00", "Washington Wizards", 89, "Cleveland Cavaliers", 97, 12387);
+		/*Game game1 = new Game("May 2 2018" , "12:00", "Washington Wizards", 89, "Cleveland Cavaliers", 97, 12387);
 		Game game2 = new Game("May 3 2018" , "8:00", "Houston Rockets", 80, "Golden State Warriors", 141, 13890);
 		Game game3 = new Game("May 23 2018" , "3:00", "Boston Celtics", 102, "Toronto Raptors", 91, 13789);
 		upComingGamesListTest.add(game1);
 		upComingGamesListTest.add(game2);
-		upComingGamesListTest.add(game3);
+		upComingGamesListTest.add(game3);*/
 	}
 	
 	@Test
