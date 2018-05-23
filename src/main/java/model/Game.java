@@ -1,106 +1,101 @@
 package model;
 
+import java.time.Duration;
+import java.time.ZonedDateTime;
+
 //
 public class Game implements Comparable<Game> {
 
-    private String date;
-    private String time;
-    private String homeTeam;
-    private String awayTeam;
+    private ZonedDateTime date;
+    private Duration duration;
+    private Team homeTeam;
+    private Team awayTeam;
     private int homeTeamScore;
     private int awayTeamScore;
     private int attendence;
 
     private PlayersList listOfAwayPlayers;
     private PlayersList listofHomePlayers;
+
+    
+    public Game()
+    {
+    }
     
     /**
-     *Default Constructor
+     *
      */
-    public Game() {
-        this("general", "general", "general", 0, "general", 0, 0);
-    }
-
-    /**
-     *Constructor with given arguments
-     */
-    public Game(String date_, String time_, String aTeam_, int aTeamScore, String hTeam_, int hTeamScore_, int attendence_) {
-        setDate(date_);
-        setTime(time_);
-        sethTeam(hTeam_);
-        setaTeam(aTeam_);
-        setaTeamScore(aTeamScore);
-        sethTeamScore(hTeamScore_);
-        setAttendence(attendence_);
+    public Game(ZonedDateTime date_, Duration duration_, Team home_, Team away_)
+    {
+        setDate(date_, duration_);
+        setHomeTeam(home_);
+        setAwayTeam(away_);
     }
 
     /**
      * method to return the String date
      */
-    public String getDate() {
+    public ZonedDateTime getDate() {
         return date;
+    }
+    
+    
+    /**
+     * sets the date with a time zone, and defaults the game duration to 4 hours
+     */
+    public void setDate(ZonedDateTime date_)
+    {
+        setDate(date_, Duration.ofHours(4));
     }
 
     /**
      * method to set the date of the game
      */
-    public void setDate(String dat) {
-        date = dat;
+    public void setDate(ZonedDateTime date_, Duration duration_) {
+        date = date_;
+        duration = duration_;
     }
 
-    /**
-     * method to return the String time
-     */
-    public String getTime() {
-        return time;
-    }
-
-    /**
-     * method to set the time of the game
-     */
-    public void setTime(String tim) {
-        time = tim;
-    }
 
     /**
      * method to return the home team
      */
-    public String gethTeam() {
+    public Team getHomeTeam() {
         return homeTeam;
     }
 
     /**
      * method to set the home team
      */
-    public void sethTeam(String hT) {
-        homeTeam = hT;
+    public void setHomeTeam(Team ht_) {
+        homeTeam = ht_;
     }
 
     /**
      * method to return the away team
      */
-    public String getaTeam() {
+    public Team getAwayTeam() {
         return awayTeam;
     }
 
     /**
      * method to set the away team
      */
-    public void setaTeam(String aT) {
-        awayTeam = aT;
+    public void setAwayTeam(Team at_) {
+        awayTeam = at_;
     }
 
     /**
      * method to return home team's score
      */
-    public int gethTeamScore() {
+    public int getHomeTeamScore() {
         return homeTeamScore;
     }
 
     /**
      * method to set home team's score
      */
-    public void sethTeamScore(int hTScore) {
+    public void setHomeTeamScore(int hTScore) {
         homeTeamScore = hTScore;
     }
 
@@ -114,7 +109,7 @@ public class Game implements Comparable<Game> {
     /**
      * method to set away team's score
      */
-    public void setaTeamScore(int aTScore) {
+    public void setAwayTeamScore(int aTScore) {
         awayTeamScore = aTScore;
     }
 
@@ -146,23 +141,57 @@ public class Game implements Comparable<Game> {
     public PlayersList getHomeTeamRoster() {
     	return listofHomePlayers;
     }
+    
+    /**
+     * 
+     */
+    public final Duration getDuration() {
+        return duration;
+    }
+
+    /**
+     * 
+     */
+    public final void setDuration(Duration duration_) {
+        duration = duration_;
+    }
 
     /** 
      * (non-Javadoc)
      */
     @Override
     public String toString() {
-        return "Game [date=" + date + ", time=" + time + ", homeTeam=" + homeTeam + ", awayTeam=" + awayTeam + ", homeTeamScore=" + homeTeamScore + ", awayTeamScore=" + awayTeamScore + ", attendence=" + attendence + "]";
+        StringBuilder str = new StringBuilder();
+        return str.toString(); 
     }
 
+    /***
+     * TODO: this is flat out wrong... you need to compare t
+     * (non-Javadoc)
+     */
     @Override
     public int compareTo(Game o_) {
-    	if(this.attendence > o_.attendence) {
+    	if(attendence > o_.attendence) {
     		return 1;
     	}
     	else
     		return 0;
-        	
     }
 
-}
+
+
+
+
+    /**
+     * indicates if the game has all fields initialized 
+     */
+    public boolean isValidGame() {
+        return ((this.getDate() != null) &&
+                (this.getDuration() != null) &&
+                (this.getHomeTeam() != null) &&
+                (this.getAwayTeam() != null) &&
+                (!this.getAwayTeam().equals(getHomeTeam()))
+
+        );
+    }
+}   
