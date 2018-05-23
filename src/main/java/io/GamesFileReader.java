@@ -16,11 +16,10 @@ import java.util.concurrent.ConcurrentHashMap;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import model.exception.DuplicateTeamException;
-
 import model.Game;
 import model.GamesList;
 import model.Team;
+import model.exception.DuplicateTeamException;
 
 // class to read from file with past/finished games
 public class GamesFileReader extends AbstractFileReader<Game> {
