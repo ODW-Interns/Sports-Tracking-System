@@ -9,10 +9,10 @@ import java.util.ArrayList;
 /*
  * Abstract class used by classes that will read from files with games listed
  * */
-public abstract class AbstractFileReader {
+public abstract class AbstractFileReader<T> {
 
 	//method to check that the input file and Games List structure exists
-    public void readData(InputStream is_, ArrayList list_) throws FileNotFoundException, RuntimeException {
+    public void readData(InputStream is_, ArrayList<T> list_) throws FileNotFoundException, RuntimeException {
         if (is_ == null)
             throw new FileNotFoundException();
 
@@ -29,5 +29,5 @@ public abstract class AbstractFileReader {
     }
 
     //Abstract method for classes to implement to read and add to GamesList
-    abstract void readFromFileForLists(Reader is_, ArrayList games_);
+    abstract void readFromFileForLists(Reader is_, ArrayList<T> games_);
 }

@@ -11,7 +11,7 @@ public class StoreDataFromInputFile {
 	//method to store data from past games file and place into a list of games and return list
 	public static GamesList storeDataIntoPastGameList(String inputfile_) throws RuntimeException, IOException {
 		GamesList listofGames = new GamesList();
-		PastGamesFileReader in = new PastGamesFileReader();
+		GamesFileReader in = new GamesFileReader();
 		InputStream is = StoreDataFromInputFile.class.getResourceAsStream(inputfile_);
 		in.readData(is, listofGames);
 		is.close();
@@ -22,7 +22,7 @@ public class StoreDataFromInputFile {
 	//method to store data from upcoming games file and place into a list of games and return list
 	public static GamesList storeDataIntoUpcomingGameList(String inputfile_) throws RuntimeException, IOException {
 		GamesList listofGames = new GamesList();
-		UpcomingFileReader in = new UpcomingFileReader();
+		GamesFileReader in = new GamesFileReader();
 		InputStream is = StoreDataFromInputFile.class.getResourceAsStream(inputfile_);
 		in.readData(is, listofGames);
 		is.close();

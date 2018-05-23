@@ -16,7 +16,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.sts.model.exception.DuplicateTeamException;
+import model.exception.DuplicateTeamException;
 
 import model.Game;
 import model.GamesList;
