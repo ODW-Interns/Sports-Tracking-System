@@ -49,11 +49,11 @@ public class GamesFileReader extends AbstractFileReader<Game> {
      */
     private ZonedDateTime parseDate(String str_) {
         try {
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MMM-ddTkk:mm");
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MMM-dd@kk:mm");
             return ZonedDateTime.parse(str_, formatter);
         }
         catch (DateTimeParseException exc) {
-            _logger.error("%s is not parsable!%n", str_);
+            _logger.error("{} is not parsable!", str_);
             throw exc;
         }
     }
