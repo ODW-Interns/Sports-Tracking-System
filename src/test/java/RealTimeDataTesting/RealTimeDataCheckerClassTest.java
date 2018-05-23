@@ -9,8 +9,8 @@ import org.junit.BeforeClass;
 import org.junit.Ignore;
 import org.junit.Test;
 
-import control.RealTimeDataChecker;
-import model.GamesList;
+import com.sts.control.RealTimeDataChecker;
+import com.sts.model.GamesList;
 
 public class RealTimeDataCheckerClassTest {
 

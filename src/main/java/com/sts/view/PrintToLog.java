@@ -1,14 +1,14 @@
-package view;
+package com.sts.view;
 
 import java.util.Iterator;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import model.GamesList;
-import model.Player;
-import model.Team;
-import model.TeamsList;
+import com.sts.model.GamesList;
+import com.sts.model.Player;
+import com.sts.model.Team;
+import com.sts.model.TeamsList;
 
 //class used to log to a file
 public class PrintToLog {

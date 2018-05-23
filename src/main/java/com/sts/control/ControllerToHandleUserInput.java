@@ -1,9 +1,9 @@
-package control;
+package com.sts.control;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-import view.ConsolePrinter;
+import com.sts.view.ConsolePrinter;
 
 /*Class to handle and validate
  * all user input from the console

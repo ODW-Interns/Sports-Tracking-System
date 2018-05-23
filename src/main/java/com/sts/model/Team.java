@@ -1,4 +1,4 @@
-package model;
+package com.sts.model;
 
 public class Team {
 

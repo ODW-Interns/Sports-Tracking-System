@@ -1,12 +1,12 @@
-package io;
+package com.sts.io;
 
 import java.io.BufferedReader;
 import java.io.Reader;
 import java.util.ArrayList;
 import java.util.StringTokenizer;
 
-import model.Team;
-import model.TeamsList;
+import com.sts.model.Team;
+import com.sts.model.TeamsList;
 
 
 public class TeamListFileReader extends AbstractFileReader {

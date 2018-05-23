@@ -1,13 +1,13 @@
-package control;
-
-import io.StoreDataFromInputFile;
-import model.GamesList;
-import model.TeamsList;
-import view.ConsolePrinter;
-import view.PrintToLog;
+package com.sts.control;
 
 import java.io.IOException;
 import java.text.ParseException;
+
+import com.sts.io.StoreDataFromInputFile;
+import com.sts.model.GamesList;
+import com.sts.model.TeamsList;
+import com.sts.view.ConsolePrinter;
+import com.sts.view.PrintToLog;
 
 public class SportsSystem {
 

@@ -3,7 +3,7 @@
  * DSCRPT: 
  ****************************************************************************/
 
-package model.exception;
+package com.sts.model.exception;
 
 import java.text.MessageFormat;
 

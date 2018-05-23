@@ -1,4 +1,4 @@
-package view;
+package com.sts.view;
 
 //class:used to print out to console
 public class ConsolePrinter {

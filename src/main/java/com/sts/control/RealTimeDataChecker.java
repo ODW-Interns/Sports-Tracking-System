@@ -1,4 +1,4 @@
-package control;
+package com.sts.control;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -9,8 +9,8 @@ import java.util.StringTokenizer;
 
 import org.slf4j.LoggerFactory;
 
-import model.Game;
-import model.GamesList;
+import com.sts.model.Game;
+import com.sts.model.GamesList;
 
 //class to handle and check data in real time
 public class RealTimeDataChecker {

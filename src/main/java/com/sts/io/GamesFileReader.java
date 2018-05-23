@@ -1,4 +1,4 @@
-package io;
+package com.sts.io;
 
 
 import java.io.BufferedReader;
@@ -16,10 +16,10 @@ import java.util.concurrent.ConcurrentHashMap;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import model.Game;
-import model.GamesList;
-import model.Team;
-import model.exception.DuplicateTeamException;
+import com.sts.model.Game;
+import com.sts.model.GamesList;
+import com.sts.model.Team;
+import com.sts.model.exception.DuplicateTeamException;
 
 // class to read from file with past/finished games
 public class GamesFileReader extends AbstractFileReader<Game> {

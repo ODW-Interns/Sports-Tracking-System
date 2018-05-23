@@ -3,11 +3,11 @@
  * DSCRPT:
  ****************************************************************************/
 
-package model.exception;
+package com.sts.model.exception;
 
 import java.text.MessageFormat;
 
-import model.Team;
+import com.sts.model.Team;
 
 public class DuplicateTeamException extends Exception {
 

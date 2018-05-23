@@ -1,4 +1,4 @@
-package io;
+package com.sts.io;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -7,8 +7,8 @@ import java.io.InputStreamReader;
 import java.io.Reader;
 import java.util.StringTokenizer;
 
-import model.Player;
-import model.TeamsList;
+import com.sts.model.Player;
+import com.sts.model.TeamsList;
 
 public class PlayerListFileReader {
 
