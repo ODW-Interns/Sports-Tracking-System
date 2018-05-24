@@ -1,9 +1,13 @@
 package com.sts.control;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.text.ParseException;
+import java.util.ArrayList;
 
+import com.sts.io.GamesFileReader;
 import com.sts.io.StoreDataFromInputFile;
+import com.sts.model.Game;
 import com.sts.model.GamesList;
 import com.sts.model.TeamsList;
 import com.sts.view.ConsolePrinter;
@@ -15,6 +19,7 @@ public class SportsSystem {
 		startSystem();
 	}
 	
+
 	public static void startSystem() throws RuntimeException, IOException, ParseException {
 		int sportChosen = -1;	
 		int request = -1;
@@ -130,6 +135,7 @@ public class SportsSystem {
 			
 			}
 		}
+
 	}
 	
 	
