@@ -111,7 +111,7 @@ public class SportsSystem {
 							}
 							PrintToLog.logGamesList(listofPastNBAGames);
 							break;
-					case 2: // 1. Refresh both upcoming games and finished gams list
+					case 2: // 1. Refresh both upcoming games and finished games list
 							// 2. Print to Log the list of upcoming games
 							numOfInvalidUpcomingGames = RealTimeDataChecker.thereAreInvalidUpcomingGames(listofUpcomingNBAGames);
 							if(numOfInvalidUpcomingGames > 0) {
