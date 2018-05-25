@@ -4,15 +4,16 @@ import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
+import java.util.AbstractMap;
 import java.util.ArrayList;
 
 /*
  * Abstract class used by classes that will read from files with games listed
  * */
-public abstract class AbstractFileReader<T> {
+public abstract class AbstractFileReader<K,V> {
 
 	//method to check that the input file and Games List structure exists
-    public void readData(InputStream is_, ArrayList<T> list_) throws FileNotFoundException, RuntimeException {
+    public void readData(InputStream is_, AbstractMap<K,V> list_) throws FileNotFoundException, RuntimeException {
         if (is_ == null)
             throw new FileNotFoundException();
 
@@ -29,5 +30,5 @@ public abstract class AbstractFileReader<T> {
     }
 
     //Abstract method for classes to implement to read and add to GamesList
-    abstract void readFromFileForLists(Reader is_, ArrayList<T> games_);
+    abstract void readFromFileForLists(Reader is_, AbstractMap<K,V> games_);
 }

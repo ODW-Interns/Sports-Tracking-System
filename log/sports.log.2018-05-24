@@ -1,0 +1,144 @@
+24-05-2018 11:25:46 INFO  GamesFileReader:91 - New team identified:Mets. adding to mapping Team:Team [Name = Mets Location = general]
+24-05-2018 11:25:46 TRACE GamesFileReader:96 - found team for key: Mets
+24-05-2018 11:25:46 INFO  GamesFileReader:91 - New team identified:Yankees. adding to mapping Team:Team [Name = Yankees Location = general]
+24-05-2018 11:25:46 TRACE GamesFileReader:96 - found team for key: Yankees
+24-05-2018 11:25:46 TRACE GamesFileReader:232 - Adding new game to past list: Game [date=2018-05-22, homeTeam=Team [Name = Yankees Location = general], awayTeam=Team [Name = Mets Location = general]
+24-05-2018 11:25:46 TRACE GamesFileReader:96 - found team for key: Mets
+24-05-2018 11:25:46 TRACE GamesFileReader:96 - found team for key: Yankees
+24-05-2018 11:25:46 ERROR GamesFileReader:188 - setaTeamScore:java.util.NoSuchElementException
+24-05-2018 11:25:46 ERROR GamesFileReader:195 - sethTeamScore:java.util.NoSuchElementException
+24-05-2018 11:25:46 ERROR GamesFileReader:202 - setAttendance:java.util.NoSuchElementException
+24-05-2018 11:25:46 TRACE GamesFileReader:232 - Adding new game to past list: Game [date=2018-05-24, homeTeam=Team [Name = Yankees Location = general], awayTeam=Team [Name = Mets Location = general]
+24-05-2018 11:25:46 TRACE GamesFileReader:96 - found team for key: Mets
+24-05-2018 11:25:46 INFO  GamesFileReader:91 - New team identified:KC Royals. adding to mapping Team:Team [Name = KC Royals Location = general]
+24-05-2018 11:25:46 TRACE GamesFileReader:96 - found team for key: KC Royals
+24-05-2018 11:25:46 ERROR GamesFileReader:188 - setaTeamScore:java.util.NoSuchElementException
+24-05-2018 11:25:46 ERROR GamesFileReader:195 - sethTeamScore:java.util.NoSuchElementException
+24-05-2018 11:25:46 ERROR GamesFileReader:202 - setAttendance:java.util.NoSuchElementException
+24-05-2018 11:25:46 TRACE GamesFileReader:232 - Adding new game to past list: Game [date=2018-05-24, homeTeam=Team [Name = KC Royals Location = general], awayTeam=Team [Name = Mets Location = general]
+24-05-2018 11:34:20 INFO  GamesFileReader:91 - New team identified:Mets. adding to mapping Team:Team [Name = Mets Location = general]
+24-05-2018 11:34:20 TRACE GamesFileReader:96 - found team for key: Mets
+24-05-2018 11:34:20 INFO  GamesFileReader:91 - New team identified:Yankees. adding to mapping Team:Team [Name = Yankees Location = general]
+24-05-2018 11:34:20 TRACE GamesFileReader:96 - found team for key: Yankees
+24-05-2018 11:34:20 TRACE GamesFileReader:232 - Adding new game to past list: Game [date=2018-05-22, homeTeam=Team [Name = Yankees Location = general], awayTeam=Team [Name = Mets Location = general]
+24-05-2018 11:34:20 TRACE GamesFileReader:96 - found team for key: Mets
+24-05-2018 11:34:20 TRACE GamesFileReader:96 - found team for key: Yankees
+24-05-2018 11:34:20 ERROR GamesFileReader:188 - setaTeamScore:java.util.NoSuchElementException
+24-05-2018 11:34:20 ERROR GamesFileReader:195 - sethTeamScore:java.util.NoSuchElementException
+24-05-2018 11:34:20 ERROR GamesFileReader:202 - setAttendance:java.util.NoSuchElementException
+24-05-2018 11:34:20 TRACE GamesFileReader:232 - Adding new game to past list: Game [date=2018-05-24, homeTeam=Team [Name = Yankees Location = general], awayTeam=Team [Name = Mets Location = general]
+24-05-2018 11:34:20 TRACE GamesFileReader:96 - found team for key: Mets
+24-05-2018 11:34:20 INFO  GamesFileReader:91 - New team identified:KC Royals. adding to mapping Team:Team [Name = KC Royals Location = general]
+24-05-2018 11:34:20 TRACE GamesFileReader:96 - found team for key: KC Royals
+24-05-2018 11:34:20 ERROR GamesFileReader:188 - setaTeamScore:java.util.NoSuchElementException
+24-05-2018 11:34:20 ERROR GamesFileReader:195 - sethTeamScore:java.util.NoSuchElementException
+24-05-2018 11:34:20 ERROR GamesFileReader:202 - setAttendance:java.util.NoSuchElementException
+24-05-2018 11:34:20 TRACE GamesFileReader:232 - Adding new game to past list: Game [date=2018-05-24, homeTeam=Team [Name = KC Royals Location = general], awayTeam=Team [Name = Mets Location = general]
+24-05-2018 11:35:45 INFO  GamesFileReader:91 - New team identified:Mets. adding to mapping Team:Team [Name = Mets Location = general]
+24-05-2018 11:35:45 TRACE GamesFileReader:96 - found team for key: Mets
+24-05-2018 11:35:45 INFO  GamesFileReader:91 - New team identified:Yankees. adding to mapping Team:Team [Name = Yankees Location = general]
+24-05-2018 11:35:45 TRACE GamesFileReader:96 - found team for key: Yankees
+24-05-2018 11:35:45 TRACE GamesFileReader:232 - Adding new game to past list: Game [date=2018-05-22, homeTeam=Team [Name = Yankees Location = general], awayTeam=Team [Name = Mets Location = general]
+24-05-2018 11:35:45 TRACE GamesFileReader:96 - found team for key: Mets
+24-05-2018 11:35:45 TRACE GamesFileReader:96 - found team for key: Yankees
+24-05-2018 11:35:45 ERROR GamesFileReader:188 - setaTeamScore:java.util.NoSuchElementException
+24-05-2018 11:35:45 ERROR GamesFileReader:195 - sethTeamScore:java.util.NoSuchElementException
+24-05-2018 11:35:45 ERROR GamesFileReader:202 - setAttendance:java.util.NoSuchElementException
+24-05-2018 11:35:45 TRACE GamesFileReader:232 - Adding new game to past list: Game [date=2018-05-24, homeTeam=Team [Name = Yankees Location = general], awayTeam=Team [Name = Mets Location = general]
+24-05-2018 11:35:45 TRACE GamesFileReader:96 - found team for key: Mets
+24-05-2018 11:35:45 INFO  GamesFileReader:91 - New team identified:KC Royals. adding to mapping Team:Team [Name = KC Royals Location = general]
+24-05-2018 11:35:45 TRACE GamesFileReader:96 - found team for key: KC Royals
+24-05-2018 11:35:45 ERROR GamesFileReader:188 - setaTeamScore:java.util.NoSuchElementException
+24-05-2018 11:35:45 ERROR GamesFileReader:195 - sethTeamScore:java.util.NoSuchElementException
+24-05-2018 11:35:45 ERROR GamesFileReader:202 - setAttendance:java.util.NoSuchElementException
+24-05-2018 11:35:45 TRACE GamesFileReader:232 - Adding new game to past list: Game [date=2018-05-24, homeTeam=Team [Name = KC Royals Location = general], awayTeam=Team [Name = Mets Location = general]
+24-05-2018 11:40:45 INFO  GamesFileReader:91 - New team identified:Mets. adding to mapping Team:Team [Name = Mets Location = general]
+24-05-2018 11:40:45 TRACE GamesFileReader:96 - found team for key: Mets
+24-05-2018 11:40:45 INFO  GamesFileReader:91 - New team identified:Yankees. adding to mapping Team:Team [Name = Yankees Location = general]
+24-05-2018 11:40:45 TRACE GamesFileReader:96 - found team for key: Yankees
+24-05-2018 11:40:45 TRACE GamesFileReader:232 - Adding new game to past list: Game [date=2018-05-22, homeTeam=Team [Name = Yankees Location = general], awayTeam=Team [Name = Mets Location = general]
+24-05-2018 11:40:45 TRACE GamesFileReader:96 - found team for key: Mets
+24-05-2018 11:40:45 TRACE GamesFileReader:96 - found team for key: Yankees
+24-05-2018 11:40:45 ERROR GamesFileReader:188 - setaTeamScore:java.util.NoSuchElementException
+24-05-2018 11:40:45 ERROR GamesFileReader:195 - sethTeamScore:java.util.NoSuchElementException
+24-05-2018 11:40:45 ERROR GamesFileReader:202 - setAttendance:java.util.NoSuchElementException
+24-05-2018 11:40:45 TRACE GamesFileReader:232 - Adding new game to past list: Game [date=2018-05-24, homeTeam=Team [Name = Yankees Location = general], awayTeam=Team [Name = Mets Location = general]
+24-05-2018 11:40:45 TRACE GamesFileReader:96 - found team for key: Mets
+24-05-2018 11:40:45 INFO  GamesFileReader:91 - New team identified:KC Royals. adding to mapping Team:Team [Name = KC Royals Location = general]
+24-05-2018 11:40:45 TRACE GamesFileReader:96 - found team for key: KC Royals
+24-05-2018 11:40:45 ERROR GamesFileReader:188 - setaTeamScore:java.util.NoSuchElementException
+24-05-2018 11:40:45 ERROR GamesFileReader:195 - sethTeamScore:java.util.NoSuchElementException
+24-05-2018 11:40:45 ERROR GamesFileReader:202 - setAttendance:java.util.NoSuchElementException
+24-05-2018 11:40:45 TRACE GamesFileReader:232 - Adding new game to past list: Game [date=2018-05-24, homeTeam=Team [Name = KC Royals Location = general], awayTeam=Team [Name = Mets Location = general]
+24-05-2018 11:43:02 INFO  GamesFileReader:91 - New team identified:Mets. adding to mapping Team:Team [Name = Mets Location = general]
+24-05-2018 11:43:02 TRACE GamesFileReader:96 - found team for key: Mets
+24-05-2018 11:43:02 INFO  GamesFileReader:91 - New team identified:Yankees. adding to mapping Team:Team [Name = Yankees Location = general]
+24-05-2018 11:43:02 TRACE GamesFileReader:96 - found team for key: Yankees
+24-05-2018 11:43:02 TRACE GamesFileReader:232 - Adding new game to past list: Game [date=2018-05-22, homeTeam=Team [Name = Yankees Location = general], awayTeam=Team [Name = Mets Location = general]
+24-05-2018 11:43:02 TRACE GamesFileReader:96 - found team for key: Mets
+24-05-2018 11:43:02 TRACE GamesFileReader:96 - found team for key: Yankees
+24-05-2018 11:43:02 ERROR GamesFileReader:188 - setaTeamScore:java.util.NoSuchElementException
+24-05-2018 11:43:02 ERROR GamesFileReader:195 - sethTeamScore:java.util.NoSuchElementException
+24-05-2018 11:43:02 ERROR GamesFileReader:202 - setAttendance:java.util.NoSuchElementException
+24-05-2018 11:43:02 TRACE GamesFileReader:232 - Adding new game to past list: Game [date=2018-05-24, homeTeam=Team [Name = Yankees Location = general], awayTeam=Team [Name = Mets Location = general]
+24-05-2018 11:43:02 TRACE GamesFileReader:96 - found team for key: Mets
+24-05-2018 11:43:02 INFO  GamesFileReader:91 - New team identified:KC Royals. adding to mapping Team:Team [Name = KC Royals Location = general]
+24-05-2018 11:43:02 TRACE GamesFileReader:96 - found team for key: KC Royals
+24-05-2018 11:43:02 ERROR GamesFileReader:188 - setaTeamScore:java.util.NoSuchElementException
+24-05-2018 11:43:02 ERROR GamesFileReader:195 - sethTeamScore:java.util.NoSuchElementException
+24-05-2018 11:43:02 ERROR GamesFileReader:202 - setAttendance:java.util.NoSuchElementException
+24-05-2018 11:43:02 TRACE GamesFileReader:232 - Adding new game to past list: Game [date=2018-05-24, homeTeam=Team [Name = KC Royals Location = general], awayTeam=Team [Name = Mets Location = general]
+24-05-2018 11:43:44 INFO  GamesFileReader:91 - New team identified:Mets. adding to mapping Team:Team [Name = Mets Location = general]
+24-05-2018 11:43:44 TRACE GamesFileReader:96 - found team for key: Mets
+24-05-2018 11:43:44 INFO  GamesFileReader:91 - New team identified:Yankees. adding to mapping Team:Team [Name = Yankees Location = general]
+24-05-2018 11:43:44 TRACE GamesFileReader:96 - found team for key: Yankees
+24-05-2018 11:43:44 TRACE GamesFileReader:232 - Adding new game to past list: Game [date=2018-05-22, homeTeam=Team [Name = Yankees Location = general], awayTeam=Team [Name = Mets Location = general]
+24-05-2018 11:43:44 TRACE GamesFileReader:96 - found team for key: Mets
+24-05-2018 11:43:44 TRACE GamesFileReader:96 - found team for key: Yankees
+24-05-2018 11:43:44 ERROR GamesFileReader:188 - setaTeamScore:java.util.NoSuchElementException
+24-05-2018 11:43:44 ERROR GamesFileReader:195 - sethTeamScore:java.util.NoSuchElementException
+24-05-2018 11:43:44 ERROR GamesFileReader:202 - setAttendance:java.util.NoSuchElementException
+24-05-2018 11:43:44 TRACE GamesFileReader:232 - Adding new game to past list: Game [date=2018-05-24, homeTeam=Team [Name = Yankees Location = general], awayTeam=Team [Name = Mets Location = general]
+24-05-2018 11:43:44 TRACE GamesFileReader:96 - found team for key: Mets
+24-05-2018 11:43:44 INFO  GamesFileReader:91 - New team identified:KC Royals. adding to mapping Team:Team [Name = KC Royals Location = general]
+24-05-2018 11:43:44 TRACE GamesFileReader:96 - found team for key: KC Royals
+24-05-2018 11:43:44 ERROR GamesFileReader:188 - setaTeamScore:java.util.NoSuchElementException
+24-05-2018 11:43:44 ERROR GamesFileReader:195 - sethTeamScore:java.util.NoSuchElementException
+24-05-2018 11:43:44 ERROR GamesFileReader:202 - setAttendance:java.util.NoSuchElementException
+24-05-2018 11:43:44 TRACE GamesFileReader:232 - Adding new game to past list: Game [date=2018-05-24, homeTeam=Team [Name = KC Royals Location = general], awayTeam=Team [Name = Mets Location = general]
+24-05-2018 11:50:04 INFO  GamesFileReader:91 - New team identified:Mets. adding to mapping Team:Team [Name = Mets Location = general]
+24-05-2018 11:50:04 TRACE GamesFileReader:96 - found team for key: Mets
+24-05-2018 11:50:04 INFO  GamesFileReader:91 - New team identified:Yankees. adding to mapping Team:Team [Name = Yankees Location = general]
+24-05-2018 11:50:04 TRACE GamesFileReader:96 - found team for key: Yankees
+24-05-2018 11:50:04 TRACE GamesFileReader:232 - Adding new game to past list: Game [date=2018-05-22, homeTeam=Team [Name = Yankees Location = general], awayTeam=Team [Name = Mets Location = general]
+24-05-2018 11:50:04 TRACE GamesFileReader:96 - found team for key: Mets
+24-05-2018 11:50:04 TRACE GamesFileReader:96 - found team for key: Yankees
+24-05-2018 11:50:04 ERROR GamesFileReader:188 - setaTeamScore:java.util.NoSuchElementException
+24-05-2018 11:50:04 ERROR GamesFileReader:195 - sethTeamScore:java.util.NoSuchElementException
+24-05-2018 11:50:04 ERROR GamesFileReader:202 - setAttendance:java.util.NoSuchElementException
+24-05-2018 11:50:04 TRACE GamesFileReader:232 - Adding new game to past list: Game [date=2018-05-24, homeTeam=Team [Name = Yankees Location = general], awayTeam=Team [Name = Mets Location = general]
+24-05-2018 11:50:04 TRACE GamesFileReader:96 - found team for key: Mets
+24-05-2018 11:50:04 INFO  GamesFileReader:91 - New team identified:KC Royals. adding to mapping Team:Team [Name = KC Royals Location = general]
+24-05-2018 11:50:04 TRACE GamesFileReader:96 - found team for key: KC Royals
+24-05-2018 11:50:04 ERROR GamesFileReader:188 - setaTeamScore:java.util.NoSuchElementException
+24-05-2018 11:50:04 ERROR GamesFileReader:195 - sethTeamScore:java.util.NoSuchElementException
+24-05-2018 11:50:04 ERROR GamesFileReader:202 - setAttendance:java.util.NoSuchElementException
+24-05-2018 11:50:04 TRACE GamesFileReader:232 - Adding new game to past list: Game [date=2018-05-24, homeTeam=Team [Name = KC Royals Location = general], awayTeam=Team [Name = Mets Location = general]
+24-05-2018 11:53:23 INFO  GamesFileReader:91 - New team identified:Mets. adding to mapping Team:Team [Name = Mets Location = general]
+24-05-2018 11:53:23 TRACE GamesFileReader:96 - found team for key: Mets
+24-05-2018 11:53:23 INFO  GamesFileReader:91 - New team identified:Yankees. adding to mapping Team:Team [Name = Yankees Location = general]
+24-05-2018 11:53:23 TRACE GamesFileReader:96 - found team for key: Yankees
+24-05-2018 11:53:23 TRACE GamesFileReader:232 - Adding new game to past list: Game [date=2018-05-22, homeTeam=Team [Name = Yankees Location = general], awayTeam=Team [Name = Mets Location = general]
+24-05-2018 11:53:23 TRACE GamesFileReader:96 - found team for key: Mets
+24-05-2018 11:53:23 TRACE GamesFileReader:96 - found team for key: Yankees
+24-05-2018 11:53:23 ERROR GamesFileReader:188 - setaTeamScore:java.util.NoSuchElementException
+24-05-2018 11:53:23 ERROR GamesFileReader:195 - sethTeamScore:java.util.NoSuchElementException
+24-05-2018 11:53:23 ERROR GamesFileReader:202 - setAttendance:java.util.NoSuchElementException
+24-05-2018 11:53:23 TRACE GamesFileReader:232 - Adding new game to past list: Game [date=2018-05-24, homeTeam=Team [Name = Yankees Location = general], awayTeam=Team [Name = Mets Location = general]
+24-05-2018 11:53:23 TRACE GamesFileReader:96 - found team for key: Mets
+24-05-2018 11:53:23 INFO  GamesFileReader:91 - New team identified:KC Royals. adding to mapping Team:Team [Name = KC Royals Location = general]
+24-05-2018 11:53:23 TRACE GamesFileReader:96 - found team for key: KC Royals
+24-05-2018 11:53:23 ERROR GamesFileReader:188 - setaTeamScore:java.util.NoSuchElementException
+24-05-2018 11:53:23 ERROR GamesFileReader:195 - sethTeamScore:java.util.NoSuchElementException
+24-05-2018 11:53:23 ERROR GamesFileReader:202 - setAttendance:java.util.NoSuchElementException
+24-05-2018 11:53:23 TRACE GamesFileReader:232 - Adding new game to past list: Game [date=2018-05-24, homeTeam=Team [Name = KC Royals Location = general], awayTeam=Team [Name = Mets Location = general]

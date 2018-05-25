@@ -1,25 +1,18 @@
 package com.sts.model;
 
 import java.time.Duration;
-import java.time.LocalDate;
-import java.time.LocalTime;
-import java.time.ZoneId;
 import java.time.ZonedDateTime;
-import java.util.ArrayList;
 import java.util.TreeMap;
 
 import org.slf4j.LoggerFactory;
 
-import com.sts.control.DateComp;
 
 //class inheriting from ArrayList to contain game objects
-public class GamesList {
+public class GamesList{
 	private TreeMap<Key, Game> map;
 
-    private static final long serialVersionUID = 1L;
-
-     public GamesList(){
-    	map = new TreeMap<Key, Game>(new DateComp());
+    public GamesList(){
+    	map = new TreeMap<Key, Game>(new DateCompare());
     }
     
     @Deprecated
@@ -41,10 +34,12 @@ public class GamesList {
         game.setDuration(duration);
         game.setAwayTeam(away_);
         game.setHomeTeam(home_);
-        map.put(new Key(date_, away_, home_), game);
+        map.put(new Key(date_, away_), game);
     }
 
-   
+   public TreeMap<Key, Game> getGamesMap() {
+	   return map;
+   }
   
     
 

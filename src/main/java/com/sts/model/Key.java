@@ -3,18 +3,16 @@ package com.sts.model;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.ZonedDateTime;
-import java.time.chrono.ChronoZonedDateTime;
 
 public class Key{
 
-    private final ZonedDateTime date;
+    private final ZonedDateTime startTime;
     private final Team awayTeamName;
-    private final Team homeTeamName;
+    
 
-    public Key(ZonedDateTime x_, Team y_, Team z_) {
-        date = x_;
+    public Key(ZonedDateTime x_, Team y_) {
+        startTime = x_;
         awayTeamName = y_;
-        homeTeamName = z_;
     }
 
     @Override
@@ -22,14 +20,14 @@ public class Key{
         if (this == o) return true;
         if (!(o instanceof Key)) return false;
         Key key = (Key) o;
-        return date == key.date && awayTeamName == key.awayTeamName;
+        return startTime == key.startTime && awayTeamName == key.awayTeamName;
     }
 
    @Override
     public int hashCode() {
     	int result;
     	DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");
-        String strDate = dateFormat.format(date);
+        String strDate = dateFormat.format(startTime);
         String hashString = strDate.concat(awayTeamName.toString());
         result = Integer.parseInt(hashString);
         return result;
@@ -37,8 +35,8 @@ public class Key{
 
 
     
-	public ZonedDateTime getDate() {
-		return date;
+	public ZonedDateTime getStartTime() {
+		return startTime;
 	}
 
 
@@ -47,9 +45,7 @@ public class Key{
 	}
 
 
-	public Team getHomeTeamName() {
-		return homeTeamName;
-	}
+
 
 
 	/*@Override
