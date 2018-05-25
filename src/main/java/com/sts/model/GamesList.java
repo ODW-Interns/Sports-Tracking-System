@@ -5,11 +5,12 @@ import java.time.LocalTime;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.util.ArrayList;
+import java.util.TreeMap;
 
 import org.slf4j.LoggerFactory;
 
 //class inheriting from ArrayList to contain game objects
-public class GamesList extends ArrayList<Game> {
+public class GamesList extends TreeMap<Key, Game>{
 
     private static final long serialVersionUID = 1L;
 
@@ -24,16 +25,18 @@ public class GamesList extends ArrayList<Game> {
     
     
     
-    public void addGame(LocalDate date_, LocalTime time_, Team away_, Team home_)
+    public void addGame(ZonedDateTime date_, Team away_, Team home_)
     {
         ZonedDateTime dateWithTZ = ZonedDateTime.from(date_);
         Game game = new Game();
         game.setDate(dateWithTZ);
         game.setAwayTeam(away_);
         game.setHomeTeam(home_);
-        add(game);
+        put(new Key(date_, away_, home_), game);
     }
 
+   
+  
     
 
 }

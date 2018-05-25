@@ -3,12 +3,17 @@ package com.sts.control;
 import java.io.IOException;
 import java.io.InputStream;
 import java.text.ParseException;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.TreeMap;
 
 import com.sts.io.GamesFileReader;
 import com.sts.io.StoreDataFromInputFile;
 import com.sts.model.Game;
 import com.sts.model.GamesList;
+import com.sts.model.Key;
+import com.sts.model.Team;
 import com.sts.model.TeamsList;
 import com.sts.view.ConsolePrinter;
 import com.sts.view.PrintToLog;
@@ -20,46 +25,9 @@ public class SportsSystem {
 	}
 	
 
-	public static void startSystem() throws RuntimeException, IOException, ParseException {
-		int sportChosen = -1;	
-		int request = -1;
-		int numOfInvalidUpcomingGames = 0;
-		
-		GamesList genericUpcomingGamesList = new GamesList();
-		GamesList genericPastGamesList = new GamesList();
-		TeamsList genericTeamsList = new TeamsList();
-		// List of Games from the past NBA season
-		GamesList listofPastNBAGames = StoreDataFromInputFile.storeDataIntoPastGameList("/17-18NBA_RegSzn.txt");
-		// List of upcoming Games in the NBA
-		GamesList listofUpcomingNBAGames = StoreDataFromInputFile.storeDataIntoUpcomingGameList("/NBA_Upcoming.txt");
-		// List of Players in NBA teams 
-		// List of Teams in the NBA
-		TeamsList listofNBATeams = StoreDataFromInputFile.storeDataIntoTeamsList("/NBA_Teams.txt");
-		StoreDataFromInputFile.storeDataIntoPlayersList("/AllCurrentNBARosters.txt", listofNBATeams);
-		
-		// List of Games from the past NFL season
-		GamesList listofPastNFLGames = StoreDataFromInputFile.storeDataIntoPastGameList("/17-18NFL_RegSzn.txt");
-		// List of upcoming Games in the NFL Games
-		// List of Players in NFL teams
-		// List of Teams in the NFL
-		TeamsList listofNFLTeams = StoreDataFromInputFile.storeDataIntoTeamsList("/NFL_Teams.txt");
-		
-		// List of Games from the past MLB season
-		GamesList listofPastMLBGames = StoreDataFromInputFile.storeDataIntoPastGameList("/17-18MLB_RegSzn.txt");
-		//List of upcoming games in the MLB
-		//List of players in the MLB
-		//List of teams in the MLB
-		TeamsList listofMLBTeams = StoreDataFromInputFile.storeDataIntoTeamsList("/MLB_Teams.txt");
-		
-		//List of Games from the past NHL season
-		GamesList listofPastNHLGames = StoreDataFromInputFile.storeDataIntoPastGameList("/17-18NHL_RegSzn.txt");
-		// List of upcoming games in the NHL
-		// List of players in the MLB
-		//List of teams in the NHL
-		TeamsList listofNHLTeams = StoreDataFromInputFile.storeDataIntoTeamsList("/NHL_Teams.txt");
+	public void startSystem() throws RuntimeException, IOException, ParseException {
+	     
 
-
-		System.out.println("<<<<<<<<<<Welcome to the Sports Tracking System>>>>>>>>>>");
 		
 		/*
 		 * Prompt user for input
@@ -69,7 +37,7 @@ public class SportsSystem {
 		 * 
 		 * To Stop System -> User has to enter 0 in the main menu
 		 * */
-		
+		/*
 		//While the system is on
 		while(sportChosen != 0){ // (MAIN MENU)
 			PrintToLog.printMainMenuAlert();
@@ -134,7 +102,7 @@ public class SportsSystem {
 			ConsolePrinter.printOutOptionsForSport(); 
 			
 			}
-		}
+		}*/
 
 	}
 	
