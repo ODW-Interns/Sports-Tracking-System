@@ -132,7 +132,7 @@ public class GamesFileReader extends AbstractFileReader<Game> {
                 // the default
                 //
                 try {
-                    game.setDate(parseDate(tokenizer.nextToken()));
+                    game.setStartTime(parseDate(tokenizer.nextToken()));
                 }
                 catch (Exception e_) {
                     _logger.error("setDate:" + e_.toString());
@@ -170,7 +170,7 @@ public class GamesFileReader extends AbstractFileReader<Game> {
                 //
                 // future or past game?
                 //
-                if (game.getDate().isAfter(ZonedDateTime.now())) {
+                if (game.getStartTime().isAfter(ZonedDateTime.now())) {
                     // this is a game in the future, do not process any more data
                     addGame(game, listOfGames_);
                     continue;
@@ -201,6 +201,8 @@ public class GamesFileReader extends AbstractFileReader<Game> {
                 catch (Exception e_) {
                     _logger.error("setAttendance:" + e_.toString());
                 }
+                
+                
 
 
                 addGame(game, listOfGames_);

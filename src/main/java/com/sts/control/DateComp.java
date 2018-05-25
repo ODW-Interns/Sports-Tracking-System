@@ -13,7 +13,10 @@ public class DateComp implements Comparator<Key> {
 		else if(key1.getDate().isBefore(key2.getDate()))
 			return -1;
 		else
-			return 0;
+		{
+			return(key1.getAwayTeamName().toString().compareTo(key2.getAwayTeamName().toString())); 
+				
+		}
 	}
 
 }

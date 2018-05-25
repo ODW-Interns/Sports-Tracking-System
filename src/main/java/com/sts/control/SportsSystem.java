@@ -38,7 +38,7 @@ public class SportsSystem {
 	            e_.printStackTrace();
 	        }
 		
-		TreeMap<Key, Game> map = new TreeMap<Key, Game>(new DateComp());
+		GamesList map =  new GamesList();
 		
 		
 		
@@ -57,48 +57,21 @@ public class SportsSystem {
         Team team2 = new Team("Rockets", "Houston", 0);
         Team team3 = new Team("Cavaliers", "Cleveland", 0);
         
-		GamesList games = new GamesList();
+		//GamesList games = new GamesList();
 		System.out.println("here");
-		map.put(new Key(date1, list.get(0).getAwayTeam(), list.get(0).getHomeTeam()), list.get(0));
-		games.addGame(date2, team2, team3);
-		games.addGame(date3, team1, team3);
+		map.put(new Key(list.get(0).getDate(), list.get(0).getAwayTeam(), list.get(0).getHomeTeam()), list.get(0));
+		map.put(new Key(list.get(1).getDate(), list.get(1).getAwayTeam(), list.get(1).getHomeTeam()), list.get(1));
+		map.put(new Key(list.get(2).getDate(), list.get(2).getAwayTeam(), list.get(2).getHomeTeam()), list.get(2));
+		System.out.println("Last Away team:" + list.get(2).toString());
+		//games.addGame(date3, team1, team3);
 		
-		for(Key key : games.keySet()) {
-		    System.out.println(games.get(key));
+        System.out.println(map.size());
+        
+		for(Key key : map.keySet()) {
+		    System.out.println(map.get(key));
 		}
 		
-		/*GamesList genericUpcomingGamesList = new GamesList();
-		GamesList genericPastGamesList = new GamesList();
-		TeamsList genericTeamsList = new TeamsList();
-		// List of Games from the past NBA season
-		GamesList listofPastNBAGames = StoreDataFromInputFile.storeDataIntoPastGameList("/17-18NBA_RegSzn.txt");
-		// List of upcoming Games in the NBA
-		GamesList listofUpcomingNBAGames = StoreDataFromInputFile.storeDataIntoUpcomingGameList("/NBA_Upcoming.txt");
-		// List of Players in NBA teams 
-		// List of Teams in the NBA
-		TeamsList listofNBATeams = StoreDataFromInputFile.storeDataIntoTeamsList("/NBA_Teams.txt");
-		StoreDataFromInputFile.storeDataIntoPlayersList("/AllCurrentNBARosters.txt", listofNBATeams);
 		
-		// List of Games from the past NFL season
-		GamesList listofPastNFLGames = StoreDataFromInputFile.storeDataIntoPastGameList("/17-18NFL_RegSzn.txt");
-		// List of upcoming Games in the NFL Games
-		// List of Players in NFL teams
-		// List of Teams in the NFL
-		TeamsList listofNFLTeams = StoreDataFromInputFile.storeDataIntoTeamsList("/NFL_Teams.txt");
-		
-		// List of Games from the past MLB season
-		GamesList listofPastMLBGames = StoreDataFromInputFile.storeDataIntoPastGameList("/17-18MLB_RegSzn.txt");
-		//List of upcoming games in the MLB
-		//List of players in the MLB
-		//List of teams in the MLB
-		TeamsList listofMLBTeams = StoreDataFromInputFile.storeDataIntoTeamsList("/MLB_Teams.txt");
-		
-		//List of Games from the past NHL season
-		GamesList listofPastNHLGames = StoreDataFromInputFile.storeDataIntoPastGameList("/17-18NHL_RegSzn.txt");
-		// List of upcoming games in the NHL
-		// List of players in the MLB
-		//List of teams in the NHL
-		TeamsList listofNHLTeams = StoreDataFromInputFile.storeDataIntoTeamsList("/NHL_Teams.txt");
 
 
 		System.out.println("<<<<<<<<<<Welcome to the Sports Tracking System>>>>>>>>>>");
