@@ -3,12 +3,17 @@ package com.sts.control;
 import java.io.IOException;
 import java.io.InputStream;
 import java.text.ParseException;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.TreeMap;
 
 import com.sts.io.GamesFileReader;
 import com.sts.io.StoreDataFromInputFile;
 import com.sts.model.Game;
 import com.sts.model.GamesList;
+import com.sts.model.Key;
+import com.sts.model.Team;
 import com.sts.model.TeamsList;
 import com.sts.view.ConsolePrinter;
 import com.sts.view.PrintToLog;
@@ -20,12 +25,49 @@ public class SportsSystem {
 	}
 	
 
-	public static void startSystem() throws RuntimeException, IOException, ParseException {
-		int sportChosen = -1;	
-		int request = -1;
-		int numOfInvalidUpcomingGames = 0;
+	public void startSystem() throws RuntimeException, IOException, ParseException {
+	     
+		ArrayList<Game> list = null;
+		GamesFileReader gr = new GamesFileReader();
+	        try (InputStream is = getClass().getResourceAsStream("/games.csv")) {
+	           list = new ArrayList<Game>();
+	            gr.readData(is, list);
+	        }
+	        catch (Exception e_) {
+	            assert(false);
+	            e_.printStackTrace();
+	        }
 		
-		GamesList genericUpcomingGamesList = new GamesList();
+		TreeMap<Key, Game> map = new TreeMap<Key, Game>(new DateComp());
+		
+		
+		
+		
+		String str_1 = "2018-05-22T16:00:00+04:00";
+		String str_2 = "2018-05-12T16:00:00+04:00";
+		String str_3 = "2018-05-28T16:00:00+04:00";
+		String str_4 = "2017-05-29T16:00:00+04:00";
+		DateTimeFormatter formatter =DateTimeFormatter.ISO_DATE_TIME;
+        ZonedDateTime date1 = ZonedDateTime.parse(str_1, formatter);
+        ZonedDateTime date2 = ZonedDateTime.parse(str_2, formatter);
+        ZonedDateTime date3 = ZonedDateTime.parse(str_3, formatter);
+        ZonedDateTime date4 = ZonedDateTime.parse(str_4, formatter);
+		
+        Team team1 = new Team("Warriors", "Golden State", 0);
+        Team team2 = new Team("Rockets", "Houston", 0);
+        Team team3 = new Team("Cavaliers", "Cleveland", 0);
+        
+		GamesList games = new GamesList();
+		System.out.println("here");
+		map.put(new Key(date1, list.get(0).getAwayTeam(), list.get(0).getHomeTeam()), list.get(0));
+		games.addGame(date2, team2, team3);
+		games.addGame(date3, team1, team3);
+		
+		for(Key key : games.keySet()) {
+		    System.out.println(games.get(key));
+		}
+		
+		/*GamesList genericUpcomingGamesList = new GamesList();
 		GamesList genericPastGamesList = new GamesList();
 		TeamsList genericTeamsList = new TeamsList();
 		// List of Games from the past NBA season
@@ -69,7 +111,7 @@ public class SportsSystem {
 		 * 
 		 * To Stop System -> User has to enter 0 in the main menu
 		 * */
-		
+		/*
 		//While the system is on
 		while(sportChosen != 0){ // (MAIN MENU)
 			PrintToLog.printMainMenuAlert();
@@ -134,7 +176,7 @@ public class SportsSystem {
 			ConsolePrinter.printOutOptionsForSport(); 
 			
 			}
-		}
+		}*/
 
 	}
 	
