@@ -19,6 +19,10 @@ public class TeamsList{
 		team.setTeamName(name_);
 		TeamMap_.put(new KeyForTeamsList(team.getTeamName(), team.getTeamSport()), team);
 	}
+	
+	public ConcurrentHashMap<KeyForTeamsList, Team> returnTeamMap(){
+		return TeamMap_;
+	}
 
 	
 	

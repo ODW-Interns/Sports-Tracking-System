@@ -1,14 +1,9 @@
 package com.sts.view;
 
-import java.util.Iterator;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.sts.model.GamesList;
-import com.sts.model.Player;
-import com.sts.model.Team;
-import com.sts.model.TeamsList;
 
 //class used to log to a file
 public class PrintToLog {
@@ -18,9 +13,9 @@ public class PrintToLog {
 
 	public static void logGamesList(GamesList list) {
 		logger.info("Printing All Games Requested");
-		for (int i = 0; i < list.size(); i++) {
+		/*for (int i = 0; i < list.size(); i++) {
 			logger.info(list.get(i).toString());
-		}
+		}*/
 		logger.info("Successfully logged all games requested");
 		logger.info("\n");
 	}
@@ -28,9 +23,9 @@ public class PrintToLog {
 
 	public static void secondLogGamesList(GamesList list) {
 		logger.info("Printing All Games Requested");
-		for (int i = 0; i < list.size(); i++) {
+		/*for (int i = 0; i < list.size(); i++) {
 			secondLogger.info(list.get(i).toString());
-		}
+		}*/
 		secondLogger.info("Successfully logged all games requested");
 		
 	}
@@ -54,9 +49,9 @@ public class PrintToLog {
 		logger.info("====================MAIN MENU PAGE====================");
 	}
 
-	public static void logAllRosters(TeamsList teams_) {
+	/*public static void logAllRosters(TeamsList teams_) {
 		logger.info("Printing current rosters for all teams");
-		Iterator<Team> teamIterator = teams_.iterator();
+		//Iterator<Team> teamIterator = teams_.iterator();
 		
 		while(teamIterator.hasNext()) {
 			Team currentTeam = teamIterator.next();
@@ -68,6 +63,6 @@ public class PrintToLog {
 			}
 		}
 		logger.info("\n");
-	}
+	}*/
 
 }

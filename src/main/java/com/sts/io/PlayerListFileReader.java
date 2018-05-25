@@ -73,7 +73,7 @@ public class PlayerListFileReader {
 							continue;
 						}
 				
-						listofTeams_.get(i).getListOfPLayers().add(player);						
+						//listofTeams_.get(i).getListOfPLayers().add(player);						
 					}
 					
 					i++;
