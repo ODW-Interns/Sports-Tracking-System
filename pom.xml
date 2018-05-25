@@ -30,6 +30,17 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	  <version>1.7.25</version>
 	  <scope>test</scope>
 	</dependency>	
+
+    <dependency>
+       <groupId>org.slf4j</groupId>
+       <artifactId>slf4j-api</artifactId>
+       <version>1.7.5</version>
+   </dependency>
+   <dependency>
+       <groupId>org.slf4j</groupId>
+       <artifactId>slf4j-log4j12</artifactId>
+       <version>1.7.5</version>
+   </dependency>
 	
         <dependency>
           <groupId>junit</groupId>
@@ -37,4 +48,5 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
           <version>4.11</version>
         </dependency>
     </dependencies>
+    
 </project>
