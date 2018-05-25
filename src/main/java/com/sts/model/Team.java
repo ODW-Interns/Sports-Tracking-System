@@ -2,6 +2,7 @@ package com.sts.model;
 
 public class Team {
 
+	private String teamSport;
 	private String teamName;
 	private String location;
 	private int numPlayers;
@@ -63,13 +64,31 @@ public class Team {
 		numPlayers = players;
 	}
 	
+	
+	
+	public String getTeamSport() {
+		return teamSport;
+	}
+
+	public void setTeamSport(String teamSport) {
+		this.teamSport = teamSport;
+	}
+
 	public PlayersList getListOfPLayers() {
 		return listofPlayers;
+	}
+	
+	public boolean isValidTeam() {
+		if(teamName != null && location != null && teamSport != null) {
+			return true;
+		}
+		else 
+			return false;
 	}
 
 	 @Override
 	    public String toString() {
 	        return "Team [Name = " + teamName + " Location = "+
-	    location + "]";
+	    location + " Team Sport=" +teamSport +"]";
 	    	}
 }
