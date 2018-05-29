@@ -38,7 +38,7 @@ abstract class Player {
 	abstract void setJerseyNum(int jersey_);
 	
 
-}
+
 
 
 	@Override
