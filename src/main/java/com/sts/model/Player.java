@@ -1,6 +1,6 @@
 package com.sts.model;
 
-abstract class Player {
+public abstract class Player {
 
 	String firstName;
 	String lastName;
@@ -38,7 +38,7 @@ abstract class Player {
 	abstract void setJerseyNum(int jersey_);
 	
 
-}
+
 
 
 	@Override

@@ -8,7 +8,7 @@ public class PlayersList extends ArrayList<Player> {
 	
 	public void addPlayer(String first_, String last_, int jersey_) {
 		
-		add(new Player(first_, last_, jersey_));
+		//add(new Player(first_, last_, jersey_));
 	}
 
 
