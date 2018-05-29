@@ -1,23 +1,24 @@
 package com.sts.model;
 
-public class Team {
+public abstract class Team {
 
 	private String teamSport;
 	private String teamName;
 	private String location;
-	private int numPlayers;
+	
 	private PlayersList listofPlayers;
 	
+
 	public Team() {
 		// Default Constructor
-		this("general", "general", 0);
+		this("general", "general");
 	}
 
 	//Constructor
-	public Team(String team, String loc, int players) {
+	public Team(String team, String loc) {
 		setTeamName(team);
 		setLocation(loc);
-		setNumPlayers(players);
+	
 		listofPlayers = new PlayersList();
 	}
 
@@ -48,23 +49,6 @@ public class Team {
 	public void setLocation(String loc) {
 		location = loc;
 	}
-
-	/*
-	 * method to retrieve the number of players on the team
-	 */
-	
-	public int getNum_players() {
-		return numPlayers;
-	}
-
-	/*
-	 * method to set the number of players on a team
-	 */
-	public void setNumPlayers(int players) {
-		numPlayers = players;
-	}
-	
-	
 	
 	public String getTeamSport() {
 		return teamSport;
