@@ -177,7 +177,7 @@ public class Game implements Comparable<Game> {
         str.append("date=");
         if ( getStartTime()!=null )
         {
-            str.append(DateTimeFormatter.ofPattern("yyyy-MM-dd").format(getStartTime()));
+            str.append(DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ssZZZZZ").format(getStartTime()));
         }
         else
         {
