@@ -1,22 +1,9 @@
 package com.sts.control;
 
 import java.io.IOException;
-import java.io.InputStream;
 import java.text.ParseException;
-import java.time.ZonedDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.TreeMap;
-
-import com.sts.io.GamesFileReader;
 import com.sts.io.StoreDataFromInputFile;
-import com.sts.model.Game;
 import com.sts.model.GamesList;
-import com.sts.model.Key;
-import com.sts.model.Team;
-import com.sts.model.TeamsList;
-import com.sts.view.ConsolePrinter;
-import com.sts.view.PrintToLog;
 
 public class SportsSystem {
 
@@ -26,9 +13,9 @@ public class SportsSystem {
 	
 
 	public void startSystem() throws RuntimeException, IOException, ParseException {
-	     
-
-
+	    GamesList gameslist = StoreDataFromInputFile.storeDataIntoGameList("/games.csv");
+	    gameslist.logFinishedGames();
+		gameslist.logUpcomingGames();
 		
 		/*
 		 * Prompt user for input

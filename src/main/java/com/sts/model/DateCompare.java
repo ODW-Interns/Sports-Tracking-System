@@ -2,6 +2,10 @@ package com.sts.model;
 
 import java.util.Comparator;
 
+/*
+ * Class to allow comparisons to sort the key object by their date and time.
+ * If the date and time are equal, then it will compare the away team's names.
+ */
 public class DateCompare implements Comparator<Key>{
 
 	public DateCompare() {

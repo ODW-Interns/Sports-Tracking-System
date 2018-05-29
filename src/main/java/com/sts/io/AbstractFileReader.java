@@ -12,7 +12,7 @@ import java.util.ArrayList;
  * */
 public abstract class AbstractFileReader<K,V> {
 
-	//method to check that the input file and Games List structure exists
+	//method to check that the input file and Games List structure (A TreeMap) exists
     public void readData(InputStream is_, AbstractMap<K,V> list_) throws FileNotFoundException, RuntimeException {
         if (is_ == null)
             throw new FileNotFoundException();

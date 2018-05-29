@@ -25,19 +25,19 @@ import com.sts.model.exception.DuplicateTeamException;
 import com.sts.model.exception.NegativeAttendanceException;
 import com.sts.model.exception.NegativeScoreException;
 
-// class to read from file with past/finished games
+// class to read from file with upcoming/finished games
 public class GamesFileReader extends AbstractFileReader<Key,Game> {
     private Logger _logger;
 
     private static final String DELIM = "|";
 
-   
+   //HashMap containing all the teams detected from the games data file
     private ConcurrentHashMap<String, Team> _teamMaps;
 
 
 
 
-
+    //Constructor
     public GamesFileReader() {
         _logger = LoggerFactory.getLogger(getClass().getSimpleName());
         _teamMaps = new ConcurrentHashMap<>();
@@ -84,7 +84,12 @@ public class GamesFileReader extends AbstractFileReader<Key,Game> {
 
 
 
-
+    /*
+     * Method to check and see if the team string that was tokenized already exists in the
+     * team Hashmap
+     * If it does already exist, team found
+     * Else, put in hashmap
+     */
     private Team parseTeam(String teamStr_) {
         Team lclTeam = _teamMaps.get(teamStr_);
         if (lclTeam == null) {
@@ -109,6 +114,8 @@ public class GamesFileReader extends AbstractFileReader<Key,Game> {
 
     /** 
      * (non-Javadoc)
+     * Method to tokenize lines from the game data file and add the game to the games list
+     * if valid.
      */
     @Override
     void readFromFileForLists(Reader is_, AbstractMap<Key,Game> listOfGames_) {
@@ -235,7 +242,7 @@ public class GamesFileReader extends AbstractFileReader<Key,Game> {
     
     
     /**
-     * 
+     * Add the game to the map of games if the game is valid
      */
     private void addGame(Game game_, TreeMap<Key,Game> listOfGames_)
     {
