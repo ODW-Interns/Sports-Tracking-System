@@ -22,6 +22,8 @@ import com.sts.model.Game;
 import com.sts.model.Key;
 import com.sts.model.Team;
 import com.sts.model.exception.DuplicateTeamException;
+import com.sts.model.exception.NegativeAttendanceException;
+import com.sts.model.exception.NegativeScoreException;
 
 // class to read from file with past/finished games
 public class GamesFileReader extends AbstractFileReader<Key,Game> {
@@ -184,22 +186,34 @@ public class GamesFileReader extends AbstractFileReader<Key,Game> {
                 // this game is in the past, read in the scores
                 //
                 try {
-                    game.setAwayTeamScore(parseInteger(tokenizer.nextToken()));
+                	int awayScore = parseInteger(tokenizer.nextToken());
+                	if(awayScore < 0) {
+                		throw new NegativeScoreException();
+                	}
+                    game.setAwayTeamScore(awayScore);
+                   
                 }
                 catch (Exception e_) {
                     _logger.error("setaTeamScore:" + e_.toString());
                 }
 
                 try {
-                    game.setHomeTeamScore(parseInteger(tokenizer.nextToken()));
-                }
+                	int homeScore = parseInteger(tokenizer.nextToken());
+                	if(homeScore < 0) {
+                		throw new NegativeScoreException();
+                	}
+                    game.setHomeTeamScore(homeScore);                }
                 catch (Exception e_) {
                     _logger.error("sethTeamScore:" + e_.toString());
                 }
 
                 try {
-                    game.setAttendence(parseInteger(tokenizer.nextToken()));
-                }
+                	int attendance = parseInteger(tokenizer.nextToken());
+                	if(attendance < 0) {
+                		throw new NegativeAttendanceException();
+                	}
+                    game.setAttendence(attendance);
+                    }
                 catch (Exception e_) {
                     _logger.error("setAttendance:" + e_.toString());
                 }

@@ -28,5 +28,19 @@ public class GamesFileReaderTest {
         }
 
     }
+    
+    @Test
+    public void testInvalid() {
+        GamesFileReader gr = new GamesFileReader();
+        try (InputStream is = getClass().getResourceAsStream("/invalidGames.csv")) {
+            GamesList gameslist = new GamesList();
+            gr.readData(is, gameslist.getGamesMap());
+        }
+        catch (Exception e_) {
+            assert(false);
+            e_.printStackTrace();
+        }
+
+    }
 
 }
