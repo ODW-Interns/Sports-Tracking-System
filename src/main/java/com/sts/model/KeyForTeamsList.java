@@ -8,7 +8,7 @@ import java.util.concurrent.ConcurrentHashMap;
 public class KeyForTeamsList {
 
 	private String teamName;
-	private String location;
+	//private String location;
 	private String sport;
 
 	public KeyForTeamsList(String name_, String sport_) {
