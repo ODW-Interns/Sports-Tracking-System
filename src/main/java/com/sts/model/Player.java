@@ -1,11 +1,10 @@
 package com.sts.model;
 
-public class Player {
+abstract class Player {
 
 	String firstName;
 	String lastName;
 	int jerseyNum;
-	String position;
 	
 	//Default Constructor
 	public Player() {
@@ -21,35 +20,26 @@ public class Player {
 		jerseyNum = jersey_;
 	}
 
-	//method to retrieve first name of player
-	public String getFirstName() {
-		return firstName;
-	}
+	abstract String getFirstName();
 
 	//method to set first name of player
-	public void setFirstName(String first_) {
-		firstName = first_;
-	}
+	abstract void setFirstName(String first_); 
 
 	//method to retrieve last name of player
-	public String getLastName() {
-		return lastName;
-	}
+	abstract String getLastName();
 	
 	//method to set last name of player
-	public void setLastName(String last_) {
-		lastName = last_;
-	}
+	abstract void setLastName(String last_);
 
 	//method to retrieve jersey number of player
-	public int getJerseyNum() {
-		return jerseyNum;
-	}
+	abstract int getJerseyNum();
 
 	//method to set jersey number of player
-	public void setJerseyNum(int jersey_) {
-		jerseyNum = jersey_;
-	}
+	abstract void setJerseyNum(int jersey_);
+	
+
+}
+
 
 	@Override
 	 public String toString() {
