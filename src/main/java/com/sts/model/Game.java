@@ -15,8 +15,10 @@ public class Game implements Comparable<Game> {
     private int homeTeamScore;
     private int awayTeamScore;
     private int attendence;
+    private String category;
+   
 
-    private PlayersList listOfAwayPlayers;
+	private PlayersList listOfAwayPlayers;
     private PlayersList listofHomePlayers;
 
     
@@ -138,6 +140,15 @@ public class Game implements Comparable<Game> {
     public void setAttendence(int att) {
         attendence = att;
     }
+    
+    
+    public String getCategory() {
+		return category;
+	}
+
+	public void setCategory(String category_) {
+		category = category_;
+	}
     
     /*
      * retrieve the list of away players for game

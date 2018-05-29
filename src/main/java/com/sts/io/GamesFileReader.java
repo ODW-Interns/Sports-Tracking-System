@@ -124,6 +124,8 @@ public class GamesFileReader extends AbstractFileReader<Key,Game> {
             String line;
             Game game;
             Team home;
+            String category;
+            
             while ((line = reader.readLine()) != null) {
                 // don't process empty lines
                 if ("".equals(line))
@@ -136,12 +138,21 @@ public class GamesFileReader extends AbstractFileReader<Key,Game> {
                 tokenizer = new StringTokenizer(line, DELIM);
 
 
+                try {
+                	game.setCategory(tokenizer.nextToken());
+                	category = game.getCategory();
+                }
+                catch(Exception e_) {
+                	_logger.error("setCategory:" + e_.toString());
+                	continue;
+                }
 
                 //
                 // Read in the date and set date in game object
                 // since I don't know how long the game lasts, use
                 // the default
                 //
+                
                 try {
                     game.setStartTime(parseDate(tokenizer.nextToken()));
                 }
