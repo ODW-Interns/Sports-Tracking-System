@@ -16,9 +16,8 @@ public class Game implements Comparable<Game> {
     private int awayTeamScore;
     private int attendence;
     private String category;
-   
 
-	private PlayersList listOfAwayPlayers;
+    private PlayersList listOfAwayPlayers;
     private PlayersList listofHomePlayers;
 
     
@@ -141,15 +140,6 @@ public class Game implements Comparable<Game> {
         attendence = att;
     }
     
-    
-    public String getCategory() {
-		return category;
-	}
-
-	public void setCategory(String category_) {
-		category = category_;
-	}
-    
     /*
      * retrieve the list of away players for game
      */
@@ -179,7 +169,15 @@ public class Game implements Comparable<Game> {
         duration = duration_;
     }
 
-    /** 
+    public String getCategory() {
+		return category;
+	}
+
+	public void setCategory(String category_) {
+		this.category = category;
+	}
+
+	/** 
      * (non-Javadoc)
      */
     @Override
@@ -194,7 +192,7 @@ public class Game implements Comparable<Game> {
         {
             str.append("UNK");
         }
-      
+        
         str.append(", homeTeam=").append(getHomeTeam());
         str.append(", awayTeam=").append(getAwayTeam());
         return str.toString();
@@ -233,4 +231,5 @@ public class Game implements Comparable<Game> {
 
         );
     }
+
 }   
