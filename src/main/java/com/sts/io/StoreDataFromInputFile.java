@@ -23,7 +23,7 @@ public class StoreDataFromInputFile {
 	//method to store players data into list of players and return the list
 	
 	
-	public static PlayersList storeDataIntoPlayersList(String inputfile_, TeamsList listofTeams) throws RuntimeException, IOException {
+	/*public static PlayersList storeDataIntoPlayersList(String inputfile_, TeamsList listofTeams) throws RuntimeException, IOException {
 		PlayersList listofPlayers = new PlayersList();
 		PlayerListFileReader in = new PlayerListFileReader();
 		InputStream is = StoreDataFromInputFile.class.getResourceAsStream(inputfile_);
@@ -31,7 +31,7 @@ public class StoreDataFromInputFile {
 		is.close();
 		
 		return listofPlayers;
-	}
+	}*/
 	
 	
 	

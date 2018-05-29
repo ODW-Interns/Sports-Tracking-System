@@ -17,7 +17,7 @@ public class PlayerListFileReader {
 	public PlayerListFileReader() {
 	
 	}
-	
+	/*
     public void readData(InputStream is_, TeamsList listofTeams_) throws FileNotFoundException, RuntimeException {
         if (is_ == null)
             throw new FileNotFoundException();
@@ -86,5 +86,5 @@ public class PlayerListFileReader {
 				e_.printStackTrace();
 			}
 		
-	}
+	}*/
 }

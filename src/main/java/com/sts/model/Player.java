@@ -1,6 +1,6 @@
 package com.sts.model;
 
-abstract class Player {
+public abstract class Player {
 
 	String firstName;
 	String lastName;
