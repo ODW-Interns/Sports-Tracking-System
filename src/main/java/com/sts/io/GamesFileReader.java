@@ -49,7 +49,7 @@ public class GamesFileReader extends AbstractFileReader<Key,Game> {
 
     /**
      * TODO:
-     * TimeZone should be configrable or location dependent
+     * TimeZone should be configurable or location dependent
      */
     private ZonedDateTime parseDate(String str_) {
         try {
@@ -90,11 +90,12 @@ public class GamesFileReader extends AbstractFileReader<Key,Game> {
      * If it does already exist, team found
      * Else, put in hashmap
      */
-    private Team parseTeam(String teamStr_) {
+    private Team parseTeam(String category, String cityStr_,String teamStr_) {
         Team lclTeam = _teamMaps.get(teamStr_);
         if (lclTeam == null) {
             lclTeam = new Team();
             lclTeam.setTeamName(teamStr_);
+            lclTeam.setLocation(cityStr_);
             _teamMaps.put(teamStr_, lclTeam);
             if (_logger.isInfoEnabled())
                 _logger.info("New team identified:{}. adding to mapping Team:{}", teamStr_, lclTeam);
@@ -122,6 +123,8 @@ public class GamesFileReader extends AbstractFileReader<Key,Game> {
         try (BufferedReader reader = new BufferedReader(is_)) {
             StringTokenizer tokenizer;
             String line;
+            String team;
+            String city;
             Game game;
             Team home;
             String category;
@@ -167,8 +170,11 @@ public class GamesFileReader extends AbstractFileReader<Key,Game> {
                 //
                 // teams
                 //
+                
                 try {
-                    game.setAwayTeam(parseTeam(tokenizer.nextToken()));
+                	city = tokenizer.nextToken();
+                	team = tokenizer.nextToken();
+                    game.setAwayTeam(parseTeam(category,city,team));
                 }
                 catch (Exception e_) {
                     _logger.error("setAawayTeam:" + e_.toString());
@@ -176,7 +182,9 @@ public class GamesFileReader extends AbstractFileReader<Key,Game> {
                 }
 
                 try {
-                    home = parseTeam(tokenizer.nextToken());
+                	city = tokenizer.nextToken();
+                	team = tokenizer.nextToken();
+                    home = parseTeam(category,city, team);
                     if (home.equals(game.getAwayTeam()))
                         throw new DuplicateTeamException("Home team cannot be the same as away", home);
                     game.setHomeTeam(home);

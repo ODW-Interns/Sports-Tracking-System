@@ -194,7 +194,7 @@ public class Game implements Comparable<Game> {
         {
             str.append("UNK");
         }
-        
+      
         str.append(", homeTeam=").append(getHomeTeam());
         str.append(", awayTeam=").append(getAwayTeam());
         return str.toString();
