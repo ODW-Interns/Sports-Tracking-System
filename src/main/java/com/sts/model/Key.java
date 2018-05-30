@@ -6,29 +6,29 @@ import java.time.ZonedDateTime;
 
 public class Key{
 
-    private final ZonedDateTime startTime;
-    private final int UID;
+    private final ZonedDateTime _startTime;
+    private final int _UID;
     
 
     public Key(ZonedDateTime x_, int y_) {
-        startTime = x_;
-        UID = y_;
+        _startTime = x_;
+        _UID = y_;
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Key)) return false;
-        Key key = (Key) o;
-        return startTime == key.startTime && UID == key.UID;
+    public boolean equals(Object o_) {
+        if (this == o_) return true;
+        if (!(o_ instanceof Key)) return false;
+        Key key = (Key) o_;
+        return _startTime == key._startTime && _UID == key._UID;
     }
 
    @Override
     public int hashCode() {
     	int result;
     	DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");
-        String strDate = dateFormat.format(startTime);
-        String hashString = strDate.concat(Integer.toString(UID));
+        String strDate = dateFormat.format(_startTime);
+        String hashString = strDate.concat(Integer.toString(_UID));
         result = Integer.parseInt(hashString);
         return result;
     }
@@ -36,12 +36,12 @@ public class Key{
 
     
 	public ZonedDateTime getStartTime() {
-		return startTime;
+		return _startTime;
 	}
 
 
 	public int getGameUID() {
-		return UID;
+		return _UID;
 	}
 
 

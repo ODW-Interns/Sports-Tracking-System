@@ -13,17 +13,17 @@ public class DateCompare implements Comparator<Key>{
 	}
 
 	@Override
-	public int compare(Key key1, Key key2) {
+	public int compare(Key key1_, Key key2_) {
 		// TODO Auto-generated method stub
 		
-		if(key1.getStartTime().isBefore(key2.getStartTime())) {
+		if(key1_.getStartTime().isBefore(key2_.getStartTime())) {
 			return 1;
 		}
-		else if(key1.getStartTime().isAfter(key2.getStartTime())) {
+		else if(key1_.getStartTime().isAfter(key2_.getStartTime())) {
 			return -1;
 		}
 		else {
-			if(key1.getGameUID() < key2.getGameUID()) {
+			if(key1_.getGameUID() < key2_.getGameUID()) {
 				return 1;
 			}
 			else

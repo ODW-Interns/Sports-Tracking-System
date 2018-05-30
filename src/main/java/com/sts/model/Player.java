@@ -2,9 +2,9 @@ package com.sts.model;
 
 public abstract class Player {
 
-	protected String firstName;
-	protected String lastName;
-	protected int jerseyNum;
+	protected String _firstName;
+	protected String _lastName;
+	protected int _jerseyNum;
 	
 	//Default Constructor
 	public Player() {
@@ -14,10 +14,10 @@ public abstract class Player {
 	
 	public Player(String first_, String last_, int jersey_){
 
-		firstName = first_;
-		lastName = last_;
+		_firstName = first_;
+		_lastName = last_;
 		
-		jerseyNum = jersey_;
+		_jerseyNum = jersey_;
 	}
 
 	public abstract String getFirstName();

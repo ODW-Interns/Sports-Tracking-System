@@ -3,9 +3,9 @@ package com.sts.model;
 
 public abstract class Team {
 
-	private String teamSport;
-	private String teamName;
-	private String location;
+	private String _teamSport;
+	private String _teamName;
+	private String _location;
 	
 	private PlayersList listofPlayers;
 	
@@ -16,9 +16,9 @@ public abstract class Team {
 	}
 
 	//Constructor
-	public Team(String team, String loc) {
-		setTeamName(team);
-		setLocation(loc);
+	public Team(String team_, String loc_) {
+		setTeamName(team_);
+		setLocation(loc_);
 	
 		listofPlayers = new PlayersList();
 	}
@@ -27,36 +27,36 @@ public abstract class Team {
 	 * method to retrieve team name
 	 */
 	public String getTeamName() {
-		return teamName;
+		return _teamName;
 	}
 
 	/*
 	 * method to set team name
 	 */
-	public void setTeamName(String team) {
-		teamName = team;
+	public void setTeamName(String team_) {
+		_teamName = team_;
 	}
 
 	/*
 	 * method to retrieve location of the team
 	 */
 	public String getLocation() {
-		return location;
+		return _location;
 	}
 
 	/*
 	 * method to set the team location
 	 */
-	public void setLocation(String loc) {
-		location = loc;
+	public void setLocation(String loc_) {
+		_location = loc_;
 	}
 	
 	public String getTeamSport() {
-		return teamSport;
+		return _teamSport;
 	}
 
-	public void setTeamSport(String teamSport) {
-		this.teamSport = teamSport;
+	public void setTeamSport(String teamSport_) {
+		this._teamSport = teamSport_;
 	}
 
 	public PlayersList getListOfPLayers() {
@@ -64,7 +64,7 @@ public abstract class Team {
 	}
 	
 	public boolean isValidTeam() {
-		if(teamName != null && location != null && teamSport != null) {
+		if(_teamName != null && _location != null && _teamSport != null) {
 			return true;
 		}
 		else 
@@ -73,7 +73,7 @@ public abstract class Team {
 
 	 @Override
 	    public String toString() {
-	        return "Team [Name = " + teamName + " Location = "+
-	    location + " Team Sport=" +teamSport +"]";
+	        return "Team [Name = " + _teamName + " Location = "+
+	    _location + " Team Sport=" +_teamSport +"]";
 	    	}
 }
