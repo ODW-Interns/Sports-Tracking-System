@@ -7,6 +7,7 @@ import java.time.format.DateTimeFormatter;
 //
 public class Game implements Comparable<Game> {
 
+	private int gameUID;
     private ZonedDateTime startTime;
     private ZonedDateTime finishTime;
     private Duration duration;
@@ -168,13 +169,22 @@ public class Game implements Comparable<Game> {
     public final void setDuration(Duration duration_) {
         duration = duration_;
     }
+    
+	public int getGameUID() {
+		return gameUID;
+	}
+
+	public void setGameUID(int gameUID) {
+		this.gameUID = gameUID;
+	}
+
 
     public String getCategory() {
 		return category;
 	}
 
 	public void setCategory(String category_) {
-		this.category = category;
+		category = category_;
 	}
 
 	/** 

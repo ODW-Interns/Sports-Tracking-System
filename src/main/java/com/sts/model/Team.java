@@ -1,3 +1,4 @@
+
 package com.sts.model;
 
 public abstract class Team {

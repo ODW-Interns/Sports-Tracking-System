@@ -7,12 +7,12 @@ import java.time.ZonedDateTime;
 public class Key{
 
     private final ZonedDateTime startTime;
-    private final Team awayTeamName;
+    private final int UID;
     
 
-    public Key(ZonedDateTime x_, Team y_) {
+    public Key(ZonedDateTime x_, int y_) {
         startTime = x_;
-        awayTeamName = y_;
+        UID = y_;
     }
 
     @Override
@@ -20,7 +20,7 @@ public class Key{
         if (this == o) return true;
         if (!(o instanceof Key)) return false;
         Key key = (Key) o;
-        return startTime == key.startTime && awayTeamName == key.awayTeamName;
+        return startTime == key.startTime && UID == key.UID;
     }
 
    @Override
@@ -28,7 +28,7 @@ public class Key{
     	int result;
     	DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");
         String strDate = dateFormat.format(startTime);
-        String hashString = strDate.concat(awayTeamName.toString());
+        String hashString = strDate.concat(Integer.toString(UID));
         result = Integer.parseInt(hashString);
         return result;
     }
@@ -40,8 +40,8 @@ public class Key{
 	}
 
 
-	public Team getAwayTeamName() {
-		return awayTeamName;
+	public int getGameUID() {
+		return UID;
 	}
 
 

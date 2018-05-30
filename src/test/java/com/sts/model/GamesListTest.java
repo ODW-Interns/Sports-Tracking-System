@@ -28,12 +28,12 @@ public class GamesListTest {
 	        e_.printStackTrace();
 	    } 
 	    ZonedDateTime timeNow = ZonedDateTime.now();
-		Team tempTeam = new Team();
-		Key highestKey = new Key(timeNow,tempTeam);
+		int tempUID = -1;
+		Key highestKey = new Key(timeNow,tempUID);
 		   
 		SortedMap<Key, Game> upcomingGames = gameslist.getGamesMap().headMap(highestKey);
 		// Should return saying that submap of GamesMap has 3 elements
-		 assertEquals(3, upcomingGames.size());  
+		 assertEquals(1, upcomingGames.size());  
 		   
 	}
 

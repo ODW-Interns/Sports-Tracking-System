@@ -2,9 +2,9 @@ package com.sts.model;
 
 public abstract class Player {
 
-	String firstName;
-	String lastName;
-	int jerseyNum;
+	protected String firstName;
+	protected String lastName;
+	protected int jerseyNum;
 	
 	//Default Constructor
 	public Player() {
@@ -20,22 +20,22 @@ public abstract class Player {
 		jerseyNum = jersey_;
 	}
 
-	abstract String getFirstName();
+	public abstract String getFirstName();
 
 	//method to set first name of player
-	abstract void setFirstName(String first_); 
+	public abstract void setFirstName(String first_); 
 
 	//method to retrieve last name of player
-	abstract String getLastName();
+	public abstract String getLastName();
 	
 	//method to set last name of player
-	abstract void setLastName(String last_);
+	public abstract void setLastName(String last_);
 
 	//method to retrieve jersey number of player
-	abstract int getJerseyNum();
+	public abstract int getJerseyNum();
 
 	//method to set jersey number of player
-	abstract void setJerseyNum(int jersey_);
+	public abstract void setJerseyNum(int jersey_);
 	
 
 

@@ -33,7 +33,7 @@ public class TeamListFileReader extends AbstractFileReader<KeyForTeamsList, Team
 	@Override
 	//method to read from an input file and add to the list of teams
 	public void readFromFileForLists(Reader is_, AbstractMap<KeyForTeamsList, Team> teamMap_) {
-		try (BufferedReader reader = new BufferedReader(is_)) {
+		/*try (BufferedReader reader = new BufferedReader(is_)) {
 			StringTokenizer tokenizer;
 			String line;
 			
@@ -91,7 +91,8 @@ public class TeamListFileReader extends AbstractFileReader<KeyForTeamsList, Team
 
         if (_logger.isTraceEnabled())
             _logger.trace("Adding new game to past list: {}", team_.toString());
-    }
+    }*/
+}
 }
 		
 	

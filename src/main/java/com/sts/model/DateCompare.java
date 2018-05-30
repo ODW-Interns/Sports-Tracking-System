@@ -4,7 +4,7 @@ import java.util.Comparator;
 
 /*
  * Class to allow comparisons to sort the key object by their date and time.
- * If the date and time are equal, then it will compare the away team's names.
+ * If the date and time are equal, then it will compare the two games's UID.
  */
 public class DateCompare implements Comparator<Key>{
 
@@ -23,7 +23,11 @@ public class DateCompare implements Comparator<Key>{
 			return -1;
 		}
 		else {
-			return key1.getAwayTeamName().toString().compareTo(key2.getAwayTeamName().toString());
+			if(key1.getGameUID() < key2.getGameUID()) {
+				return 1;
+			}
+			else
+				return -1;
 		}
 	}
 

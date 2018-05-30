@@ -18,6 +18,10 @@ import java.util.concurrent.ConcurrentHashMap;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.sts.concretemodel.TeamMLB;
+import com.sts.concretemodel.TeamNBA;
+import com.sts.concretemodel.TeamNFL;
+import com.sts.concretemodel.TeamNHL;
 import com.sts.model.Game;
 import com.sts.model.Key;
 import com.sts.model.Team;
@@ -93,9 +97,21 @@ public class GamesFileReader extends AbstractFileReader<Key,Game> {
     private Team parseTeam(String category, String cityStr_,String teamStr_) {
         Team lclTeam = _teamMaps.get(teamStr_);
         if (lclTeam == null) {
-            lclTeam = new Team();
+        	if(category.equals("NBA")) {
+        		lclTeam = new TeamNBA();
+        	}
+        	else if(category.equals("NFL")) {
+        		lclTeam = new TeamNFL();
+        	}
+        	else if(category.equals("NHL")) {
+        		lclTeam = new TeamNHL();
+        	}
+        	else if(category.equals("MLB")) {
+        		lclTeam = new TeamMLB();
+        	}
             lclTeam.setTeamName(teamStr_);
             lclTeam.setLocation(cityStr_);
+            lclTeam.setTeamSport(category);
             _teamMaps.put(teamStr_, lclTeam);
             if (_logger.isInfoEnabled())
                 _logger.info("New team identified:{}. adding to mapping Team:{}", teamStr_, lclTeam);
@@ -141,6 +157,14 @@ public class GamesFileReader extends AbstractFileReader<Key,Game> {
                 tokenizer = new StringTokenizer(line, DELIM);
 
 
+                try {
+                	game.setGameUID(Integer.parseInt(tokenizer.nextToken()));
+                }
+                catch(Exception e_) {
+                	_logger.error("setGameUID:" + e_.toString());
+                	continue;
+                }
+                
                 try {
                 	game.setCategory(tokenizer.nextToken());
                 	category = game.getCategory();
@@ -202,7 +226,7 @@ public class GamesFileReader extends AbstractFileReader<Key,Game> {
                 //
                 if (game.getStartTime().isAfter(ZonedDateTime.now())) {
                     // this is a game in the future, do not process any more data
-                    listOfGames_.put(new Key(game.getStartTime(), game.getAwayTeam()), game);
+                    listOfGames_.put(new Key(game.getStartTime(), game.getGameUID()), game);
                     continue;
                 }
 
@@ -251,6 +275,8 @@ public class GamesFileReader extends AbstractFileReader<Key,Game> {
                 	_logger.error("setDuration:" + e_.toString());
                 }
                 addGame(game, (TreeMap<Key, Game>)listOfGames_);
+                
+               
             }
         }
         catch (Exception e_) {
@@ -274,7 +300,7 @@ public class GamesFileReader extends AbstractFileReader<Key,Game> {
         //
         //Add game object to the list of games provided
         //
-        listOfGames_.put(new Key(game_.getStartTime(), game_.getAwayTeam()), game_);
+        listOfGames_.put(new Key(game_.getStartTime(), game_.getGameUID()), game_);
 
         if (_logger.isTraceEnabled())
             _logger.trace("Adding new game to past list: {}", game_.toString());

@@ -41,7 +41,8 @@ public class GamesList{
         game.setDuration(duration);
         game.setAwayTeam(away_);
         game.setHomeTeam(home_);
-        map.put(new Key(date_, away_), game);
+        int uid = -1;
+        map.put(new Key(date_, uid), game);
     }
 
    public TreeMap<Key, Game> getGamesMap() {
@@ -50,8 +51,8 @@ public class GamesList{
    
    public void logUpcomingGames() {
 	   ZonedDateTime timeNow = ZonedDateTime.now();
-	   Team tempTeam = new Team();
-	   Key lowestKey = new Key(timeNow,tempTeam);
+	   int tempUID = -1;
+	   Key lowestKey = new Key(timeNow,tempUID);
 	   
 	   SortedMap<Key, Game> upcomingGames = map.headMap(lowestKey);
 	   
@@ -63,8 +64,8 @@ public class GamesList{
    
    public void logFinishedGames() {
 	   ZonedDateTime timeNow = ZonedDateTime.now();
-	   Team tempTeam = new Team();
-	   Key highestKey = new Key(timeNow,tempTeam);
+	   int tempUID = -1;
+	   Key highestKey = new Key(timeNow,tempUID);
 	   
 	   SortedMap<Key, Game> upcomingGames = map.tailMap(highestKey);
 	   

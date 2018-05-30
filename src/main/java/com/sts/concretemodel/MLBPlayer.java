@@ -1,39 +1,40 @@
-package com.sts.model;
+package com.sts.concretemodel;
 
-public class NHLPlayer extends Player{
+import com.sts.model.Player;
 
+public class MLBPlayer extends Player {
 	@Override
-	String getFirstName() {
+	public String getFirstName() {
 		// TODO Auto-generated method stub
 		return firstName;
 	}
 
 	@Override
-	void setFirstName(String first_) {
+	public void setFirstName(String first_) {
 		// TODO Auto-generated method stub
 		firstName = first_;
 	}
 
 	@Override
-	String getLastName() {
+	public String getLastName() {
 		// TODO Auto-generated method stub
 		return lastName;
 	}
 
 	@Override
-	void setLastName(String last_) {
+	public void setLastName(String last_) {
 		// TODO Auto-generated method stub
 		lastName = last_;
 	}
 
 	@Override
-	int getJerseyNum() {
+	public int getJerseyNum() {
 		// TODO Auto-generated method stub
 		return jerseyNum;
 	}
 
 	@Override
-	void setJerseyNum(int jersey_) {
+	public void setJerseyNum(int jersey_) {
 		// TODO Auto-generated method stub
 		jerseyNum = jersey_;
 	}

@@ -14,10 +14,10 @@ public class TeamsList{
 	}
 
 	public void addTeam(String city_, String name_) {
-		Team team= new Team();
+		/*Team team= new Team();
 		team.setLocation(city_);
 		team.setTeamName(name_);
-		TeamMap_.put(new KeyForTeamsList(team.getTeamName(), team.getTeamSport()), team);
+		TeamMap_.put(new KeyForTeamsList(team.getTeamName(), team.getTeamSport()), team);*/
 	}
 	
 	public ConcurrentHashMap<KeyForTeamsList, Team> returnTeamMap(){
