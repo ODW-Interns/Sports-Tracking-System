@@ -1,20 +1,17 @@
 package com.sts.concretemodel;
 
+//Concrete class extending from Team
+
 public class TeamNBA extends com.sts.model.Team{
 	
-	private int numbPlayers;
+	private final int _numbPlayers = 12;
 	
-	public TeamNBA() {
-		// TODO Auto-generated constructor stub
+	public TeamNBA() {		
 		
-		
-	}
-	public void setNumbPlayers(int n) {
-		numbPlayers = n;
 	}
 	
 	public int getNumbPlayers() {
-		return numbPlayers;
+		return _numbPlayers;
 	}
 
 }
