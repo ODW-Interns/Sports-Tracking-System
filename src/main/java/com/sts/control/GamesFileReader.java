@@ -9,6 +9,7 @@ import java.io.Reader;
 import java.text.NumberFormat;
 import java.text.ParseException;
 import java.time.Duration;
+import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
@@ -70,7 +71,10 @@ public class GamesFileReader {
     private ZonedDateTime parseDate(String str_) {
         try {
             DateTimeFormatter formatter =DateTimeFormatter.ISO_DATE_TIME;
-            return ZonedDateTime.parse(str_, formatter);
+            ZoneId defaultZone = ZoneId.systemDefault();
+            ZonedDateTime inputTime = ZonedDateTime.parse(str_,  formatter);
+            ZonedDateTime currentTime = inputTime.withZoneSameInstant(defaultZone);
+            return currentTime;
         }
         catch (DateTimeParseException exc) {
             _logger.error("{} is not parsable!", str_);
