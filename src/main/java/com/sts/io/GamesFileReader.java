@@ -284,7 +284,9 @@ public class GamesFileReader extends AbstractFileReader<Key,Game> {
         }
     }
     
-    
+    public ConcurrentHashMap<String, Team> getTeamMap(){
+    	return _teamMaps;
+    }
     
     /**
      * Add the game to the map of games if the game is valid

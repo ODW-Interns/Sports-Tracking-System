@@ -2,6 +2,8 @@ package com.sts.control;
 
 import java.io.IOException;
 import java.text.ParseException;
+
+import com.sts.io.GamesFileReader;
 import com.sts.io.StoreDataFromInputFile;
 import com.sts.model.GamesList;
 
@@ -13,7 +15,8 @@ public class SportsSystem {
 	
 
 	public void startSystem() throws RuntimeException, IOException, ParseException {
-	    GamesList gameslist = StoreDataFromInputFile.storeDataIntoGameList("/games.csv");
+		GamesFileReader in = new GamesFileReader();
+	    GamesList gameslist = StoreDataFromInputFile.storeDataIntoGameList("/games.csv", in);
 	    gameslist.logFinishedGames();
 		gameslist.logUpcomingGames();
 		

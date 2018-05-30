@@ -9,11 +9,10 @@ import com.sts.model.TeamsList;
 public class StoreDataFromInputFile {
 	
 	//method to store data from past games file and place into a list of games and return list
-	public static GamesList storeDataIntoGameList(String inputfile_) throws RuntimeException, IOException {
+	public static GamesList storeDataIntoGameList(String inputfile_, GamesFileReader in_) throws RuntimeException, IOException {
 		GamesList listofGames = new GamesList();
-		GamesFileReader in = new GamesFileReader();
 		InputStream is = StoreDataFromInputFile.class.getResourceAsStream(inputfile_);
-		in.readData(is, listofGames.getGamesMap());
+		in_.readData(is, listofGames.getGamesMap());
 		is.close();
 		
 		return listofGames;
