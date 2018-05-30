@@ -10,9 +10,10 @@ import java.util.ArrayList;
 
 import org.junit.Test;
 
-import com.sts.model.Game;
-import com.sts.model.GamesList;
-import com.sts.model.TeamsList;
+import com.sts.abstractModel.Game;
+import com.sts.concreteModel.GamesList;
+import com.sts.concreteModel.TeamsList;
+import com.sts.control.GamesFileReader;
 
 public class GamesFileReaderTest {
 

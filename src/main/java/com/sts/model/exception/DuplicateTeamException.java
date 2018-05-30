@@ -7,7 +7,7 @@ package com.sts.model.exception;
 
 import java.text.MessageFormat;
 
-import com.sts.model.Team;
+import com.sts.abstractModel.Team;
 
 public class DuplicateTeamException extends Exception {
 

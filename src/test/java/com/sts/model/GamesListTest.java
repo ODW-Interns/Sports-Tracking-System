@@ -8,7 +8,11 @@ import java.util.SortedMap;
 
 import org.junit.Test;
 
-import com.sts.io.GamesFileReader;
+import com.sts.abstractModel.Game;
+import com.sts.concreteModel.GamesList;
+import com.sts.concreteModel.Key;
+import com.sts.concreteModel.TeamsList;
+import com.sts.control.GamesFileReader;
 
 public class GamesListTest {
 

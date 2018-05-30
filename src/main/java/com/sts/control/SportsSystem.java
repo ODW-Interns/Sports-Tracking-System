@@ -3,9 +3,8 @@ package com.sts.control;
 import java.io.IOException;
 import java.text.ParseException;
 
-import com.sts.io.StoreDataFromInputFile;
-import com.sts.model.GamesList;
-import com.sts.model.TeamsList;
+import com.sts.concreteModel.GamesList;
+import com.sts.concreteModel.TeamsList;
 
 public class SportsSystem {
 
