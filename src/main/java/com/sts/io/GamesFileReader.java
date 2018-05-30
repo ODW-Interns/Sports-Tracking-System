@@ -14,8 +14,6 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.Locale;
 import java.util.StringTokenizer;
-import java.util.concurrent.ConcurrentHashMap;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -38,19 +36,14 @@ public class GamesFileReader {
 
     private static final String DELIM = "|";
 
-   //HashMap containing all the teams detected from the games data file
-    private ConcurrentHashMap<String, Team> _teamMaps;
-
-
-
-
     //Constructor
     public GamesFileReader() {
         _logger = LoggerFactory.getLogger(getClass().getSimpleName());
-        _teamMaps = new ConcurrentHashMap<>();
     }
 
-
+    /*
+     * Method to make sure file exists and the two objects(GamesList & TeamsList) have been created
+     */
     public void readData(InputStream is_, GamesList gamelist_, TeamsList teamlist_ ) throws FileNotFoundException, RuntimeException {
         if (is_ == null)
             throw new FileNotFoundException();
@@ -68,7 +61,6 @@ public class GamesFileReader {
             e_.printStackTrace();
         }
     }
-
 
 
     /**
@@ -115,7 +107,7 @@ public class GamesFileReader {
      * Else, put in hashmap
      */
     private Team parseTeam(String category, String cityStr_,String teamStr_, TeamsList teamsList_) {
-        Team lclTeam = _teamMaps.get(teamStr_);
+        Team lclTeam = teamsList_.getTeamMap().get(teamStr_);
         if (lclTeam == null) {
         	if(category.equals("NBA")) {
         		lclTeam = new TeamNBA();
@@ -304,10 +296,6 @@ public class GamesFileReader {
         }
     }
     
-    public ConcurrentHashMap<String, Team> getTeamMap(){
-    	return _teamMaps;
-    }
-    
     /**
      * Add the game to the map of games if the game is valid
      */
@@ -320,7 +308,7 @@ public class GamesFileReader {
         }
         
         //
-        //Add game object to the list of games provided
+        //Add game object to the map of games provided
         //
         gamesList_.getGamesMap().put(new Key(game_.getStartTime(), game_.getGameUID()), game_);
 
