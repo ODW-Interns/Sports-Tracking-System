@@ -20,8 +20,10 @@ public class GamesListTest {
         
 	    
 	    try (InputStream is = getClass().getResourceAsStream("/games.csv")) {
+	    	GamesList games = new GamesList();
+	    	TeamsList teams = new TeamsList();
 		    GamesFileReader gr = new GamesFileReader(); 
-	    	gr.readData(is, gameslist.getGamesMap());
+	    	gr.readData(is, games, teams);
 	    }
 	    catch (Exception e_) {
 	    	assert(false);

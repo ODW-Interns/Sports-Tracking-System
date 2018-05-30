@@ -12,6 +12,7 @@ import org.junit.Test;
 
 import com.sts.model.Game;
 import com.sts.model.GamesList;
+import com.sts.model.TeamsList;
 
 public class GamesFileReaderTest {
 
@@ -19,8 +20,9 @@ public class GamesFileReaderTest {
     public void test() {
         GamesFileReader gr = new GamesFileReader();
         try (InputStream is = getClass().getResourceAsStream("/games.csv")) {
-            GamesList gameslist = new GamesList();
-            gr.readData(is, gameslist.getGamesMap());
+        	GamesList games = new GamesList();
+	    	TeamsList teams = new TeamsList();
+            gr.readData(is, games, teams);
         }
         catch (Exception e_) {
             assert(false);
@@ -33,8 +35,9 @@ public class GamesFileReaderTest {
     public void testInvalid() {
         GamesFileReader gr = new GamesFileReader();
         try (InputStream is = getClass().getResourceAsStream("/invalidGames.csv")) {
-            GamesList gameslist = new GamesList();
-            gr.readData(is, gameslist.getGamesMap());
+        	GamesList games = new GamesList();
+	    	TeamsList teams = new TeamsList();
+            gr.readData(is, games, teams);
         }
         catch (Exception e_) {
             assert(false);

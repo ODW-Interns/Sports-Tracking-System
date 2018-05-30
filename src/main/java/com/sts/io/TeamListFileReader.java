@@ -18,7 +18,7 @@ import com.sts.model.Team;
 import com.sts.model.TeamsList;
 
 
-public class TeamListFileReader extends AbstractFileReader<KeyForTeamsList, Team> {
+public class TeamListFileReader  {
 	
 	private static final String DELIM = "|";
 	private Logger _logger;
@@ -30,7 +30,7 @@ public class TeamListFileReader extends AbstractFileReader<KeyForTeamsList, Team
 		    
 	}
 	
-	@Override
+	
 	//method to read from an input file and add to the list of teams
 	public void readFromFileForLists(Reader is_, AbstractMap<KeyForTeamsList, Team> teamMap_) {
 		/*try (BufferedReader reader = new BufferedReader(is_)) {

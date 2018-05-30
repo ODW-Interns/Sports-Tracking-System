@@ -5,12 +5,12 @@ import java.util.concurrent.ConcurrentHashMap;
 //class inheriting from ArrayList that contains Team objects
 public class TeamsList{
 	
-	private ConcurrentHashMap<KeyForTeamsList,Team> TeamMap_;
+	private ConcurrentHashMap<String,Team> TeamMap_;
 	private static final long serialVersionUID = 1L;
 
 
 	public TeamsList() {
-		TeamMap_ = new ConcurrentHashMap<KeyForTeamsList, Team>();
+		TeamMap_ = new ConcurrentHashMap<String, Team>();
 	}
 
 	public void addTeam(String city_, String name_) {
@@ -20,7 +20,7 @@ public class TeamsList{
 		TeamMap_.put(new KeyForTeamsList(team.getTeamName(), team.getTeamSport()), team);*/
 	}
 	
-	public ConcurrentHashMap<KeyForTeamsList, Team> returnTeamMap(){
+	public ConcurrentHashMap<String, Team> getTeamMap(){
 		return TeamMap_;
 	}
 

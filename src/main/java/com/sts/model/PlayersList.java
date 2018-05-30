@@ -1,16 +1,21 @@
 package com.sts.model;
 
-import java.util.ArrayList;
+import java.util.concurrent.ConcurrentHashMap;
 
-public class PlayersList extends ArrayList<Player> {
+public class PlayersList {
 	
-	private static final long serialVersionUID = 1L;
+	private ConcurrentHashMap<Integer, Player> _playersMap;
 	
 	public void addPlayer(String first_, String last_, int jersey_) {
 		
 		//add(new Player(first_, last_, jersey_));
 	}
+	
+	public ConcurrentHashMap<Integer, Player> returnPlayersMap(){
+		return _playersMap;
+	}
 
+	
 
 }
 

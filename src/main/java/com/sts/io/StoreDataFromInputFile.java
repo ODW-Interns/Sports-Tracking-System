@@ -1,21 +1,26 @@
 package com.sts.io;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.TreeMap;
+import java.util.concurrent.ConcurrentHashMap;
 
+import com.sts.model.Game;
 import com.sts.model.GamesList;
+import com.sts.model.Key;
 import com.sts.model.PlayersList;
+import com.sts.model.Team;
 import com.sts.model.TeamsList;
 
 public class StoreDataFromInputFile {
 	
 	//method to store data from past games file and place into a list of games and return list
-	public static GamesList storeDataIntoGameList(String inputfile_, GamesFileReader in_) throws RuntimeException, IOException {
-		GamesList listofGames = new GamesList();
+	public static void storeDataIntoGameList(String inputfile_, GamesList gamesList_, TeamsList teamsList_) throws RuntimeException, IOException {
+		
+		GamesFileReader in = new GamesFileReader();
 		InputStream is = StoreDataFromInputFile.class.getResourceAsStream(inputfile_);
-		in_.readData(is, listofGames.getGamesMap());
+		in.readData(is, gamesList_, teamsList_);
 		is.close();
 		
-		return listofGames;
 	}
 	
 	
@@ -32,17 +37,6 @@ public class StoreDataFromInputFile {
 		return listofPlayers;
 	}*/
 	
-	
-	
-	public static TeamsList storeDataIntoTeamsList(String inputfile_) throws RuntimeException, IOException {
-		TeamsList listofTeams = new TeamsList();
-		TeamListFileReader in = new TeamListFileReader();
-		InputStream is = StoreDataFromInputFile.class.getResourceAsStream(inputfile_);
-		in.readData(is, listofTeams.returnTeamMap());
-		is.close();
-		
-		return listofTeams;
-	}
 	
 
 }

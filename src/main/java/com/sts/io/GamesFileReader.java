@@ -2,6 +2,9 @@ package com.sts.io;
 
 
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.Reader;
 import java.text.NumberFormat;
 import java.text.ParseException;
@@ -9,10 +12,8 @@ import java.time.Duration;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
-import java.util.AbstractMap;
 import java.util.Locale;
 import java.util.StringTokenizer;
-import java.util.TreeMap;
 import java.util.concurrent.ConcurrentHashMap;
 
 import org.slf4j.Logger;
@@ -23,14 +24,16 @@ import com.sts.concretemodel.TeamNBA;
 import com.sts.concretemodel.TeamNFL;
 import com.sts.concretemodel.TeamNHL;
 import com.sts.model.Game;
+import com.sts.model.GamesList;
 import com.sts.model.Key;
 import com.sts.model.Team;
+import com.sts.model.TeamsList;
 import com.sts.model.exception.DuplicateTeamException;
 import com.sts.model.exception.NegativeAttendanceException;
 import com.sts.model.exception.NegativeScoreException;
 
 // class to read from file with upcoming/finished games
-public class GamesFileReader extends AbstractFileReader<Key,Game> {
+public class GamesFileReader {
     private Logger _logger;
 
     private static final String DELIM = "|";
@@ -48,6 +51,23 @@ public class GamesFileReader extends AbstractFileReader<Key,Game> {
     }
 
 
+    public void readData(InputStream is_, GamesList gamelist_, TeamsList teamlist_ ) throws FileNotFoundException, RuntimeException {
+        if (is_ == null)
+            throw new FileNotFoundException();
+
+        if (gamelist_ == null)
+            throw new RuntimeException("No list provided");
+        if(teamlist_ == null)
+        	throw new RuntimeException("No list provided");
+
+        try (InputStreamReader sr = new InputStreamReader(is_)) {
+            readFromFileForLists(sr, gamelist_, teamlist_);
+       
+        }
+        catch (Exception e_) {
+            e_.printStackTrace();
+        }
+    }
 
 
 
@@ -94,7 +114,7 @@ public class GamesFileReader extends AbstractFileReader<Key,Game> {
      * If it does already exist, team found
      * Else, put in hashmap
      */
-    private Team parseTeam(String category, String cityStr_,String teamStr_) {
+    private Team parseTeam(String category, String cityStr_,String teamStr_, TeamsList teamsList_) {
         Team lclTeam = _teamMaps.get(teamStr_);
         if (lclTeam == null) {
         	if(category.equals("NBA")) {
@@ -112,7 +132,7 @@ public class GamesFileReader extends AbstractFileReader<Key,Game> {
             lclTeam.setTeamName(teamStr_);
             lclTeam.setLocation(cityStr_);
             lclTeam.setTeamSport(category);
-            _teamMaps.put(teamStr_, lclTeam);
+            teamsList_.getTeamMap().put(teamStr_, lclTeam);
             if (_logger.isInfoEnabled())
                 _logger.info("New team identified:{}. adding to mapping Team:{}", teamStr_, lclTeam);
         }
@@ -134,8 +154,8 @@ public class GamesFileReader extends AbstractFileReader<Key,Game> {
      * Method to tokenize lines from the game data file and add the game to the games list
      * if valid.
      */
-    @Override
-    void readFromFileForLists(Reader is_, AbstractMap<Key,Game> listOfGames_) {
+    
+    void readFromFileForLists(Reader is_, GamesList gamesList_ , TeamsList teamsList_) {
         try (BufferedReader reader = new BufferedReader(is_)) {
             StringTokenizer tokenizer;
             String line;
@@ -198,7 +218,7 @@ public class GamesFileReader extends AbstractFileReader<Key,Game> {
                 try {
                 	city = tokenizer.nextToken();
                 	team = tokenizer.nextToken();
-                    game.setAwayTeam(parseTeam(category,city,team));
+                    game.setAwayTeam(parseTeam(category,city,team, teamsList_));
                 }
                 catch (Exception e_) {
                     _logger.error("setAawayTeam:" + e_.toString());
@@ -208,7 +228,7 @@ public class GamesFileReader extends AbstractFileReader<Key,Game> {
                 try {
                 	city = tokenizer.nextToken();
                 	team = tokenizer.nextToken();
-                    home = parseTeam(category,city, team);
+                    home = parseTeam(category,city, team, teamsList_);
                     if (home.equals(game.getAwayTeam()))
                         throw new DuplicateTeamException("Home team cannot be the same as away", home);
                     game.setHomeTeam(home);
@@ -226,8 +246,8 @@ public class GamesFileReader extends AbstractFileReader<Key,Game> {
                 //
                 if (game.getStartTime().isAfter(ZonedDateTime.now())) {
                     // this is a game in the future, do not process any more data
-                    listOfGames_.put(new Key(game.getStartTime(), game.getGameUID()), game);
-                    continue;
+                	addGame(game, gamesList_);
+                	continue;
                 }
 
 
@@ -274,7 +294,7 @@ public class GamesFileReader extends AbstractFileReader<Key,Game> {
                 catch(Exception e_) {
                 	_logger.error("setDuration:" + e_.toString());
                 }
-                addGame(game, (TreeMap<Key, Game>)listOfGames_);
+                addGame(game, gamesList_);
                 
                
             }
@@ -291,7 +311,7 @@ public class GamesFileReader extends AbstractFileReader<Key,Game> {
     /**
      * Add the game to the map of games if the game is valid
      */
-    private void addGame(Game game_, TreeMap<Key,Game> listOfGames_)
+    private void addGame(Game game_, GamesList gamesList_)
     {
         if (!game_.isValidGame())
         {
@@ -302,7 +322,7 @@ public class GamesFileReader extends AbstractFileReader<Key,Game> {
         //
         //Add game object to the list of games provided
         //
-        listOfGames_.put(new Key(game_.getStartTime(), game_.getGameUID()), game_);
+        gamesList_.getGamesMap().put(new Key(game_.getStartTime(), game_.getGameUID()), game_);
 
         if (_logger.isTraceEnabled())
             _logger.trace("Adding new game to past list: {}", game_.toString());
