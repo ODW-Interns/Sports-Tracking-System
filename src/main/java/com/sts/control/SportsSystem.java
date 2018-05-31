@@ -2,6 +2,10 @@ package com.sts.control;
 
 import java.io.IOException;
 import java.text.ParseException;
+import java.util.Scanner;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.sts.concreteModel.GamesList;
 import com.sts.concreteModel.TeamsList;
@@ -20,8 +24,74 @@ public class SportsSystem {
 		TeamsList _listofTeams = new TeamsList();
 		//Read from "games.csv" file and store all games and teams read
 	    StoreDataFromInputFile.storeDataIntoGameList("/games.csv", _listofGames, _listofTeams );
-	    _listofGames.logFinishedGames();
-	    _listofGames.logUpcomingGames();
+	    
+	    Logger _logger;
+	    
+	    _logger = LoggerFactory.getLogger(getClass().getSimpleName());
+	    
+	    Scanner input= new Scanner(System.in);
+	    _logger.info("Welcome to sports Tracking system");
+
+	    boolean isNumber;
+	    int choice = 0;    
+	    boolean c=true;
+	    
+	    while (c) {
+	    	
+	    	_logger.info("1: Enter 1 to display list of finished games");
+	    	_logger.info("2: Enter 2 to display list of upcoming games");	
+	    	_logger.info("3: Enter 3 to exit");
+		    
+		    do {
+		    	
+		    	if(input.hasNextInt() ){
+			    	
+			   		choice=input.nextInt();
+			   		isNumber=true;	
+			   		
+			   	}
+			    else {
+			    	
+			    	_logger.info("Please choose an integer value from the above options");
+			    	isNumber=false;
+			    	input.nextInt();
+			    	
+			    }
+		    	
+		    }while(!isNumber);
+			 
+		    
+		    switch (choice) {
+			case 1:
+				
+				_listofGames.logFinishedGames();
+				
+				break;
+			case 2:
+				
+			    _listofGames.logUpcomingGames();
+				
+			    break;
+			case 3:
+				
+			    System.exit(0);
+				
+			    break;    
+			    
+			default:
+				
+				_logger.info("Wrong choice input. Please choose from the following options");
+				
+				break;
+			
+				
+			
+			}
+		}
+	    
+	
+	    
+	    
 		
 
 	}

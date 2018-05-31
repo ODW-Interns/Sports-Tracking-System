@@ -3,7 +3,7 @@ package com.sts.view;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.sts.concreteModel.GamesList;
+import com.sts.model.GamesList;
 
 //class used to log to a file
 public class PrintToLog {
@@ -11,7 +11,7 @@ public class PrintToLog {
 	private static final Logger logger = LoggerFactory.getLogger(PrintToLog.class);
 	private static final Logger secondLogger = LoggerFactory.getLogger(PrintToLog.class);
 
-	public static void logGamesList(GamesList list) {
+	public static void logGamesList(GamesList list_) {
 		logger.info("Printing All Games Requested");
 		/*for (int i = 0; i < list.size(); i++) {
 			logger.info(list.get(i).toString());
@@ -21,7 +21,7 @@ public class PrintToLog {
 	}
 	
 
-	public static void secondLogGamesList(GamesList list) {
+	public static void secondLogGamesList(GamesList list_) {
 		logger.info("Printing All Games Requested");
 		/*for (int i = 0; i < list.size(); i++) {
 			secondLogger.info(list.get(i).toString());
@@ -30,15 +30,15 @@ public class PrintToLog {
 		
 	}
 	
-	public static void printSportCategory(int sportChosen) {
+	public static void printSportCategory(int sportChosen_) {
 		String sport;
-		if(sportChosen == 1)
+		if(sportChosen_ == 1)
 			sport = "NBA";
-		else if(sportChosen == 2)
+		else if(sportChosen_ == 2)
 			sport = "NFL";
-		else if(sportChosen == 3)
+		else if(sportChosen_== 3)
 			sport = "MLB";
-		else if(sportChosen == 4)
+		else if(sportChosen_== 4)
 			sport = "NHL";
 		else return;
 		
