@@ -6,7 +6,29 @@ public abstract class Player {
 	protected String _lastName;
 	protected int _jerseyNum;
 	protected int _playerID;	
+	
+	public int get_gameID() {
+		return _gameID;
+	}
 
+
+	public void set_gameID(int _gameID) {
+		this._gameID = _gameID;
+	}
+
+
+	public Team getCurrentTeam() {
+		return currentTeam;
+	}
+
+
+	public void setCurrentTeam(Team currentTeam) {
+		this.currentTeam = currentTeam;
+	}
+
+	protected int _gameID;
+	protected Team currentTeam;
+	
 	//Default Constructor
 	public Player() {
 		this(-1,-1,"N/A", "N/A");
