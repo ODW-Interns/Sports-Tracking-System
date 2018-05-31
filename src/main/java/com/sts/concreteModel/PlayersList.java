@@ -3,7 +3,6 @@ package com.sts.concreteModel;
 import java.util.concurrent.ConcurrentHashMap;
 
 import com.sts.abstractModel.Player;
-import com.sts.abstractModel.Team;
 
 public class PlayersList {
 	
