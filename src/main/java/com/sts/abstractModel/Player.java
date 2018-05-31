@@ -5,46 +5,68 @@ public abstract class Player {
 	protected String _firstName;
 	protected String _lastName;
 	protected int _jerseyNum;
-	
+	protected int _playerID;	
+
 	//Default Constructor
 	public Player() {
-		this("N/A", "N/A", -1);
+		this(-1,-1,"N/A", "N/A");
 	}
 
 	
-	public Player(String first_, String last_, int jersey_){
+	public Player(int playerID_, int jerseyNum_, String firstName_, String lastName_){
 
-		_firstName = first_;
-		_lastName = last_;
-		
-		_jerseyNum = jersey_;
+		_firstName = firstName_;
+		_lastName = lastName_;
+		_playerID = playerID_;
+		_jerseyNum = jerseyNum_;
 	}
 
-	public abstract String getFirstName();
-
-	//method to set first name of player
-	public abstract void setFirstName(String first_); 
-
-	//method to retrieve last name of player
-	public abstract String getLastName();
-	
-	//method to set last name of player
-	public abstract void setLastName(String last_);
-
-	//method to retrieve jersey number of player
-	public abstract int getJerseyNum();
-
-	//method to set jersey number of player
-	public abstract void setJerseyNum(int jersey_);
 	
 
+	public String get_firstName() {
+		return _firstName;
+	}
 
+
+	public void set_firstName(String _firstName) {
+		this._firstName = _firstName;
+	}
+
+
+	public String get_lastName() {
+		return _lastName;
+	}
+
+
+	public void set_lastName(String _lastName) {
+		this._lastName = _lastName;
+	}
+
+
+	public int get_jerseyNum() {
+		return _jerseyNum;
+	}
+
+
+	public void set_jerseyNum(int _jerseyNum) {
+		this._jerseyNum = _jerseyNum;
+	}
+
+
+	public int get_playerID() {
+		return _playerID;
+	}
+
+
+	public void set_playerID(int _playerID) {
+		this._playerID = _playerID;
+	}
 
 
 	@Override
-	 public String toString() {
-	     return "Player [Firstname = " + getFirstName() + " Lastname = "+
-	    getLastName() + " Jersey Number = " + getJerseyNum() +  "]";
-	   }
+	public String toString() {
+		return "Player [_firstName=" + _firstName + ", _lastName=" + _lastName + ", _jerseyNum=" + _jerseyNum
+				+ ", _playerID=" + _playerID + "]";
+	}
 	
 }
