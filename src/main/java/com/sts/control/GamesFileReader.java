@@ -103,7 +103,6 @@ public class GamesFileReader {
 
 
 
-
     /*
      * Method to check and see if the team string that was tokenized already exists in the
      * team Hashmap
@@ -204,9 +203,6 @@ public class GamesFileReader {
                     continue;
                 }
 
-
-
-
                 //
                 // teams
                 //
@@ -232,10 +228,6 @@ public class GamesFileReader {
                 catch (Exception e_) {
                     _logger.error("sethTeam:" + e_.toString());
                 }
-
-
-
-
 
                 //
                 // future or past game?

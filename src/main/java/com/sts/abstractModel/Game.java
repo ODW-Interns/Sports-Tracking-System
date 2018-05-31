@@ -22,7 +22,6 @@ public class Game implements Comparable<Game> {
 
     private PlayersList listOfAwayPlayers;
     private PlayersList listofHomePlayers;
-
     
     public Game()
     {
@@ -53,7 +52,7 @@ public class Game implements Comparable<Game> {
     }
 
     /**
-     * method to return the String date
+     * method to return the date and start time of the game
      */
     public void setStartTime(ZonedDateTime startTime_) {
     	startTime = startTime_;
@@ -206,7 +205,9 @@ public class Game implements Comparable<Game> {
         }
         
         str.append(", homeTeam=").append(getHomeTeam());
+        str.append(", homeScore=").append(getHomeTeamScore());
         str.append(", awayTeam=").append(getAwayTeam());
+        str.append(", awayScore=").append(getaTeamScore());
         return str.toString();
     }
 
