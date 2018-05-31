@@ -6,6 +6,9 @@ public abstract class Player {
 	protected String _lastName;
 	protected int _jerseyNum;
 	protected int _playerID;	
+	protected int _gameID;
+	protected Team currentTeam;
+	
 	
 	public int get_gameID() {
 		return _gameID;
@@ -26,8 +29,7 @@ public abstract class Player {
 		this.currentTeam = currentTeam;
 	}
 
-	protected int _gameID;
-	protected Team currentTeam;
+
 	
 	//Default Constructor
 	public Player() {
@@ -43,29 +45,24 @@ public abstract class Player {
 		_jerseyNum = jerseyNum_;
 	}
 
-	
-
-	public String get_firstName() {
+	public String getFirstName() {
 		return _firstName;
 	}
-
-
-	public void set_firstName(String _firstName) {
-		this._firstName = _firstName;
+	
+	public void setFirstName(String first_) {
+		_firstName = first_;
 	}
 
-
-	public String get_lastName() {
+	public String getLastName() {
 		return _lastName;
 	}
+	
+	public void setLastName(String last_) {
+		_lastName = last_;
 
-
-	public void set_lastName(String _lastName) {
-		this._lastName = _lastName;
 	}
 
-
-	public int get_jerseyNum() {
+	public int getJerseyNum() {
 		return _jerseyNum;
 	}
 
@@ -80,6 +77,7 @@ public abstract class Player {
 	}
 
 
+
 	public void set_playerID(int _playerID) {
 		this._playerID = _playerID;
 	}
@@ -89,15 +87,17 @@ public abstract class Player {
      */
     public boolean isValidPlayer() {
         return ((this.get_playerID() > -1) &&
-                (this.get_jerseyNum() > -1) &&
-                (this.get_firstName() != null) &&
-                (this.get_lastName() != null));
+                (this.getJerseyNum() > -1) &&
+                (this.getFirstName() != null) &&
+                (this.getLastName() != null));
     }
 
 	@Override
 	public String toString() {
+
 		return "Player [_firstName=" + _firstName + ", _lastName=" + _lastName + ", _jerseyNum=" + _jerseyNum
 				+ ", _playerID=" + _playerID + "]";
 	}
+
 	
 }

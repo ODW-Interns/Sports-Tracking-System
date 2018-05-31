@@ -127,14 +127,14 @@ public class PlayersFileReader {
 	                }
 	                
 	                try {
-	                	player.set_firstName(tokenizer.nextToken());
+	                	player.setFirstName(tokenizer.nextToken());
 	                }
 	                catch(Exception e_) {
 	                	_logger.error("setFirstName:" + e_.toString());
 	                
 	                }
 	                try {
-	                	player.set_lastName(tokenizer.nextToken());
+	                	player.setLastName(tokenizer.nextToken());
 	                }
 	                catch(Exception e_){
 	                	_logger.error("setLastName:" + e_.toString());
