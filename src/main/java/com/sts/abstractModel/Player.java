@@ -20,29 +20,32 @@ public abstract class Player {
 		_jerseyNum = jersey_;
 	}
 
-	public abstract String getFirstName();
-
-	//method to set first name of player
-	public abstract void setFirstName(String first_); 
-
-	//method to retrieve last name of player
-	public abstract String getLastName();
+	public String getFirstName() {
+		return _firstName;
+	}
 	
-	//method to set last name of player
-	public abstract void setLastName(String last_);
+	public void setFirstName(String first_) {
+		_firstName = first_;
+	}
 
-	//method to retrieve jersey number of player
-	public abstract int getJerseyNum();
-
-	//method to set jersey number of player
-	public abstract void setJerseyNum(int jersey_);
+	public String getLastName() {
+		return _lastName;
+	}
 	
+	public void setLastName(String last_) {
+		_lastName = last_;
+	}
 
+	public int getJerseyNum() {
+		return _jerseyNum;
+	}
 
-
+	public void setJerseyNum(int jersey_) {
+		_jerseyNum = jersey_;
+	}
 
 	@Override
-	 public String toString() {
+	public String toString() {
 	     return "Player [Firstname = " + getFirstName() + " Lastname = "+
 	    getLastName() + " Jersey Number = " + getJerseyNum() +  "]";
 	   }
