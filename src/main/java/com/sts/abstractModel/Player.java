@@ -62,6 +62,15 @@ public abstract class Player {
 		this._playerID = _playerID;
 	}
 
+	/**
+     * indicates if the player has all fields initialized 
+     */
+    public boolean isValidPlayer() {
+        return ((this.get_playerID() > -1) &&
+                (this.get_jerseyNum() > -1) &&
+                (this.get_firstName() != null) &&
+                (this.get_lastName() != null));
+    }
 
 	@Override
 	public String toString() {
