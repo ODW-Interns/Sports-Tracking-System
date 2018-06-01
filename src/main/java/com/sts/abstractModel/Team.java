@@ -1,7 +1,7 @@
 
 package com.sts.abstractModel;
 
-import com.sts.concreteModel.PlayersList;
+import java.util.ArrayList;
 
 public abstract class Team {
 
@@ -9,7 +9,7 @@ public abstract class Team {
 	private String _teamName;
 	private String _location;
 	
-	private PlayersList listofPlayers;
+	private ArrayList<Integer> listofPlayers;
 	
 
 	public Team() {
@@ -22,7 +22,7 @@ public abstract class Team {
 		setTeamName(team_);
 		setLocation(loc_);
 	
-		listofPlayers = new PlayersList();
+		listofPlayers = new ArrayList<Integer>();
 	}
 
 	/*
@@ -61,7 +61,7 @@ public abstract class Team {
 		this._teamSport = teamSport_;
 	}
 
-	public PlayersList getListOfPLayers() {
+	public ArrayList<Integer> getListOfPLayers() {
 		return listofPlayers;
 	}
 	
@@ -75,7 +75,7 @@ public abstract class Team {
 
 	public String fullTeamName() {
 		
-		String fullTeamName = _location+_teamName;
+		String fullTeamName = _location+ " " +_teamName;
 		
 		return fullTeamName;
 		

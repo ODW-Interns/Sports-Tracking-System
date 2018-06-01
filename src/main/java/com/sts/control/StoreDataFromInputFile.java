@@ -1,4 +1,5 @@
 package com.sts.control;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 
@@ -22,6 +23,13 @@ public class StoreDataFromInputFile {
 		PlayersFileReader in = new PlayersFileReader();
 		InputStream is = StoreDataFromInputFile.class.getResourceAsStream(inputfile_);
 		in.readData(is, playersList_, teamsList_, gamesList_);
+		is.close();
+	}
+	
+	public static void storeDataIntoTeamList(String inputfile_, GamesList gamesList_, TeamsList teamsList_) throws RuntimeException, IOException {
+		TeamsFileReader in = new TeamsFileReader();
+		InputStream is = StoreDataFromInputFile.class.getResourceAsStream(inputfile_);
+		in.readData(is, gamesList_, teamsList_);
 		is.close();
 	}
 	

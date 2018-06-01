@@ -1,21 +1,21 @@
-Anaheim|Ducks|NHL
-Arizona|Cardinals|NFL
-Arizona|Coyotes|NHL
-Arizona|Diamondbacks|MLB
-Atlanta|Braves|MLB
-Atlanta|Falcons|NFL
-Atlanta|Hawks|NBA
-Baltimore|Orioles|MLB
-Baltimore|Ravens|NFL
-Boston|Bruins|NHL
-Boston|Celtics|NBA
-Boston|Red Sox|MLB
-Brooklyn|Nets|NBA
-Buffalo|Bills|NFL
-Buffalo|Sabres|NHL
-Calgary|Flames|NHL
-Carolina|Panthers|NFL
-Charlotte|Bobcats|NBA
-Chicago|Bulls|NBA
-Chicago|White Sox|MLB
+NHL|Anaheim|Ducks
+NFL|Arizona|Cardinals
+NHL|Arizona|Coyotes
+MLB|Arizona|Diamondbacks
+MLB|Atlanta|Braves
+NFL|Atlanta|Falcons
+NBA|Atlanta|Hawks
+MLB|Baltimore|Orioles
+NFL|Baltimore|Ravens
+NHL|Boston|Bruins
+NBA|Boston|Celtics
+MLB|Boston|Red Sox
+NBA|Brooklyn|Nets
+NFL|Buffalo|Bills
+NHL|Buffalo|Sabres
+NHL|Calgary|Flames
+NFL|Carolina|Panthers
+NBA|Charlotte|Bobcats
+NBA|Chicago|Bulls
+MLB|Chicago|White Sox
 

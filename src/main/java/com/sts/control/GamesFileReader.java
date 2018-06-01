@@ -19,21 +19,19 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.sts.abstractModel.Game;
-import com.sts.abstractModel.Player;
 import com.sts.abstractModel.Team;
 import com.sts.concreteModel.GamesList;
 import com.sts.concreteModel.Key;
-import com.sts.concreteModel.NBAPlayer;
 import com.sts.concreteModel.PlayersList;
-import com.sts.concreteModel.TeamMLB;
-import com.sts.concreteModel.TeamNBA;
-import com.sts.concreteModel.TeamNFL;
-import com.sts.concreteModel.TeamNHL;
 import com.sts.concreteModel.TeamsList;
 import com.sts.model.exception.DuplicateTeamException;
 import com.sts.model.exception.InvalidPlayersException;
+import com.sts.model.exception.MismatchGameandTeamSportException;
+import com.sts.model.exception.MismatchPlayerandGameSportException;
 import com.sts.model.exception.NegativeAttendanceException;
 import com.sts.model.exception.NegativeScoreException;
+import com.sts.model.exception.PlayerNotOnTeamException;
+import com.sts.model.exception.TeamNotFoundException;
 
 // class to read from file with upcoming/finished games
 public class GamesFileReader {
@@ -113,9 +111,19 @@ public class GamesFileReader {
      * If it does already exist, team found
      * Else, put in hashmap
      */
-    private Team parseTeam(String category, String cityStr_,String teamStr_, TeamsList teamsList_) {
-        Team lclTeam = teamsList_.getTeamMap().get(teamStr_);
-        if (lclTeam == null) {
+    private Team parseTeam(String category, String cityStr_,String teamStr_, TeamsList teamsList_) throws TeamNotFoundException, MismatchGameandTeamSportException {
+        String searchString = cityStr_ + " " + teamStr_;
+    	Team lclTeam = teamsList_.getTeamMap().get(searchString);
+        if(lclTeam != null){
+        	if(lclTeam.getTeamSport().equals(category)){
+        		return lclTeam;
+        	}
+        	else
+        		throw new MismatchGameandTeamSportException();
+        }
+        else 
+        	throw new TeamNotFoundException(teamStr_);
+       /* if (lclTeam == null) {
         	if(category.equals("NBA")) {
         		lclTeam = new TeamNBA();
         	}
@@ -141,10 +149,10 @@ public class GamesFileReader {
             _logger.trace("found team for key: {}", teamStr_);
 
         // done
-        return lclTeam;
+        return lclTeam;*/
     }
 
-    private void parsePlayerIDs(String playerIDs_, GamesList gamesList_, Game game_, PlayersList playersList_) throws InvalidPlayersException {
+    private void parsePlayerIDs(String playerIDs_, GamesList gamesList_, Game game_, PlayersList playersList_, TeamsList teamsList_, String teamName_) throws InvalidPlayersException, MismatchPlayerandGameSportException, PlayerNotOnTeamException {
     	StringTokenizer tokenizer;
     	tokenizer = new StringTokenizer(playerIDs_, ",");
     	int playerID;
@@ -155,18 +163,34 @@ public class GamesFileReader {
     			throw new InvalidPlayersException();
     		}
     		else {
-    			if(game_.getAwayTeam() == null) {
-        			game_.getHomeTeamRoster().add(playerID);
+    			if(!playersList_.returnPlayersMap().get(playerID).get_sportCategory().equals(game_.getCategory()))
+    				throw new MismatchPlayerandGameSportException();
+    			else {
+    				if(!PlayerIsOnTeam(playerID, teamsList_, teamName_)) {
+    					throw new PlayerNotOnTeamException();		
+    				}
+    				else {
+    					if(game_.getAwayTeam() == null) {
+    						game_.getHomeTeamRoster().add(playerID);
+    					}
+    					else
+    						game_.getAwayTeamRoster().add(playerID);
+    				}
     			}
-    			else
-        			game_.getAwayTeamRoster().add(playerID);
-
     		}
     	}
     }
 
 
+    private boolean PlayerIsOnTeam(int playerID_,TeamsList teamsList_, String teamName_) {
+    	if(teamsList_.getTeamMap().get(teamName_).getListOfPLayers().contains(playerID_)) {
 
+    		return true;
+    	}
+    	else
+    		return false;
+    }
+    
     /** 
      * (non-Javadoc)
      * Method to tokenize lines from the game data file and add the game to the games list
@@ -179,6 +203,7 @@ public class GamesFileReader {
             String line;
             String team;
             String city;
+            String teamName;
             Game game;
             Team home;
             String category;
@@ -243,7 +268,8 @@ public class GamesFileReader {
                 
                 try {
                 	playerIDs = tokenizer.nextToken();
-                	parsePlayerIDs(playerIDs, gamesList_, game, playersList_);
+                	teamName = city + " " + team;
+                	parsePlayerIDs(playerIDs, gamesList_, game, playersList_,teamsList_, teamName);
                 }
                 catch(Exception e_) {
                 	_logger.error("There were invalid player IDs:" + e_.toString());
@@ -264,7 +290,8 @@ public class GamesFileReader {
 
                 try {
                 	playerIDs = tokenizer.nextToken();
-                	parsePlayerIDs(playerIDs, gamesList_, game, playersList_);
+                	teamName = city + " " + team;
+                	parsePlayerIDs(playerIDs, gamesList_, game, playersList_, teamsList_, teamName );
                 }
                 catch(Exception e_) {
                 	_logger.error("There were invalid player IDs:" + e_.toString());
@@ -280,8 +307,7 @@ public class GamesFileReader {
                     // this is a game in the future, do not process any more data
                 	addGame(game, gamesList_);
                 	continue;
-                }
-
+                }              
 
 
                 //
@@ -304,7 +330,8 @@ public class GamesFileReader {
                 	if(homeScore < 0) {
                 		throw new NegativeScoreException();
                 	}
-                    game.setHomeTeamScore(homeScore);                }
+                    game.setHomeTeamScore(homeScore);              
+                }
                 catch (Exception e_) {
                     _logger.error("sethTeamScore:" + e_.toString());
                 }
@@ -353,7 +380,7 @@ public class GamesFileReader {
         gamesList_.getGamesMap().put(new Key(game_.getStartTime(), game_.getGameUID()), game_);
 
         if (_logger.isTraceEnabled())
-            _logger.trace("Adding new game to past list: {}", game_.toString());
+            _logger.trace("Adding new game to game mapt: {}", game_.toString());
     }
 
 
