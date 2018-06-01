@@ -24,8 +24,8 @@ public class SportsSystem {
 		//Create a TeamsList object to hold all teams
 		TeamsList listofTeams = new TeamsList();
 		PlayersList listofPlayers = new PlayersList();
-		//Read from "games.csv" file and store all games and teams read
-
+		StoreDataFromInputFile.storeDataIntoTeamList("/Teams.txt", listofGames, listofTeams);
+		StoreDataFromInputFile.storeDataIntoPlayerList("/Players.csv", listofGames, listofTeams, listofPlayers);
 	    StoreDataFromInputFile.storeDataIntoGameList("/games.csv", listofGames, listofTeams, listofPlayers);
 	    
 	    Logger _logger;
@@ -67,12 +67,12 @@ public class SportsSystem {
 		    switch (choice) {
 			case 1:
 				
-				listofGames.logFinishedGames();
+				listofGames.logFinishedGames(listofPlayers);
 				
 				break;
 			case 2:
 				
-			    listofGames.logUpcomingGames();
+			    listofGames.logUpcomingGames(listofPlayers);
 				
 			    break;
 			case 3:
@@ -90,7 +90,6 @@ public class SportsSystem {
 				
 			
 			}
-		    input.close();
 		}
 		
 

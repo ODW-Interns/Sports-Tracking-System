@@ -3,7 +3,7 @@ package com.sts.view;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.sts.model.GamesList;
+import com.sts.concreteModel.GamesList;
 
 //class used to log to a file
 public class PrintToLog {
