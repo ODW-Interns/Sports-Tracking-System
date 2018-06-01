@@ -3,8 +3,7 @@ package com.sts.abstractModel;
 import java.time.Duration;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
-
-import com.sts.concreteModel.PlayersList;
+import java.util.ArrayList;
 
 //
 public class Game implements Comparable<Game> {
@@ -20,8 +19,9 @@ public class Game implements Comparable<Game> {
     private int attendence;
     private String category;
 
-    private PlayersList listOfAwayPlayers;
-    private PlayersList listofHomePlayers;
+    private ArrayList<Integer> listOfAwayPlayers = new ArrayList<Integer>();
+    private ArrayList<Integer> listofHomePlayers = new ArrayList<Integer>();
+    
     
     public Game()
     {
@@ -51,7 +51,24 @@ public class Game implements Comparable<Game> {
     	setFinishTime(finish);
     }
 
-    /**
+    
+    public ArrayList<Integer> getListOfAwayPlayers() {
+		return listOfAwayPlayers;
+	}
+
+	public void setListOfAwayPlayers(ArrayList<Integer> listOfAwayPlayers) {
+		this.listOfAwayPlayers = listOfAwayPlayers;
+	}
+
+	public ArrayList<Integer> getListofHomePlayers() {
+		return listofHomePlayers;
+	}
+
+	public void setListofHomePlayers(ArrayList<Integer> listofHomePlayers) {
+		this.listofHomePlayers = listofHomePlayers;
+	}
+
+	/**
      * method to return the date and start time of the game
      */
     public void setStartTime(ZonedDateTime startTime_) {
@@ -146,14 +163,14 @@ public class Game implements Comparable<Game> {
      * retrieve the list of away players for game
      */
     
-    public PlayersList getAwayTeamRoster() {
+    public ArrayList<Integer> getAwayTeamRoster() {
     	return listOfAwayPlayers;
     }
     
     /*
      * retrieve the list of home players for game
      */
-    public PlayersList getHomeTeamRoster() {
+    public ArrayList<Integer> getHomeTeamRoster() {
     	return listofHomePlayers;
     }
     

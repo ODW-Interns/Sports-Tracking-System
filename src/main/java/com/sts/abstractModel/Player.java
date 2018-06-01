@@ -6,18 +6,19 @@ public abstract class Player {
 	protected String _lastName;
 	protected int _jerseyNum;
 	protected int _playerID;	
-	protected int _gameID;
 	protected Team currentTeam;
+	protected String _sportCategory;
 	
 	
-	public int get_gameID() {
-		return _gameID;
+	public String get_sportCategory() {
+		return _sportCategory;
 	}
 
 
-	public void set_gameID(int _gameID) {
-		this._gameID = _gameID;
+	public void set_sportCategory(String _sportCategory) {
+		this._sportCategory = _sportCategory;
 	}
+	
 
 
 	public Team getCurrentTeam() {
@@ -89,7 +90,7 @@ public abstract class Player {
         return ((this.get_playerID() > -1) &&
                 (this.getJerseyNum() > -1) &&
                 (this.getFirstName() != null) &&
-                (this.getLastName() != null));
+                (this.getLastName() != null) && this.get_sportCategory() != null);
     }
 
 	@Override

@@ -22,7 +22,8 @@ public class SportsSystem {
 		PlayersList listofPlayers = new PlayersList();
 		//Read from "games.csv" file and store all games and teams read
 		StoreDataFromInputFile.storeDataIntoPlayerList("/Players.csv", listofGames, listofTeams, listofPlayers);
-	    StoreDataFromInputFile.storeDataIntoGameList("/games.csv", listofGames, listofTeams, listofPlayers);
+		System.out.println(listofPlayers.returnPlayersMap().size());
+		StoreDataFromInputFile.storeDataIntoGameList("/games.csv", listofGames, listofTeams, listofPlayers);
 	    listofGames.logFinishedGames();
 	    listofGames.logUpcomingGames();
 		

@@ -83,7 +83,6 @@ public class PlayersFileReader {
 	                //
 	                //
 	                //
-	               
 	                try {
 	                	category = tokenizer.nextToken();
 	                }
@@ -93,16 +92,16 @@ public class PlayersFileReader {
 	                }
 	                
 	                try {
-		                if(category == "NBA") {
+		                if(category.equals("NBA")) {
 		                	player = new NBAPlayer();
 		                }
-		                else if(category == "NFL") {
+		                else if(category.equals("NFL")) {
 		                	player = new NFLPlayer();
 		                }
-		                else if(category == "NHL") {
+		                else if(category.equals("NHL")) {
 		                	player = new NHLPlayer();
 		                }
-		                else if(category == "MLB") {
+		                else if(category.equals("MLB")) {
 		                	player = new MLBPlayer();
 		                }
 		                
@@ -110,6 +109,13 @@ public class PlayersFileReader {
 	                catch(Exception e_) {
 	                	_logger.error("Failed to initialize player:" + e_.toString());
 	                	continue;
+	                }
+	                
+	                try {
+	                	player.set_sportCategory(category);
+	                }
+	                catch(Exception e_) {
+	                	_logger.error("setCategory:" + e_.toString());
 	                }
 	                
 	                try {
@@ -123,7 +129,6 @@ public class PlayersFileReader {
 	                try {
 	                	
 	                	player.set_jerseyNum(Integer.parseInt(tokenizer.nextToken()));
-	                	System.out.println(player.getJerseyNum());
 	                }
 	                catch(Exception e_) {
 	                	_logger.error("setJerseyNum:" + e_.toString());
@@ -151,7 +156,7 @@ public class PlayersFileReader {
 	                catch(Exception e_) {
 	                	_logger.error("setTeam:" + e_.toString());
 	                }
-	             
+	             addPlayer(player, playerlist_);
 	            }
 		 }
 	}
@@ -162,7 +167,7 @@ public class PlayersFileReader {
     {
         if (!player_.isValidPlayer())
         {
-            _logger.error("Refusing to add invalid game: {}", player_);
+            _logger.error("Refusing to add invalid player: {}", player_);
             return;
         }
         

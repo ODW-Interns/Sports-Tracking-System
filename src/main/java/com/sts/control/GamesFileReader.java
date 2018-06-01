@@ -31,6 +31,7 @@ import com.sts.concreteModel.TeamNFL;
 import com.sts.concreteModel.TeamNHL;
 import com.sts.concreteModel.TeamsList;
 import com.sts.model.exception.DuplicateTeamException;
+import com.sts.model.exception.InvalidPlayersException;
 import com.sts.model.exception.NegativeAttendanceException;
 import com.sts.model.exception.NegativeScoreException;
 
@@ -143,21 +144,23 @@ public class GamesFileReader {
         return lclTeam;
     }
 
-    private void parsePlayerIDs(String playerIDs_, GamesList gamesList_, Game game_, PlayersList playersList_) {
+    private void parsePlayerIDs(String playerIDs_, GamesList gamesList_, Game game_, PlayersList playersList_) throws InvalidPlayersException {
     	StringTokenizer tokenizer;
     	tokenizer = new StringTokenizer(playerIDs_, ",");
     	int playerID;
-    	Player player = new NBAPlayer();
     	while(tokenizer.hasMoreTokens()) {
     		playerID = Integer.parseInt(tokenizer.nextToken());
-    		player = playersList_.returnPlayersMap().get(playerID);
-    		if(player == null) {
+    		if(playersList_.returnPlayersMap().get(playerID) == null) {
     			_logger.error("There does not exist a player with the ID:" + playerID + ". Player was not added to game");
-    			
+    			throw new InvalidPlayersException();
     		}
     		else {
-    			Key gameKey = new Key(game_.getStartTime(), game_.getGameUID());
-    			gamesList_.getGamesMap().get(gameKey).getAwayTeamRoster().returnPlayersMap().put(playerID, player);
+    			if(game_.getAwayTeam() == null) {
+        			game_.getHomeTeamRoster().add(playerID);
+    			}
+    			else
+        			game_.getAwayTeamRoster().add(playerID);
+
     		}
     	}
     }
@@ -243,7 +246,8 @@ public class GamesFileReader {
                 	parsePlayerIDs(playerIDs, gamesList_, game, playersList_);
                 }
                 catch(Exception e_) {
-                	_logger.error("setAwayPlayers:" + e_.toString());
+                	_logger.error("There were invalid player IDs:" + e_.toString());
+                	continue;
                 }
 
                 try {
@@ -263,7 +267,8 @@ public class GamesFileReader {
                 	parsePlayerIDs(playerIDs, gamesList_, game, playersList_);
                 }
                 catch(Exception e_) {
-                	_logger.error("setAwayPlayers:" + e_.toString());
+                	_logger.error("There were invalid player IDs:" + e_.toString());
+                	continue;
                 }
 
              
