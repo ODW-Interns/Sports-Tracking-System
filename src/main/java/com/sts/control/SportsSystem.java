@@ -26,7 +26,7 @@ public class SportsSystem {
 		PlayersList listofPlayers = new PlayersList();
 		//Read from "games.csv" file and store all games and teams read
 
-	    StoreDataFromInputFile.storeDataIntoGameList("/games.csv", _listofGames, _listofTeams );
+	    StoreDataFromInputFile.storeDataIntoGameList("/games.csv", listofGames, listofTeams, listofPlayers);
 	    
 	    Logger _logger;
 	    
@@ -90,6 +90,7 @@ public class SportsSystem {
 				
 			
 			}
+		    input.close();
 		}
 		
 

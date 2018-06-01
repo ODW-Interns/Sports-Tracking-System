@@ -19,6 +19,8 @@ import com.sts.concreteModel.NFLPlayer;
 import com.sts.concreteModel.NHLPlayer;
 import com.sts.concreteModel.PlayersList;
 import com.sts.concreteModel.TeamsList;
+import com.sts.model.exception.MismatchPlayerandTeamSportException;
+import com.sts.model.exception.TeamNotFoundException;
 
 public class PlayersFileReader {
 	private Logger _logger;
@@ -63,17 +65,28 @@ public class PlayersFileReader {
         return lclTeam;
     }*/
     
-    
+    private void parseCurrentTeam(TeamsList teamList_, String teamStr_, Player player_) throws TeamNotFoundException, MismatchPlayerandTeamSportException {
+    	if(teamList_.getTeamMap().get(teamStr_) == null) {
+    		throw new TeamNotFoundException(teamStr_);
+    	}
+    	else {
+    		if(!teamList_.getTeamMap().get(teamStr_).getTeamSport().equals(player_.get_sportCategory())) {
+    			throw new MismatchPlayerandTeamSportException();
+    		}
+    		else {
+    	      	player_.setCurrentTeam(teamList_.getTeamMap().get(teamStr_));
+    		}
+    	}
+    	
+    }
     
     
 	private void readFromFileForLists(Reader is_, PlayersList playerlist_, TeamsList teamsList_) throws IOException {
 		// TODO Auto-generated method stub
 		 try (BufferedReader reader = new BufferedReader(is_)) {
 	         StringTokenizer tokenizer;   
-			 String line, first, last, category, teamStr;
+			 String line, category, teamStr;
 	            Player player = null;
-	            int jersey, id;
-	       
 	            while ((line = reader.readLine()) != null) {
 	                // don't process empty lines
 	                if ("".equals(line))
@@ -149,14 +162,13 @@ public class PlayersFileReader {
 	                }
 	                
 	                try {
-	                	teamStr = tokenizer.nextToken();
-	                	player.setCurrentTeam(teamsList_.getTeamMap().get(teamStr));
-	                	
+	                	parseCurrentTeam(teamsList_, tokenizer.nextToken(), player);	           
 	                }
 	                catch(Exception e_) {
 	                	_logger.error("setTeam:" + e_.toString());
 	                }
 	             addPlayer(player, playerlist_);
+	             teamsList_.getTeamMap().get(player.getCurrentTeam().fullTeamName()).getListOfPLayers().add(player.get_playerID());
 	            }
 		 }
 	}
@@ -177,7 +189,7 @@ public class PlayersFileReader {
         PlayersList_.returnPlayersMap().put(player_.get_playerID(),player_);
 
         if (_logger.isTraceEnabled())
-            _logger.trace("Adding new player to past list: {}", player_.toString());
+            _logger.trace("Adding new player to player map: {}", player_.toString());
     }
 
 
