@@ -89,16 +89,22 @@ import com.sts.concreteModel.TeamsList;
 					}
 
 					try {
+						team.setTeamSport(category);
+					}
+					catch(Exception e_) {
+						_logger.error("setTeamSport:" + e_.toString());
+					}
+					try {
 						team.setLocation(tokenizer.nextToken());
 					} catch (Exception e_) {
-						System.err.println("setLocation:" + e_.toString());
+						_logger.error("setLocation:" + e_.toString());
 						continue;
 					}
 
 					try {
 						team.setTeamName(tokenizer.nextToken());
 					} catch (Exception e_) {
-						System.err.println("setTeamName:" + e_.toString());
+						_logger.error("setTeamName:" + e_.toString());
 						continue;
 					}
 				
@@ -128,10 +134,10 @@ import com.sts.concreteModel.TeamsList;
 	        listOfTeams_.getTeamMap().put(team_.fullTeamName(), team_);
 
 	        if (_logger.isTraceEnabled())
-	            _logger.trace("Adding new game to past list: {}", team_.toString());
+	            _logger.trace("Adding new team to team map: {}", team_.toString());
 	    
 	    }
 		
 	}
-	}
+	
 	
