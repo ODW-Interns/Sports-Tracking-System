@@ -73,6 +73,13 @@ public abstract class Team {
 			return false;
 	}
 
+	public String fullTeamName() {
+		
+		String fullTeamName = _location+_teamName;
+		
+		return fullTeamName;
+		
+	}
 	 @Override
 	    public String toString() {
 	        return "Team [Name = " + _teamName + " Location = "+
