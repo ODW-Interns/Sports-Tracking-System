@@ -105,6 +105,7 @@ public class PlayersFileReader {
 		                else if(category == "MLB") {
 		                	player = new MLBPlayer();
 		                }
+		                
 	                }
 	                catch(Exception e_) {
 	                	_logger.error("Failed to initialize player:" + e_.toString());
@@ -120,7 +121,9 @@ public class PlayersFileReader {
 	                }
 	                
 	                try {
+	                	
 	                	player.set_jerseyNum(Integer.parseInt(tokenizer.nextToken()));
+	                	System.out.println(player.getJerseyNum());
 	                }
 	                catch(Exception e_) {
 	                	_logger.error("setJerseyNum:" + e_.toString());

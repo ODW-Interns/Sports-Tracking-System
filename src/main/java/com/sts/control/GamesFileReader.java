@@ -19,9 +19,11 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.sts.abstractModel.Game;
+import com.sts.abstractModel.Player;
 import com.sts.abstractModel.Team;
 import com.sts.concreteModel.GamesList;
 import com.sts.concreteModel.Key;
+import com.sts.concreteModel.NBAPlayer;
 import com.sts.concreteModel.PlayersList;
 import com.sts.concreteModel.TeamMLB;
 import com.sts.concreteModel.TeamNBA;
@@ -46,7 +48,7 @@ public class GamesFileReader {
     /*
      * Method to make sure file exists and the two objects(GamesList & TeamsList) have been created
      */
-    public void readData(InputStream is_, GamesList gamelist_, TeamsList teamlist_ ) throws FileNotFoundException, RuntimeException {
+    public void readData(InputStream is_, GamesList gamelist_, TeamsList teamlist_, PlayersList playerslist_ ) throws FileNotFoundException, RuntimeException {
         if (is_ == null)
             throw new FileNotFoundException();
 
@@ -56,7 +58,7 @@ public class GamesFileReader {
         	throw new RuntimeException("No list provided");
 
         try (InputStreamReader sr = new InputStreamReader(is_)) {
-            readFromFileForLists(sr, gamelist_, teamlist_);
+            readFromFileForLists(sr, gamelist_, teamlist_, playerslist_);
        
         }
         catch (Exception e_) {
@@ -141,7 +143,24 @@ public class GamesFileReader {
         return lclTeam;
     }
 
-
+    private void parsePlayerIDs(String playerIDs_, GamesList gamesList_, Game game_, PlayersList playersList_) {
+    	StringTokenizer tokenizer;
+    	tokenizer = new StringTokenizer(playerIDs_, ",");
+    	int playerID;
+    	Player player = new NBAPlayer();
+    	while(tokenizer.hasMoreTokens()) {
+    		playerID = Integer.parseInt(tokenizer.nextToken());
+    		player = playersList_.returnPlayersMap().get(playerID);
+    		if(player == null) {
+    			_logger.error("There does not exist a player with the ID:" + playerID + ". Player was not added to game");
+    			
+    		}
+    		else {
+    			Key gameKey = new Key(game_.getStartTime(), game_.getGameUID());
+    			gamesList_.getGamesMap().get(gameKey).getAwayTeamRoster().returnPlayersMap().put(playerID, player);
+    		}
+    	}
+    }
 
 
 
@@ -151,7 +170,7 @@ public class GamesFileReader {
      * if valid.
      */
     
-    void readFromFileForLists(Reader is_, GamesList gamesList_ , TeamsList teamsList_) {
+    void readFromFileForLists(Reader is_, GamesList gamesList_ , TeamsList teamsList_, PlayersList playersList_) {
         try (BufferedReader reader = new BufferedReader(is_)) {
             StringTokenizer tokenizer;
             String line;
@@ -160,6 +179,7 @@ public class GamesFileReader {
             Game game;
             Team home;
             String category;
+            String playerIDs;
             
             while ((line = reader.readLine()) != null) {
                 // don't process empty lines
@@ -214,8 +234,16 @@ public class GamesFileReader {
                     game.setAwayTeam(parseTeam(category,city,team, teamsList_));
                 }
                 catch (Exception e_) {
-                    _logger.error("setAawayTeam:" + e_.toString());
+                    _logger.error("setAwayTeam:" + e_.toString());
                     continue;
+                }
+                
+                try {
+                	playerIDs = tokenizer.nextToken();
+                	parsePlayerIDs(playerIDs, gamesList_, game, playersList_);
+                }
+                catch(Exception e_) {
+                	_logger.error("setAwayPlayers:" + e_.toString());
                 }
 
                 try {
@@ -230,7 +258,15 @@ public class GamesFileReader {
                     _logger.error("sethTeam:" + e_.toString());
                 }
 
+                try {
+                	playerIDs = tokenizer.nextToken();
+                	parsePlayerIDs(playerIDs, gamesList_, game, playersList_);
+                }
+                catch(Exception e_) {
+                	_logger.error("setAwayPlayers:" + e_.toString());
+                }
 
+             
 
                 //
                 // future or past game?

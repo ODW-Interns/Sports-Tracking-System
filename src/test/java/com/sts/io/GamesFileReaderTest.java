@@ -6,12 +6,10 @@
 package com.sts.io;
 
 import java.io.InputStream;
-import java.util.ArrayList;
-
 import org.junit.Test;
 
-import com.sts.abstractModel.Game;
 import com.sts.concreteModel.GamesList;
+import com.sts.concreteModel.PlayersList;
 import com.sts.concreteModel.TeamsList;
 import com.sts.control.GamesFileReader;
 
@@ -23,7 +21,8 @@ public class GamesFileReaderTest {
         try (InputStream is = getClass().getResourceAsStream("/games.csv")) {
         	GamesList games = new GamesList();
 	    	TeamsList teams = new TeamsList();
-            gr.readData(is, games, teams);
+	    	PlayersList players = new PlayersList();
+            gr.readData(is, games, teams, players);
         }
         catch (Exception e_) {
             assert(false);
@@ -38,7 +37,8 @@ public class GamesFileReaderTest {
         try (InputStream is = getClass().getResourceAsStream("/invalidGames.csv")) {
         	GamesList games = new GamesList();
 	    	TeamsList teams = new TeamsList();
-            gr.readData(is, games, teams);
+	    	PlayersList players = new PlayersList();
+            gr.readData(is, games, teams, players);
         }
         catch (Exception e_) {
             assert(false);

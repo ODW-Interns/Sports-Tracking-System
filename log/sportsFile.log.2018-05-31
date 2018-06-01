@@ -1,0 +1,222 @@
+31-05-2018 08:04:42 INFO  GamesFileReader:133 - New team identified:Hawks. adding to mapping Team:Team [Name = Hawks Location = Atlanta Team Sport=NBA]
+31-05-2018 08:04:42 TRACE GamesFileReader:138 - found team for key: Hawks
+31-05-2018 08:04:42 INFO  GamesFileReader:133 - New team identified:Celtics. adding to mapping Team:Team [Name = Celtics Location = Boston Team Sport=NBA]
+31-05-2018 08:04:42 TRACE GamesFileReader:138 - found team for key: Celtics
+31-05-2018 08:04:42 TRACE GamesFileReader:320 - Adding new game to past list: Game [date=2018-05-22T13:00:00-07:00, homeTeam=Team [Name = Celtics Location = Boston Team Sport=NBA], awayTeam=Team [Name = Hawks Location = Atlanta Team Sport=NBA]
+31-05-2018 08:04:42 INFO  GamesFileReader:133 - New team identified: Nets. adding to mapping Team:Team [Name =  Nets Location = Brookly Team Sport=NBA]
+31-05-2018 08:04:42 TRACE GamesFileReader:138 - found team for key:  Nets
+31-05-2018 08:04:42 INFO  GamesFileReader:133 - New team identified:Bobcats. adding to mapping Team:Team [Name = Bobcats Location = charlotte Team Sport=NBA]
+31-05-2018 08:04:42 TRACE GamesFileReader:138 - found team for key: Bobcats
+31-05-2018 08:04:42 TRACE GamesFileReader:320 - Adding new game to past list: Game [date=2018-06-23T05:00:00-07:00, homeTeam=Team [Name = Bobcats Location = charlotte Team Sport=NBA], awayTeam=Team [Name =  Nets Location = Brookly Team Sport=NBA]
+31-05-2018 08:04:42 INFO  GamesFileReader:133 - New team identified:Bulls. adding to mapping Team:Team [Name = Bulls Location = Chicago Team Sport=NBA]
+31-05-2018 08:04:42 TRACE GamesFileReader:138 - found team for key: Bulls
+31-05-2018 08:04:42 TRACE GamesFileReader:138 - found team for key: Hawks
+31-05-2018 08:04:42 TRACE GamesFileReader:320 - Adding new game to past list: Game [date=2018-06-08T05:00:00-07:00, homeTeam=Team [Name = Hawks Location = Atlanta Team Sport=NBA], awayTeam=Team [Name = Bulls Location = Chicago Team Sport=NBA]
+31-05-2018 08:04:42 INFO  GamesFileReader:133 - New team identified:Cardinals. adding to mapping Team:Team [Name = Cardinals Location = Arizona Team Sport=NBA]
+31-05-2018 08:04:42 TRACE GamesFileReader:138 - found team for key: Cardinals
+31-05-2018 08:04:42 INFO  GamesFileReader:133 - New team identified:Falcons. adding to mapping Team:Team [Name = Falcons Location = Atlanta Team Sport=NBA]
+31-05-2018 08:04:42 TRACE GamesFileReader:138 - found team for key: Falcons
+31-05-2018 08:04:42 TRACE GamesFileReader:320 - Adding new game to past list: Game [date=2018-05-09T05:00:00-07:00, homeTeam=Team [Name = Falcons Location = Atlanta Team Sport=NBA], awayTeam=Team [Name = Cardinals Location = Arizona Team Sport=NBA]
+31-05-2018 08:04:42 INFO  GamesFileReader:133 - New team identified:Ravens. adding to mapping Team:Team [Name = Ravens Location = Baltimore Team Sport=NFL]
+31-05-2018 08:04:42 TRACE GamesFileReader:138 - found team for key: Ravens
+31-05-2018 08:04:42 INFO  GamesFileReader:133 - New team identified:Bills. adding to mapping Team:Team [Name = Bills Location = Buffalo Team Sport=NFL]
+31-05-2018 08:04:42 TRACE GamesFileReader:138 - found team for key: Bills
+31-05-2018 08:04:42 TRACE GamesFileReader:320 - Adding new game to past list: Game [date=2018-06-21T05:00:00-07:00, homeTeam=Team [Name = Bills Location = Buffalo Team Sport=NFL], awayTeam=Team [Name = Ravens Location = Baltimore Team Sport=NFL]
+31-05-2018 08:04:42 INFO  GamesFileReader:133 - New team identified:Panthers. adding to mapping Team:Team [Name = Panthers Location = Carolina Team Sport=NFL]
+31-05-2018 08:04:42 TRACE GamesFileReader:138 - found team for key: Panthers
+31-05-2018 08:04:42 TRACE GamesFileReader:138 - found team for key: Cardinals
+31-05-2018 08:04:42 TRACE GamesFileReader:320 - Adding new game to past list: Game [date=2018-07-08T05:00:00-07:00, homeTeam=Team [Name = Cardinals Location = Arizona Team Sport=NBA], awayTeam=Team [Name = Panthers Location = Carolina Team Sport=NFL]
+31-05-2018 08:04:42 INFO  GamesFileReader:133 - New team identified:Ducks. adding to mapping Team:Team [Name = Ducks Location = Anaheim Team Sport=NHL]
+31-05-2018 08:04:42 TRACE GamesFileReader:138 - found team for key: Ducks
+31-05-2018 08:04:42 INFO  GamesFileReader:133 - New team identified:Coyotes. adding to mapping Team:Team [Name = Coyotes Location = Arizona Team Sport=NHL]
+31-05-2018 08:04:42 TRACE GamesFileReader:138 - found team for key: Coyotes
+31-05-2018 08:04:42 TRACE GamesFileReader:320 - Adding new game to past list: Game [date=2018-01-01T04:00:00-08:00, homeTeam=Team [Name = Coyotes Location = Arizona Team Sport=NHL], awayTeam=Team [Name = Ducks Location = Anaheim Team Sport=NHL]
+31-05-2018 08:04:42 INFO  GamesFileReader:133 - New team identified:Bruins. adding to mapping Team:Team [Name = Bruins Location = Boston Team Sport=NHL]
+31-05-2018 08:04:42 TRACE GamesFileReader:138 - found team for key: Bruins
+31-05-2018 08:04:42 INFO  GamesFileReader:133 - New team identified:Sabres. adding to mapping Team:Team [Name = Sabres Location = Buffalo Team Sport=NHL]
+31-05-2018 08:04:42 TRACE GamesFileReader:138 - found team for key: Sabres
+31-05-2018 08:04:42 TRACE GamesFileReader:320 - Adding new game to past list: Game [date=2018-08-08T05:00:00-07:00, homeTeam=Team [Name = Sabres Location = Buffalo Team Sport=NHL], awayTeam=Team [Name = Bruins Location = Boston Team Sport=NHL]
+31-05-2018 08:04:42 INFO  GamesFileReader:133 - New team identified:Flames. adding to mapping Team:Team [Name = Flames Location = Calgry Team Sport=NHL]
+31-05-2018 08:04:42 TRACE GamesFileReader:138 - found team for key: Flames
+31-05-2018 08:04:42 TRACE GamesFileReader:138 - found team for key: Ducks
+31-05-2018 08:04:42 TRACE GamesFileReader:320 - Adding new game to past list: Game [date=2018-07-24T05:00:00-07:00, homeTeam=Team [Name = Ducks Location = Anaheim Team Sport=NHL], awayTeam=Team [Name = Flames Location = Calgry Team Sport=NHL]
+31-05-2018 08:04:42 INFO  GamesFileReader:133 - New team identified:Diamondbacks. adding to mapping Team:Team [Name = Diamondbacks Location = Arizona Team Sport=MLB]
+31-05-2018 08:04:42 TRACE GamesFileReader:138 - found team for key: Diamondbacks
+31-05-2018 08:04:42 INFO  GamesFileReader:133 - New team identified:Braves. adding to mapping Team:Team [Name = Braves Location = Atlanta Team Sport=MLB]
+31-05-2018 08:04:42 TRACE GamesFileReader:138 - found team for key: Braves
+31-05-2018 08:04:42 TRACE GamesFileReader:320 - Adding new game to past list: Game [date=2018-05-20T05:00:00-07:00, homeTeam=Team [Name = Braves Location = Atlanta Team Sport=MLB], awayTeam=Team [Name = Diamondbacks Location = Arizona Team Sport=MLB]
+31-05-2018 08:04:42 INFO  GamesFileReader:133 - New team identified:Orioles. adding to mapping Team:Team [Name = Orioles Location = Baltimore Team Sport=MLB]
+31-05-2018 08:04:42 TRACE GamesFileReader:138 - found team for key: Orioles
+31-05-2018 08:04:42 INFO  GamesFileReader:133 - New team identified:Red Sox. adding to mapping Team:Team [Name = Red Sox Location = Boston Team Sport=MLB]
+31-05-2018 08:04:42 TRACE GamesFileReader:138 - found team for key: Red Sox
+31-05-2018 08:04:42 TRACE GamesFileReader:320 - Adding new game to past list: Game [date=2018-06-27T05:00:00-07:00, homeTeam=Team [Name = Red Sox Location = Boston Team Sport=MLB], awayTeam=Team [Name = Orioles Location = Baltimore Team Sport=MLB]
+31-05-2018 08:04:42 INFO  GamesFileReader:133 - New team identified:White Sox. adding to mapping Team:Team [Name = White Sox Location = Chicago Team Sport=MLB]
+31-05-2018 08:04:42 TRACE GamesFileReader:138 - found team for key: White Sox
+31-05-2018 08:04:42 TRACE GamesFileReader:138 - found team for key: Diamondbacks
+31-05-2018 08:04:42 TRACE GamesFileReader:320 - Adding new game to past list: Game [date=2018-06-29T05:00:00-07:00, homeTeam=Team [Name = Diamondbacks Location = Arizona Team Sport=MLB], awayTeam=Team [Name = White Sox Location = Chicago Team Sport=MLB]
+31-05-2018 08:04:42 INFO  GamesList:75 - ALL FINISHED GAMES
+31-05-2018 08:04:42 TRACE GamesList:77 - Game [date=2018-05-22T13:00:00-07:00, homeTeam=Team [Name = Celtics Location = Boston Team Sport=NBA], awayTeam=Team [Name = Hawks Location = Atlanta Team Sport=NBA]
+31-05-2018 08:04:42 TRACE GamesList:77 - Game [date=2018-05-20T05:00:00-07:00, homeTeam=Team [Name = Braves Location = Atlanta Team Sport=MLB], awayTeam=Team [Name = Diamondbacks Location = Arizona Team Sport=MLB]
+31-05-2018 08:04:42 TRACE GamesList:77 - Game [date=2018-05-09T05:00:00-07:00, homeTeam=Team [Name = Falcons Location = Atlanta Team Sport=NBA], awayTeam=Team [Name = Cardinals Location = Arizona Team Sport=NBA]
+31-05-2018 08:04:42 TRACE GamesList:77 - Game [date=2018-01-01T04:00:00-08:00, homeTeam=Team [Name = Coyotes Location = Arizona Team Sport=NHL], awayTeam=Team [Name = Ducks Location = Anaheim Team Sport=NHL]
+31-05-2018 08:04:42 INFO  GamesList:62 - ALL UPCOMING GAMES:
+31-05-2018 08:04:42 TRACE GamesList:64 - Game [date=2018-08-08T05:00:00-07:00, homeTeam=Team [Name = Sabres Location = Buffalo Team Sport=NHL], awayTeam=Team [Name = Bruins Location = Boston Team Sport=NHL]
+31-05-2018 08:04:42 TRACE GamesList:64 - Game [date=2018-07-24T05:00:00-07:00, homeTeam=Team [Name = Ducks Location = Anaheim Team Sport=NHL], awayTeam=Team [Name = Flames Location = Calgry Team Sport=NHL]
+31-05-2018 08:04:42 TRACE GamesList:64 - Game [date=2018-07-08T05:00:00-07:00, homeTeam=Team [Name = Cardinals Location = Arizona Team Sport=NBA], awayTeam=Team [Name = Panthers Location = Carolina Team Sport=NFL]
+31-05-2018 08:04:42 TRACE GamesList:64 - Game [date=2018-06-29T05:00:00-07:00, homeTeam=Team [Name = Diamondbacks Location = Arizona Team Sport=MLB], awayTeam=Team [Name = White Sox Location = Chicago Team Sport=MLB]
+31-05-2018 08:04:42 TRACE GamesList:64 - Game [date=2018-06-27T05:00:00-07:00, homeTeam=Team [Name = Red Sox Location = Boston Team Sport=MLB], awayTeam=Team [Name = Orioles Location = Baltimore Team Sport=MLB]
+31-05-2018 08:04:42 TRACE GamesList:64 - Game [date=2018-06-23T05:00:00-07:00, homeTeam=Team [Name = Bobcats Location = charlotte Team Sport=NBA], awayTeam=Team [Name =  Nets Location = Brookly Team Sport=NBA]
+31-05-2018 08:04:42 TRACE GamesList:64 - Game [date=2018-06-21T05:00:00-07:00, homeTeam=Team [Name = Bills Location = Buffalo Team Sport=NFL], awayTeam=Team [Name = Ravens Location = Baltimore Team Sport=NFL]
+31-05-2018 08:04:42 TRACE GamesList:64 - Game [date=2018-06-08T05:00:00-07:00, homeTeam=Team [Name = Hawks Location = Atlanta Team Sport=NBA], awayTeam=Team [Name = Bulls Location = Chicago Team Sport=NBA]
+31-05-2018 09:08:11 INFO  GamesFileReader:133 - New team identified:Hawks. adding to mapping Team:Team [Name = Hawks Location = Atlanta Team Sport=NBA]
+31-05-2018 09:08:11 TRACE GamesFileReader:138 - found team for key: Hawks
+31-05-2018 09:08:11 INFO  GamesFileReader:133 - New team identified:Celtics. adding to mapping Team:Team [Name = Celtics Location = Boston Team Sport=NBA]
+31-05-2018 09:08:11 TRACE GamesFileReader:138 - found team for key: Celtics
+31-05-2018 09:08:11 TRACE GamesFileReader:320 - Adding new game to past list: Game [date=2018-05-22T13:00:00-07:00, homeTeam=Team [Name = Celtics Location = Boston Team Sport=NBA], homeScore=18, awayTeam=Team [Name = Hawks Location = Atlanta Team Sport=NBA], awayTeam=25
+31-05-2018 09:08:11 INFO  GamesFileReader:133 - New team identified: Nets. adding to mapping Team:Team [Name =  Nets Location = Brookly Team Sport=NBA]
+31-05-2018 09:08:11 TRACE GamesFileReader:138 - found team for key:  Nets
+31-05-2018 09:08:11 INFO  GamesFileReader:133 - New team identified:Bobcats. adding to mapping Team:Team [Name = Bobcats Location = charlotte Team Sport=NBA]
+31-05-2018 09:08:11 TRACE GamesFileReader:138 - found team for key: Bobcats
+31-05-2018 09:08:11 TRACE GamesFileReader:320 - Adding new game to past list: Game [date=2018-06-23T05:00:00-07:00, homeTeam=Team [Name = Bobcats Location = charlotte Team Sport=NBA], homeScore=0, awayTeam=Team [Name =  Nets Location = Brookly Team Sport=NBA], awayTeam=0
+31-05-2018 09:08:11 INFO  GamesFileReader:133 - New team identified:Bulls. adding to mapping Team:Team [Name = Bulls Location = Chicago Team Sport=NBA]
+31-05-2018 09:08:11 TRACE GamesFileReader:138 - found team for key: Bulls
+31-05-2018 09:08:11 TRACE GamesFileReader:138 - found team for key: Hawks
+31-05-2018 09:08:11 TRACE GamesFileReader:320 - Adding new game to past list: Game [date=2018-06-08T05:00:00-07:00, homeTeam=Team [Name = Hawks Location = Atlanta Team Sport=NBA], homeScore=0, awayTeam=Team [Name = Bulls Location = Chicago Team Sport=NBA], awayTeam=0
+31-05-2018 09:08:11 INFO  GamesFileReader:133 - New team identified:Cardinals. adding to mapping Team:Team [Name = Cardinals Location = Arizona Team Sport=NBA]
+31-05-2018 09:08:11 TRACE GamesFileReader:138 - found team for key: Cardinals
+31-05-2018 09:08:11 INFO  GamesFileReader:133 - New team identified:Falcons. adding to mapping Team:Team [Name = Falcons Location = Atlanta Team Sport=NBA]
+31-05-2018 09:08:11 TRACE GamesFileReader:138 - found team for key: Falcons
+31-05-2018 09:08:11 TRACE GamesFileReader:320 - Adding new game to past list: Game [date=2018-05-09T05:00:00-07:00, homeTeam=Team [Name = Falcons Location = Atlanta Team Sport=NBA], homeScore=4, awayTeam=Team [Name = Cardinals Location = Arizona Team Sport=NBA], awayTeam=8
+31-05-2018 09:08:11 INFO  GamesFileReader:133 - New team identified:Ravens. adding to mapping Team:Team [Name = Ravens Location = Baltimore Team Sport=NFL]
+31-05-2018 09:08:11 TRACE GamesFileReader:138 - found team for key: Ravens
+31-05-2018 09:08:11 INFO  GamesFileReader:133 - New team identified:Bills. adding to mapping Team:Team [Name = Bills Location = Buffalo Team Sport=NFL]
+31-05-2018 09:08:11 TRACE GamesFileReader:138 - found team for key: Bills
+31-05-2018 09:08:11 TRACE GamesFileReader:320 - Adding new game to past list: Game [date=2018-06-21T05:00:00-07:00, homeTeam=Team [Name = Bills Location = Buffalo Team Sport=NFL], homeScore=0, awayTeam=Team [Name = Ravens Location = Baltimore Team Sport=NFL], awayTeam=0
+31-05-2018 09:08:11 INFO  GamesFileReader:133 - New team identified:Panthers. adding to mapping Team:Team [Name = Panthers Location = Carolina Team Sport=NFL]
+31-05-2018 09:08:11 TRACE GamesFileReader:138 - found team for key: Panthers
+31-05-2018 09:08:11 TRACE GamesFileReader:138 - found team for key: Cardinals
+31-05-2018 09:08:11 TRACE GamesFileReader:320 - Adding new game to past list: Game [date=2018-07-08T05:00:00-07:00, homeTeam=Team [Name = Cardinals Location = Arizona Team Sport=NBA], homeScore=0, awayTeam=Team [Name = Panthers Location = Carolina Team Sport=NFL], awayTeam=0
+31-05-2018 09:08:11 INFO  GamesFileReader:133 - New team identified:Ducks. adding to mapping Team:Team [Name = Ducks Location = Anaheim Team Sport=NHL]
+31-05-2018 09:08:11 TRACE GamesFileReader:138 - found team for key: Ducks
+31-05-2018 09:08:11 INFO  GamesFileReader:133 - New team identified:Coyotes. adding to mapping Team:Team [Name = Coyotes Location = Arizona Team Sport=NHL]
+31-05-2018 09:08:11 TRACE GamesFileReader:138 - found team for key: Coyotes
+31-05-2018 09:08:11 TRACE GamesFileReader:320 - Adding new game to past list: Game [date=2018-01-01T04:00:00-08:00, homeTeam=Team [Name = Coyotes Location = Arizona Team Sport=NHL], homeScore=17, awayTeam=Team [Name = Ducks Location = Anaheim Team Sport=NHL], awayTeam=12
+31-05-2018 09:08:11 INFO  GamesFileReader:133 - New team identified:Bruins. adding to mapping Team:Team [Name = Bruins Location = Boston Team Sport=NHL]
+31-05-2018 09:08:11 TRACE GamesFileReader:138 - found team for key: Bruins
+31-05-2018 09:08:11 INFO  GamesFileReader:133 - New team identified:Sabres. adding to mapping Team:Team [Name = Sabres Location = Buffalo Team Sport=NHL]
+31-05-2018 09:08:11 TRACE GamesFileReader:138 - found team for key: Sabres
+31-05-2018 09:08:11 TRACE GamesFileReader:320 - Adding new game to past list: Game [date=2018-08-08T05:00:00-07:00, homeTeam=Team [Name = Sabres Location = Buffalo Team Sport=NHL], homeScore=0, awayTeam=Team [Name = Bruins Location = Boston Team Sport=NHL], awayTeam=0
+31-05-2018 09:08:11 INFO  GamesFileReader:133 - New team identified:Flames. adding to mapping Team:Team [Name = Flames Location = Calgry Team Sport=NHL]
+31-05-2018 09:08:11 TRACE GamesFileReader:138 - found team for key: Flames
+31-05-2018 09:08:11 TRACE GamesFileReader:138 - found team for key: Ducks
+31-05-2018 09:08:11 TRACE GamesFileReader:320 - Adding new game to past list: Game [date=2018-07-24T05:00:00-07:00, homeTeam=Team [Name = Ducks Location = Anaheim Team Sport=NHL], homeScore=0, awayTeam=Team [Name = Flames Location = Calgry Team Sport=NHL], awayTeam=0
+31-05-2018 09:08:11 INFO  GamesFileReader:133 - New team identified:Diamondbacks. adding to mapping Team:Team [Name = Diamondbacks Location = Arizona Team Sport=MLB]
+31-05-2018 09:08:11 TRACE GamesFileReader:138 - found team for key: Diamondbacks
+31-05-2018 09:08:11 INFO  GamesFileReader:133 - New team identified:Braves. adding to mapping Team:Team [Name = Braves Location = Atlanta Team Sport=MLB]
+31-05-2018 09:08:11 TRACE GamesFileReader:138 - found team for key: Braves
+31-05-2018 09:08:11 TRACE GamesFileReader:320 - Adding new game to past list: Game [date=2018-05-20T05:00:00-07:00, homeTeam=Team [Name = Braves Location = Atlanta Team Sport=MLB], homeScore=20, awayTeam=Team [Name = Diamondbacks Location = Arizona Team Sport=MLB], awayTeam=25
+31-05-2018 09:08:11 INFO  GamesFileReader:133 - New team identified:Orioles. adding to mapping Team:Team [Name = Orioles Location = Baltimore Team Sport=MLB]
+31-05-2018 09:08:11 TRACE GamesFileReader:138 - found team for key: Orioles
+31-05-2018 09:08:11 INFO  GamesFileReader:133 - New team identified:Red Sox. adding to mapping Team:Team [Name = Red Sox Location = Boston Team Sport=MLB]
+31-05-2018 09:08:11 TRACE GamesFileReader:138 - found team for key: Red Sox
+31-05-2018 09:08:11 TRACE GamesFileReader:320 - Adding new game to past list: Game [date=2018-06-27T05:00:00-07:00, homeTeam=Team [Name = Red Sox Location = Boston Team Sport=MLB], homeScore=0, awayTeam=Team [Name = Orioles Location = Baltimore Team Sport=MLB], awayTeam=0
+31-05-2018 09:08:11 INFO  GamesFileReader:133 - New team identified:White Sox. adding to mapping Team:Team [Name = White Sox Location = Chicago Team Sport=MLB]
+31-05-2018 09:08:11 TRACE GamesFileReader:138 - found team for key: White Sox
+31-05-2018 09:08:11 TRACE GamesFileReader:138 - found team for key: Diamondbacks
+31-05-2018 09:08:11 TRACE GamesFileReader:320 - Adding new game to past list: Game [date=2018-06-29T05:00:00-07:00, homeTeam=Team [Name = Diamondbacks Location = Arizona Team Sport=MLB], homeScore=0, awayTeam=Team [Name = White Sox Location = Chicago Team Sport=MLB], awayTeam=0
+31-05-2018 09:08:11 INFO  GamesList:75 - ALL FINISHED GAMES
+31-05-2018 09:08:11 TRACE GamesList:77 - Game [date=2018-05-22T13:00:00-07:00, homeTeam=Team [Name = Celtics Location = Boston Team Sport=NBA], homeScore=18, awayTeam=Team [Name = Hawks Location = Atlanta Team Sport=NBA], awayTeam=25
+31-05-2018 09:08:11 TRACE GamesList:77 - Game [date=2018-05-20T05:00:00-07:00, homeTeam=Team [Name = Braves Location = Atlanta Team Sport=MLB], homeScore=20, awayTeam=Team [Name = Diamondbacks Location = Arizona Team Sport=MLB], awayTeam=25
+31-05-2018 09:08:11 TRACE GamesList:77 - Game [date=2018-05-09T05:00:00-07:00, homeTeam=Team [Name = Falcons Location = Atlanta Team Sport=NBA], homeScore=4, awayTeam=Team [Name = Cardinals Location = Arizona Team Sport=NBA], awayTeam=8
+31-05-2018 09:08:11 TRACE GamesList:77 - Game [date=2018-01-01T04:00:00-08:00, homeTeam=Team [Name = Coyotes Location = Arizona Team Sport=NHL], homeScore=17, awayTeam=Team [Name = Ducks Location = Anaheim Team Sport=NHL], awayTeam=12
+31-05-2018 09:08:11 INFO  GamesList:62 - ALL UPCOMING GAMES:
+31-05-2018 09:08:11 TRACE GamesList:64 - Game [date=2018-08-08T05:00:00-07:00, homeTeam=Team [Name = Sabres Location = Buffalo Team Sport=NHL], homeScore=0, awayTeam=Team [Name = Bruins Location = Boston Team Sport=NHL], awayTeam=0
+31-05-2018 09:08:11 TRACE GamesList:64 - Game [date=2018-07-24T05:00:00-07:00, homeTeam=Team [Name = Ducks Location = Anaheim Team Sport=NHL], homeScore=0, awayTeam=Team [Name = Flames Location = Calgry Team Sport=NHL], awayTeam=0
+31-05-2018 09:08:11 TRACE GamesList:64 - Game [date=2018-07-08T05:00:00-07:00, homeTeam=Team [Name = Cardinals Location = Arizona Team Sport=NBA], homeScore=0, awayTeam=Team [Name = Panthers Location = Carolina Team Sport=NFL], awayTeam=0
+31-05-2018 09:08:11 TRACE GamesList:64 - Game [date=2018-06-29T05:00:00-07:00, homeTeam=Team [Name = Diamondbacks Location = Arizona Team Sport=MLB], homeScore=0, awayTeam=Team [Name = White Sox Location = Chicago Team Sport=MLB], awayTeam=0
+31-05-2018 09:08:11 TRACE GamesList:64 - Game [date=2018-06-27T05:00:00-07:00, homeTeam=Team [Name = Red Sox Location = Boston Team Sport=MLB], homeScore=0, awayTeam=Team [Name = Orioles Location = Baltimore Team Sport=MLB], awayTeam=0
+31-05-2018 09:08:11 TRACE GamesList:64 - Game [date=2018-06-23T05:00:00-07:00, homeTeam=Team [Name = Bobcats Location = charlotte Team Sport=NBA], homeScore=0, awayTeam=Team [Name =  Nets Location = Brookly Team Sport=NBA], awayTeam=0
+31-05-2018 09:08:11 TRACE GamesList:64 - Game [date=2018-06-21T05:00:00-07:00, homeTeam=Team [Name = Bills Location = Buffalo Team Sport=NFL], homeScore=0, awayTeam=Team [Name = Ravens Location = Baltimore Team Sport=NFL], awayTeam=0
+31-05-2018 09:08:11 TRACE GamesList:64 - Game [date=2018-06-08T05:00:00-07:00, homeTeam=Team [Name = Hawks Location = Atlanta Team Sport=NBA], homeScore=0, awayTeam=Team [Name = Bulls Location = Chicago Team Sport=NBA], awayTeam=0
+31-05-2018 09:19:34 INFO  GamesFileReader:133 - New team identified:Hawks. adding to mapping Team:Team [Name = Hawks Location = Atlanta Team Sport=NBA]
+31-05-2018 09:19:34 TRACE GamesFileReader:138 - found team for key: Hawks
+31-05-2018 09:19:34 INFO  GamesFileReader:133 - New team identified:Celtics. adding to mapping Team:Team [Name = Celtics Location = Boston Team Sport=NBA]
+31-05-2018 09:19:34 TRACE GamesFileReader:138 - found team for key: Celtics
+31-05-2018 09:19:34 ERROR GamesFileReader:99 - java.text.ParseException: Unparseable number: "P0DT3H4M"
+java.text.ParseException: Unparseable number: "P0DT3H4M"
+	at java.text.NumberFormat.parse(NumberFormat.java:385)
+	at com.sts.control.GamesFileReader.parseInteger(GamesFileReader.java:96)
+	at com.sts.control.GamesFileReader.readFromFileForLists(GamesFileReader.java:274)
+	at com.sts.control.GamesFileReader.readData(GamesFileReader.java:58)
+	at com.sts.control.StoreDataFromInputFile.storeDataIntoGameList(StoreDataFromInputFile.java:15)
+	at com.sts.control.SportsSystem.startSystem(SportsSystem.java:22)
+	at com.sts.control.SportsSystem.<init>(SportsSystem.java:12)
+	at com.sts.control.SportsSystem.main(SportsSystem.java:33)
+31-05-2018 09:19:34 ERROR GamesFileReader:281 - setAttendance:com.sts.model.exception.NegativeAttendanceException: A negative score was detected for a game.
+31-05-2018 09:19:34 ERROR GamesFileReader:288 - setDuration:java.util.NoSuchElementException
+31-05-2018 09:19:34 TRACE GamesFileReader:317 - Adding new game to past list: Game [date=2018-05-22T13:00:00-07:00, homeTeam=Team [Name = Celtics Location = Boston Team Sport=NBA], homeScore=25000, awayTeam=Team [Name = Hawks Location = Atlanta Team Sport=NBA], awayScore=25
+31-05-2018 09:19:34 INFO  GamesFileReader:133 - New team identified: Nets. adding to mapping Team:Team [Name =  Nets Location = Brookly Team Sport=NBA]
+31-05-2018 09:19:34 TRACE GamesFileReader:138 - found team for key:  Nets
+31-05-2018 09:19:34 INFO  GamesFileReader:133 - New team identified:Bobcats. adding to mapping Team:Team [Name = Bobcats Location = charlotte Team Sport=NBA]
+31-05-2018 09:19:34 TRACE GamesFileReader:138 - found team for key: Bobcats
+31-05-2018 09:19:34 TRACE GamesFileReader:317 - Adding new game to past list: Game [date=2018-06-23T05:00:00-07:00, homeTeam=Team [Name = Bobcats Location = charlotte Team Sport=NBA], homeScore=0, awayTeam=Team [Name =  Nets Location = Brookly Team Sport=NBA], awayScore=0
+31-05-2018 09:19:34 INFO  GamesFileReader:133 - New team identified:Bulls. adding to mapping Team:Team [Name = Bulls Location = Chicago Team Sport=NBA]
+31-05-2018 09:19:34 TRACE GamesFileReader:138 - found team for key: Bulls
+31-05-2018 09:19:34 TRACE GamesFileReader:138 - found team for key: Hawks
+31-05-2018 09:19:34 TRACE GamesFileReader:317 - Adding new game to past list: Game [date=2018-06-08T05:00:00-07:00, homeTeam=Team [Name = Hawks Location = Atlanta Team Sport=NBA], homeScore=0, awayTeam=Team [Name = Bulls Location = Chicago Team Sport=NBA], awayScore=0
+31-05-2018 09:19:34 INFO  GamesFileReader:133 - New team identified:Cardinals. adding to mapping Team:Team [Name = Cardinals Location = Arizona Team Sport=NBA]
+31-05-2018 09:19:34 TRACE GamesFileReader:138 - found team for key: Cardinals
+31-05-2018 09:19:34 INFO  GamesFileReader:133 - New team identified:Falcons. adding to mapping Team:Team [Name = Falcons Location = Atlanta Team Sport=NBA]
+31-05-2018 09:19:34 TRACE GamesFileReader:138 - found team for key: Falcons
+31-05-2018 09:19:34 TRACE GamesFileReader:317 - Adding new game to past list: Game [date=2018-05-09T05:00:00-07:00, homeTeam=Team [Name = Falcons Location = Atlanta Team Sport=NBA], homeScore=4, awayTeam=Team [Name = Cardinals Location = Arizona Team Sport=NBA], awayScore=8
+31-05-2018 09:19:34 INFO  GamesFileReader:133 - New team identified:Ravens. adding to mapping Team:Team [Name = Ravens Location = Baltimore Team Sport=NFL]
+31-05-2018 09:19:34 TRACE GamesFileReader:138 - found team for key: Ravens
+31-05-2018 09:19:34 INFO  GamesFileReader:133 - New team identified:Bills. adding to mapping Team:Team [Name = Bills Location = Buffalo Team Sport=NFL]
+31-05-2018 09:19:34 TRACE GamesFileReader:138 - found team for key: Bills
+31-05-2018 09:19:34 TRACE GamesFileReader:317 - Adding new game to past list: Game [date=2018-06-21T05:00:00-07:00, homeTeam=Team [Name = Bills Location = Buffalo Team Sport=NFL], homeScore=0, awayTeam=Team [Name = Ravens Location = Baltimore Team Sport=NFL], awayScore=0
+31-05-2018 09:19:34 INFO  GamesFileReader:133 - New team identified:Panthers. adding to mapping Team:Team [Name = Panthers Location = Carolina Team Sport=NFL]
+31-05-2018 09:19:34 TRACE GamesFileReader:138 - found team for key: Panthers
+31-05-2018 09:19:34 TRACE GamesFileReader:138 - found team for key: Cardinals
+31-05-2018 09:19:34 TRACE GamesFileReader:317 - Adding new game to past list: Game [date=2018-07-08T05:00:00-07:00, homeTeam=Team [Name = Cardinals Location = Arizona Team Sport=NBA], homeScore=0, awayTeam=Team [Name = Panthers Location = Carolina Team Sport=NFL], awayScore=0
+31-05-2018 09:19:34 INFO  GamesFileReader:133 - New team identified:Ducks. adding to mapping Team:Team [Name = Ducks Location = Anaheim Team Sport=NHL]
+31-05-2018 09:19:34 TRACE GamesFileReader:138 - found team for key: Ducks
+31-05-2018 09:19:34 INFO  GamesFileReader:133 - New team identified:Coyotes. adding to mapping Team:Team [Name = Coyotes Location = Arizona Team Sport=NHL]
+31-05-2018 09:19:34 TRACE GamesFileReader:138 - found team for key: Coyotes
+31-05-2018 09:19:34 TRACE GamesFileReader:317 - Adding new game to past list: Game [date=2018-01-01T04:00:00-08:00, homeTeam=Team [Name = Coyotes Location = Arizona Team Sport=NHL], homeScore=17, awayTeam=Team [Name = Ducks Location = Anaheim Team Sport=NHL], awayScore=12
+31-05-2018 09:19:34 INFO  GamesFileReader:133 - New team identified:Bruins. adding to mapping Team:Team [Name = Bruins Location = Boston Team Sport=NHL]
+31-05-2018 09:19:34 TRACE GamesFileReader:138 - found team for key: Bruins
+31-05-2018 09:19:34 INFO  GamesFileReader:133 - New team identified:Sabres. adding to mapping Team:Team [Name = Sabres Location = Buffalo Team Sport=NHL]
+31-05-2018 09:19:34 TRACE GamesFileReader:138 - found team for key: Sabres
+31-05-2018 09:19:34 TRACE GamesFileReader:317 - Adding new game to past list: Game [date=2018-08-08T05:00:00-07:00, homeTeam=Team [Name = Sabres Location = Buffalo Team Sport=NHL], homeScore=0, awayTeam=Team [Name = Bruins Location = Boston Team Sport=NHL], awayScore=0
+31-05-2018 09:19:34 INFO  GamesFileReader:133 - New team identified:Flames. adding to mapping Team:Team [Name = Flames Location = Calgry Team Sport=NHL]
+31-05-2018 09:19:34 TRACE GamesFileReader:138 - found team for key: Flames
+31-05-2018 09:19:34 TRACE GamesFileReader:138 - found team for key: Ducks
+31-05-2018 09:19:34 TRACE GamesFileReader:317 - Adding new game to past list: Game [date=2018-07-24T05:00:00-07:00, homeTeam=Team [Name = Ducks Location = Anaheim Team Sport=NHL], homeScore=0, awayTeam=Team [Name = Flames Location = Calgry Team Sport=NHL], awayScore=0
+31-05-2018 09:19:34 INFO  GamesFileReader:133 - New team identified:Diamondbacks. adding to mapping Team:Team [Name = Diamondbacks Location = Arizona Team Sport=MLB]
+31-05-2018 09:19:34 TRACE GamesFileReader:138 - found team for key: Diamondbacks
+31-05-2018 09:19:34 INFO  GamesFileReader:133 - New team identified:Braves. adding to mapping Team:Team [Name = Braves Location = Atlanta Team Sport=MLB]
+31-05-2018 09:19:34 TRACE GamesFileReader:138 - found team for key: Braves
+31-05-2018 09:19:34 TRACE GamesFileReader:317 - Adding new game to past list: Game [date=2018-05-20T05:00:00-07:00, homeTeam=Team [Name = Braves Location = Atlanta Team Sport=MLB], homeScore=20, awayTeam=Team [Name = Diamondbacks Location = Arizona Team Sport=MLB], awayScore=25
+31-05-2018 09:19:34 INFO  GamesFileReader:133 - New team identified:Orioles. adding to mapping Team:Team [Name = Orioles Location = Baltimore Team Sport=MLB]
+31-05-2018 09:19:34 TRACE GamesFileReader:138 - found team for key: Orioles
+31-05-2018 09:19:34 INFO  GamesFileReader:133 - New team identified:Red Sox. adding to mapping Team:Team [Name = Red Sox Location = Boston Team Sport=MLB]
+31-05-2018 09:19:34 TRACE GamesFileReader:138 - found team for key: Red Sox
+31-05-2018 09:19:34 TRACE GamesFileReader:317 - Adding new game to past list: Game [date=2018-06-27T05:00:00-07:00, homeTeam=Team [Name = Red Sox Location = Boston Team Sport=MLB], homeScore=0, awayTeam=Team [Name = Orioles Location = Baltimore Team Sport=MLB], awayScore=0
+31-05-2018 09:19:34 INFO  GamesFileReader:133 - New team identified:White Sox. adding to mapping Team:Team [Name = White Sox Location = Chicago Team Sport=MLB]
+31-05-2018 09:19:34 TRACE GamesFileReader:138 - found team for key: White Sox
+31-05-2018 09:19:34 TRACE GamesFileReader:138 - found team for key: Diamondbacks
+31-05-2018 09:19:34 TRACE GamesFileReader:317 - Adding new game to past list: Game [date=2018-06-29T05:00:00-07:00, homeTeam=Team [Name = Diamondbacks Location = Arizona Team Sport=MLB], homeScore=0, awayTeam=Team [Name = White Sox Location = Chicago Team Sport=MLB], awayScore=0
+31-05-2018 09:19:34 INFO  GamesList:75 - ALL FINISHED GAMES
+31-05-2018 09:19:34 TRACE GamesList:77 - Game [date=2018-05-22T13:00:00-07:00, homeTeam=Team [Name = Celtics Location = Boston Team Sport=NBA], homeScore=25000, awayTeam=Team [Name = Hawks Location = Atlanta Team Sport=NBA], awayScore=25
+31-05-2018 09:19:34 TRACE GamesList:77 - Game [date=2018-05-20T05:00:00-07:00, homeTeam=Team [Name = Braves Location = Atlanta Team Sport=MLB], homeScore=20, awayTeam=Team [Name = Diamondbacks Location = Arizona Team Sport=MLB], awayScore=25
+31-05-2018 09:19:34 TRACE GamesList:77 - Game [date=2018-05-09T05:00:00-07:00, homeTeam=Team [Name = Falcons Location = Atlanta Team Sport=NBA], homeScore=4, awayTeam=Team [Name = Cardinals Location = Arizona Team Sport=NBA], awayScore=8
+31-05-2018 09:19:34 TRACE GamesList:77 - Game [date=2018-01-01T04:00:00-08:00, homeTeam=Team [Name = Coyotes Location = Arizona Team Sport=NHL], homeScore=17, awayTeam=Team [Name = Ducks Location = Anaheim Team Sport=NHL], awayScore=12
+31-05-2018 09:19:34 INFO  GamesList:62 - ALL UPCOMING GAMES:
+31-05-2018 09:19:34 TRACE GamesList:64 - Game [date=2018-08-08T05:00:00-07:00, homeTeam=Team [Name = Sabres Location = Buffalo Team Sport=NHL], homeScore=0, awayTeam=Team [Name = Bruins Location = Boston Team Sport=NHL], awayScore=0
+31-05-2018 09:19:34 TRACE GamesList:64 - Game [date=2018-07-24T05:00:00-07:00, homeTeam=Team [Name = Ducks Location = Anaheim Team Sport=NHL], homeScore=0, awayTeam=Team [Name = Flames Location = Calgry Team Sport=NHL], awayScore=0
+31-05-2018 09:19:34 TRACE GamesList:64 - Game [date=2018-07-08T05:00:00-07:00, homeTeam=Team [Name = Cardinals Location = Arizona Team Sport=NBA], homeScore=0, awayTeam=Team [Name = Panthers Location = Carolina Team Sport=NFL], awayScore=0
+31-05-2018 09:19:34 TRACE GamesList:64 - Game [date=2018-06-29T05:00:00-07:00, homeTeam=Team [Name = Diamondbacks Location = Arizona Team Sport=MLB], homeScore=0, awayTeam=Team [Name = White Sox Location = Chicago Team Sport=MLB], awayScore=0
+31-05-2018 09:19:34 TRACE GamesList:64 - Game [date=2018-06-27T05:00:00-07:00, homeTeam=Team [Name = Red Sox Location = Boston Team Sport=MLB], homeScore=0, awayTeam=Team [Name = Orioles Location = Baltimore Team Sport=MLB], awayScore=0
+31-05-2018 09:19:34 TRACE GamesList:64 - Game [date=2018-06-23T05:00:00-07:00, homeTeam=Team [Name = Bobcats Location = charlotte Team Sport=NBA], homeScore=0, awayTeam=Team [Name =  Nets Location = Brookly Team Sport=NBA], awayScore=0
+31-05-2018 09:19:34 TRACE GamesList:64 - Game [date=2018-06-21T05:00:00-07:00, homeTeam=Team [Name = Bills Location = Buffalo Team Sport=NFL], homeScore=0, awayTeam=Team [Name = Ravens Location = Baltimore Team Sport=NFL], awayScore=0
+31-05-2018 09:19:34 TRACE GamesList:64 - Game [date=2018-06-08T05:00:00-07:00, homeTeam=Team [Name = Hawks Location = Atlanta Team Sport=NBA], homeScore=0, awayTeam=Team [Name = Bulls Location = Chicago Team Sport=NBA], awayScore=0
