@@ -19,15 +19,19 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.sts.abstractModel.Game;
+import com.sts.abstractModel.Player;
 import com.sts.abstractModel.Team;
 import com.sts.concreteModel.GamesList;
 import com.sts.concreteModel.Key;
+import com.sts.concreteModel.NBAPlayer;
+import com.sts.concreteModel.PlayersList;
 import com.sts.concreteModel.TeamMLB;
 import com.sts.concreteModel.TeamNBA;
 import com.sts.concreteModel.TeamNFL;
 import com.sts.concreteModel.TeamNHL;
 import com.sts.concreteModel.TeamsList;
 import com.sts.model.exception.DuplicateTeamException;
+import com.sts.model.exception.InvalidPlayersException;
 import com.sts.model.exception.NegativeAttendanceException;
 import com.sts.model.exception.NegativeScoreException;
 
@@ -45,7 +49,7 @@ public class GamesFileReader {
     /*
      * Method to make sure file exists and the two objects(GamesList & TeamsList) have been created
      */
-    public void readData(InputStream is_, GamesList gamelist_, TeamsList teamlist_ ) throws FileNotFoundException, RuntimeException {
+    public void readData(InputStream is_, GamesList gamelist_, TeamsList teamlist_, PlayersList playerslist_ ) throws FileNotFoundException, RuntimeException {
         if (is_ == null)
             throw new FileNotFoundException();
 
@@ -55,7 +59,7 @@ public class GamesFileReader {
         	throw new RuntimeException("No list provided");
 
         try (InputStreamReader sr = new InputStreamReader(is_)) {
-            readFromFileForLists(sr, gamelist_, teamlist_);
+            readFromFileForLists(sr, gamelist_, teamlist_, playerslist_);
        
         }
         catch (Exception e_) {
@@ -103,7 +107,6 @@ public class GamesFileReader {
 
 
 
-
     /*
      * Method to check and see if the team string that was tokenized already exists in the
      * team Hashmap
@@ -141,7 +144,26 @@ public class GamesFileReader {
         return lclTeam;
     }
 
+    private void parsePlayerIDs(String playerIDs_, GamesList gamesList_, Game game_, PlayersList playersList_) throws InvalidPlayersException {
+    	StringTokenizer tokenizer;
+    	tokenizer = new StringTokenizer(playerIDs_, ",");
+    	int playerID;
+    	while(tokenizer.hasMoreTokens()) {
+    		playerID = Integer.parseInt(tokenizer.nextToken());
+    		if(playersList_.returnPlayersMap().get(playerID) == null) {
+    			_logger.error("There does not exist a player with the ID:" + playerID + ". Player was not added to game");
+    			throw new InvalidPlayersException();
+    		}
+    		else {
+    			if(game_.getAwayTeam() == null) {
+        			game_.getHomeTeamRoster().add(playerID);
+    			}
+    			else
+        			game_.getAwayTeamRoster().add(playerID);
 
+    		}
+    	}
+    }
 
 
 
@@ -151,7 +173,7 @@ public class GamesFileReader {
      * if valid.
      */
     
-    void readFromFileForLists(Reader is_, GamesList gamesList_ , TeamsList teamsList_) {
+    void readFromFileForLists(Reader is_, GamesList gamesList_ , TeamsList teamsList_, PlayersList playersList_) {
         try (BufferedReader reader = new BufferedReader(is_)) {
             StringTokenizer tokenizer;
             String line;
@@ -160,6 +182,7 @@ public class GamesFileReader {
             Game game;
             Team home;
             String category;
+            String playerIDs;
             
             while ((line = reader.readLine()) != null) {
                 // don't process empty lines
@@ -204,9 +227,6 @@ public class GamesFileReader {
                     continue;
                 }
 
-
-
-
                 //
                 // teams
                 //
@@ -217,8 +237,17 @@ public class GamesFileReader {
                     game.setAwayTeam(parseTeam(category,city,team, teamsList_));
                 }
                 catch (Exception e_) {
-                    _logger.error("setAawayTeam:" + e_.toString());
+                    _logger.error("setAwayTeam:" + e_.toString());
                     continue;
+                }
+                
+                try {
+                	playerIDs = tokenizer.nextToken();
+                	parsePlayerIDs(playerIDs, gamesList_, game, playersList_);
+                }
+                catch(Exception e_) {
+                	_logger.error("There were invalid player IDs:" + e_.toString());
+                	continue;
                 }
 
                 try {
@@ -233,9 +262,16 @@ public class GamesFileReader {
                     _logger.error("sethTeam:" + e_.toString());
                 }
 
+                try {
+                	playerIDs = tokenizer.nextToken();
+                	parsePlayerIDs(playerIDs, gamesList_, game, playersList_);
+                }
+                catch(Exception e_) {
+                	_logger.error("There were invalid player IDs:" + e_.toString());
+                	continue;
+                }
 
-
-
+             
 
                 //
                 // future or past game?

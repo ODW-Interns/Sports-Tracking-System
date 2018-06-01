@@ -8,7 +8,7 @@ import com.sts.abstractModel.Team;
 public class TeamsList{
 	
 	private ConcurrentHashMap<String,Team> TeamMap_;
-	private static final long serialVersionUID = 1L;
+	//private static final long serialVersionUID = 1L;
 
 
 	public TeamsList() {

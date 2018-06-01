@@ -4,41 +4,12 @@ import com.sts.abstractModel.Player;
 
 public class NBAPlayer extends Player{
 
-	@Override
-	public String getFirstName() {
-		return _firstName;
+	public NBAPlayer() {
+		super();
 	}
-
-	@Override
-	public void setFirstName(String first_) {
-		_firstName = first_;
+	public NBAPlayer(int ID_, int jersey_, String first_, String last_) {
+		super(ID_, jersey_, first_, last_);
 	}
-
-	@Override
-	public String getLastName() {
-		return _lastName;
-	}
-
-	@Override
-	public void setLastName(String last_) {
-		_lastName = last_;
-	}
-
-	@Override
-	public int getJerseyNum() {
-		return _jerseyNum;
-	}
-
-	@Override
-	public void setJerseyNum(int jersey_) {
-		_jerseyNum = jersey_;
-	}
-	
-	@Override
-	 public String toString() {
-	     return "Player [Firstname = " + getFirstName() + " Lastname = "+
-	    getLastName() + " Jersey Number = " + getJerseyNum() +  "]";
-	   }
 
 
 }

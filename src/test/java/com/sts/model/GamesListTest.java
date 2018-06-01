@@ -11,6 +11,7 @@ import org.junit.Test;
 import com.sts.abstractModel.Game;
 import com.sts.concreteModel.GamesList;
 import com.sts.concreteModel.Key;
+import com.sts.concreteModel.PlayersList;
 import com.sts.concreteModel.TeamsList;
 import com.sts.control.GamesFileReader;
 
@@ -26,8 +27,9 @@ public class GamesListTest {
 	    try (InputStream is = getClass().getResourceAsStream("/games.csv")) {
 	    	GamesList games = new GamesList();
 	    	TeamsList teams = new TeamsList();
+	    	PlayersList players = new PlayersList();
 		    GamesFileReader gr = new GamesFileReader(); 
-	    	gr.readData(is, games, teams);
+	    	gr.readData(is, games, teams, players);
 	    }
 	    catch (Exception e_) {
 	    	assert(false);

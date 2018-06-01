@@ -8,6 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.sts.concreteModel.GamesList;
+import com.sts.concreteModel.PlayersList;
 import com.sts.concreteModel.TeamsList;
 
 public class SportsSystem {
@@ -19,10 +20,12 @@ public class SportsSystem {
 
 	public void startSystem() throws RuntimeException, IOException, ParseException {
 		//Create a GamesList object to hold all games 
-		GamesList _listofGames = new GamesList();
+		GamesList listofGames = new GamesList();
 		//Create a TeamsList object to hold all teams
-		TeamsList _listofTeams = new TeamsList();
+		TeamsList listofTeams = new TeamsList();
+		PlayersList listofPlayers = new PlayersList();
 		//Read from "games.csv" file and store all games and teams read
+
 	    StoreDataFromInputFile.storeDataIntoGameList("/games.csv", _listofGames, _listofTeams );
 	    
 	    Logger _logger;
@@ -64,12 +67,12 @@ public class SportsSystem {
 		    switch (choice) {
 			case 1:
 				
-				_listofGames.logFinishedGames();
+				listofGames.logFinishedGames();
 				
 				break;
 			case 2:
 				
-			    _listofGames.logUpcomingGames();
+			    listofGames.logUpcomingGames();
 				
 			    break;
 			case 3:
@@ -88,10 +91,6 @@ public class SportsSystem {
 			
 			}
 		}
-	    
-	
-	    
-	    
 		
 
 	}
