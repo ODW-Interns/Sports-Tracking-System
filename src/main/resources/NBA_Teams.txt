@@ -1,30 +1,30 @@
-Atlanta|Hawks
-Boston|Celtics
-Brooklyn|Nets
-Charlotte|Bobcats
-Chicago|Bulls
-Cleveland|Cavaliers
-Dallas|Mavericks
-Denver|Nuggets
-Detroit|Pistons
-Golden State|Warriors
-Houston|Rockets
-Indiana|Pacers
-LA|Clippers
-LA|Lakers
-Memphis|Grizzlies
-Miami|Heat
-Milwaukee|Bucks
-Minnesota|Timberwolves
-New Orleans|Hornets
-New York|Knicks
-Oklahoma City|Thunder
-Orlando|Magic
-Philadelphia|Sixers
-Phoenix|Suns
-Portland Trail|Blazers
-Sacramento|Kings
-San Antonio|Spurs
-Toronto|Raptors
-Utah|Jazz
-Washington|Wizards
+Atlanta|Hawks|NBA
+Boston|Celtics|NBA
+Brooklyn|Nets|NBA
+Charlotte|Bobcats|NBA
+Chicago|Bulls|NBA
+Cleveland|Cavaliers|NBA
+Dallas|Mavericks|NBA
+Denver|Nuggets|NBA
+Detroit|Pistons|NBA
+Golden State|Warriors|NBA
+Houston|Rockets|NBA
+Indiana|Pacers|NBA
+LA|Clippers|NBA
+LA|Lakers|NBA
+Memphis|Grizzlies|NBA
+Miami|Heat|NBA
+Milwaukee|Bucks|NBA
+Minnesota|Timberwolves|NBA
+New Orleans|Hornets|NBA
+New York|Knicks|NBA
+Oklahoma City|Thunder|NBA
+Orlando|Magic|NBA
+Philadelphia|Sixers|NBA
+Phoenix|Suns|NBA
+Portland Trail|Blazers|NBA
+Sacramento|Kings|NBA
+San Antonio|Spurs|NBA
+Toronto|Raptors|NBA
+Utah|Jazz|NBA
+Washington|Wizards|NBA
