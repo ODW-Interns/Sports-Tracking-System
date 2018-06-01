@@ -32,6 +32,7 @@ import com.sts.concreteModel.TeamNHL;
 import com.sts.concreteModel.TeamsList;
 import com.sts.model.exception.DuplicateTeamException;
 import com.sts.model.exception.InvalidPlayersException;
+import com.sts.model.exception.MismatchPlayerandGameSportException;
 import com.sts.model.exception.NegativeAttendanceException;
 import com.sts.model.exception.NegativeScoreException;
 
@@ -144,7 +145,7 @@ public class GamesFileReader {
         return lclTeam;
     }
 
-    private void parsePlayerIDs(String playerIDs_, GamesList gamesList_, Game game_, PlayersList playersList_) throws InvalidPlayersException {
+    private void parsePlayerIDs(String playerIDs_, GamesList gamesList_, Game game_, PlayersList playersList_) throws InvalidPlayersException, MismatchPlayerandGameSportException {
     	StringTokenizer tokenizer;
     	tokenizer = new StringTokenizer(playerIDs_, ",");
     	int playerID;
@@ -155,12 +156,15 @@ public class GamesFileReader {
     			throw new InvalidPlayersException();
     		}
     		else {
-    			if(game_.getAwayTeam() == null) {
-        			game_.getHomeTeamRoster().add(playerID);
+    			if(playersList_.returnPlayersMap().get(playerID).get_sportCategory() != game_.getCategory())
+    				throw new MismatchPlayerandGameSportException();
+    			else {
+    				if(game_.getAwayTeam() == null) {
+    					game_.getHomeTeamRoster().add(playerID);
+    				}
+    				else
+    					game_.getAwayTeamRoster().add(playerID);
     			}
-    			else
-        			game_.getAwayTeamRoster().add(playerID);
-
     		}
     	}
     }
@@ -304,7 +308,8 @@ public class GamesFileReader {
                 	if(homeScore < 0) {
                 		throw new NegativeScoreException();
                 	}
-                    game.setHomeTeamScore(homeScore);                }
+                    game.setHomeTeamScore(homeScore);              
+                }
                 catch (Exception e_) {
                     _logger.error("sethTeamScore:" + e_.toString());
                 }
