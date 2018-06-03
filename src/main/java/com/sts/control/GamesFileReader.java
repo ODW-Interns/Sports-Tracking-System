@@ -170,11 +170,11 @@ public class GamesFileReader {
     					throw new PlayerNotOnTeamException();		
     				}
     				else {
-    					if(game_.getAwayTeam() == null) {
-    						game_.getHomeTeamRoster().add(playerID);
+    					if(game_.getHomeTeam() == null) {
+    						game_.getAwayTeamRoster().add(playerID);
     					}
     					else
-    						game_.getAwayTeamRoster().add(playerID);
+    						game_.getHomeTeamRoster().add(playerID);
     				}
     			}
     		}
