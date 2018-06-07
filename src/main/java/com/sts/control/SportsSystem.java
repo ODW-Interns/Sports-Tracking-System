@@ -36,13 +36,15 @@ public class SportsSystem {
 	    _logger.info("Welcome to sports Tracking system");
 
 	    boolean isNumber;
-	    int choice = 0;    
+	    int choice = 0;   
+	    int choice2 = 0;
+	    String fileName;
 	    boolean c=true;
 	    
 	    while (c) {
 	    	
 	    	_logger.info("1: Enter 1 to display list of finished games");
-	    	_logger.info("2: Enter 2 to display list of upcoming games");	
+	    	_logger.info("2: Enter 2 to display list of upcoming games");
 	    	_logger.info("3: Enter 3 to exit");
 		    
 		    do {
@@ -75,12 +77,31 @@ public class SportsSystem {
 			    listofGames.logUpcomingGames(listofPlayers);
 				
 			    break;
+			    
 			case 3:
 				
-			    System.exit(0);
-				
-			    break;    
-			    
+			/*	_logger.info("1: Choose 1 to add team(s)");
+				_logger.info("2: Choose 2 to modify team(s");
+				try{
+					choice2 = input.nextInt();
+				}
+				catch(Exception e_) {
+					_logger.error("Inalid input: " + e_.toString());
+				}
+				if(choice2 == 1) {
+					_logger.info("Enter name of file to add team(s)");
+					try {
+						fileName = input.nextLine();
+						StoreDataFromInputFile.storeDataIntoTeamList("/"+fileName, listofGames, listofTeams);
+					}
+					catch(Exception e_1) {
+						_logger.error("File not found: " + e_1.toString());
+					}
+
+				}*/
+				System.exit(0);
+				break;
+
 			default:
 				
 				_logger.info("Wrong choice input. Please choose from the following options");
