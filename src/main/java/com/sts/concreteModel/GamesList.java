@@ -38,14 +38,18 @@ public class GamesList{
     
     
     
-    public void addGame(ZonedDateTime date_, Duration duration, Team away_, Team home_)
+    public void addPassedGame(int gameID_, String category_, ZonedDateTime date_, Duration duration, Team away_, Team home_, int awayScore_, int homeScore_, int attendance)
     {
         ZonedDateTime dateWithTZ = ZonedDateTime.from(date_);
         Game game = new Game();
+        game.setGameUID(gameID_);
+        game.setCategory(category_);
         game.setStartTime(dateWithTZ);
         game.setDuration(duration);
         game.setAwayTeam(away_);
         game.setHomeTeam(home_);
+        game.setAwayTeamScore(awayScore_);
+        game.setHomeTeamScore(homeScore_);
         int uid = -1;
         map.put(new Key(date_, uid), game);
     }

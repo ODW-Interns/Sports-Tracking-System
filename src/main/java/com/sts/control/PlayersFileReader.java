@@ -85,7 +85,7 @@ public class PlayersFileReader {
 		// TODO Auto-generated method stub
 		 try (BufferedReader reader = new BufferedReader(is_)) {
 	         StringTokenizer tokenizer;   
-			 String line, category, teamStr;
+			 String line, category;
 	            Player player = null;
 	            while ((line = reader.readLine()) != null) {
 	                // don't process empty lines
@@ -162,10 +162,12 @@ public class PlayersFileReader {
 	                }
 	                
 	                try {
-	                	parseCurrentTeam(teamsList_, tokenizer.nextToken(), player);	           
+	                	parseCurrentTeam(teamsList_, tokenizer.nextToken(), player);
+	               
 	                }
 	                catch(Exception e_) {
 	                	_logger.error("setTeam:" + e_.toString());
+	                	continue;
 	                }
 	             addPlayer(player, playerlist_);
 	             //TODO: NULL POINT exception possible here
@@ -181,7 +183,104 @@ public class PlayersFileReader {
 		 } 
 	}
 	
-	
+	public void readFromStringForList(String line, PlayersList playersList_, TeamsList teamsList_) throws Exception {
+		
+		 StringTokenizer tokenizer;   
+		 String category = "";
+            Player player = null;
+		
+		if ("".equals(line))
+			throw new Exception();
+        
+		tokenizer = new StringTokenizer(line, DELIM);
+
+        try {
+        	category = tokenizer.nextToken();
+        }
+        catch(Exception e_) {
+        	_logger.error("Read in category:" + e_.toString());
+        	throw e_;
+        }
+        
+        try {
+            if(category.equals("NBA")) {
+            	player = new NBAPlayer();
+            }
+            else if(category.equals("NFL")) {
+            	player = new NFLPlayer();
+            }
+            else if(category.equals("NHL")) {
+            	player = new NHLPlayer();
+            }
+            else if(category.equals("MLB")) {
+            	player = new MLBPlayer();
+            }
+            
+        }
+        catch(Exception e_) {
+        	_logger.error("Failed to initialize player:" + e_.toString());
+        	throw e_;
+        }
+        
+        try {
+        	player.set_sportCategory(category);
+        }
+        catch(Exception e_) {
+        	_logger.error("setCategory:" + e_.toString());
+        	throw e_;
+        }
+        
+        try {
+        	player.set_playerID(Integer.parseInt(tokenizer.nextToken()));
+        }
+        catch(Exception e_){
+        	_logger.error("setPlayerID:" + e_.toString());
+        	throw e_;
+        }
+        
+        try {
+        	
+        	player.set_jerseyNum(Integer.parseInt(tokenizer.nextToken()));
+        }
+        catch(Exception e_) {
+        	_logger.error("setJerseyNum:" + e_.toString());
+        	throw e_;
+        }
+        
+        try {
+        	player.setFirstName(tokenizer.nextToken());
+        }
+        catch(Exception e_) {
+        	_logger.error("setFirstName:" + e_.toString());
+        	throw e_;
+        
+        }
+        try {
+        	player.setLastName(tokenizer.nextToken());
+        }
+        catch(Exception e_){
+        	_logger.error("setLastName:" + e_.toString());
+        	throw e_;
+        }
+        
+        try {
+        	parseCurrentTeam(teamsList_, tokenizer.nextToken(), player);	           
+        }
+        catch(Exception e_) {
+        	_logger.error("setTeam:" + e_.toString());
+        	throw e_;
+        }
+     addPlayer(player, playersList_);
+     //TODO: NULL POINT exception possible here
+     //Also shouldn't add team if there is an invalid 
+     try {
+    	 teamsList_.getTeamMap().get(player.getCurrentTeam().fullTeamName()).getListOfPLayers().add(player.get_playerID());
+     }
+     catch(Exception e_) {
+    	 _logger.error("Player's current team is not a valid team: " + e_.toString());
+    	 throw e_;
+     }
+	}
 	
 	private void addPlayer(Player player_, PlayersList PlayersList_)
     {
