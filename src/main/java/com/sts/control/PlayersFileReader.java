@@ -170,9 +170,15 @@ public class PlayersFileReader {
 	             addPlayer(player, playerlist_);
 	             //TODO: NULL POINT exception possible here
 	             //Also shouldn't add team if there is an invalid 
-	             teamsList_.getTeamMap().get(player.getCurrentTeam().fullTeamName()).getListOfPLayers().add(player.get_playerID());
-	            }
-		 }
+	             try {
+	            	 teamsList_.getTeamMap().get(player.getCurrentTeam().fullTeamName()).getListOfPLayers().add(player.get_playerID());
+	             }
+	             catch(Exception e_) {
+	            	 _logger.error("Player's current team is not a valid team: " + e_.toString());
+	             }
+	                
+	           }
+		 } 
 	}
 	
 	
