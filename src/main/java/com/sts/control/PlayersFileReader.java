@@ -168,6 +168,8 @@ public class PlayersFileReader {
 	                	_logger.error("setTeam:" + e_.toString());
 	                }
 	             addPlayer(player, playerlist_);
+	             //TODO: NULL POINT exception possible here
+	             //Also shouldn't add team if there is an invalid 
 	             teamsList_.getTeamMap().get(player.getCurrentTeam().fullTeamName()).getListOfPLayers().add(player.get_playerID());
 	            }
 		 }
