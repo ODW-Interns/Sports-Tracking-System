@@ -1,13 +1,19 @@
 package com.sts.abstractModel;
 
+import java.util.ArrayList;
+
+import com.sts.concreteModel.TeamHistory;
+
 public abstract class Player {
 
-	protected String _firstName;
-	protected String _lastName;
-	protected int _jerseyNum;
-	protected int _playerID;	
-	protected Team currentTeam;
-	protected String _sportCategory;
+	private String _firstName;
+	private String _lastName;
+	private int _jerseyNum;
+	private int _playerID;	
+	private Team _currentTeam;
+	private String _sportCategory;
+	
+	private ArrayList<TeamHistory> _HistoryOfTeamsForPlayer;
 	
 	
 	public String get_sportCategory() {
@@ -22,12 +28,12 @@ public abstract class Player {
 
 
 	public Team getCurrentTeam() {
-		return currentTeam;
+		return _currentTeam;
 	}
 
 
 	public void setCurrentTeam(Team currentTeam) {
-		this.currentTeam = currentTeam;
+		this._currentTeam = currentTeam;
 	}
 
 
@@ -44,6 +50,7 @@ public abstract class Player {
 		_lastName = lastName_;
 		_playerID = playerID_;
 		_jerseyNum = jerseyNum_;
+		_HistoryOfTeamsForPlayer = new ArrayList<TeamHistory>();
 	}
 
 	public String getFirstName() {
@@ -82,6 +89,18 @@ public abstract class Player {
 	public void set_playerID(int _playerID) {
 		this._playerID = _playerID;
 	}
+	
+	
+
+	public ArrayList<TeamHistory> get_HistoryOfTeamsForPlayers() {
+		return _HistoryOfTeamsForPlayer;
+	}
+
+
+	public void set_HistoryOfTeamsForPlayers(ArrayList<TeamHistory> HistoryOfTeamsForPlayer_) {
+		_HistoryOfTeamsForPlayer = HistoryOfTeamsForPlayer_;
+	}
+
 
 	/**
      * indicates if the player has all fields initialized 
@@ -100,5 +119,14 @@ public abstract class Player {
 				+ ", _playerID=" + _playerID + "]";
 	}
 
+	@Override
+	public boolean equals(Object obj) {
+		return _firstName == ((Player)obj).getFirstName() &&
+				_lastName == ((Player)obj).getLastName() &&
+				_jerseyNum == ((Player)obj).getJerseyNum() &&
+				_currentTeam.equals(((Player)obj).getCurrentTeam())
+			;
+	}
+	
 	
 }
