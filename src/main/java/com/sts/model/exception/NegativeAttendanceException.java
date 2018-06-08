@@ -8,7 +8,7 @@ public class NegativeAttendanceException extends Exception {
 	private static final long serialVersionUID = 1L;
 
 	public NegativeAttendanceException() {
-		super("A negative score was detected for a game.");
+		super("A negative attendance was detected for a game.");
 	}
 
 }

@@ -363,6 +363,169 @@ public class GamesFileReader {
         }
     }
     
+    
+    public void readFromStringForList(String line, TeamsList teamsList_, PlayersList playersList_, GamesList gamesList_) throws Exception {
+      
+            StringTokenizer tokenizer;
+            String team = null;
+            String city = null;
+            String teamName = null;
+            Game game;
+            Team home;
+            String category = null;
+            String playerIDs = null;
+            
+         
+                if ("".equals(line))
+                    return;
+
+                //
+                //
+                //
+                game = new Game();
+                tokenizer = new StringTokenizer(line, DELIM);
+
+
+                try {
+                	game.setGameUID(Integer.parseInt(tokenizer.nextToken()));
+                }
+                catch(Exception e_) {
+                	_logger.error("setGameUID:" + e_.toString());
+                	throw e_;
+                }
+                
+                try {
+                	game.setCategory(tokenizer.nextToken());
+                	category = game.getCategory();
+                	
+                }
+                catch(Exception e_) {
+                	_logger.error("setCategory:" + e_.toString());
+                	throw e_;
+                }
+
+                //
+                // Read in the date and set date in game object
+                // since I don't know how long the game lasts, use
+                // the default
+                //
+                
+                try {
+                    game.setStartTime(parseDate(tokenizer.nextToken()));
+                }
+                catch (Exception e_) {
+                    _logger.error("setDate:" + e_.toString());
+                    throw e_;
+                }
+
+                //
+                // teams
+                //
+                
+                try {
+                	city = tokenizer.nextToken();
+                	team = tokenizer.nextToken();
+                    game.setAwayTeam(parseTeam(category,city,team, teamsList_));
+                }
+                catch (Exception e_) {
+                    _logger.error("setAwayTeam:" + e_.toString());
+                    throw e_;
+                }
+                
+                try {
+                	playerIDs = tokenizer.nextToken();
+                	teamName = city + " " + team;
+                	parsePlayerIDs(playerIDs, gamesList_, game, playersList_,teamsList_, teamName);
+                }
+                catch(Exception e_) {
+                	_logger.error("There were invalid player IDs:" + e_.toString());
+                	throw e_;
+                }
+
+                try {
+                	city = tokenizer.nextToken();
+                	team = tokenizer.nextToken();
+                    home = parseTeam(category,city, team, teamsList_);
+                    if (home.equals(game.getAwayTeam()))
+                        throw new DuplicateTeamException("Home team cannot be the same as away", home);
+                    game.setHomeTeam(home);
+                }
+                catch (Exception e_) {
+                    _logger.error("sethTeam:" + e_.toString());
+                    throw e_;
+                }
+
+                try {
+                	playerIDs = tokenizer.nextToken();
+                	teamName = city + " " + team;
+                	parsePlayerIDs(playerIDs, gamesList_, game, playersList_, teamsList_, teamName );
+                }
+                catch(Exception e_) {
+                	_logger.error("There were invalid player IDs:" + e_.toString());
+                	throw e_;
+                }
+
+             
+
+                //
+                // future or past game?
+                //
+                if (game.getStartTime().isAfter(ZonedDateTime.now())) {
+                    // this is a game in the future, do not process any more data
+                	addGame(game, gamesList_);
+                }              
+
+
+                //
+                // this game is in the past, read in the scores
+                //
+                try {
+                	int awayScore = parseInteger(tokenizer.nextToken());
+                	if(awayScore < 0) {
+                		throw new NegativeScoreException();
+                	}
+                    game.setAwayTeamScore(awayScore);
+                   
+                }
+                catch (Exception e_) {
+                    _logger.error("setaTeamScore:" + e_.toString());
+                    throw e_;
+                }
+
+                try {
+                	int homeScore = parseInteger(tokenizer.nextToken());
+                	if(homeScore < 0) {
+                		throw new NegativeScoreException();
+                	}
+                    game.setHomeTeamScore(homeScore);              
+                }
+                catch (Exception e_) {
+                    _logger.error("sethTeamScore:" + e_.toString());
+                    throw e_;
+                }
+
+                try {
+                	int attendance = parseInteger(tokenizer.nextToken());
+                	if(attendance < 0) {
+                		throw new NegativeAttendanceException();
+                	}
+                    game.setAttendence(attendance);
+                    }
+                catch (Exception e_) {
+                    _logger.error("setAttendance:" + e_.toString());
+                    throw e_;
+                }
+                try {
+                	
+                	game.setDuration(Duration.parse(tokenizer.nextToken()));
+                }
+                catch(Exception e_) {
+                	_logger.error("setDuration:" + e_.toString());
+                	throw e_;
+                }
+                addGame(game, gamesList_);
+                
+    }
     /**
      * Add the game to the map of games if the game is valid
      */
