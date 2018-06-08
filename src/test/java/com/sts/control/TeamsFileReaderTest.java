@@ -6,8 +6,6 @@
 package com.sts.control;
 
 import org.junit.BeforeClass;
-import org.junit.Test;
-
 import com.sts.concreteModel.GamesList;
 import com.sts.concreteModel.PlayersList;
 import com.sts.concreteModel.TeamsList;
