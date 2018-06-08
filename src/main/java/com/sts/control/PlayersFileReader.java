@@ -152,12 +152,20 @@ public class PlayersFileReader {
 	                
 	                try {
 	                	player.set_playerID(Integer.parseInt(tokenizer.nextToken()));
-	                }
+	                	if(playerlist_.returnPlayersMap().containsKey(player.get_playerID()))
+	                		throw new Exception("duplicateId: Player's ID is already exist");
+	                		
+	                }	                
 	                catch(Exception e_){
 	                	_logger.error("setPlayerID:" + e_.toString());
 	                	continue;
 	                }
+	               
 	                
+	               
+	                	
+	             	
+	                	
 	                try {
 	                	
 	                	player.set_jerseyNum(Integer.parseInt(tokenizer.nextToken()));
