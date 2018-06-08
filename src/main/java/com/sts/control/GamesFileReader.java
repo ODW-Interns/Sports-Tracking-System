@@ -208,6 +208,8 @@ public class GamesFileReader {
             Team home;
             String category;
             String playerIDs;
+            Key keyCheck = null;
+
             
             while ((line = reader.readLine()) != null) {
                 // don't process empty lines
@@ -246,6 +248,8 @@ public class GamesFileReader {
                 
                 try {
                     game.setStartTime(parseDate(tokenizer.nextToken()));
+                    if(gamesList_.getGamesMap().containsKey(keyCheck)) 
+                    	throw new Exception("Duplicate Game ID detected");
                 }
                 catch (Exception e_) {
                     _logger.error("setDate:" + e_.toString());
@@ -412,11 +416,16 @@ public class GamesFileReader {
                 
                 try {
                     game.setStartTime(parseDate(tokenizer.nextToken()));
+         
                 }
                 catch (Exception e_) {
                     _logger.error("setDate:" + e_.toString());
                     throw e_;
                 }
+                
+                
+            
+                
 
                 //
                 // teams
@@ -528,20 +537,25 @@ public class GamesFileReader {
     }
     /**
      * Add the game to the map of games if the game is valid
+     * @throws Exception 
      */
-    private void addGame(Game game_, GamesList gamesList_)
+    private void addGame(Game game_, GamesList gamesList_) 
     {
         if (!game_.isValidGame())
         {
             _logger.error("Refusing to add invalid game: {}", game_);
             return;
         }
-        
+       
         //
         //Add game object to the map of games provided
-        //
+        
+        // if (map.containsKey(key))
+        
+        
         gamesList_.getGamesMap().put(new Key(game_.getStartTime(), game_.getGameUID()), game_);
-
+        
+        
         if (_logger.isTraceEnabled())
             _logger.trace("Adding new game to game mapt: {}", game_.toString());
     }

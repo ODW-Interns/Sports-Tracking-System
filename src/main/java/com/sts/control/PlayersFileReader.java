@@ -74,7 +74,7 @@ public class PlayersFileReader {
     			throw new MismatchPlayerandTeamSportException();
     		}
     		else {
-    	      	player_.setCurrentTeam(teamList_.getTeamMap().get(teamStr_));
+    	      	 player_.setCurrentTeam(teamList_.getTeamMap().get(teamStr_));
     		}
     	}
     	
@@ -130,7 +130,7 @@ public class PlayersFileReader {
 	                catch(Exception e_) {
 	                	_logger.error("setCategory:" + e_.toString());
 	                }
-	                
+	                //Checking if ID is already exist in the map
 	                try {
 	                	player.set_playerID(Integer.parseInt(tokenizer.nextToken()));
 	                	if(playerlist_.returnPlayersMap().containsKey(player.get_playerID()))
@@ -142,10 +142,6 @@ public class PlayersFileReader {
 	                	continue;
 	                }
 	               
-	                
-	               
-	                	
-	             	
 	                	
 	                try {
 	                	
