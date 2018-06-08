@@ -1,0 +1,21 @@
+NHL|Anaheim|Ducks
+NFL|Arizona|Cardinals
+NHL|Arizona|Coyotes
+MLB|Arizona|Diamondbacks
+MLB|Atlanta|Braves
+NFL|Atlanta|Falcons
+NBA|Atlanta|Hawks
+MLB|Baltimore|Orioles
+NFL|Baltimore|Ravens
+NHL|Boston|Bruins
+NBA|Boston|Celtics
+MLB|Boston|Red Sox
+NBA|Brooklyn|Nets
+NFL|Buffalo|Bills
+NHL|Buffalo|Sabres
+NHL|Calgary|Flames
+NFL|Carolina|Panthers
+NBA|Charlotte|Bobcats
+NBA|Chicago|Bulls
+MLB|Chicago|White Sox
+

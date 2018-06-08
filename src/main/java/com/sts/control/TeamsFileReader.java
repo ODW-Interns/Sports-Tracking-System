@@ -1,19 +1,14 @@
 package com.sts.control;
 
 
-	import java.io.BufferedReader;
+import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
-	import java.util.AbstractMap;
-	import java.util.ArrayList;
-	import java.util.StringTokenizer;
-	import java.util.TreeMap;
-	import java.util.concurrent.ConcurrentHashMap;
-
-	import org.slf4j.Logger;
-	import org.slf4j.LoggerFactory;
+import java.util.StringTokenizer;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.sts.abstractModel.Team;
 import com.sts.concreteModel.GamesList;
@@ -118,6 +113,58 @@ import com.sts.concreteModel.TeamsList;
 			}catch (Exception e_) {
 				e_.printStackTrace();
 			}
+		}
+		
+		public void readFromStringforList(String line, TeamsList listofTeams_) {
+			StringTokenizer tokenizer = new StringTokenizer(line, "|");
+			String category = "";
+			Team team = null;
+			
+			if ("".equals(line))
+				return;
+			tokenizer = new StringTokenizer(line, DELIM);
+
+			try {
+				category = tokenizer.nextToken();
+			} catch (Exception e_) {
+				System.err.println("Reading Sport Category:" + e_.toString());
+			}
+			
+			try {
+				if(category.equals("NBA"))
+					team = new TeamNBA();
+				else if(category.equals("NHL"))
+					team = new TeamNHL();
+				else if(category.equals("NFL"))
+					team = new TeamNFL();
+				else if(category.equals("MLB"))
+					team = new TeamMLB();
+			}
+			catch(Exception e_) {
+				_logger.error("Failed to initialize team:" + e_.toString());
+			}
+
+			try {
+				team.setTeamSport(category);
+			}
+			catch(Exception e_) {
+				_logger.error("setTeamSport:" + e_.toString());
+			}
+			try {
+				team.setLocation(tokenizer.nextToken());
+			} catch (Exception e_) {
+				_logger.error("setLocation:" + e_.toString());
+			}
+
+			try {
+				team.setTeamName(tokenizer.nextToken());
+			} catch (Exception e_) {
+				_logger.error("setTeamName:" + e_.toString());
+			}
+		
+			
+			//adding to hash table here
+			addTeam(team, listofTeams_);
 		}
 
 	    private void addTeam(Team team_, TeamsList listOfTeams_)
