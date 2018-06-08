@@ -203,12 +203,13 @@ public class GamesFileReader {
             String line;
             String team;
             String city;
-            String teamName;
+            //String teamName;
             Game game;
             Team home;
             String category;
             String playerIDs;
             Key keyCheck = null;
+
 
             
             while ((line = reader.readLine()) != null) {
@@ -269,7 +270,8 @@ public class GamesFileReader {
                     _logger.error("setAwayTeam:" + e_.toString());
                     continue;
                 }
-                
+                //Not needed for now
+                /*
                 try {
                 	playerIDs = tokenizer.nextToken();
                 	teamName = city + " " + team;
@@ -278,7 +280,7 @@ public class GamesFileReader {
                 catch(Exception e_) {
                 	_logger.error("There were invalid player IDs:" + e_.toString());
                 	continue;
-                }
+                }*/
 
                 try {
                 	city = tokenizer.nextToken();
@@ -292,7 +294,8 @@ public class GamesFileReader {
                     _logger.error("sethTeam:" + e_.toString());
                 }
 
-                try {
+                //Not needed for now
+              /*(  try {
                 	playerIDs = tokenizer.nextToken();
                 	teamName = city + " " + team;
                 	parsePlayerIDs(playerIDs, gamesList_, game, playersList_, teamsList_, teamName );
@@ -300,7 +303,7 @@ public class GamesFileReader {
                 catch(Exception e_) {
                 	_logger.error("There were invalid player IDs:" + e_.toString());
                 	continue;
-                }
+                }*/
 
              
 

@@ -2,7 +2,6 @@ package com.sts.concreteModel;
 
 import java.time.Duration;
 import java.time.ZonedDateTime;
-import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Map.Entry;
 import java.util.SortedMap;
@@ -65,14 +64,17 @@ public class GamesList{
 	   Iterator<Integer> awayIterator;
 	   int tempUID = -1;
 	   Key lowestKey = new Key(timeNow,tempUID);
-	   
+	   Team homeTeam;
+	   Team awayTeam;
 	   SortedMap<Key, Game> upcomingGames = map.headMap(lowestKey);
 	   
 	   _logger.info("ALL UPCOMING GAMES:");
 	   for(Entry<Key, Game> entry : upcomingGames.entrySet()) {
 		   _logger.trace(entry.getValue().toString());
-		   homeIterator = entry.getValue().getListofHomePlayers().iterator();
-		   awayIterator = entry.getValue().getListOfAwayPlayers().iterator();
+		   homeTeam = entry.getValue().getHomeTeam();
+		   awayTeam = entry.getValue().getAwayTeam();
+		   homeIterator = homeTeam.getListOfPLayers().iterator();
+		   awayIterator = awayTeam.getListOfPLayers().iterator();
 		   _logger.trace("Home Players:");
 		   while(homeIterator.hasNext()) {
 			   playerID = homeIterator.next();
@@ -90,18 +92,29 @@ public class GamesList{
    public void logFinishedGames(PlayersList playersList_) {
 	   ZonedDateTime timeNow = ZonedDateTime.now();
 	   int playerID;
-	   Iterator<Integer> i;
+	   Iterator<Integer> homeIterator;
+	   Iterator<Integer> awayIterator;
 	   int tempUID = -1;
 	   Key highestKey = new Key(timeNow,tempUID);
-	   
+	   Team homeTeam;
+	   Team awayTeam;
 	   SortedMap<Key, Game> upcomingGames = map.tailMap(highestKey);
 	   
 	   _logger.info("ALL FINISHED GAMES");
 	   for(Entry<Key, Game> entry : upcomingGames.entrySet()) {
 		   _logger.trace(entry.getValue().toString());
-		   i = entry.getValue().getListofHomePlayers().iterator();
-		   while(i.hasNext()) {
-			   playerID = i.next();
+		   homeTeam = entry.getValue().getHomeTeam();
+		   awayTeam = entry.getValue().getAwayTeam();
+		   homeIterator = homeTeam.getListOfPLayers().iterator();
+		   awayIterator = awayTeam.getListOfPLayers().iterator();
+		   _logger.trace("Home Players:");
+		   while(homeIterator.hasNext()) {
+			   playerID = homeIterator.next();
+			   _logger.info(playersList_.returnPlayersMap().get(playerID).toString());
+		   }
+		   _logger.trace("Away Players:");
+		   while(awayIterator.hasNext()) {
+			   playerID = awayIterator.next();
 			   _logger.info(playersList_.returnPlayersMap().get(playerID).toString());
 		   }
 	   }
@@ -118,16 +131,6 @@ public class GamesList{
 			   playerID = i.next();
 			   _logger.info(playersList_.returnPlayersMap().get(playerID).toString());
 		   }
-	   }
-   }
-   
-   public void logAllPlayersForEachGame(PlayersList playersList_) {
-	   _logger.info("Home Players:");
-	   int playerID;
-	   Iterator<Integer> i;
-	   for(Entry<Key, Game> entry : map.entrySet()) {
-		 
-		   
 	   }
    }
 

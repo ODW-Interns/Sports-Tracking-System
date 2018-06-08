@@ -18,6 +18,7 @@ import com.sts.concreteModel.NBAPlayer;
 import com.sts.concreteModel.NFLPlayer;
 import com.sts.concreteModel.NHLPlayer;
 import com.sts.concreteModel.PlayersList;
+import com.sts.concreteModel.TeamHistory;
 import com.sts.concreteModel.TeamsList;
 import com.sts.model.exception.MismatchPlayerandTeamSportException;
 import com.sts.model.exception.TeamNotFoundException;
@@ -80,6 +81,24 @@ public class PlayersFileReader {
     	
     }
     
+    
+    public Player updatePlayer(Player player_, Player existingPlayer_, PlayersList playersList_) {
+    	_logger.trace("Player found: Updating Player");
+    	if(player_.getJerseyNum() != existingPlayer_.getJerseyNum()) {
+    		_logger.info("Updating Player Jersey Number:");
+    		_logger.info("Changing Player Jersey Number from {} to Jersey Number {}", player_.getJerseyNum(), existingPlayer_.getJerseyNum());
+    		playersList_.returnPlayersMap().get(player_.get_playerID()).set_jerseyNum(existingPlayer_.getJerseyNum());
+    		existingPlayer_.set_jerseyNum(player_.getJerseyNum());
+    		
+    	}
+    	if(!player_.getCurrentTeam().equals(existingPlayer_.getCurrentTeam())) {
+    		_logger.info("Updating Player's Current Team:");
+    		_logger.info("Changing Player's Current Team from {} to {}", existingPlayer_.getCurrentTeam().fullTeamName(), player_.getCurrentTeam().fullTeamName());
+   		 	playersList_.returnPlayersMap().get(player_.get_playerID()).setCurrentTeam(existingPlayer_.getCurrentTeam());
+    		existingPlayer_.setCurrentTeam(player_.getCurrentTeam());
+    	}
+    	return existingPlayer_;
+    }
     
 	private void readFromFileForLists(Reader is_, PlayersList playerlist_, TeamsList teamsList_) throws IOException {
 		// TODO Auto-generated method stub
@@ -173,16 +192,31 @@ public class PlayersFileReader {
 	                	_logger.error("setTeam:" + e_.toString());
 	                	continue;
 	                }
-	             addPlayer(player, playerlist_);
-	             //TODO: NULL POINT exception possible here
-	             //Also shouldn't add team if there is an invalid 
-	             try {
-	            	 teamsList_.getTeamMap().get(player.getCurrentTeam().fullTeamName()).getListOfPLayers().add(player.get_playerID());
+	             if(playerlist_.returnPlayersMap().get(player.get_playerID()) != null) {
+	            	 Player existingPlayer = playerlist_.returnPlayersMap().get(player.get_playerID());
+	            	 if(!existingPlayer.equals(player)) {
+	            		 teamsList_.getTeamMap().get(existingPlayer.getCurrentTeam().fullTeamName()).getListOfPLayers().remove(Integer.valueOf(player.get_playerID()));
+	            		 TeamHistory oldTeam = new TeamHistory(existingPlayer.getCurrentTeam().getLocation(), existingPlayer.getCurrentTeam().getTeamName());
+	            		 playerlist_.returnPlayersMap().get(existingPlayer.get_playerID()).get_HistoryOfTeamsForPlayers().add(oldTeam);
+	            		
+	            		 //update existing player with new data
+	            		 existingPlayer = updatePlayer(player, existingPlayer, playerlist_);
+	            		
+	            		 teamsList_.getTeamMap().get(existingPlayer.getCurrentTeam().fullTeamName()).getListOfPLayers().add(player.get_playerID());
+	            	 }
 	             }
-	             catch(Exception e_) {
-	            	 _logger.error("Player's current team is not a valid team: " + e_.toString());
-	             }
-	                
+	             else {
+	            	 
+	            	 try {
+	            		 addPlayer(player, playerlist_);
+		            	 //TODO: NULL POINT exception possible here
+		            	 //Also shouldn't add team if there is an invalid 
+	            		 teamsList_.getTeamMap().get(player.getCurrentTeam().fullTeamName()).getListOfPLayers().add(player.get_playerID());
+	            	 }
+	            	 catch(Exception e_) {
+	            		 _logger.error("Player's current team is not a valid team: " + e_.toString());
+	            	 }
+	             }    
 	           }
 		 } 
 	}
@@ -274,16 +308,22 @@ public class PlayersFileReader {
         	_logger.error("setTeam:" + e_.toString());
         	throw e_;
         }
-     addPlayer(player, playersList_);
-     //TODO: NULL POINT exception possible here
-     //Also shouldn't add team if there is an invalid 
-     try {
-    	 teamsList_.getTeamMap().get(player.getCurrentTeam().fullTeamName()).getListOfPLayers().add(player.get_playerID());
-     }
-     catch(Exception e_) {
-    	 _logger.error("Player's current team is not a valid team: " + e_.toString());
-    	 throw e_;
-     }
+        if(playersList_.returnPlayersMap().contains(player.get_playerID()) == true) {
+       	 Player existingPlayer = playersList_.returnPlayersMap().get(player.get_playerID());
+      
+        }
+        else {
+       	 
+       	 try {
+       		 addPlayer(player, playersList_);
+           	 //TODO: NULL POINT exception possible here
+           	 //Also shouldn't add team if there is an invalid 
+       		 teamsList_.getTeamMap().get(player.getCurrentTeam().fullTeamName()).getListOfPLayers().add(player.get_playerID());
+       	 }
+       	 catch(Exception e_) {
+       		 _logger.error("Player's current team is not a valid team: " + e_.toString());
+       	 }
+        }
 	}
 	
 	private void addPlayer(Player player_, PlayersList PlayersList_)
