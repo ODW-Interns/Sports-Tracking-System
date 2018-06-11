@@ -7,7 +7,9 @@ import com.sts.concretemodel.TeamHistory;
 /*
  * Abstract class to represent a player for a sport
  */
-public abstract class AbstractPlayer {
+
+public abstract class AbstractPlayer implements InterfaceModel{
+
 
 	//Player's first name
 	private String _firstName;
@@ -117,7 +119,8 @@ public abstract class AbstractPlayer {
 	/**
      * indicates if the player has all fields initialized 
      */
-    public boolean isValidPlayer() {
+	@Override
+	public boolean isValid() {
         return ((this.get_playerID() > -1) &&
                 (this.getJerseyNum() > -1) &&
                 (this.getFirstName() != null) &&

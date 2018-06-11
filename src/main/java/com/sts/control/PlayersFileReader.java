@@ -22,7 +22,12 @@ import com.sts.concretemodel.TeamHistory;
 import com.sts.concretemodel.TeamsList;
 import com.sts.model.exception.MismatchPlayerandTeamSportException;
 import com.sts.model.exception.TeamNotFoundException;
-
+/*
+ * This class will read from the players list input, and will deal with switching teams and changing Jersey numbers.
+ * We will store all the players in a hash map when the ID is the key for the map.
+ * We also reading the sport category and declare if the player in NFl, NHl, NBA, or MLB. We map each player to his category defined class
+ * so we can update unique statistics in the future.
+ */
 public class PlayersFileReader {
 	private Logger _logger;
 
@@ -338,7 +343,7 @@ public class PlayersFileReader {
 	
 	private void addPlayer(AbstractPlayer player_, PlayersList PlayersList_)
     {
-        if (!player_.isValidPlayer())
+        if (!player_.isValid())
         {
             _logger.error("Refusing to add invalid player: {}", player_);
             return;

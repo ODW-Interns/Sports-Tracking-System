@@ -3,10 +3,12 @@ package com.sts.abstractmodel;
 
 import java.util.ArrayList;
 
+
 /*
  * Abstract class to represent a team for a sport
  */
-public abstract class AbstractTeam {
+
+public abstract class AbstractTeam implements InterfaceModel{
 
 	//The sport of the team
 	private String _teamSport;
@@ -79,11 +81,12 @@ public abstract class AbstractTeam {
 	public ArrayList<Integer> getListOfPLayers() {
 		return listofPlayers;
 	}
-	
+
 	/*
 	 * method to check if the required fields for the team has been initialized
 	 */
-	public boolean isValidTeam() {
+	@Override
+	public boolean isValid() {
 		if(_teamName != null && _location != null && _teamSport != null) {
 			return true;
 		}
