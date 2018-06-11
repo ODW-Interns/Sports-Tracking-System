@@ -18,7 +18,9 @@ import com.sts.concretemodel.TeamNFL;
 import com.sts.concretemodel.TeamNHL;
 import com.sts.concretemodel.TeamsList;
 
-
+/*
+ * The class will read from an input file and add to the list of teams
+ */
 	public class TeamsFileReader {
 		private static final String DELIM = "|";
 		private Logger _logger;
@@ -47,7 +49,7 @@ import com.sts.concretemodel.TeamsList;
 		    }
 		
 		
-		//method to read from an input file and add to the list of teams
+		
 		public void readFromFileForLists(Reader is_, TeamsList listofTeams_) {
 			try (BufferedReader reader = new BufferedReader(is_)) {
 				StringTokenizer tokenizer;
