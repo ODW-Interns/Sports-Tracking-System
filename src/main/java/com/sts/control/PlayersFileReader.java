@@ -343,7 +343,7 @@ public class PlayersFileReader {
 	
 	private void addPlayer(AbstractPlayer player_, PlayersList PlayersList_)
     {
-        if (!player_.isValidPlayer())
+        if (!player_.isValid())
         {
             _logger.error("Refusing to add invalid player: {}", player_);
             return;

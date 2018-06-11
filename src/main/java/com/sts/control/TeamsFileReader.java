@@ -171,7 +171,7 @@ import com.sts.concretemodel.TeamsList;
 
 	    private void addTeam(AbstractTeam team_, TeamsList listOfTeams_)
 	    {
-	        if (!team_.isValidTeam())
+	        if (!team_.isValid())
 	        {
 	            _logger.error("Refusing to add invalid team: {}", team_);
 	            return;

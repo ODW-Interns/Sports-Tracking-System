@@ -2,7 +2,7 @@ package com.sts.concretemodel;
 
 //Concrete class extending from Team
 
-public class TeamNBA extends com.sts.abstractmodel.AbstractTeam{
+public  class TeamNBA extends com.sts.abstractmodel.AbstractTeam{
 	
 	private final int _numbPlayers = 12;
 	
@@ -13,5 +13,6 @@ public class TeamNBA extends com.sts.abstractmodel.AbstractTeam{
 	public int getNumbPlayers() {
 		return _numbPlayers;
 	}
+
 
 }
