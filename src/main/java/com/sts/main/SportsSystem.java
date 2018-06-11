@@ -25,7 +25,7 @@ public class SportsSystem {
 		//Create a TeamsList object to hold all teams
 		TeamsList listofTeams = new TeamsList();
 		PlayersList listofPlayers = new PlayersList();
-		StoreDataFromInputFile.storeDataIntoTeamList("/Teams.txt", listofGames, listofTeams);
+		StoreDataFromInputFile.storeDataIntoTeamList("/Teams.csv", listofGames, listofTeams);
 		StoreDataFromInputFile.storeDataIntoPlayerList("/Players.csv", listofGames, listofTeams, listofPlayers);
 	    StoreDataFromInputFile.storeDataIntoGameList("/games.csv", listofGames, listofTeams, listofPlayers);
 	    

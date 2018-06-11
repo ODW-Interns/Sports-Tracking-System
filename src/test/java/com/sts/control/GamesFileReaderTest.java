@@ -21,7 +21,7 @@ public class GamesFileReaderTest {
    
 
 	    try{
-			StoreDataFromInputFile.storeDataIntoTeamList("/Teams.txt", listofGames, listofTeams);
+			StoreDataFromInputFile.storeDataIntoTeamList("/Teams.csv", listofGames, listofTeams);
 			StoreDataFromInputFile.storeDataIntoPlayerList("/Players.csv", listofGames, listofTeams, listofPlayers);
 		    StoreDataFromInputFile.storeDataIntoGameList("/games.csv", listofGames, listofTeams, listofPlayers);
 	    }
