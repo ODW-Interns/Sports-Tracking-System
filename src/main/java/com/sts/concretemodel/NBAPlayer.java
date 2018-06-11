@@ -1,8 +1,8 @@
-package com.sts.concreteModel;
+package com.sts.concretemodel;
 
-import com.sts.abstractModel.Player;
+import com.sts.abstractmodel.AbstractPlayer;
 
-public class NBAPlayer extends Player{
+public class NBAPlayer extends AbstractPlayer{
 
 	public NBAPlayer() {
 		super();

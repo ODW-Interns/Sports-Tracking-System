@@ -1,4 +1,4 @@
-package com.sts.concreteModel;
+package com.sts.concretemodel;
 
 public class TeamHistory {
 

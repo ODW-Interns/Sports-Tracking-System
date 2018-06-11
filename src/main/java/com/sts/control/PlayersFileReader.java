@@ -11,15 +11,15 @@ import java.util.StringTokenizer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.sts.abstractModel.Player;
-import com.sts.concreteModel.GamesList;
-import com.sts.concreteModel.MLBPlayer;
-import com.sts.concreteModel.NBAPlayer;
-import com.sts.concreteModel.NFLPlayer;
-import com.sts.concreteModel.NHLPlayer;
-import com.sts.concreteModel.PlayersList;
-import com.sts.concreteModel.TeamHistory;
-import com.sts.concreteModel.TeamsList;
+import com.sts.abstractmodel.AbstractPlayer;
+import com.sts.concretemodel.GamesList;
+import com.sts.concretemodel.MLBPlayer;
+import com.sts.concretemodel.NBAPlayer;
+import com.sts.concretemodel.NFLPlayer;
+import com.sts.concretemodel.NHLPlayer;
+import com.sts.concretemodel.PlayersList;
+import com.sts.concretemodel.TeamHistory;
+import com.sts.concretemodel.TeamsList;
 import com.sts.model.exception.MismatchPlayerandTeamSportException;
 import com.sts.model.exception.TeamNotFoundException;
 
@@ -66,7 +66,7 @@ public class PlayersFileReader {
         return lclTeam;
     }*/
     
-    private void parseCurrentTeam(TeamsList teamList_, String teamStr_, Player player_) throws TeamNotFoundException, MismatchPlayerandTeamSportException {
+    private void parseCurrentTeam(TeamsList teamList_, String teamStr_, AbstractPlayer player_) throws TeamNotFoundException, MismatchPlayerandTeamSportException {
     	if(teamList_.getTeamMap().get(teamStr_) == null) {
     		throw new TeamNotFoundException(teamStr_);
     	}
@@ -82,7 +82,7 @@ public class PlayersFileReader {
     }
     
     
-    public Player updatePlayer(Player player_, Player existingPlayer_, PlayersList playersList_) {
+    public AbstractPlayer updatePlayer(AbstractPlayer player_, AbstractPlayer existingPlayer_, PlayersList playersList_) {
     	if(player_.getJerseyNum() != existingPlayer_.getJerseyNum()) {
     		_logger.info("Updating Player Jersey Number:");
     		_logger.info("Changing Player Jersey Number from {} to Jersey Number {}", existingPlayer_.getJerseyNum(), player_.getJerseyNum());
@@ -104,7 +104,7 @@ public class PlayersFileReader {
 		 try (BufferedReader reader = new BufferedReader(is_)) {
 	         StringTokenizer tokenizer;   
 			 String line, category;
-	            Player player = null;
+	            AbstractPlayer player = null;
 	            while ((line = reader.readLine()) != null) {
 	                // don't process empty lines
 	                if ("".equals(line))
@@ -194,7 +194,7 @@ public class PlayersFileReader {
 	                	continue;
 	                }
 	             if(playerlist_.returnPlayersMap().get(player.get_playerID()) != null) {
-	            	 Player existingPlayer = playerlist_.returnPlayersMap().get(player.get_playerID());
+	            	 AbstractPlayer existingPlayer = playerlist_.returnPlayersMap().get(player.get_playerID());
 	            	 if(!existingPlayer.equals(player)) {
 	            		 teamsList_.getTeamMap().get(existingPlayer.getCurrentTeam().fullTeamName()).getListOfPLayers().remove(Integer.valueOf(player.get_playerID()));
 	            		 TeamHistory oldTeam = new TeamHistory(existingPlayer.getCurrentTeam().getLocation(), existingPlayer.getCurrentTeam().getTeamName());
@@ -226,7 +226,7 @@ public class PlayersFileReader {
 		
 		 StringTokenizer tokenizer;   
 		 String category = "";
-            Player player = null;
+            AbstractPlayer player = null;
 		
 		if ("".equals(line))
 			throw new Exception();
@@ -310,7 +310,7 @@ public class PlayersFileReader {
         	throw e_;
         }
         if(playersList_.returnPlayersMap().get(player.get_playerID()) != null) {
-       	 Player existingPlayer = playersList_.returnPlayersMap().get(player.get_playerID());
+       	 AbstractPlayer existingPlayer = playersList_.returnPlayersMap().get(player.get_playerID());
        	 if(!existingPlayer.equals(player)) {
        		 teamsList_.getTeamMap().get(existingPlayer.getCurrentTeam().fullTeamName()).getListOfPLayers().remove(Integer.valueOf(player.get_playerID()));
        		 TeamHistory oldTeam = new TeamHistory(existingPlayer.getCurrentTeam().getLocation(), existingPlayer.getCurrentTeam().getTeamName());
@@ -336,7 +336,7 @@ public class PlayersFileReader {
         }
 	}
 	
-	private void addPlayer(Player player_, PlayersList PlayersList_)
+	private void addPlayer(AbstractPlayer player_, PlayersList PlayersList_)
     {
         if (!player_.isValidPlayer())
         {

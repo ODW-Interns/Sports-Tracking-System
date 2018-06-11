@@ -1,4 +1,4 @@
-package com.sts.concreteModel;
+package com.sts.concretemodel;
 
 import java.time.Duration;
 import java.time.ZonedDateTime;
@@ -10,9 +10,9 @@ import java.util.TreeMap;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.sts.abstractModel.Game;
-import com.sts.abstractModel.Player;
-import com.sts.abstractModel.Team;
+import com.sts.abstractmodel.Game;
+import com.sts.abstractmodel.AbstractPlayer;
+import com.sts.abstractmodel.AbstractTeam;
 
 
 //class inheriting from ArrayList to contain game objects
@@ -38,7 +38,7 @@ public class GamesList{
     
     
     
-    public void addPassedGame(int gameID_, String category_, ZonedDateTime date_, Duration duration, Team away_, Team home_, int awayScore_, int homeScore_, int attendance)
+    public void addPassedGame(int gameID_, String category_, ZonedDateTime date_, Duration duration, AbstractTeam away_, AbstractTeam home_, int awayScore_, int homeScore_, int attendance)
     {
         ZonedDateTime dateWithTZ = ZonedDateTime.from(date_);
         Game game = new Game();
@@ -65,8 +65,8 @@ public class GamesList{
 	   Iterator<Integer> awayIterator;
 	   int tempUID = -1;
 	   Key lowestKey = new Key(timeNow,tempUID);
-	   Team homeTeam;
-	   Team awayTeam;
+	   AbstractTeam homeTeam;
+	   AbstractTeam awayTeam;
 	   SortedMap<Key, Game> upcomingGames = map.headMap(lowestKey);
 	   
 	   _logger.info("ALL UPCOMING GAMES:");

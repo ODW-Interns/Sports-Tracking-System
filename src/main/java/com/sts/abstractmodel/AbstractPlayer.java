@@ -1,16 +1,16 @@
-package com.sts.abstractModel;
+package com.sts.abstractmodel;
 
 import java.util.ArrayList;
 
-import com.sts.concreteModel.TeamHistory;
+import com.sts.concretemodel.TeamHistory;
 
-public abstract class Player {
+public abstract class AbstractPlayer {
 
 	private String _firstName;
 	private String _lastName;
 	private int _jerseyNum;
 	private int _playerID;	
-	private Team _currentTeam;
+	private AbstractTeam _currentTeam;
 	private String _sportCategory;
 	
 	private ArrayList<TeamHistory> _HistoryOfTeamsForPlayer;
@@ -27,24 +27,24 @@ public abstract class Player {
 	
 
 
-	public Team getCurrentTeam() {
+	public AbstractTeam getCurrentTeam() {
 		return _currentTeam;
 	}
 
 
-	public void setCurrentTeam(Team currentTeam) {
+	public void setCurrentTeam(AbstractTeam currentTeam) {
 		this._currentTeam = currentTeam;
 	}
 
 
 	
 	//Default Constructor
-	public Player() {
+	public AbstractPlayer() {
 		this(-1,-1,"N/A", "N/A");
 	}
 
 	
-	public Player(int playerID_, int jerseyNum_, String firstName_, String lastName_){
+	public AbstractPlayer(int playerID_, int jerseyNum_, String firstName_, String lastName_){
 
 		_firstName = firstName_;
 		_lastName = lastName_;
@@ -121,10 +121,10 @@ public abstract class Player {
 
 	@Override
 	public boolean equals(Object obj) {
-		return _firstName == ((Player)obj).getFirstName() &&
-				_lastName == ((Player)obj).getLastName() &&
-				_jerseyNum == ((Player)obj).getJerseyNum() &&
-				_currentTeam.equals(((Player)obj).getCurrentTeam())
+		return _firstName == ((AbstractPlayer)obj).getFirstName() &&
+				_lastName == ((AbstractPlayer)obj).getLastName() &&
+				_jerseyNum == ((AbstractPlayer)obj).getJerseyNum() &&
+				_currentTeam.equals(((AbstractPlayer)obj).getCurrentTeam())
 			;
 	}
 	

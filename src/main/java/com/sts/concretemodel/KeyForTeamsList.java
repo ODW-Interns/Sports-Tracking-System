@@ -1,5 +1,5 @@
 
-package com.sts.concreteModel;
+package com.sts.concretemodel;
 
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;

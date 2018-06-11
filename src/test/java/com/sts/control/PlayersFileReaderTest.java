@@ -5,9 +5,9 @@ import static org.junit.Assert.assertTrue;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import com.sts.concreteModel.GamesList;
-import com.sts.concreteModel.PlayersList;
-import com.sts.concreteModel.TeamsList;
+import com.sts.concretemodel.GamesList;
+import com.sts.concretemodel.PlayersList;
+import com.sts.concretemodel.TeamsList;
 
 public class PlayersFileReaderTest {
 

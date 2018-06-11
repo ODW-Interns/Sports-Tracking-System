@@ -1,9 +1,9 @@
 
-package com.sts.abstractModel;
+package com.sts.abstractmodel;
 
 import java.util.ArrayList;
 
-public abstract class Team {
+public abstract class AbstractTeam {
 
 	private String _teamSport;
 	private String _teamName;
@@ -12,13 +12,13 @@ public abstract class Team {
 	private ArrayList<Integer> listofPlayers;
 	
 
-	public Team() {
+	public AbstractTeam() {
 		// Default Constructor
 		this("general", "general");
 	}
 
 	//Constructor
-	public Team(String team_, String loc_) {
+	public AbstractTeam(String team_, String loc_) {
 		setTeamName(team_);
 		setLocation(loc_);
 	
@@ -88,8 +88,8 @@ public abstract class Team {
 	 
 	 @Override
 	 	public boolean equals(Object obj) {
-		 return _teamSport.equals(((Team)obj).getTeamSport()) &&
-				 _teamName.equals(((Team)obj).getTeamName()) && 
-				 _location.equals(((Team)obj).getLocation());
+		 return _teamSport.equals(((AbstractTeam)obj).getTeamSport()) &&
+				 _teamName.equals(((AbstractTeam)obj).getTeamName()) && 
+				 _location.equals(((AbstractTeam)obj).getLocation());
 	 }
 }

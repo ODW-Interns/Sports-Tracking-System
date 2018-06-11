@@ -10,13 +10,13 @@ import java.util.StringTokenizer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.sts.abstractModel.Team;
-import com.sts.concreteModel.GamesList;
-import com.sts.concreteModel.TeamMLB;
-import com.sts.concreteModel.TeamNBA;
-import com.sts.concreteModel.TeamNFL;
-import com.sts.concreteModel.TeamNHL;
-import com.sts.concreteModel.TeamsList;
+import com.sts.abstractmodel.AbstractTeam;
+import com.sts.concretemodel.GamesList;
+import com.sts.concretemodel.TeamMLB;
+import com.sts.concretemodel.TeamNBA;
+import com.sts.concretemodel.TeamNFL;
+import com.sts.concretemodel.TeamNHL;
+import com.sts.concretemodel.TeamsList;
 
 
 	public class TeamsFileReader {
@@ -53,7 +53,7 @@ import com.sts.concreteModel.TeamsList;
 				StringTokenizer tokenizer;
 				String line;
 				String category;
-				Team team = null;
+				AbstractTeam team = null;
 				
 				while ((line = reader.readLine()) != null) {
 					// don't process empty lines
@@ -118,7 +118,7 @@ import com.sts.concreteModel.TeamsList;
 		public void readFromStringforList(String line, TeamsList listofTeams_) {
 			StringTokenizer tokenizer = new StringTokenizer(line, "|");
 			String category = "";
-			Team team = null;
+			AbstractTeam team = null;
 			
 			if ("".equals(line))
 				return;
@@ -167,7 +167,7 @@ import com.sts.concreteModel.TeamsList;
 			addTeam(team, listofTeams_);
 		}
 
-	    private void addTeam(Team team_, TeamsList listOfTeams_)
+	    private void addTeam(AbstractTeam team_, TeamsList listOfTeams_)
 	    {
 	        if (!team_.isValidTeam())
 	        {

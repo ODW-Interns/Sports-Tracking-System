@@ -7,7 +7,7 @@ package com.sts.model.exception;
 
 import java.text.MessageFormat;
 
-import com.sts.abstractModel.Team;
+import com.sts.abstractmodel.AbstractTeam;
 
 public class DuplicateTeamException extends Exception {
 
@@ -17,7 +17,7 @@ public class DuplicateTeamException extends Exception {
 
 
 
-    public DuplicateTeamException(String str_, Team team_) {
+    public DuplicateTeamException(String str_, AbstractTeam team_) {
         super(MessageFormat.format("{0}, Team:{1}", str_, team_.getTeamName()));
         
     }

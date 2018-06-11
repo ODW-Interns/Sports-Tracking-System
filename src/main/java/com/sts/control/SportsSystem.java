@@ -7,9 +7,9 @@ import java.util.Scanner;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.sts.concreteModel.GamesList;
-import com.sts.concreteModel.PlayersList;
-import com.sts.concreteModel.TeamsList;
+import com.sts.concretemodel.GamesList;
+import com.sts.concretemodel.PlayersList;
+import com.sts.concretemodel.TeamsList;
 
 public class SportsSystem {
 

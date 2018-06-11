@@ -1,4 +1,4 @@
-package com.sts.abstractModel;
+package com.sts.abstractmodel;
 
 import java.time.Duration;
 import java.time.ZonedDateTime;
@@ -12,8 +12,8 @@ public class Game implements Comparable<Game> {
     private ZonedDateTime startTime;
     private ZonedDateTime finishTime;
     private Duration duration;
-    private Team homeTeam;
-    private Team awayTeam;
+    private AbstractTeam homeTeam;
+    private AbstractTeam awayTeam;
     private int homeTeamScore;
     private int awayTeamScore;
     private int attendence;
@@ -30,7 +30,7 @@ public class Game implements Comparable<Game> {
     /**
      *
      */
-    public Game(ZonedDateTime startTime_, Team home_, Team away_)
+    public Game(ZonedDateTime startTime_, AbstractTeam home_, AbstractTeam away_)
     {
         setStartTime(startTime_);
         setHomeTeam(home_);
@@ -38,7 +38,7 @@ public class Game implements Comparable<Game> {
        
     }
     
-    public Game(ZonedDateTime startTime_, Team home_, Team away_, int homeScore_, int awayScore_, int attendance_, Duration duration_) {
+    public Game(ZonedDateTime startTime_, AbstractTeam home_, AbstractTeam away_, int homeScore_, int awayScore_, int attendance_, Duration duration_) {
     	ZonedDateTime finish;
     	setStartTime(startTime_);
     	setHomeTeam(home_);
@@ -92,28 +92,28 @@ public class Game implements Comparable<Game> {
     /**
      * method to return the home team
      */
-    public Team getHomeTeam() {
+    public AbstractTeam getHomeTeam() {
         return homeTeam;
     }
 
     /**
      * method to set the home team
      */
-    public void setHomeTeam(Team ht_) {
+    public void setHomeTeam(AbstractTeam ht_) {
         homeTeam = ht_;
     }
 
     /**
      * method to return the away team
      */
-    public Team getAwayTeam() {
+    public AbstractTeam getAwayTeam() {
         return awayTeam;
     }
 
     /**
      * method to set the away team
      */
-    public void setAwayTeam(Team at_) {
+    public void setAwayTeam(AbstractTeam at_) {
         awayTeam = at_;
     }
 

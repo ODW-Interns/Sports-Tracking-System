@@ -1,18 +1,18 @@
-package com.sts.concreteModel;
+package com.sts.concretemodel;
 
 import java.util.concurrent.ConcurrentHashMap;
 
-import com.sts.abstractModel.Team;
+import com.sts.abstractmodel.AbstractTeam;
 
 //class inheriting from ArrayList that contains Team objects
 public class TeamsList{
 	
-	private ConcurrentHashMap<String,Team> TeamMap_;
+	private ConcurrentHashMap<String,AbstractTeam> TeamMap_;
 	//private static final long serialVersionUID = 1L;
 
 
 	public TeamsList() {
-		TeamMap_ = new ConcurrentHashMap<String, Team>();
+		TeamMap_ = new ConcurrentHashMap<String, AbstractTeam>();
 	}
 
 	public void addTeam(String city_, String name_) {
@@ -22,7 +22,7 @@ public class TeamsList{
 		TeamMap_.put(new KeyForTeamsList(team.getTeamName(), team.getTeamSport()), team);*/
 	}
 	
-	public ConcurrentHashMap<String, Team> getTeamMap(){
+	public ConcurrentHashMap<String, AbstractTeam> getTeamMap(){
 		return TeamMap_;
 	}
 

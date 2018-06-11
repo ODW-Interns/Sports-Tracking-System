@@ -1,8 +1,8 @@
-package com.sts.concreteModel;
+package com.sts.concretemodel;
 
 //Concrete class extending from Team
 
-public class TeamNBA extends com.sts.abstractModel.Team{
+public class TeamNBA extends com.sts.abstractmodel.AbstractTeam{
 	
 	private final int _numbPlayers = 12;
 	

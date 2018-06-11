@@ -1,4 +1,4 @@
-package com.sts.concreteModel;
+package com.sts.concretemodel;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;

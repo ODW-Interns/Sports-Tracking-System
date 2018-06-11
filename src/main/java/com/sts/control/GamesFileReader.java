@@ -19,12 +19,12 @@ import java.util.StringTokenizer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.sts.abstractModel.Game;
-import com.sts.abstractModel.Team;
-import com.sts.concreteModel.GamesList;
-import com.sts.concreteModel.Key;
-import com.sts.concreteModel.PlayersList;
-import com.sts.concreteModel.TeamsList;
+import com.sts.abstractmodel.Game;
+import com.sts.concretemodel.GamesList;
+import com.sts.concretemodel.Key;
+import com.sts.concretemodel.PlayersList;
+import com.sts.concretemodel.TeamsList;
+import com.sts.abstractmodel.AbstractTeam;
 import com.sts.model.exception.DuplicateTeamException;
 import com.sts.model.exception.InvalidPlayersException;
 import com.sts.model.exception.MismatchGameandTeamSportException;
@@ -112,9 +112,9 @@ public class GamesFileReader {
      * If it does already exist, team found
      * Else, put in hashmap
      */
-    private Team parseTeam(String category, String cityStr_,String teamStr_, TeamsList teamsList_) throws TeamNotFoundException, MismatchGameandTeamSportException {
+    private AbstractTeam parseTeam(String category, String cityStr_,String teamStr_, TeamsList teamsList_) throws TeamNotFoundException, MismatchGameandTeamSportException {
         String searchString = cityStr_ + " " + teamStr_;
-    	Team lclTeam = teamsList_.getTeamMap().get(searchString);
+    	AbstractTeam lclTeam = teamsList_.getTeamMap().get(searchString);
         if(lclTeam != null){
         	if(lclTeam.getTeamSport().equals(category)){
         		return lclTeam;
@@ -203,7 +203,7 @@ public class GamesFileReader {
             String playerIDs;
             String teamName;
             Game game;
-            Team home;
+            AbstractTeam home;
             String category;
             
             while ((line = reader.readLine()) != null) {
@@ -368,7 +368,7 @@ public class GamesFileReader {
             String city = null;
             String teamName = null;
             Game game;
-            Team home;
+            AbstractTeam home;
             String category = null;
             String playerIDs = null;
             
