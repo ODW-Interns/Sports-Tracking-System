@@ -24,7 +24,9 @@ public class SportsSystem {
 		GamesList listofGames = new GamesList();
 		//Create a TeamsList object to hold all teams
 		TeamsList listofTeams = new TeamsList();
+		//Create a PlayersList object to hold all players
 		PlayersList listofPlayers = new PlayersList();
+		//Read from input files; initiating maps
 		StoreDataFromInputFile.storeDataIntoTeamList("/Teams.csv", listofGames, listofTeams);
 		StoreDataFromInputFile.storeDataIntoPlayerList("/Players.csv", listofGames, listofTeams, listofPlayers);
 	    StoreDataFromInputFile.storeDataIntoGameList("/games.csv", listofGames, listofTeams, listofPlayers);
@@ -38,9 +40,8 @@ public class SportsSystem {
 
 	    boolean isNumber;
 	    int choice = 0;   
-	    int choice2 = 0;
 	    String fileName;
-	    boolean c=true;
+	    boolean c = true;
 	    
 	    while (c) {
 	    	

@@ -11,16 +11,19 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.sts.abstractmodel.Game;
-import com.sts.abstractmodel.AbstractPlayer;
 import com.sts.abstractmodel.AbstractTeam;
 
 
-//class inheriting from ArrayList to contain game objects
+/**
+ * Class to hold structure (Tree Map) to map all games being tracked
+ */
 public class GamesList{
 	private TreeMap<Key, Game> map;
     private Logger _logger;
 
-
+    /**
+     * Constructor
+     */
     public GamesList(){
     	map = new TreeMap<Key, Game>(new DateCompare());
         _logger = LoggerFactory.getLogger(getClass().getSimpleName());
@@ -37,7 +40,9 @@ public class GamesList{
     }
     
     
-    
+    /**
+     * method to add game to games map
+     */
     public void addPassedGame(int gameID_, String category_, ZonedDateTime date_, Duration duration, AbstractTeam away_, AbstractTeam home_, int awayScore_, int homeScore_, int attendance)
     {
         ZonedDateTime dateWithTZ = ZonedDateTime.from(date_);
@@ -54,10 +59,17 @@ public class GamesList{
         map.put(new Key(date_, uid), game);
     }
 
+   /**
+    * @return
+    * tree map(Map of Games Sorted by Time)
+    */
    public TreeMap<Key, Game> getGamesMap() {
 	   return map;
    }
    
+   /**
+    * Log games in the future. Roster of each team are also logged
+    */
    public void logUpcomingGames(PlayersList playersList_) {
 	   ZonedDateTime timeNow = ZonedDateTime.now();
 	   int playerID;
@@ -90,6 +102,9 @@ public class GamesList{
 	   }
    }
    
+   /**
+    * Log games that are finished. Players that have played in the game are also logged
+    */
    public void logFinishedGames(PlayersList playersList_) {
 	   ZonedDateTime timeNow = ZonedDateTime.now();
 	   int playerID;
@@ -114,20 +129,6 @@ public class GamesList{
 		   _logger.trace("Away Players:");
 		   while(awayIterator.hasNext()) {
 			   playerID = awayIterator.next();
-			   _logger.info(playersList_.returnPlayersMap().get(playerID).toString());
-		   }
-	   }
-   }
-    
-   public void logAllGamesInMap(PlayersList playersList_) {
-	   int playerID;
-	   Iterator<Integer> i;
-	   _logger.info("All GAMES");
-	   for(Entry<Key, Game> entry : map.entrySet()) {
-		   _logger.trace(entry.getValue().toString());
-		   i = entry.getValue().getListofHomePlayers().iterator();
-		   while(i.hasNext()) {
-			   playerID = i.next();
 			   _logger.info(playersList_.returnPlayersMap().get(playerID).toString());
 		   }
 	   }

@@ -4,19 +4,20 @@ import java.util.concurrent.ConcurrentHashMap;
 
 import com.sts.abstractmodel.AbstractPlayer;
 
+/**
+ * class to hold structure(Concurrent Hash Map) for mapping players
+ */
 public class PlayersList {
 	
 
 	private ConcurrentHashMap<Integer, AbstractPlayer> PlayerMap_;
 
-	public void addPlayer(int PlayerID_, int jerseyNum_, String firstName_, String lastName_) {
-
-		
-	}
+	//Constructor
 	public PlayersList() {
 		PlayerMap_ = new ConcurrentHashMap<Integer, AbstractPlayer>();
 	}
 	
+	// Return: Players Map
 	public ConcurrentHashMap<Integer, AbstractPlayer> returnPlayersMap(){
 		return PlayerMap_;
 	}
