@@ -5,31 +5,43 @@ import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
-//
+// Class to represent game of a sport
 public class Game implements Comparable<Game> {
 
+	//Unique ID for this game
 	private int gameUID;
+	// Start time of the game
     private ZonedDateTime startTime;
+    // Time the game finished
     private ZonedDateTime finishTime;
+    // Duration of the game
     private Duration duration;
+    // Home team for the game
     private AbstractTeam homeTeam;
+    // Away team for the game
     private AbstractTeam awayTeam;
+    // Home Score for the game
     private int homeTeamScore;
+    // Away Score for the game
     private int awayTeamScore;
-    private int attendence;
+    // Attendance of game
+    private int attendance;
+    // Sport of the game
     private String category;
 
+    //List of players on the away team
     private ArrayList<Integer> listOfAwayPlayers = new ArrayList<Integer>();
+    //List of players on the home team
     private ArrayList<Integer> listofHomePlayers = new ArrayList<Integer>();
     
+    /**
+     *Constructor: Used for upcoming game
+     */
     
-    public Game()
-    {
+    public Game() {
+    	super();
     }
     
-    /**
-     *
-     */
     public Game(ZonedDateTime startTime_, AbstractTeam home_, AbstractTeam away_)
     {
         setStartTime(startTime_);
@@ -38,6 +50,9 @@ public class Game implements Comparable<Game> {
        
     }
     
+    /*
+     * Constructor: Used for finished game
+     */
     public Game(ZonedDateTime startTime_, AbstractTeam home_, AbstractTeam away_, int homeScore_, int awayScore_, int attendance_, Duration duration_) {
     	ZonedDateTime finish;
     	setStartTime(startTime_);
@@ -45,45 +60,65 @@ public class Game implements Comparable<Game> {
     	setAwayTeam(away_);
     	setAwayTeamScore(awayScore_);
     	setHomeTeamScore(homeScore_);
-    	setAttendence(attendance_);
+    	setAttendance(attendance_);
     	setDuration(duration_);
     	finish = startTime.plus(duration);
     	setFinishTime(finish);
     }
 
-    
+    /*
+     * Return: List of Away Players
+     */
     public ArrayList<Integer> getListOfAwayPlayers() {
 		return listOfAwayPlayers;
 	}
 
+    /*
+     * Set list of away players
+     */
 	public void setListOfAwayPlayers(ArrayList<Integer> listOfAwayPlayers) {
 		this.listOfAwayPlayers = listOfAwayPlayers;
 	}
 
+	/*
+	 * Return: List of home players
+	 */
 	public ArrayList<Integer> getListofHomePlayers() {
 		return listofHomePlayers;
 	}
 
+	/*
+	 * Set list of home players
+	 */
 	public void setListofHomePlayers(ArrayList<Integer> listofHomePlayers) {
 		this.listofHomePlayers = listofHomePlayers;
 	}
 
 	/**
-     * method to return the date and start time of the game
+     * method to set the date and start time of the game
      */
     public void setStartTime(ZonedDateTime startTime_) {
     	startTime = startTime_;
     	
     }
     
+    /*
+     * Return: start time of game 
+     */
     public ZonedDateTime getStartTime() {
         return startTime;
     }
     
+    /*
+     * method to set finish time of game
+     */
     public void setFinishTime(ZonedDateTime finishTime_) {
     	finishTime = finishTime_;
     }
     
+    /*
+     * Return: Time the game finished
+     */
     public ZonedDateTime getFinishTime() {
     	return finishTime;
     }    
@@ -148,55 +183,49 @@ public class Game implements Comparable<Game> {
     /**
      * method to return attendance of the game
      */
-    public int getAttendence() {
-        return attendence;
+    public int getAttendance() {
+        return attendance;
     }
 
     /**
      * method to set attendance
      */
-    public void setAttendence(int att) {
-        attendence = att;
+    public void setAttendance(int att) {
+        attendance = att;
     }
     
-    /*
-     * retrieve the list of away players for game
-     */
-    
-    public ArrayList<Integer> getAwayTeamRoster() {
-    	return listOfAwayPlayers;
-    }
-    
-    /*
-     * retrieve the list of home players for game
-     */
-    public ArrayList<Integer> getHomeTeamRoster() {
-    	return listofHomePlayers;
-    }
     
     /**
-     * 
+     * Return: Duration of game
      */
     public final Duration getDuration() {
         return duration;
     }
 
     /**
-     * 
+     * Set duration of game
      */
     public final void setDuration(Duration duration_) {
         duration = duration_;
     }
     
+    /**
+     * Return: Game's UID
+     */
 	public int getGameUID() {
 		return gameUID;
 	}
 
+	/**
+	 * Set game's UID
+	 */
 	public void setGameUID(int gameUID) {
 		this.gameUID = gameUID;
 	}
 
-
+	/**
+	 * 
+	 */
     public String getCategory() {
 		return category;
 	}
@@ -235,27 +264,19 @@ public class Game implements Comparable<Game> {
         return str.toString();
     }
 
-    /***
-     * TODO: this is flat out wrong... you need to compare t
-     * (non-Javadoc)
-     */
     @Override
     public int compareTo(Game game_) {
     	
     	
     	if(this.startTime == game_.getStartTime() && this.finishTime == game_.getFinishTime() && 
     			this.duration == game_.getDuration() && this.homeTeam == game_.getHomeTeam() &&
-    			this.awayTeam == game_.getAwayTeam() && this.attendence == game_.getAttendence()) {
+    			this.awayTeam == game_.getAwayTeam() && this.attendance == game_.getAttendance()) {
     		return 1;
     	}
     	else
     		return 0;
     	
     }
-
-
-
-
 
     /**
      * indicates if the game has all fields initialized 

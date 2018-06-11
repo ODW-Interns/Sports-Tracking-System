@@ -68,12 +68,13 @@ public class GamesFileReader {
 
 
     /**
-     * TODO:
-     * TimeZone should be configurable or location dependent
+     * Parse the date with the given string and returns the date and time
+     * in the current system's time zone
      */
     private ZonedDateTime parseDate(String str_) {
         try {
             DateTimeFormatter formatter =DateTimeFormatter.ISO_DATE_TIME;
+            // Get current system's time zone
             ZoneId defaultZone = ZoneId.systemDefault();
             ZonedDateTime inputTime = ZonedDateTime.parse(str_,  formatter);
             ZonedDateTime currentTime = inputTime.withZoneSameInstant(defaultZone);
@@ -110,7 +111,7 @@ public class GamesFileReader {
      * Method to check and see if the team string that was tokenized already exists in the
      * team Hashmap
      * If it does already exist, team found
-     * Else, put in hashmap
+     * Else, throw team not found exception
      */
     private AbstractTeam parseTeam(String category, String cityStr_,String teamStr_, TeamsList teamsList_) throws TeamNotFoundException, MismatchGameandTeamSportException {
         String searchString = cityStr_ + " " + teamStr_;
@@ -153,25 +154,34 @@ public class GamesFileReader {
         return lclTeam;*/
     }
 
-    private void parsePlayerIDs(String playerIDs_, Game game_, PlayersList playersList_, TeamsList teamsList_, String teamName_, ArrayList<Integer> listOfGames_) throws InvalidPlayersException, MismatchPlayerandGameSportException, PlayerNotOnTeamException {
+    /**
+     *  Parse the players from the tokenized string.
+     *  These are the players that have played in the
+     *  game.
+     */
+    private void parsePlayerIDs(String playerIDs_, Game game_, PlayersList playersList_, TeamsList teamsList_, String teamName_, ArrayList<Integer> listOfPlayers_) throws InvalidPlayersException, MismatchPlayerandGameSportException, PlayerNotOnTeamException {
     	StringTokenizer tokenizer;
     	tokenizer = new StringTokenizer(playerIDs_, ",");
     	int playerID;
     	while(tokenizer.hasMoreTokens()) {
     		playerID = Integer.parseInt(tokenizer.nextToken());
+    		//Check to see if the player exists in the player map
     		if(playersList_.returnPlayersMap().get(playerID) == null) {
     			_logger.error("There does not exist a player with the ID:" + playerID + ". Player was not added to game");
     			throw new InvalidPlayersException();
     		}
     		else {
+    			//Check if the player found matches the sport as the game
     			if(!playersList_.returnPlayersMap().get(playerID).get_sportCategory().equals(game_.getCategory()))
     				throw new MismatchPlayerandGameSportException();
     			else {
+    				//Check if the player is on the corresponding team
     				if(!PlayerIsOnTeam(playerID, teamsList_, teamName_)) {
     					throw new PlayerNotOnTeamException();		
     				}
     				else {
-    					listOfGames_.add(playerID);
+    					//Player is validated, add to the list of players for that game 
+    					listOfPlayers_.add(playerID);
     				}
     			}
     		}
@@ -179,6 +189,9 @@ public class GamesFileReader {
     }
 
 
+    /**
+     *  Method to check if a player is on a specified team
+     */
     private boolean PlayerIsOnTeam(int playerID_,TeamsList teamsList_, String teamName_) {
     	if(teamsList_.getTeamMap().get(teamName_).getListOfPLayers().contains(playerID_)) {
 
@@ -214,7 +227,7 @@ public class GamesFileReader {
                 game = new Game();
                 tokenizer = new StringTokenizer(line, DELIM);
 
-
+                // Parse Game's UID
                 try {
                 	game.setGameUID(Integer.parseInt(tokenizer.nextToken()));
                 }
@@ -223,6 +236,7 @@ public class GamesFileReader {
                 	continue;
                 }
                 
+                //Parse Game's Sport
                 try {
                 	game.setCategory(tokenizer.nextToken());
                 	category = game.getCategory();
@@ -232,6 +246,7 @@ public class GamesFileReader {
                 	continue;
                 }
                 
+                //Parse Game's Start Time
                 try {
                     game.setStartTime(parseDate(tokenizer.nextToken()));
                 }
@@ -241,7 +256,7 @@ public class GamesFileReader {
                 }
 
                 //
-                // teams
+                // Parse teams
                 //
                 
                 try {
@@ -258,6 +273,7 @@ public class GamesFileReader {
                 	city = tokenizer.nextToken();
                 	team = tokenizer.nextToken();
                     home = parseTeam(category,city, team, teamsList_);
+                    //Check to make sure the home team and away team are not the same
                     if (home.equals(game.getAwayTeam()))
                         throw new DuplicateTeamException("Home team cannot be the same as away", home);
                     game.setHomeTeam(home);
@@ -265,19 +281,6 @@ public class GamesFileReader {
                 catch (Exception e_) {
                     _logger.error("sethTeam:" + e_.toString());
                 }
-
-                //Not needed for now
-              /*(  try {
-                	playerIDs = tokenizer.nextToken();
-                	teamName = city + " " + team;
-                	parsePlayerIDs(playerIDs, gamesList_, game, playersList_, teamsList_, teamName );
-                }
-                catch(Exception e_) {
-                	_logger.error("There were invalid player IDs:" + e_.toString());
-                	continue;
-                }*/
-
-             
 
                 //
                 // future or past game?
@@ -294,6 +297,7 @@ public class GamesFileReader {
                 //
                 try {
                 	int awayScore = parseInteger(tokenizer.nextToken());
+                	//Check to make sure there are no negative scores
                 	if(awayScore < 0) {
                 		throw new NegativeScoreException();
                 	}
@@ -314,10 +318,12 @@ public class GamesFileReader {
                 catch (Exception e_) {
                     _logger.error("sethTeamScore:" + e_.toString());
                 }
+                
+                // Parse Player IDs that played in the game
                 try {
                 	playerIDs = tokenizer.nextToken();
                     teamName = game.getAwayTeam().fullTeamName();
-                	parsePlayerIDs(playerIDs, game, playersList_, teamsList_, teamName, game.getAwayTeamRoster() );
+                	parsePlayerIDs(playerIDs, game, playersList_, teamsList_, teamName, game.getListOfAwayPlayers());
                 }
                 catch(Exception e_) {
                 	_logger.error("There were invalid player IDs:" + e_.toString());
@@ -333,18 +339,24 @@ public class GamesFileReader {
                 	_logger.error("There were invalid player IDs:" + e_.toString());
                 	throw e_;
                 }
+                
+                //Parse the attendance of the game
                 try {
                 	int attendance = parseInteger(tokenizer.nextToken());
+                	//Check to make sure there isn't a negative attendance
                 	if(attendance < 0) {
                 		throw new NegativeAttendanceException();
                 	}
-                    game.setAttendence(attendance);
+                    game.setAttendance(attendance);
                     }
                 catch (Exception e_) {
                     _logger.error("setAttendance:" + e_.toString());
                 }
+                
+                //Parse the duration of the game
                 try {
                 	game.setDuration(Duration.parse(tokenizer.nextToken()));
+                	//Set the finish time of the game by adding the start time and duration
                 	game.setFinishTime(game.getStartTime().plus(game.getDuration()));
                 }
                 catch(Exception e_) {
@@ -360,7 +372,9 @@ public class GamesFileReader {
         }
     }
     
-    
+    /**
+     * Method to read in a game from an input string
+     */
     public void readFromStringForList(String line, TeamsList teamsList_, PlayersList playersList_, GamesList gamesList_) throws Exception {
       
             StringTokenizer tokenizer;
@@ -376,13 +390,10 @@ public class GamesFileReader {
                 if ("".equals(line))
                     return;
 
-                //
-                //
-                //
                 game = new Game();
                 tokenizer = new StringTokenizer(line, DELIM);
 
-
+                //Parse string for game's UID
                 try {
                 	game.setGameUID(Integer.parseInt(tokenizer.nextToken()));
                 }
@@ -391,6 +402,7 @@ public class GamesFileReader {
                 	throw e_;
                 }
                 
+                //Parse string for game's sport
                 try {
                 	game.setCategory(tokenizer.nextToken());
                 	category = game.getCategory();
@@ -400,13 +412,8 @@ public class GamesFileReader {
                 	_logger.error("setCategory:" + e_.toString());
                 	throw e_;
                 }
-
-                //
-                // Read in the date and set date in game object
-                // since I don't know how long the game lasts, use
-                // the default
-                //
                 
+                //Parse string for game's start time
                 try {
                     game.setStartTime(parseDate(tokenizer.nextToken()));
                 }
@@ -429,20 +436,12 @@ public class GamesFileReader {
                     throw e_;
                 }
                 
-                try {
-                	playerIDs = tokenizer.nextToken();
-                	teamName = city + " " + team;
-                	parsePlayerIDs(playerIDs, game, playersList_,teamsList_, teamName, game.getListOfAwayPlayers());
-                }
-                catch(Exception e_) {
-                	_logger.error("There were invalid player IDs:" + e_.toString());
-                	throw e_;
-                }
 
                 try {
                 	city = tokenizer.nextToken();
                 	team = tokenizer.nextToken();
                     home = parseTeam(category,city, team, teamsList_);
+                    //Check to make sure home team is not the away team too
                     if (home.equals(game.getAwayTeam()))
                         throw new DuplicateTeamException("Home team cannot be the same as away", home);
                     game.setHomeTeam(home);
@@ -451,18 +450,6 @@ public class GamesFileReader {
                     _logger.error("sethTeam:" + e_.toString());
                     throw e_;
                 }
-
-                try {
-                	playerIDs = tokenizer.nextToken();
-                	teamName = city + " " + team;
-                	parsePlayerIDs(playerIDs, game, playersList_, teamsList_, teamName, game.getListofHomePlayers());
-                }
-                catch(Exception e_) {
-                	_logger.error("There were invalid player IDs:" + e_.toString());
-                	throw e_;
-                }
-
-             
 
                 //
                 // future or past game?
@@ -500,13 +487,36 @@ public class GamesFileReader {
                     _logger.error("sethTeamScore:" + e_.toString());
                     throw e_;
                 }
+                
+                // Parse Player IDs who played in the game
+                try {
+                	playerIDs = tokenizer.nextToken();
+                	teamName = city + " " + team;
+                	parsePlayerIDs(playerIDs, game, playersList_, teamsList_, teamName, game.getListOfAwayPlayers());
+                }
+                catch(Exception e_) {
+                	_logger.error("There were invalid player IDs:" + e_.toString());
+                	throw e_;
+                }
 
                 try {
+                	playerIDs = tokenizer.nextToken();
+                	teamName = city + " " + team;
+                	parsePlayerIDs(playerIDs, game, playersList_, teamsList_, teamName, game.getListofHomePlayers());
+                }
+                catch(Exception e_) {
+                	_logger.error("There were invalid player IDs:" + e_.toString());
+                	throw e_;
+                }
+                
+                // Parse Attendance
+                try {
                 	int attendance = parseInteger(tokenizer.nextToken());
+                	//make sure attendance is not negative
                 	if(attendance < 0) {
                 		throw new NegativeAttendanceException();
                 	}
-                    game.setAttendence(attendance);
+                    game.setAttendance(attendance);
                     }
                 catch (Exception e_) {
                     _logger.error("setAttendance:" + e_.toString());

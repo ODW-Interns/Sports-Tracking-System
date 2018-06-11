@@ -8,7 +8,7 @@ import com.sts.concretemodel.TeamsList;
 
 public class StoreDataFromInputFile {
 	
-	//method to store data from past games file and place into a list of games and return list
+	// method to store data into games map
 	public static void storeDataIntoGameList(String inputfile_, GamesList gamesList_, TeamsList teamsList_, PlayersList playersList_) throws RuntimeException, IOException {
 		
 		GamesFileReader in = new GamesFileReader();
@@ -18,6 +18,7 @@ public class StoreDataFromInputFile {
 		
 	}
 	
+	//method to store data into players map
 	public static void storeDataIntoPlayerList(String inputfile_, GamesList gamesList_, TeamsList teamsList_, PlayersList playersList_) throws IOException {
 		PlayersFileReader in = new PlayersFileReader();
 		InputStream is = StoreDataFromInputFile.class.getResourceAsStream(inputfile_);
@@ -25,6 +26,7 @@ public class StoreDataFromInputFile {
 		is.close();
 	}
 	
+	//method to store data into teams map
 	public static void storeDataIntoTeamList(String inputfile_, GamesList gamesList_, TeamsList teamsList_) throws RuntimeException, IOException {
 		TeamsFileReader in = new TeamsFileReader();
 		InputStream is = StoreDataFromInputFile.class.getResourceAsStream(inputfile_);
