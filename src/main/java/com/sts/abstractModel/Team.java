@@ -84,5 +84,12 @@ public abstract class Team {
 	    public String toString() {
 	        return "Team [Name = " + _teamName + " Location = "+
 	    _location + " Team Sport=" +_teamSport +"]";
-	    	}
+	    }
+	 
+	 @Override
+	 	public boolean equals(Object obj) {
+		 return _teamSport.equals(((Team)obj).getTeamSport()) &&
+				 _teamName.equals(((Team)obj).getTeamName()) && 
+				 _location.equals(((Team)obj).getLocation());
+	 }
 }

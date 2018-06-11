@@ -11,6 +11,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.sts.abstractModel.Game;
+import com.sts.abstractModel.Player;
 import com.sts.abstractModel.Team;
 
 
@@ -96,17 +97,15 @@ public class GamesList{
 	   Iterator<Integer> awayIterator;
 	   int tempUID = -1;
 	   Key highestKey = new Key(timeNow,tempUID);
-	   Team homeTeam;
-	   Team awayTeam;
+
 	   SortedMap<Key, Game> upcomingGames = map.tailMap(highestKey);
 	   
 	   _logger.info("ALL FINISHED GAMES");
 	   for(Entry<Key, Game> entry : upcomingGames.entrySet()) {
 		   _logger.trace(entry.getValue().toString());
-		   homeTeam = entry.getValue().getHomeTeam();
-		   awayTeam = entry.getValue().getAwayTeam();
-		   homeIterator = homeTeam.getListOfPLayers().iterator();
-		   awayIterator = awayTeam.getListOfPLayers().iterator();
+		   homeIterator = entry.getValue().getListofHomePlayers().iterator();
+		   awayIterator = entry.getValue().getListOfAwayPlayers().iterator();
+
 		   _logger.trace("Home Players:");
 		   while(homeIterator.hasNext()) {
 			   playerID = homeIterator.next();

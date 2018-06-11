@@ -45,7 +45,8 @@ public class SportsSystem {
 	    	
 	    	_logger.info("1: Enter 1 to display list of finished games");
 	    	_logger.info("2: Enter 2 to display list of upcoming games");
-	    	_logger.info("3: Enter 3 to exit");
+	    	_logger.info("3: Enter 3 to update player(s))");
+	    	_logger.info("4: Enter 4 to exit");
 		    
 		    do {
 		    	
@@ -77,28 +78,22 @@ public class SportsSystem {
 			    listofGames.logUpcomingGames(listofPlayers);
 				
 			    break;
-			    
 			case 3:
-				
-			/*	_logger.info("1: Choose 1 to add team(s)");
-				_logger.info("2: Choose 2 to modify team(s");
-				try{
-					choice2 = input.nextInt();
+				input.nextLine();
+				_logger.info("Enter the file name to update player(s) you want");
+				fileName = input.nextLine();
+				String path = "/";
+				path = path + fileName;
+				try {
+					
+					System.out.println(path);
+					StoreDataFromInputFile.storeDataIntoPlayerList(path, listofGames, listofTeams, listofPlayers);
 				}
-				catch(Exception e_) {
-					_logger.error("Inalid input: " + e_.toString());
+				catch(Exception e_1) {
+					_logger.error("File not found: " + e_1.toString());
 				}
-				if(choice2 == 1) {
-					_logger.info("Enter name of file to add team(s)");
-					try {
-						fileName = input.nextLine();
-						StoreDataFromInputFile.storeDataIntoTeamList("/"+fileName, listofGames, listofTeams);
-					}
-					catch(Exception e_1) {
-						_logger.error("File not found: " + e_1.toString());
-					}
-
-				}*/
+				break;
+			case 4:
 				System.exit(0);
 				break;
 

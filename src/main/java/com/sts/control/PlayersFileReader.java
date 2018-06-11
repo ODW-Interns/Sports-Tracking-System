@@ -83,10 +83,9 @@ public class PlayersFileReader {
     
     
     public Player updatePlayer(Player player_, Player existingPlayer_, PlayersList playersList_) {
-    	_logger.trace("Player found: Updating Player");
     	if(player_.getJerseyNum() != existingPlayer_.getJerseyNum()) {
     		_logger.info("Updating Player Jersey Number:");
-    		_logger.info("Changing Player Jersey Number from {} to Jersey Number {}", player_.getJerseyNum(), existingPlayer_.getJerseyNum());
+    		_logger.info("Changing Player Jersey Number from {} to Jersey Number {}", existingPlayer_.getJerseyNum(), player_.getJerseyNum());
     		playersList_.returnPlayersMap().get(player_.get_playerID()).set_jerseyNum(existingPlayer_.getJerseyNum());
     		existingPlayer_.set_jerseyNum(player_.getJerseyNum());
     		
@@ -152,19 +151,13 @@ public class PlayersFileReader {
 	                
 	                try {
 	                	player.set_playerID(Integer.parseInt(tokenizer.nextToken()));
-	                	if(playerlist_.returnPlayersMap().containsKey(player.get_playerID()))
-	                		throw new Exception("duplicateId: Player's ID is already exist");
 	                		
 	                }	                
 	                catch(Exception e_){
 	                	_logger.error("setPlayerID:" + e_.toString());
 	                	continue;
 	                }
-	               
-	                
-	               
-	                	
-	             	
+	                        	             	
 	                	
 	                try {
 	                	
@@ -183,6 +176,10 @@ public class PlayersFileReader {
 	                }
 	                try {
 	                	player.setLastName(tokenizer.nextToken());
+	                	if(playerlist_.returnPlayersMap().contains(player.get_playerID()) && 
+	                			!playerlist_.returnPlayersMap().get(player.get_playerID()).getFirstName().equals(player.getFirstName()) && 
+	                			!playerlist_.returnPlayersMap().get(player.get_playerID()).getLastName().equals(player.getLastName()))
+	                		throw new Exception("Player ID already exists for another player in map");
 	                }
 	                catch(Exception e_){
 	                	_logger.error("setLastName:" + e_.toString());
@@ -312,9 +309,18 @@ public class PlayersFileReader {
         	_logger.error("setTeam:" + e_.toString());
         	throw e_;
         }
-        if(playersList_.returnPlayersMap().contains(player.get_playerID()) == true) {
+        if(playersList_.returnPlayersMap().get(player.get_playerID()) != null) {
        	 Player existingPlayer = playersList_.returnPlayersMap().get(player.get_playerID());
-      
+       	 if(!existingPlayer.equals(player)) {
+       		 teamsList_.getTeamMap().get(existingPlayer.getCurrentTeam().fullTeamName()).getListOfPLayers().remove(Integer.valueOf(player.get_playerID()));
+       		 TeamHistory oldTeam = new TeamHistory(existingPlayer.getCurrentTeam().getLocation(), existingPlayer.getCurrentTeam().getTeamName());
+       		 playersList_.returnPlayersMap().get(existingPlayer.get_playerID()).get_HistoryOfTeamsForPlayers().add(oldTeam);
+       		
+       		 //update existing player with new data
+       		 existingPlayer = updatePlayer(player, existingPlayer, playersList_);
+       		
+       		 teamsList_.getTeamMap().get(existingPlayer.getCurrentTeam().fullTeamName()).getListOfPLayers().add(player.get_playerID());
+       	 }
         }
         else {
        	 

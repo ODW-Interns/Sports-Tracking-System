@@ -13,6 +13,7 @@ import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
+import java.util.ArrayList;
 import java.util.Locale;
 import java.util.StringTokenizer;
 import org.slf4j.Logger;
@@ -152,7 +153,7 @@ public class GamesFileReader {
         return lclTeam;*/
     }
 
-    private void parsePlayerIDs(String playerIDs_, GamesList gamesList_, Game game_, PlayersList playersList_, TeamsList teamsList_, String teamName_) throws InvalidPlayersException, MismatchPlayerandGameSportException, PlayerNotOnTeamException {
+    private void parsePlayerIDs(String playerIDs_, Game game_, PlayersList playersList_, TeamsList teamsList_, String teamName_, ArrayList<Integer> listOfGames_) throws InvalidPlayersException, MismatchPlayerandGameSportException, PlayerNotOnTeamException {
     	StringTokenizer tokenizer;
     	tokenizer = new StringTokenizer(playerIDs_, ",");
     	int playerID;
@@ -170,11 +171,7 @@ public class GamesFileReader {
     					throw new PlayerNotOnTeamException();		
     				}
     				else {
-    					if(game_.getHomeTeam() == null) {
-    						game_.getAwayTeamRoster().add(playerID);
-    					}
-    					else
-    						game_.getHomeTeamRoster().add(playerID);
+    					listOfGames_.add(playerID);
     				}
     			}
     		}
@@ -203,20 +200,17 @@ public class GamesFileReader {
             String line;
             String team;
             String city;
-            //String teamName;
+            String playerIDs;
+            String teamName;
             Game game;
             Team home;
             String category;
-            //String playerIDs;
             
             while ((line = reader.readLine()) != null) {
                 // don't process empty lines
                 if ("".equals(line))
                     continue;
 
-                //
-                //
-                //
                 game = new Game();
                 tokenizer = new StringTokenizer(line, DELIM);
 
@@ -237,12 +231,6 @@ public class GamesFileReader {
                 	_logger.error("setCategory:" + e_.toString());
                 	continue;
                 }
-
-                //
-                // Read in the date and set date in game object
-                // since I don't know how long the game lasts, use
-                // the default
-                //
                 
                 try {
                     game.setStartTime(parseDate(tokenizer.nextToken()));
@@ -265,17 +253,6 @@ public class GamesFileReader {
                     _logger.error("setAwayTeam:" + e_.toString());
                     continue;
                 }
-                //Not needed for now
-                /*
-                try {
-                	playerIDs = tokenizer.nextToken();
-                	teamName = city + " " + team;
-                	parsePlayerIDs(playerIDs, gamesList_, game, playersList_,teamsList_, teamName);
-                }
-                catch(Exception e_) {
-                	_logger.error("There were invalid player IDs:" + e_.toString());
-                	continue;
-                }*/
 
                 try {
                 	city = tokenizer.nextToken();
@@ -337,7 +314,25 @@ public class GamesFileReader {
                 catch (Exception e_) {
                     _logger.error("sethTeamScore:" + e_.toString());
                 }
-
+                try {
+                	playerIDs = tokenizer.nextToken();
+                    teamName = game.getAwayTeam().fullTeamName();
+                	parsePlayerIDs(playerIDs, game, playersList_, teamsList_, teamName, game.getAwayTeamRoster() );
+                }
+                catch(Exception e_) {
+                	_logger.error("There were invalid player IDs:" + e_.toString());
+                	throw e_;
+                }
+                
+                try {
+                	playerIDs = tokenizer.nextToken();
+                    teamName = game.getHomeTeam().fullTeamName();
+                	parsePlayerIDs(playerIDs, game, playersList_, teamsList_, teamName, game.getListofHomePlayers() );
+                }
+                catch(Exception e_) {
+                	_logger.error("There were invalid player IDs:" + e_.toString());
+                	throw e_;
+                }
                 try {
                 	int attendance = parseInteger(tokenizer.nextToken());
                 	if(attendance < 0) {
@@ -437,7 +432,7 @@ public class GamesFileReader {
                 try {
                 	playerIDs = tokenizer.nextToken();
                 	teamName = city + " " + team;
-                	parsePlayerIDs(playerIDs, gamesList_, game, playersList_,teamsList_, teamName);
+                	parsePlayerIDs(playerIDs, game, playersList_,teamsList_, teamName, game.getListOfAwayPlayers());
                 }
                 catch(Exception e_) {
                 	_logger.error("There were invalid player IDs:" + e_.toString());
@@ -460,7 +455,7 @@ public class GamesFileReader {
                 try {
                 	playerIDs = tokenizer.nextToken();
                 	teamName = city + " " + team;
-                	parsePlayerIDs(playerIDs, gamesList_, game, playersList_, teamsList_, teamName );
+                	parsePlayerIDs(playerIDs, game, playersList_, teamsList_, teamName, game.getListofHomePlayers());
                 }
                 catch(Exception e_) {
                 	_logger.error("There were invalid player IDs:" + e_.toString());
