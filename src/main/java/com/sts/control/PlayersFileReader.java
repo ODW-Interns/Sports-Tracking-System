@@ -6,12 +6,14 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
+import java.util.ArrayList;
 import java.util.StringTokenizer;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.sts.abstractmodel.AbstractPlayer;
+import com.sts.abstractmodel.AbstractTeam;
 import com.sts.concretemodel.GamesList;
 import com.sts.concretemodel.MLBPlayer;
 import com.sts.concretemodel.NBAPlayer;
@@ -32,7 +34,7 @@ public class PlayersFileReader {
 	private Logger _logger;
 
     private static final String DELIM = "|";
-
+    int tempJerseyNumb;
     //Constructor
     public PlayersFileReader() {
         _logger = LoggerFactory.getLogger(getClass().getSimpleName());
@@ -71,7 +73,7 @@ public class PlayersFileReader {
         return lclTeam;
     }*/
     
-    private void parseCurrentTeam(TeamsList teamList_, String teamStr_, AbstractPlayer player_) throws TeamNotFoundException, MismatchPlayerandTeamSportException {
+    private void parseCurrentTeam(TeamsList teamList_, String teamStr_, AbstractPlayer player_, PlayersList playerlist_) throws Exception {
     	if(teamList_.getTeamMap().get(teamStr_) == null) {
     		throw new TeamNotFoundException(teamStr_);
     	}
@@ -80,11 +82,24 @@ public class PlayersFileReader {
     			throw new MismatchPlayerandTeamSportException();
     		}
     		else {
-    	      	player_.setCurrentTeam(teamList_.getTeamMap().get(teamStr_));
+
+    			AbstractTeam temp=teamList_.getTeamMap().get(teamStr_);
+    			ArrayList<Integer>temp1=temp.getListOfPLayers();
+    			
+    			for(int i=0;i<temp1.size();i++) {
+    			AbstractPlayer tempPlayer=playerlist_.returnPlayersMap().get(temp1.get(i));
+    			int tempJnumb=tempPlayer.getJerseyNum();
+    			if(tempJnumb==tempJerseyNumb) {
+    				throw new Exception ("Duplicate Jersey Number");
+    					
+    			}
     		}
+    			
     	}
-    	
+    		player_.setCurrentTeam(teamList_.getTeamMap().get(teamStr_));
     }
+  }
+    
     
     
     public AbstractPlayer updatePlayer(AbstractPlayer player_, AbstractPlayer existingPlayer_, PlayersList playersList_) {
@@ -166,7 +181,10 @@ public class PlayersFileReader {
 	                	
 	                try {
 	                	
-	                	player.set_jerseyNum(Integer.parseInt(tokenizer.nextToken()));
+	                	tempJerseyNumb = Integer.parseInt(tokenizer.nextToken());
+	                	player.set_jerseyNum(tempJerseyNumb);
+	                	
+	           
 	                }
 	                catch(Exception e_) {
 	                	_logger.error("setJerseyNum:" + e_.toString());
@@ -191,7 +209,7 @@ public class PlayersFileReader {
 	                }
 	                
 	                try {
-	                	parseCurrentTeam(teamsList_, tokenizer.nextToken(), player);
+	                	parseCurrentTeam(teamsList_, tokenizer.nextToken(), player, playerlist_);
 	               
 	                }
 	                catch(Exception e_) {
@@ -307,7 +325,7 @@ public class PlayersFileReader {
         }
         
         try {
-        	parseCurrentTeam(teamsList_, tokenizer.nextToken(), player);	           
+        	parseCurrentTeam(teamsList_, tokenizer.nextToken(), player, playersList_);	           
         }
         catch(Exception e_) {
         	_logger.error("setTeam:" + e_.toString());
