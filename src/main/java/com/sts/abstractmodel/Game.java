@@ -252,12 +252,10 @@ public  class Game implements Comparable<Game>, InterfaceModel {
             str.append("UNK");
         }
         if(getFinishTime() != null) {
-        	System.out.print("NOTNULL");
         	str.append(", Finish Time=");
             str.append(DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ssZZZZZ").format(getFinishTime()));
         }
         else
-        	System.out.println("NULL");
         str.append(", homeTeam=").append(getHomeTeam());
         str.append(", homeScore=").append(getHomeTeamScore());
         str.append(", awayTeam=").append(getAwayTeam());
