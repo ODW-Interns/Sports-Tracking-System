@@ -344,8 +344,8 @@ public class GamesFileReader {
                     _logger.error("setAttendance:" + e_.toString());
                 }
                 try {
-                	
                 	game.setDuration(Duration.parse(tokenizer.nextToken()));
+                	game.setFinishTime(game.getStartTime().plus(game.getDuration()));
                 }
                 catch(Exception e_) {
                 	_logger.error("setDuration:" + e_.toString());
@@ -513,13 +513,14 @@ public class GamesFileReader {
                     throw e_;
                 }
                 try {
-                	
                 	game.setDuration(Duration.parse(tokenizer.nextToken()));
+                	game.setFinishTime(game.getStartTime().plus(game.getDuration()));
                 }
                 catch(Exception e_) {
                 	_logger.error("setDuration:" + e_.toString());
                 	throw e_;
                 }
+             
                 addGame(game, gamesList_);
                 
     }

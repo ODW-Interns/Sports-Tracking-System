@@ -205,13 +205,14 @@ public class Game implements Comparable<Game> {
 		category = category_;
 	}
 
+	
 	/** 
      * (non-Javadoc)
      */
     @Override
     public String toString() {
         StringBuilder str = new StringBuilder("Game [");
-        str.append("date=");
+        str.append("Start Time=");
         if ( getStartTime()!=null )
         {
             str.append(DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ssZZZZZ").format(getStartTime()));
@@ -220,7 +221,13 @@ public class Game implements Comparable<Game> {
         {
             str.append("UNK");
         }
-        
+        if(getFinishTime() != null) {
+        	System.out.print("NOTNULL");
+        	str.append(", Finish Time=");
+            str.append(DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ssZZZZZ").format(getFinishTime()));
+        }
+        else
+        	System.out.println("NULL");
         str.append(", homeTeam=").append(getHomeTeam());
         str.append(", homeScore=").append(getHomeTeamScore());
         str.append(", awayTeam=").append(getAwayTeam());
