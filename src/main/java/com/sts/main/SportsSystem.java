@@ -1,4 +1,4 @@
-package com.sts.control;
+package com.sts.main;
 
 import java.io.IOException;
 import java.text.ParseException;
@@ -10,6 +10,7 @@ import org.slf4j.LoggerFactory;
 import com.sts.concretemodel.GamesList;
 import com.sts.concretemodel.PlayersList;
 import com.sts.concretemodel.TeamsList;
+import com.sts.control.StoreDataFromInputFile;
 
 public class SportsSystem {
 
