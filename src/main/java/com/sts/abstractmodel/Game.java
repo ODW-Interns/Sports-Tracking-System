@@ -6,7 +6,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 //
-public class Game implements Comparable<Game> {
+public  class Game implements Comparable<Game>, InterfaceModel {
 
 	private int gameUID;
     private ZonedDateTime startTime;
@@ -260,7 +260,8 @@ public class Game implements Comparable<Game> {
     /**
      * indicates if the game has all fields initialized 
      */
-    public boolean isValidGame() {
+    @Override
+    public boolean isValid() {
         return ((this.getStartTime() != null) &&
                 (this.getHomeTeam() != null) &&
                 (this.getAwayTeam() != null) &&

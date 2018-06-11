@@ -529,7 +529,7 @@ public class GamesFileReader {
      */
     private void addGame(Game game_, GamesList gamesList_)
     {
-        if (!game_.isValidGame())
+        if (!game_.isValid())
         {
             _logger.error("Refusing to add invalid game: {}", game_);
             return;

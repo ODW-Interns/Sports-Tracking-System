@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import com.sts.concretemodel.TeamHistory;
 
-public abstract class AbstractPlayer {
+public abstract class AbstractPlayer implements InterfaceModel{
 
 	private String _firstName;
 	private String _lastName;
@@ -105,7 +105,8 @@ public abstract class AbstractPlayer {
 	/**
      * indicates if the player has all fields initialized 
      */
-    public boolean isValidPlayer() {
+	@Override
+	public boolean isValid() {
         return ((this.get_playerID() > -1) &&
                 (this.getJerseyNum() > -1) &&
                 (this.getFirstName() != null) &&

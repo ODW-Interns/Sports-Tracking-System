@@ -3,7 +3,7 @@ package com.sts.abstractmodel;
 
 import java.util.ArrayList;
 
-public abstract class AbstractTeam {
+public abstract class AbstractTeam implements InterfaceModel{
 
 	private String _teamSport;
 	private String _teamName;
@@ -64,8 +64,8 @@ public abstract class AbstractTeam {
 	public ArrayList<Integer> getListOfPLayers() {
 		return listofPlayers;
 	}
-	
-	public boolean isValidTeam() {
+	@Override
+	public boolean isValid() {
 		if(_teamName != null && _location != null && _teamSport != null) {
 			return true;
 		}
