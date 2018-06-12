@@ -44,6 +44,10 @@ public class Key{
 		return _UID;
 	}
 
+	public String toString() {
+		String key = "GameID:" + _UID + ", StartTime:" + _startTime;
+		return key;
+	}
 
 
 
