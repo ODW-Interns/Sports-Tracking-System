@@ -171,21 +171,38 @@ public class SportsSystem {
 	    int durationSeconds;
 	    StringBuilder durationString = new StringBuilder("PT");
 		KeyIterator = _GamesThatNeedUpdating.iterator();		
-		System.out.println(_listofGames_.getGamesMap().size());
 		while(KeyIterator.hasNext()) {
 			currentKey = KeyIterator.next();
 			gameUpdating = _listofGames_.getGamesMap().get(currentKey);
 			_logger.info("Updating Game - GameID: {} , Start Time: {}", currentKey.getGameUID(), currentKey.getStartTime());
 			_logger.info("Enter Duration of the game");
 			_logger.info("Hour(s):");
-			durationHours = input.nextInt();
-			input.nextLine();
+			try {
+				durationHours = input.nextInt();
+				input.nextLine();
+			}
+			catch(Exception e_) {
+				_logger.error(e_.toString());
+				continue;
+			}
 			_logger.info("Minutes(s):");
-			durationMinutes = input.nextInt();
-			input.nextLine();
+			try {
+				durationMinutes = input.nextInt();
+				input.nextLine();
+			}
+			catch(Exception e_) {
+				_logger.error(e_.toString());
+				continue;
+			}
 			_logger.info("Second(s):");
-			durationSeconds = input.nextInt();
-			input.nextLine();
+			try {
+				durationSeconds = input.nextInt();
+				input.nextLine();
+			}
+			catch(Exception e_) {
+				_logger.error(e_.toString());
+				continue;
+			}
 			durationString.append(durationHours).append("H").append(durationMinutes).append("M").append(durationSeconds).append("S");
 			gameUpdating.setDuration(Duration.parse(durationString));
 			
@@ -194,16 +211,35 @@ public class SportsSystem {
 			_listofGames_.getGamesMap().get(currentKey).setFinishTime(gameUpdating.getFinishTime());
 			_logger.info("Update final scores");
 			_logger.info("Home Team Final Score:");
-			gameUpdating.setHomeTeamScore(input.nextInt());
-			input.nextLine();
+			try {
+				gameUpdating.setHomeTeamScore(input.nextInt());
+				input.nextLine();
+			}
+			catch(Exception e_) {
+				_logger.error(e_.toString());
+				continue;
+			}
 			_logger.info("Away Team Final Score:");
-			gameUpdating.setAwayTeamScore(input.nextInt());
-			input.nextLine();
+			try {
+				gameUpdating.setAwayTeamScore(input.nextInt());
+				input.nextLine();
+			}
+			catch(Exception e_) {
+				_logger.error(e_.toString());
+				continue;
+			}
 			_listofGames_.getGamesMap().get(currentKey).setAwayTeamScore(gameUpdating.getaTeamScore());
 			_listofGames_.getGamesMap().get(currentKey).setHomeTeamScore(gameUpdating.getHomeTeamScore());
 			_logger.info("Enter attendance of game:");
-			gameUpdating.setAttendance(input.nextInt());
-			input.nextLine();
+			try {
+				gameUpdating.setAttendance(input.nextInt());
+				input.nextLine();
+			}
+			catch(Exception e_) {
+				_logger.error(e_.toString());
+				continue;
+			}
+			_logger.trace("Game successfully updated");
 			_logger.info(_listofGames_.getGamesMap().get(currentKey).toString());
 		}
 	}
