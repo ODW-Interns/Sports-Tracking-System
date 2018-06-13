@@ -15,6 +15,7 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.Locale;
+import java.util.Set;
 import java.util.StringTokenizer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -37,6 +38,10 @@ import com.sts.model.exception.TeamNotFoundException;
 // class to read from file with upcoming/finished games
 public class GamesFileReader {
     private Logger _logger;
+
+	private int tempGameId;
+
+	private ZonedDateTime tempStartTime;
 
     private static final String DELIM = "|";
 
@@ -229,7 +234,18 @@ public class GamesFileReader {
 
                 // Parse Game's UID
                 try {
-                	game.setGameUID(Integer.parseInt(tokenizer.nextToken()));
+                	tempGameId = Integer.parseInt(tokenizer.nextToken());
+                	Set<Key> keys=gamesList_.getGamesMap().keySet();
+                	for(Key key: keys) {
+                		
+                		if(key.getGameUID()==tempGameId) {
+                			
+                			throw new Exception("Game ID already exists");
+                			
+                		}
+                	}
+                	
+                	game.setGameUID(tempGameId);
                 }
                 catch(Exception e_) {
                 	_logger.error("setGameUID:" + e_.toString());
@@ -287,6 +303,7 @@ public class GamesFileReader {
                 //
                 if (game.getStartTime().isAfter(ZonedDateTime.now())) {
                     // this is a game in the future, do not process any more data
+                	
                 	addGame(game, gamesList_);
                 	continue;
                 }              
@@ -362,6 +379,7 @@ public class GamesFileReader {
                 catch(Exception e_) {
                 	_logger.error("setDuration:" + e_.toString());
                 }
+                
                 addGame(game, gamesList_);
                 
                
@@ -395,7 +413,19 @@ public class GamesFileReader {
 
                 //Parse string for game's UID
                 try {
-                	game.setGameUID(Integer.parseInt(tokenizer.nextToken()));
+                	tempGameId = Integer.parseInt(tokenizer.nextToken());
+                	Set<Key> keys=gamesList_.getGamesMap().keySet();
+                	for(Key key: keys) {
+                		
+                		if(key.getGameUID()==tempGameId) {
+                			
+                			throw new Exception("Game ID already exists");
+                			
+                		}
+                	}
+                	
+                	
+                	game.setGameUID(tempGameId);
                 }
                 catch(Exception e_) {
                 	_logger.error("setGameUID:" + e_.toString());
@@ -415,7 +445,8 @@ public class GamesFileReader {
                 
                 //Parse string for game's start time
                 try {
-                    game.setStartTime(parseDate(tokenizer.nextToken()));
+                	tempStartTime=parseDate(tokenizer.nextToken());
+                    game.setStartTime(tempStartTime);
                 }
                 catch (Exception e_) {
                     _logger.error("setDate:" + e_.toString());
@@ -456,6 +487,7 @@ public class GamesFileReader {
                 //
                 if (game.getStartTime().isAfter(ZonedDateTime.now())) {
                     // this is a game in the future, do not process any more data
+                	
                 	addGame(game, gamesList_);
                 }              
 
@@ -530,7 +562,7 @@ public class GamesFileReader {
                 	_logger.error("setDuration:" + e_.toString());
                 	throw e_;
                 }
-             
+                
                 addGame(game, gamesList_);
                 
     }

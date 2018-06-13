@@ -113,23 +113,25 @@ public class GamesList{
 	   int tempUID = -1;
 	   Key highestKey = new Key(timeNow,tempUID);
 
-	   SortedMap<Key, Game> upcomingGames = map.tailMap(highestKey);
+	   SortedMap<Key, Game> finishedGames = map.tailMap(highestKey);
 	   
 	   _logger.info("ALL FINISHED GAMES");
-	   for(Entry<Key, Game> entry : upcomingGames.entrySet()) {
-		   _logger.trace(entry.getValue().toString());
-		   homeIterator = entry.getValue().getListofHomePlayers().iterator();
-		   awayIterator = entry.getValue().getListOfAwayPlayers().iterator();
+	   for(Entry<Key, Game> entry : finishedGames.entrySet()) {
+		   if(entry.getValue().getFinishTime() != null) {
+			   _logger.trace(entry.getValue().toString());
+			   homeIterator = entry.getValue().getListofHomePlayers().iterator();
+			   awayIterator = entry.getValue().getListOfAwayPlayers().iterator();
 
-		   _logger.trace("Home Players:");
-		   while(homeIterator.hasNext()) {
-			   playerID = homeIterator.next();
-			   _logger.info(playersList_.returnPlayersMap().get(playerID).toString());
-		   }
-		   _logger.trace("Away Players:");
-		   while(awayIterator.hasNext()) {
-			   playerID = awayIterator.next();
-			   _logger.info(playersList_.returnPlayersMap().get(playerID).toString());
+			   _logger.trace("Home Players:");
+			   while(homeIterator.hasNext()) {
+				   playerID = homeIterator.next();
+				   _logger.info(playersList_.returnPlayersMap().get(playerID).toString());
+			   }
+			   _logger.trace("Away Players:");
+			   while(awayIterator.hasNext()) {
+				   playerID = awayIterator.next();
+				   _logger.info(playersList_.returnPlayersMap().get(playerID).toString());
+			   }
 		   }
 	   }
    }

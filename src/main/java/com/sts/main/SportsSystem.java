@@ -40,7 +40,7 @@ public class SportsSystem {
 	    input= new Scanner(System.in);
 	}
 	
-    public void RunThreadToCheckForGamesThatStarted(GamesList listofGames_){
+    public void RunThreadToCheckForGamesThatStarted(GamesList _listofGames_){
  	    Runnable runnable = new Runnable() {
  	    	public void run() {
  	    		AbstractTeam awayTeam;
@@ -48,7 +48,7 @@ public class SportsSystem {
  	    		timeNow = ZonedDateTime.now();
  	    		int tempUID = -1;
  	    		Key lowestkey = new Key(timeNow,tempUID);
- 	    		SortedMap<Key, Game> pastGames = listofGames_.getGamesMap().tailMap(lowestkey);
+ 	    		SortedMap<Key, Game> pastGames = _listofGames_.getGamesMap().tailMap(lowestkey);
  	    		for(Entry<Key, Game> entry : pastGames.entrySet()) {
  	    			if(entry.getValue().getDuration() == null) {
  	    				//Set players that played in game to current rosters of each team
@@ -89,85 +89,80 @@ public class SportsSystem {
 	    RunThreadToCheckForGamesThatStarted(_listofGames);
 	    _logger.info("Welcome to sports Tracking system");
 
-	   
-	    boolean isNumber;
+	    boolean isNumber = false;
 	    int choice = 0;   
 	    String fileName;
 	    boolean c = true;
-	    
-	    while (c) {
-	    	
-	    	_logger.info("1: Enter 1 to display list of finished games");
-	    	_logger.info("2: Enter 2 to display list of upcoming games");
-	    	_logger.info("3: Enter 3 to update player(s))");
-	    	_logger.info("4: Enter 4 to update game(s))");
-	    	_logger.info("5: Enter 5 to exit");
-		    
-		    do {
-		    	
-		    	if(input.hasNextInt() ){
-			    	
-			   		choice=input.nextInt();
-			   		isNumber=true;	
-			   		
-			   	}
-			    else {
-			    	
-			    	_logger.info("Please choose an integer value from the above options");
-			    	isNumber=false;
-			    	input.nextInt();
-			    	
-			    }
-		    	
-		    }while(!isNumber);
-			 
-		    
-		    switch (choice) {
-			case 1:
-				
-				_listofGames.logFinishedGames(_listofPlayers);
-				
-				break;
-			case 2:
-				
-			    _listofGames.logUpcomingGames(_listofPlayers);
-				
-			    break;
-			case 3:
-				input.nextLine();
-				_logger.info("Enter the file name to update player(s) you want");
-				fileName = input.nextLine();
-				String path = "/";
-				path = path + fileName;
-				try {
-					StoreDataFromInputFile.storeDataIntoPlayerList(path, _listofGames, _listofTeams, _listofPlayers);
-				}
-				catch(Exception e_1) {
-					_logger.error("File not found: " + e_1.toString());
-				}
-				break;
-			case 4:
-				_logger.info("There are {} game(s) that need to be updated", _GamesThatNeedUpdating.size());
-				updateGames(_listofGames);
-				break;
-			case 5:
-				System.exit(0);
-				break;
 
-			default:
+			do {
 				
-				_logger.info("Wrong choice input. Please choose from the following options");
+					while (c) {
+
+						_logger.info("1: Enter 1 to display list of finished games");
+						_logger.info("2: Enter 2 to display list of upcoming games");
+						_logger.info("3: Enter 3 to update player(s))");
+						_logger.info("4: Enter 4 to exit");
+
+						if (input.hasNextInt()) {
+
+							choice = input.nextInt();
+							isNumber = true;
+
+						} else {
+
+							_logger.info("Please choose an integer value from the above options");
+							isNumber = false;
+							input.next();
+
+						}
+
+						switch (choice) {
+						case 1:
+
+							_listofGames.logFinishedGames(_listofPlayers);
+
+							break;
+						case 2:
+
+							_listofGames.logUpcomingGames(_listofPlayers);
+
+							break;
+						case 3:
+							input.nextLine();
+							_logger.info("Enter the file name to update player(s) you want");
+							fileName = input.nextLine();
+							String path = "/";
+							path = path + fileName;
+							try {
+								StoreDataFromInputFile.storeDataIntoPlayerList(path, _listofGames, _listofTeams,
+										_listofPlayers);
+							} catch (Exception e_1) {
+								_logger.error("File not found: " + e_1.toString());
+							}
+							break;
+						case 4:
+							_logger.info("There are {} game(s) that need to be updated", _GamesThatNeedUpdating.size());
+							updateGames(_listofGames);
+							break;
+						case 5:
+							System.exit(0);
+							break;
+						default:
+
+							_logger.info("Wrong choice input. Please choose from the following options");
+
+							break;
+
+						}
+					}
 				
-				break;
-			
-			}
-		}
-		
+			} while (!isNumber);
+		input.close();
 
 	}
 	
 	
-	public void updateGames(GamesList listofGames_) {
+	public void updateGames(GamesList _listofGames_) {
 	    Iterator<Key> KeyIterator;
 		Key currentKey;
 		Game gameUpdating = null;
@@ -176,10 +171,10 @@ public class SportsSystem {
 	    int durationSeconds;
 	    StringBuilder durationString = new StringBuilder("PT");
 		KeyIterator = _GamesThatNeedUpdating.iterator();		
-		System.out.println(listofGames_.getGamesMap().size());
+		System.out.println(_listofGames_.getGamesMap().size());
 		while(KeyIterator.hasNext()) {
 			currentKey = KeyIterator.next();
-			gameUpdating = listofGames_.getGamesMap().get(currentKey);
+			gameUpdating = _listofGames_.getGamesMap().get(currentKey);
 			_logger.info("Updating Game - GameID: {} , Start Time: {}", currentKey.getGameUID(), currentKey.getStartTime());
 			_logger.info("Enter Duration of the game");
 			_logger.info("Hour(s):");
@@ -195,8 +190,8 @@ public class SportsSystem {
 			gameUpdating.setDuration(Duration.parse(durationString));
 			
 			gameUpdating.setFinishTime(gameUpdating.getStartTime().plus(gameUpdating.getDuration()));
-			listofGames_.getGamesMap().get(currentKey).setDuration(gameUpdating.getDuration());
-			listofGames_.getGamesMap().get(currentKey).setFinishTime(gameUpdating.getFinishTime());
+			_listofGames_.getGamesMap().get(currentKey).setDuration(gameUpdating.getDuration());
+			_listofGames_.getGamesMap().get(currentKey).setFinishTime(gameUpdating.getFinishTime());
 			_logger.info("Update final scores");
 			_logger.info("Home Team Final Score:");
 			gameUpdating.setHomeTeamScore(input.nextInt());
@@ -204,12 +199,12 @@ public class SportsSystem {
 			_logger.info("Away Team Final Score:");
 			gameUpdating.setAwayTeamScore(input.nextInt());
 			input.nextLine();
-			listofGames_.getGamesMap().get(currentKey).setAwayTeamScore(gameUpdating.getaTeamScore());
-			listofGames_.getGamesMap().get(currentKey).setHomeTeamScore(gameUpdating.getHomeTeamScore());
+			_listofGames_.getGamesMap().get(currentKey).setAwayTeamScore(gameUpdating.getaTeamScore());
+			_listofGames_.getGamesMap().get(currentKey).setHomeTeamScore(gameUpdating.getHomeTeamScore());
 			_logger.info("Enter attendance of game:");
 			gameUpdating.setAttendance(input.nextInt());
 			input.nextLine();
-			_logger.info(listofGames_.getGamesMap().get(currentKey).toString());
+			_logger.info(_listofGames_.getGamesMap().get(currentKey).toString());
 		}
 	}
 	
