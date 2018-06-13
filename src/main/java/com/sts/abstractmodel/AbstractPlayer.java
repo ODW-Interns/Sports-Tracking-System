@@ -22,7 +22,7 @@ public abstract class AbstractPlayer implements InterfaceModel{
 	//The player's current team
 	private AbstractTeam _currentTeam;
 	//The sport the player plays
-	private String _sportCategory;
+	private SPORTS_CAT _sportCategory;
 	
 	//List of teams the player has played for
 	private ArrayList<TeamHistory> _HistoryOfTeamsForPlayer;
@@ -44,12 +44,12 @@ public abstract class AbstractPlayer implements InterfaceModel{
 
 	
 	/*Return:the player's sport*/
-	public String get_sportCategory() {
+	public SPORTS_CAT get_sportCategory() {
 		return _sportCategory;
 	}
 
 	/*Set the player's sport*/
-	public void set_sportCategory(String _sportCategory) {
+	public void set_sportCategory(SPORTS_CAT _sportCategory) {
 		this._sportCategory = _sportCategory;
 	}
 	

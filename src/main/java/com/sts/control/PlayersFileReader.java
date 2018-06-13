@@ -14,6 +14,7 @@ import org.slf4j.LoggerFactory;
 
 import com.sts.abstractmodel.AbstractPlayer;
 import com.sts.abstractmodel.AbstractTeam;
+import com.sts.abstractmodel.SPORTS_CAT;
 import com.sts.concretemodel.GamesList;
 import com.sts.concretemodel.MLBPlayer;
 import com.sts.concretemodel.NBAPlayer;
@@ -123,7 +124,8 @@ public class PlayersFileReader {
 		// TODO Auto-generated method stub
 		 try (BufferedReader reader = new BufferedReader(is_)) {
 	         StringTokenizer tokenizer;   
-			 String line, category;
+			 String line;
+			 SPORTS_CAT category;
 	            AbstractPlayer player = null;
 	            while ((line = reader.readLine()) != null) {
 	                // don't process empty lines
@@ -135,7 +137,7 @@ public class PlayersFileReader {
 	                //
 	                //
 	                try {
-	                	category = tokenizer.nextToken();
+	                	category = SPORTS_CAT.valueOf(tokenizer.nextToken());
 	                }
 	                catch(Exception e_) {
 	                	_logger.error("Read in category:" + e_.toString());
@@ -143,16 +145,16 @@ public class PlayersFileReader {
 	                }
 	                
 	                try {
-		                if(category.equals("NBA")) {
+		                if(category.equals(SPORTS_CAT.valueOf("NBA"))) {
 		                	player = new NBAPlayer();
 		                }
-		                else if(category.equals("NFL")) {
+		                else if(category.equals(SPORTS_CAT.valueOf("NFL"))) {
 		                	player = new NFLPlayer();
 		                }
-		                else if(category.equals("NHL")) {
+		                else if(category.equals(SPORTS_CAT.valueOf("NHL"))) {
 		                	player = new NHLPlayer();
 		                }
-		                else if(category.equals("MLB")) {
+		                else if(category.equals(SPORTS_CAT.valueOf("MLB"))) {
 		                	player = new MLBPlayer();
 		                }
 		                
@@ -247,7 +249,7 @@ public class PlayersFileReader {
 	public void readFromStringForList(String line, PlayersList playersList_, TeamsList teamsList_) throws Exception {
 		
 		 StringTokenizer tokenizer;   
-		 String category = "";
+		 SPORTS_CAT category = null;
             AbstractPlayer player = null;
 		
 		if ("".equals(line))
@@ -256,7 +258,7 @@ public class PlayersFileReader {
 		tokenizer = new StringTokenizer(line, DELIM);
 
         try {
-        	category = tokenizer.nextToken();
+        	category = SPORTS_CAT.valueOf(tokenizer.nextToken());
         }
         catch(Exception e_) {
         	_logger.error("Read in category:" + e_.toString());
@@ -264,16 +266,16 @@ public class PlayersFileReader {
         }
         
         try {
-            if(category.equals("NBA")) {
+            if(category.equals(SPORTS_CAT.valueOf("NBA"))) {
             	player = new NBAPlayer();
             }
-            else if(category.equals("NFL")) {
+            else if(category.equals(SPORTS_CAT.valueOf("NFL"))) {
             	player = new NFLPlayer();
             }
-            else if(category.equals("NHL")) {
+            else if(category.equals(SPORTS_CAT.valueOf("NHL"))) {
             	player = new NHLPlayer();
             }
-            else if(category.equals("MLB")) {
+            else if(category.equals(SPORTS_CAT.valueOf("MLB"))) {
             	player = new MLBPlayer();
             }
             
