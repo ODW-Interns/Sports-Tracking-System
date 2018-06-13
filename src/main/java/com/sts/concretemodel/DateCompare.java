@@ -26,6 +26,9 @@ public class DateCompare implements Comparator<Key>{
 			if(key1_.getGameUID() < key2_.getGameUID()) {
 				return 1;
 			}
+			else if(key1_.getGameUID() == key2_.getGameUID()){
+				return 0;
+			}
 			else
 				return -1;
 		}

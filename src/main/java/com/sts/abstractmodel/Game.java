@@ -251,16 +251,18 @@ public  class Game implements Comparable<Game>, InterfaceModel {
         {
             str.append("UNK");
         }
+    	str.append(", homeTeam=").append(getHomeTeam());
+    	str.append(", awayTeam=").append(getAwayTeam());
+    	
         if(getFinishTime() != null) {
         	str.append(", Finish Time=");
             str.append(DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ssZZZZZ").format(getFinishTime()));
+        	str.append(", homeScore=").append(getHomeTeamScore());
+        	str.append(", awayScore=").append(getaTeamScore());
+        	str.append(", attendance=").append(getAttendance());
         }
-        else
-        str.append(", homeTeam=").append(getHomeTeam());
-        str.append(", homeScore=").append(getHomeTeamScore());
-        str.append(", awayTeam=").append(getAwayTeam());
-        str.append(", awayScore=").append(getaTeamScore());
         return str.toString();
+
     }
 
     @Override
