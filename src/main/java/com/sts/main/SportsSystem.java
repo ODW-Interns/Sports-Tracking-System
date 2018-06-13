@@ -2,51 +2,98 @@ package com.sts.main;
 
 import java.io.IOException;
 import java.text.ParseException;
-import java.util.InputMismatchException;
+import java.time.Duration;
+import java.time.ZonedDateTime;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Scanner;
+import java.util.SortedMap;
+import java.util.Map.Entry;
+import java.util.concurrent.ScheduledExecutorService;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.sts.abstractmodel.AbstractTeam;
+import com.sts.abstractmodel.Game;
 import com.sts.concretemodel.GamesList;
+import com.sts.concretemodel.Key;
 import com.sts.concretemodel.PlayersList;
 import com.sts.concretemodel.TeamsList;
 import com.sts.control.StoreDataFromInputFile;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 
 public class SportsSystem {
-
+	
+	private ArrayList<Key> _GamesThatNeedUpdating;
+    private Logger _logger;
+    private ZonedDateTime timeNow;
+    private Scanner input;
+    private GamesList _listofGames;
+    private TeamsList _listofTeams;
+    private PlayersList _listofPlayers;
+    
 	SportsSystem() throws RuntimeException, IOException, ParseException{
-		startSystem();
+	    _logger = LoggerFactory.getLogger(getClass().getSimpleName());
+	    _GamesThatNeedUpdating = new ArrayList<Key>();
+	    input= new Scanner(System.in);
 	}
 	
+    public void RunThreadToCheckForGamesThatStarted(GamesList _listofGames_){
+ 	    Runnable runnable = new Runnable() {
+ 	    	public void run() {
+ 	    		AbstractTeam awayTeam;
+ 	    		AbstractTeam homeTeam;
+ 	    		timeNow = ZonedDateTime.now();
+ 	    		int tempUID = -1;
+ 	    		Key lowestkey = new Key(timeNow,tempUID);
+ 	    		SortedMap<Key, Game> pastGames = _listofGames_.getGamesMap().tailMap(lowestkey);
+ 	    		for(Entry<Key, Game> entry : pastGames.entrySet()) {
+ 	    			if(entry.getValue().getDuration() == null) {
+ 	    				//Set players that played in game to current rosters of each team
+ 	    				awayTeam = _listofTeams.getTeamMap().get(entry.getValue().getAwayTeam().fullTeamName());
+ 	    				homeTeam = _listofTeams.getTeamMap().get(entry.getValue().getHomeTeam().fullTeamName());
+ 	    				entry.getValue().setListOfAwayPlayers(awayTeam.getListOfPLayers());
+ 	    				entry.getValue().setListofHomePlayers(homeTeam.getListOfPLayers());
+ 	    				//Set default duration to 4 hours until updated
+ 	    				entry.getValue().setDuration(Duration.parse("PT4H"));
+ 	    				
+ 	    				_logger.trace("A new game has started(GameID: {} , Start Time:{})", entry.getKey().getGameUID(), entry.getKey().getStartTime());
+ 	    				_logger.info("Please update the game when it is finished");
+ 	    				_GamesThatNeedUpdating.add(entry.getKey());
+ 	    				_logger.info("There are {} game that needs updating", _GamesThatNeedUpdating.size());
+ 	    			}
+ 	    			else {
+ 	    				break;
+ 	    			}
+ 	    		}
+ 	    	}
+ 	    };
+ 	    
+ 	    ScheduledExecutorService service = Executors.newSingleThreadScheduledExecutor();
+ 	    service.scheduleAtFixedRate(runnable, 0, 10, TimeUnit.SECONDS);
+    }
 
 	public void startSystem() throws RuntimeException, IOException, ParseException {
 		//Create a GamesList object to hold all games 
-		GamesList listofGames = new GamesList();
+		_listofGames = new GamesList();
 		//Create a TeamsList object to hold all teams
-		TeamsList listofTeams = new TeamsList();
+		_listofTeams = new TeamsList();
 		//Create a PlayersList object to hold all players
-		PlayersList listofPlayers = new PlayersList();
+		_listofPlayers = new PlayersList();
 		//Read from input files; initiating maps
-		StoreDataFromInputFile.storeDataIntoTeamList("/Teams.csv", listofGames, listofTeams);
-		StoreDataFromInputFile.storeDataIntoPlayerList("/Players.csv", listofGames, listofTeams, listofPlayers);
-	    StoreDataFromInputFile.storeDataIntoGameList("/games.csv", listofGames, listofTeams, listofPlayers);
-	    
-	    Logger _logger;
-	    
-	    _logger = LoggerFactory.getLogger(getClass().getSimpleName());
-	    
-	    Scanner input= new Scanner(System.in);
+		StoreDataFromInputFile.storeDataIntoTeamList("/Teams.csv", _listofGames, _listofTeams);
+		StoreDataFromInputFile.storeDataIntoPlayerList("/Players.csv", _listofGames, _listofTeams, _listofPlayers);
+	    StoreDataFromInputFile.storeDataIntoGameList("/games.csv", _listofGames, _listofTeams, _listofPlayers);
+	    RunThreadToCheckForGamesThatStarted(_listofGames);
 	    _logger.info("Welcome to sports Tracking system");
 
 	    boolean isNumber = false;
 	    int choice = 0;   
 	    String fileName;
 	    boolean c = true;
-	    
-	    
-	    
-	    
+
 			do {
 				
 					while (c) {
@@ -72,12 +119,12 @@ public class SportsSystem {
 						switch (choice) {
 						case 1:
 
-							listofGames.logFinishedGames(listofPlayers);
+							_listofGames.logFinishedGames(_listofPlayers);
 
 							break;
 						case 2:
 
-							listofGames.logUpcomingGames(listofPlayers);
+							_listofGames.logUpcomingGames(_listofPlayers);
 
 							break;
 						case 3:
@@ -87,18 +134,19 @@ public class SportsSystem {
 							String path = "/";
 							path = path + fileName;
 							try {
-
-								System.out.println(path);
-								StoreDataFromInputFile.storeDataIntoPlayerList(path, listofGames, listofTeams,
-										listofPlayers);
+								StoreDataFromInputFile.storeDataIntoPlayerList(path, _listofGames, _listofTeams,
+										_listofPlayers);
 							} catch (Exception e_1) {
 								_logger.error("File not found: " + e_1.toString());
 							}
 							break;
 						case 4:
+							_logger.info("There are {} game(s) that need to be updated", _GamesThatNeedUpdating.size());
+							updateGames(_listofGames);
+							break;
+						case 5:
 							System.exit(0);
 							break;
-
 						default:
 
 							_logger.info("Wrong choice input. Please choose from the following options");
@@ -114,10 +162,55 @@ public class SportsSystem {
 	}
 	
 	
-	
+	public void updateGames(GamesList _listofGames_) {
+	    Iterator<Key> KeyIterator;
+		Key currentKey;
+		Game gameUpdating = null;
+	    int durationHours;
+	    int durationMinutes;
+	    int durationSeconds;
+	    StringBuilder durationString = new StringBuilder("PT");
+		KeyIterator = _GamesThatNeedUpdating.iterator();		
+		System.out.println(_listofGames_.getGamesMap().size());
+		while(KeyIterator.hasNext()) {
+			currentKey = KeyIterator.next();
+			gameUpdating = _listofGames_.getGamesMap().get(currentKey);
+			_logger.info("Updating Game - GameID: {} , Start Time: {}", currentKey.getGameUID(), currentKey.getStartTime());
+			_logger.info("Enter Duration of the game");
+			_logger.info("Hour(s):");
+			durationHours = input.nextInt();
+			input.nextLine();
+			_logger.info("Minutes(s):");
+			durationMinutes = input.nextInt();
+			input.nextLine();
+			_logger.info("Second(s):");
+			durationSeconds = input.nextInt();
+			input.nextLine();
+			durationString.append(durationHours).append("H").append(durationMinutes).append("M").append(durationSeconds).append("S");
+			gameUpdating.setDuration(Duration.parse(durationString));
+			
+			gameUpdating.setFinishTime(gameUpdating.getStartTime().plus(gameUpdating.getDuration()));
+			_listofGames_.getGamesMap().get(currentKey).setDuration(gameUpdating.getDuration());
+			_listofGames_.getGamesMap().get(currentKey).setFinishTime(gameUpdating.getFinishTime());
+			_logger.info("Update final scores");
+			_logger.info("Home Team Final Score:");
+			gameUpdating.setHomeTeamScore(input.nextInt());
+			input.nextLine();
+			_logger.info("Away Team Final Score:");
+			gameUpdating.setAwayTeamScore(input.nextInt());
+			input.nextLine();
+			_listofGames_.getGamesMap().get(currentKey).setAwayTeamScore(gameUpdating.getaTeamScore());
+			_listofGames_.getGamesMap().get(currentKey).setHomeTeamScore(gameUpdating.getHomeTeamScore());
+			_logger.info("Enter attendance of game:");
+			gameUpdating.setAttendance(input.nextInt());
+			input.nextLine();
+			_logger.info(_listofGames_.getGamesMap().get(currentKey).toString());
+		}
+	}
 	
 	public static void main(String[] args) throws RuntimeException, IOException, ParseException {
-		SportsSystem system = new SportsSystem(); // Entry, starts system
+		SportsSystem system = new SportsSystem();
+		system.startSystem();
 		
 
 	}
