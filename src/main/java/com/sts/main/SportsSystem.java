@@ -136,8 +136,14 @@ public class SportsSystem {
 							try {
 								StoreDataFromInputFile.storeDataIntoPlayerList(path, _listofGames, _listofTeams,
 										_listofPlayers);
-							} catch (Exception e_1) {
-								_logger.error("File not found: " + e_1.toString());
+							} catch (Exception e_) {
+								_logger.error("File not found: " + e_.toString());
+							}
+							System.out.println("HISTORY OF PLAYER");
+
+							System.out.println(_listofPlayers.returnPlayersMap().get(1).get_HistoryOfTeamsForPlayers().size());
+							for(int i = 0; i < _listofPlayers.returnPlayersMap().get(1).get_HistoryOfTeamsForPlayers().size(); i++) {
+								System.out.println(_listofPlayers.returnPlayersMap().get(1).get_HistoryOfTeamsForPlayers().get(i).toString());
 							}
 							break;
 						case 4:

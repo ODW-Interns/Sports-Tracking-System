@@ -23,6 +23,7 @@ public abstract class AbstractPlayer implements InterfaceModel{
 	private AbstractTeam _currentTeam;
 	//The sport the player plays
 	private String _sportCategory;
+
 	
 	//List of teams the player has played for
 	private ArrayList<TeamHistory> _HistoryOfTeamsForPlayer;
@@ -115,7 +116,6 @@ public abstract class AbstractPlayer implements InterfaceModel{
 		_HistoryOfTeamsForPlayer = HistoryOfTeamsForPlayer_;
 	}
 
-
 	/**
      * indicates if the player has all fields initialized 
      */
@@ -143,6 +143,5 @@ public abstract class AbstractPlayer implements InterfaceModel{
 				_jerseyNum == ((AbstractPlayer)obj).getJerseyNum() &&
 				_currentTeam.equals(((AbstractPlayer)obj).getCurrentTeam());
 	}
-	
-	
+		
 }
