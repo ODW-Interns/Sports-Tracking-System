@@ -34,6 +34,7 @@ public class SportsSystem {
     private TeamsList _listofTeams;
     private PlayersList _listofPlayers;
     
+    
 	SportsSystem() throws RuntimeException, IOException, ParseException{
 	    _logger = LoggerFactory.getLogger(getClass().getSimpleName());
 	    _GamesThatNeedUpdating = new ArrayList<Key>();
@@ -97,6 +98,10 @@ public class SportsSystem {
 			do {
 				
 					while (c) {
+						
+						for(int i = 0 ; i<_listofTeams.getTeamMap().get("Boston Celtics").getListOfPLayers().size(); i++) {
+							System.out.println(_listofPlayers.returnPlayersMap().get(_listofTeams.getTeamMap().get("Boston Celtics").getListOfPLayers().get(i)).toString());
+						}
 
 						_logger.info("1: Enter 1 to display list of finished games");
 						_logger.info("2: Enter 2 to display list of upcoming games");

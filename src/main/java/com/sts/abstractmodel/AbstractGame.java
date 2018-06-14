@@ -6,7 +6,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 
-// Class to represent game of a sport
+// Abstract Class to represent game of a sport
 public abstract class AbstractGame implements InterfaceModel {
 
 	//Unique ID for this game
@@ -277,5 +277,5 @@ public abstract class AbstractGame implements InterfaceModel {
 
         );
     }
-
+    
 }   

@@ -136,21 +136,24 @@ public class PlayersFileReader {
      * Method to update a player if their jersey number or team has changed
      * @throws Exception 
      */
-    public void updatePlayer(AbstractPlayer player_, AbstractPlayer existingPlayer_, PlayersList playersList_, TeamHistory currentTeamHistory_) throws Exception {
+    public void updatePlayer(AbstractPlayer player_, AbstractPlayer existingPlayer_, PlayersList playersList_, TeamHistory currentTeamHistory_, TeamsList teamsList_) throws Exception {
 		 int sizeOfTeamHistoryList = existingPlayer_.get_HistoryOfTeamsForPlayers().size();
 
     	//Update jersey number if the player's jersey has changed
     	if(player_.getJerseyNum() != existingPlayer_.getJerseyNum()) {
     		_logger.info("Updating Player Jersey Number:");
     		_logger.info("Changing Player Jersey Number from {} to Jersey Number {}", existingPlayer_.getJerseyNum(), player_.getJerseyNum());
-         	playersList_.returnPlayersMap().get(existingPlayer_.get_playerID()).set_jerseyNum(existingPlayer_.getJerseyNum());
+         	playersList_.returnPlayersMap().get(existingPlayer_.get_playerID()).set_jerseyNum(player_.getJerseyNum());
     	}
     	//Update player's current team if they moved team
     	if(!player_.getCurrentTeam().equals(existingPlayer_.getCurrentTeam())) {
     		_logger.info("Updating Player's Current Team:");
     		_logger.info("Changing Player's Current Team from {} to {}", existingPlayer_.getCurrentTeam().fullTeamName(), player_.getCurrentTeam().fullTeamName());
-			 playersList_.returnPlayersMap().get(existingPlayer_.get_playerID()).setCurrentTeam(existingPlayer_.getCurrentTeam());
-    	   	if(sizeOfTeamHistoryList > 0) {
+   		 	teamsList_.getTeamMap().get(existingPlayer_.getCurrentTeam().fullTeamName()).getListOfPLayers().remove(Integer.valueOf(existingPlayer_.get_playerID()));
+    		playersList_.returnPlayersMap().get(existingPlayer_.get_playerID()).setCurrentTeam(player_.getCurrentTeam());
+    		teamsList_.getTeamMap().get(playersList_.returnPlayersMap().get(existingPlayer_.get_playerID()).getCurrentTeam().fullTeamName()).getListOfPLayers().add(Integer.valueOf(existingPlayer_.get_playerID()));
+
+    		if(sizeOfTeamHistoryList > 0) {
     			 try {
     				 //Makes sure that the start date of the new team is not before the start date of the previous team
     				 if(!(currentTeamHistory_.get_StartDate().before(existingPlayer_.get_HistoryOfTeamsForPlayers().get(sizeOfTeamHistoryList-1).get_StartDate()))) {
@@ -229,19 +232,20 @@ public class PlayersFileReader {
 	                //Player ID, used as key in players map
 	                try {
 	                	player.set_playerID(Integer.parseInt(tokenizer.nextToken()));
-	                		
+	     	
 	                }	                
 	                catch(Exception e_){
 	                	_logger.error("setPlayerID:" + e_.toString());
 	                	continue;
 	                }
-	                        	             	
+	  
 	                //Jersey Number
 	                try {
 	                	player.set_jerseyNum(Integer.parseInt(tokenizer.nextToken()));
 	                }
 	                catch(Exception e_) {
 	                	_logger.error("setJerseyNum:" + e_.toString());
+	                	continue;
 	                }
 	                
 	                //First Name
@@ -250,20 +254,30 @@ public class PlayersFileReader {
 	                }
 	                catch(Exception e_) {
 	                	_logger.error("setFirstName:" + e_.toString());
+	                	continue;
 	                
 	                }
 	                
 	                //Last Name
 	                try {
 	                	player.setLastName(tokenizer.nextToken());
-	                	//Check here if player ID has already been used for another player
-	                	if(playerlist_.returnPlayersMap().contains(player.get_playerID()) && 
-	                			!playerlist_.returnPlayersMap().get(player.get_playerID()).getFirstName().equals(player.getFirstName()) && 
-	                			!playerlist_.returnPlayersMap().get(player.get_playerID()).getLastName().equals(player.getLastName()))
-	                		throw new Exception("Player ID already exists for another player in map");
+	                
 	                }
 	                catch(Exception e_){
 	                	_logger.error("setLastName:" + e_.toString());
+	                	continue;
+	                }
+	                
+	                try {
+	                	//Check here if player ID has already been used for another player
+	                	if(playerlist_.returnPlayersMap().containsKey(player.get_playerID()) && 
+	                			(!(playerlist_.returnPlayersMap().get(player.get_playerID()).getFirstName().equals(player.getFirstName())) || 
+	                			!playerlist_.returnPlayersMap().get(player.get_playerID()).getLastName().equals(player.getLastName()))) {
+	                		throw new Exception("Player ID already exists for another player in map");}
+	                }
+	                catch(Exception e_) {
+	                	_logger.error(e_.toString());
+	                	continue;
 	                }
 	                
 	                //Player's current team
@@ -289,12 +303,11 @@ public class PlayersFileReader {
 	                //player needs updating
 	             if(playerlist_.returnPlayersMap().get(player.get_playerID()) != null) {
 	            	 AbstractPlayer existingPlayer = playerlist_.returnPlayersMap().get(player.get_playerID());
-	            	 if(!existingPlayer.equals(player)) { // If either the player's jersey changed or they moved team
-	            		 teamsList_.getTeamMap().get(player.getCurrentTeam().fullTeamName()).getListOfPLayers().remove(Integer.valueOf(player.get_playerID()));
-	            		
+	            	 if(!existingPlayer.equals(player)) { // If either the player's jersey changed or they moved team	            		
 	            		 //update existing player with new data
 	            		 try {
-	            			 updatePlayer(player, existingPlayer, playerlist_, currentTeamHistory);
+	            			 updatePlayer(player, existingPlayer, playerlist_, currentTeamHistory, teamsList_);
+
 	            		 }
 	            		 catch(Exception e_) {
 	            			 _logger.error("Something went wrong: Player has not been updated");
@@ -421,11 +434,10 @@ public class PlayersFileReader {
      if(playersList_.returnPlayersMap().get(player.get_playerID()) != null) {
     	 AbstractPlayer existingPlayer = playersList_.returnPlayersMap().get(player.get_playerID());
     	 if(!existingPlayer.equals(player)) { // If either the player's jersey changed or they moved team
-    		 teamsList_.getTeamMap().get(player.getCurrentTeam().fullTeamName()).getListOfPLayers().remove(Integer.valueOf(player.get_playerID()));
     		
     		 //update existing player with new data
     		 try {
-    			 updatePlayer(player, existingPlayer, playersList_, currentTeamHistory);
+    			 updatePlayer(player, existingPlayer, playersList_, currentTeamHistory, teamsList_);
     		 }
     		 catch(Exception e_) {
     			 _logger.error("Something went wrong: Player has not been updated");
