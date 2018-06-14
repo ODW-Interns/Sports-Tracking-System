@@ -302,13 +302,13 @@ public class PlayersFileReader {
 
 	            	 }
 	            }
-	            
+	            //Else if player does not already exist in players map
 	             else {
 	            	 // Add new player to players map
 	            	 try {
 	            		 player.get_HistoryOfTeamsForPlayers().add(currentTeamHistory);
 	            		 addPlayer(player, playerlist_);
-		 
+	            		 // Add player to their current team
 	            		 teamsList_.getTeamMap().get(player.getCurrentTeam().fullTeamName()).getListOfPLayers().add(player.get_playerID());
 	            	 }
 	            	 catch(Exception e_) {
@@ -407,7 +407,7 @@ public class PlayersFileReader {
         	_logger.error("setTeam:" + e_.toString());
         	throw e_;
         }
-        
+        //Potentially add this team to the player's history
         try {
         	currentTeamHistory = new TeamHistory(player.getCurrentTeam().getLocation(), player.getCurrentTeam().getTeamName());
         	currentTeamHistory.set_StartDate(convertStringToDate(tokenizer.nextToken()));
@@ -415,33 +415,40 @@ public class PlayersFileReader {
         catch(Exception e_){
         	_logger.error(e_.toString());
         }
-        
-        
-        if(playersList_.returnPlayersMap().get(player.get_playerID()) != null) {
-       	 AbstractPlayer existingPlayer = playersList_.returnPlayersMap().get(player.get_playerID());
-       	 if(!existingPlayer.equals(player)) {
-       		 teamsList_.getTeamMap().get(existingPlayer.getCurrentTeam().fullTeamName()).getListOfPLayers().remove(Integer.valueOf(player.get_playerID()));
-       		 TeamHistory oldTeam = new TeamHistory(existingPlayer.getCurrentTeam().getLocation(), existingPlayer.getCurrentTeam().getTeamName());
-       		 playersList_.returnPlayersMap().get(existingPlayer.get_playerID()).get_HistoryOfTeamsForPlayers().add(oldTeam);
-       		
-       		 //update existing player with new data
-       		 updatePlayer(player, existingPlayer, playersList_, currentTeamHistory);
-       		
-       		 teamsList_.getTeamMap().get(existingPlayer.getCurrentTeam().fullTeamName()).getListOfPLayers().add(player.get_playerID());
-       	 }
-        }
-        else {
-       	 
-       	 try {
-       		 addPlayer(player, playersList_);
-           	 //TODO: NULL POINT exception possible here
-           	 //Also shouldn't add team if there is an invalid 
-       		 teamsList_.getTeamMap().get(player.getCurrentTeam().fullTeamName()).getListOfPLayers().add(player.get_playerID());
-       	 }
-       	 catch(Exception e_) {
-       		 _logger.error("Player's current team is not a valid team: " + e_.toString());
-       	 }
-        }
+    
+        //If the player already exists in the players map, then update player if
+        //player needs updating
+     if(playersList_.returnPlayersMap().get(player.get_playerID()) != null) {
+    	 AbstractPlayer existingPlayer = playersList_.returnPlayersMap().get(player.get_playerID());
+    	 if(!existingPlayer.equals(player)) { // If either the player's jersey changed or they moved team
+    		 teamsList_.getTeamMap().get(player.getCurrentTeam().fullTeamName()).getListOfPLayers().remove(Integer.valueOf(player.get_playerID()));
+    		
+    		 //update existing player with new data
+    		 try {
+    			 updatePlayer(player, existingPlayer, playersList_, currentTeamHistory);
+    		 }
+    		 catch(Exception e_) {
+    			 _logger.error("Something went wrong: Player has not been updated");
+    			 throw e_;
+    		 }
+
+    	 }
+    }
+    //Else if player does not already exist in players map
+     else {
+    	 // Add new player to players map
+    	 try {
+    		 player.get_HistoryOfTeamsForPlayers().add(currentTeamHistory);
+    		 addPlayer(player, playersList_);
+    		 // Add player to their current team
+    		 teamsList_.getTeamMap().get(player.getCurrentTeam().fullTeamName()).getListOfPLayers().add(player.get_playerID());
+    	 }
+    	 catch(Exception e_) {
+    		 _logger.error("Player's current team is not a valid team: " + e_.toString());
+    		 throw e_;
+    	 }
+     }    
+   
 	}
 	
 	private void addPlayer(AbstractPlayer player_, PlayersList PlayersList_)

@@ -59,4 +59,18 @@ public class PlayersFileReaderTest {
 		assertTrue(thrown);
 	}
 	
+	@Test
+	public void InvalidStartDateExceptionTest() {
+		String playerData = "NBA|1|28|F1|L1|Atlanta Hawks|2018-01-24";
+		boolean thrown = false;
+		try {
+			pr.readFromStringForList(playerData,  listofPlayers, listofTeams);
+			}
+		catch(Exception e_) {
+			thrown = true;
+		}
+			assertTrue(thrown);
+		
+	}
+	
 }
