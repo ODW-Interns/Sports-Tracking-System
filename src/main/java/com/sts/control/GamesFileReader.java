@@ -21,6 +21,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.sts.abstractmodel.Game;
+import com.sts.abstractmodel.SPORTS_CAT;
 import com.sts.concretemodel.GamesList;
 import com.sts.concretemodel.Key;
 import com.sts.concretemodel.PlayersList;
@@ -118,7 +119,7 @@ public class GamesFileReader {
      * If it does already exist, team found
      * Else, throw team not found exception
      */
-    private AbstractTeam parseTeam(String category, String cityStr_,String teamStr_, TeamsList teamsList_) throws TeamNotFoundException, MismatchGameandTeamSportException {
+    private AbstractTeam parseTeam(SPORTS_CAT category, String cityStr_,String teamStr_, TeamsList teamsList_) throws TeamNotFoundException, MismatchGameandTeamSportException {
         String searchString = cityStr_ + " " + teamStr_;
     	AbstractTeam lclTeam = teamsList_.getTeamMap().get(searchString);
         if(lclTeam != null){
@@ -222,7 +223,7 @@ public class GamesFileReader {
             String teamName;
             Game game;
             AbstractTeam home;
-            String category;
+            SPORTS_CAT category;
             
             while ((line = reader.readLine()) != null) {
                 // don't process empty lines
@@ -254,7 +255,7 @@ public class GamesFileReader {
                 
                 //Parse Game's Sport
                 try {
-                	game.setCategory(tokenizer.nextToken());
+                	game.setCategory(SPORTS_CAT.valueOf(tokenizer.nextToken()));
                 	category = game.getCategory();
                 }
                 catch(Exception e_) {
@@ -401,7 +402,7 @@ public class GamesFileReader {
             String teamName = null;
             Game game;
             AbstractTeam home;
-            String category = null;
+            SPORTS_CAT category = null;
             String playerIDs = null;
             
          
@@ -434,7 +435,7 @@ public class GamesFileReader {
                 
                 //Parse string for game's sport
                 try {
-                	game.setCategory(tokenizer.nextToken());
+                	game.setCategory(SPORTS_CAT.valueOf(tokenizer.nextToken()));
                 	category = game.getCategory();
                 	
                 }

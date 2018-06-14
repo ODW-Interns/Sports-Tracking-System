@@ -28,7 +28,7 @@ public  class Game implements Comparable<Game>, InterfaceModel {
     // Attendance of game
     private int attendance;
     // Sport of the game
-    private String category;
+    private SPORTS_CAT category;
 
     //List of players on the away team
     private ArrayList<Integer> listOfAwayPlayers = new ArrayList<Integer>();
@@ -227,11 +227,11 @@ public  class Game implements Comparable<Game>, InterfaceModel {
 	/**
 	 * 
 	 */
-    public String getCategory() {
+    public SPORTS_CAT getCategory() {
 		return category;
 	}
 
-	public void setCategory(String category_) {
+	public void setCategory(SPORTS_CAT category_) {
 		category = category_;
 	}
 

@@ -11,6 +11,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.sts.abstractmodel.Game;
+import com.sts.abstractmodel.SPORTS_CAT;
 import com.sts.abstractmodel.AbstractTeam;
 
 
@@ -43,7 +44,7 @@ public class GamesList{
     /**
      * method to add game to games map
      */
-    public void addPassedGame(int gameID_, String category_, ZonedDateTime date_, Duration duration, AbstractTeam away_, AbstractTeam home_, int awayScore_, int homeScore_, int attendance)
+    public void addPassedGame(int gameID_, SPORTS_CAT category_, ZonedDateTime date_, Duration duration, AbstractTeam away_, AbstractTeam home_, int awayScore_, int homeScore_, int attendance)
     {
         ZonedDateTime dateWithTZ = ZonedDateTime.from(date_);
         Game game = new Game();
