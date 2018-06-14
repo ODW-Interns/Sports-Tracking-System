@@ -100,8 +100,9 @@ public class SportsSystem {
 
 						_logger.info("1: Enter 1 to display list of finished games");
 						_logger.info("2: Enter 2 to display list of upcoming games");
-						_logger.info("3: Enter 3 to update player(s))");
-						_logger.info("4: Enter 4 to exit");
+						_logger.info("3: Enter 3 to update player(s)");
+						_logger.info("4: Enter 4 to update game(s)");
+						_logger.info("5: Enter 5 to exit");
 
 						if (input.hasNextInt()) {
 
@@ -139,12 +140,7 @@ public class SportsSystem {
 							} catch (Exception e_) {
 								_logger.error("File not found: " + e_.toString());
 							}
-							System.out.println("HISTORY OF PLAYER");
 
-							System.out.println(_listofPlayers.returnPlayersMap().get(1).get_HistoryOfTeamsForPlayers().size());
-							for(int i = 0; i < _listofPlayers.returnPlayersMap().get(1).get_HistoryOfTeamsForPlayers().size(); i++) {
-								System.out.println(_listofPlayers.returnPlayersMap().get(1).get_HistoryOfTeamsForPlayers().get(i).toString());
-							}
 							break;
 						case 4:
 							_logger.info("There are {} game(s) that need to be updated", _GamesThatNeedUpdating.size());
