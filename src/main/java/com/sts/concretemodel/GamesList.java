@@ -1,6 +1,5 @@
 package com.sts.concretemodel;
 
-import java.time.Duration;
 import java.time.ZonedDateTime;
 import java.util.Iterator;
 import java.util.Map.Entry;
@@ -10,8 +9,7 @@ import java.util.TreeMap;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.sts.abstractmodel.Game;
-import com.sts.abstractmodel.SPORTS_CAT;
+import com.sts.abstractmodel.AbstractGame;
 import com.sts.abstractmodel.AbstractTeam;
 
 
@@ -19,14 +17,14 @@ import com.sts.abstractmodel.AbstractTeam;
  * Class to hold structure (Tree Map) to map all games being tracked
  */
 public class GamesList{
-	private TreeMap<Key, Game> map;
+	private TreeMap<Key, AbstractGame> map;
     private Logger _logger;
 
     /**
      * Constructor
      */
     public GamesList(){
-    	map = new TreeMap<Key, Game>(new DateCompare());
+    	map = new TreeMap<Key, AbstractGame>(new DateCompare());
         _logger = LoggerFactory.getLogger(getClass().getSimpleName());
 
     }
@@ -44,27 +42,12 @@ public class GamesList{
     /**
      * method to add game to games map
      */
-    public void addPassedGame(int gameID_, SPORTS_CAT category_, ZonedDateTime date_, Duration duration, AbstractTeam away_, AbstractTeam home_, int awayScore_, int homeScore_, int attendance)
-    {
-        ZonedDateTime dateWithTZ = ZonedDateTime.from(date_);
-        Game game = new Game();
-        game.setGameUID(gameID_);
-        game.setCategory(category_);
-        game.setStartTime(dateWithTZ);
-        game.setDuration(duration);
-        game.setAwayTeam(away_);
-        game.setHomeTeam(home_);
-        game.setAwayTeamScore(awayScore_);
-        game.setHomeTeamScore(homeScore_);
-        int uid = -1;
-        map.put(new Key(date_, uid), game);
-    }
 
    /**
     * @return
     * tree map(Map of Games Sorted by Time)
     */
-   public TreeMap<Key, Game> getGamesMap() {
+   public TreeMap<Key, AbstractGame> getGamesMap() {
 	   return map;
    }
    
@@ -80,10 +63,10 @@ public class GamesList{
 	   Key lowestKey = new Key(timeNow,tempUID);
 	   AbstractTeam homeTeam;
 	   AbstractTeam awayTeam;
-	   SortedMap<Key, Game> upcomingGames = map.headMap(lowestKey);
+	   SortedMap<Key, AbstractGame> upcomingGames = map.headMap(lowestKey);
 	   
 	   _logger.info("ALL UPCOMING GAMES:");
-	   for(Entry<Key, Game> entry : upcomingGames.entrySet()) {
+	   for(Entry<Key, AbstractGame> entry : upcomingGames.entrySet()) {
 		   _logger.trace(entry.getValue().toString());
 		   homeTeam = entry.getValue().getHomeTeam();
 		   awayTeam = entry.getValue().getAwayTeam();
@@ -114,10 +97,10 @@ public class GamesList{
 	   int tempUID = -1;
 	   Key highestKey = new Key(timeNow,tempUID);
 
-	   SortedMap<Key, Game> finishedGames = map.tailMap(highestKey);
+	   SortedMap<Key, AbstractGame> finishedGames = map.tailMap(highestKey);
 	   
 	   _logger.info("ALL FINISHED GAMES");
-	   for(Entry<Key, Game> entry : finishedGames.entrySet()) {
+	   for(Entry<Key, AbstractGame> entry : finishedGames.entrySet()) {
 		   if(entry.getValue().getFinishTime() != null) {
 			   _logger.trace(entry.getValue().toString());
 			   homeIterator = entry.getValue().getListofHomePlayers().iterator();

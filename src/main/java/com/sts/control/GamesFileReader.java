@@ -20,10 +20,14 @@ import java.util.StringTokenizer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.sts.abstractmodel.Game;
+import com.sts.abstractmodel.AbstractGame;
 import com.sts.abstractmodel.SPORTS_CAT;
 import com.sts.concretemodel.GamesList;
 import com.sts.concretemodel.Key;
+import com.sts.concretemodel.MLBGame;
+import com.sts.concretemodel.NBAGame;
+import com.sts.concretemodel.NFLGame;
+import com.sts.concretemodel.NHLGame;
 import com.sts.concretemodel.PlayersList;
 import com.sts.concretemodel.TeamsList;
 import com.sts.abstractmodel.AbstractTeam;
@@ -165,7 +169,7 @@ public class GamesFileReader {
      *  These are the players that have played in the
      *  game.
      */
-    private void parsePlayerIDs(String playerIDs_, Game game_, PlayersList playersList_, TeamsList teamsList_, String teamName_, ArrayList<Integer> listOfPlayers_) throws InvalidPlayersException, MismatchPlayerandGameSportException, PlayerNotOnTeamException {
+    private void parsePlayerIDs(String playerIDs_, AbstractGame game_, PlayersList playersList_, TeamsList teamsList_, String teamName_, ArrayList<Integer> listOfPlayers_) throws InvalidPlayersException, MismatchPlayerandGameSportException, PlayerNotOnTeamException {
     	StringTokenizer tokenizer;
     	tokenizer = new StringTokenizer(playerIDs_, ",");
     	int playerID;
@@ -221,22 +225,57 @@ public class GamesFileReader {
             String city;
             String playerIDs;
             String teamName;
-            Game game;
+            AbstractGame game = null;
             AbstractTeam home;
             SPORTS_CAT category;
+            Set<Key> keys;
             
             while ((line = reader.readLine()) != null) {
                 // don't process empty lines
                 if ("".equals(line))
                     continue;
 
-                game = new Game();
+                
                 tokenizer = new StringTokenizer(line, DELIM);
 
+                //Parse Game's Sport
+                try {
+                	category = SPORTS_CAT.valueOf(tokenizer.nextToken());
+                }
+                catch(Exception e_) {
+                	_logger.error("setCategory:" + e_.toString());
+                	continue;
+                }
+                
+                //Instantiate game object based on sport
+                try {
+	                if(category.equals(SPORTS_CAT.valueOf("NBA"))) {
+	                	game = new NBAGame();
+	                	game.setCategory(category);
+	                }
+	                else if(category.equals(SPORTS_CAT.valueOf("NFL"))) {
+	                	game = new NFLGame();
+	                	game.setCategory(category);
+	                }
+	                else if(category.equals(SPORTS_CAT.valueOf("NHL"))) {
+	                	game = new NHLGame();
+	                	game.setCategory(category);
+	                }
+	                else if(category.equals(SPORTS_CAT.valueOf("MLB"))) {
+	                	game = new MLBGame();
+	                	game.setCategory(category);
+	                }
+	                
+                }
+                catch(Exception e_) {
+                	_logger.error("Failed to initialize player:" + e_.toString());
+                	continue;
+                }
+                
                 // Parse Game's UID
                 try {
                 	tempGameId = Integer.parseInt(tokenizer.nextToken());
-                	Set<Key> keys=gamesList_.getGamesMap().keySet();
+                	keys = gamesList_.getGamesMap().keySet();
                 	for(Key key: keys) {
                 		
                 		if(key.getGameUID()==tempGameId) {
@@ -253,16 +292,7 @@ public class GamesFileReader {
                 	continue;
                 }
                 
-                //Parse Game's Sport
-                try {
-                	game.setCategory(SPORTS_CAT.valueOf(tokenizer.nextToken()));
-                	category = game.getCategory();
-                }
-                catch(Exception e_) {
-                	_logger.error("setCategory:" + e_.toString());
-                	continue;
-                }
-                
+
                 //Parse Game's Start Time
                 try {
                     game.setStartTime(parseDate(tokenizer.nextToken()));
@@ -400,22 +430,55 @@ public class GamesFileReader {
             String team = null;
             String city = null;
             String teamName = null;
-            Game game;
+            AbstractGame game = null;
             AbstractTeam home;
             SPORTS_CAT category = null;
             String playerIDs = null;
-            
+            Set<Key> keys;
          
                 if ("".equals(line))
                     return;
 
-                game = new Game();
                 tokenizer = new StringTokenizer(line, DELIM);
 
-                //Parse string for game's UID
+                //Parse Game's Sport
+                try {
+                	category = SPORTS_CAT.valueOf(tokenizer.nextToken());
+                }
+                catch(Exception e_) {
+                	_logger.error("setCategory:" + e_.toString());
+                	throw e_;
+                }
+                
+                //Instantiate game object based on sport
+                try {
+	                if(category.equals(SPORTS_CAT.valueOf("NBA"))) {
+	                	game = new NBAGame();
+	                	game.setCategory(category);
+	                }
+	                else if(category.equals(SPORTS_CAT.valueOf("NFL"))) {
+	                	game = new NFLGame();
+	                	game.setCategory(category);
+	                }
+	                else if(category.equals(SPORTS_CAT.valueOf("NHL"))) {
+	                	game = new NHLGame();
+	                	game.setCategory(category);
+	                }
+	                else if(category.equals(SPORTS_CAT.valueOf("MLB"))) {
+	                	game = new MLBGame();
+	                	game.setCategory(category);
+	                }
+	                
+                }
+                catch(Exception e_) {
+                	_logger.error("Failed to initialize player:" + e_.toString());
+                	throw e_;
+                }
+                
+                // Parse Game's UID
                 try {
                 	tempGameId = Integer.parseInt(tokenizer.nextToken());
-                	Set<Key> keys=gamesList_.getGamesMap().keySet();
+                	keys = gamesList_.getGamesMap().keySet();
                 	for(Key key: keys) {
                 		
                 		if(key.getGameUID()==tempGameId) {
@@ -425,25 +488,12 @@ public class GamesFileReader {
                 		}
                 	}
                 	
-                	
                 	game.setGameUID(tempGameId);
                 }
                 catch(Exception e_) {
                 	_logger.error("setGameUID:" + e_.toString());
                 	throw e_;
                 }
-                
-                //Parse string for game's sport
-                try {
-                	game.setCategory(SPORTS_CAT.valueOf(tokenizer.nextToken()));
-                	category = game.getCategory();
-                	
-                }
-                catch(Exception e_) {
-                	_logger.error("setCategory:" + e_.toString());
-                	throw e_;
-                }
-                
                 //Parse string for game's start time
                 try {
                 	tempStartTime=parseDate(tokenizer.nextToken());
@@ -570,7 +620,7 @@ public class GamesFileReader {
     /**
      * Add the game to the map of games if the game is valid
      */
-    private void addGame(Game game_, GamesList gamesList_)
+    private void addGame(AbstractGame game_, GamesList gamesList_)
     {
         if (!game_.isValid())
         {
@@ -586,10 +636,4 @@ public class GamesFileReader {
         if (_logger.isTraceEnabled())
             _logger.trace("Adding new game to game mapt: {}", game_.toString());
     }
-
-
-
-
-
-
 }

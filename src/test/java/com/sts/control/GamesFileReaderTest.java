@@ -33,7 +33,7 @@ public class GamesFileReaderTest {
 	
 	@Test
 	public void DuplicateTeamExceptionTest() {
-		String gameData = "100|MLB|2018-05-24T13:00:00+06:00|Arizona|Diamondbacks|Arizona|Diamondbacks|5|4|12589|PT3H2M35S";
+		String gameData = "MLB|100|2018-05-24T13:00:00+06:00|Arizona|Diamondbacks|Arizona|Diamondbacks|5|4|12589|PT3H2M35S";
 		boolean thrown = false;
 		try {
 			gr.readFromStringForList(gameData, listofTeams, listofPlayers, listofGames);
@@ -48,7 +48,7 @@ public class GamesFileReaderTest {
 	
 	@Test
 	public void MismatchGameandTeamSportExceptionTestOne() {
-		String gameData = "100|NBA|2018-05-24T13:00:00+06:00|Arizona|Diamondbacks|Baltimore|Orioles|5|4|12589|PT3H2M35S";
+		String gameData = "NBA|100|2018-05-24T13:00:00+06:00|Arizona|Diamondbacks|Baltimore|Orioles|5|4|12589|PT3H2M35S";
 		boolean thrown = false;
 		try {
 			gr.readFromStringForList(gameData, listofTeams, listofPlayers, listofGames);
@@ -62,7 +62,7 @@ public class GamesFileReaderTest {
 	
 	@Test
 	public void MismatchGameandTeamSportExceptionTestTwo() {
-		String gameData = "100|MLB|2018-05-24T13:00:00+06:00|Arizona|Cardinals|Baltimore|Orioles|5|4|12589|PT3H2M35S";
+		String gameData = "MLB|100|2018-05-24T13:00:00+06:00|Arizona|Cardinals|Baltimore|Orioles|5|4|12589|PT3H2M35S";
 		boolean thrown = false;
 		try {
 			gr.readFromStringForList(gameData, listofTeams, listofPlayers, listofGames);
@@ -77,7 +77,7 @@ public class GamesFileReaderTest {
 	
 	@Test
 	public void NegativeScoreExceptionTest() {
-		String gameData = "100|MLB|2018-05-24T13:00:00+06:00|Arizona|Diamondbacks|Baltimore|Orioles|-1|4|12589|PT3H2M35S";
+		String gameData = "MLB|100|2018-05-24T13:00:00+06:00|Arizona|Diamondbacks|Baltimore|Orioles|-1|4|12589|PT3H2M35S";
 		boolean thrown = false;
 		try {
 			gr.readFromStringForList(gameData, listofTeams, listofPlayers, listofGames);
@@ -91,7 +91,7 @@ public class GamesFileReaderTest {
 	
 	@Test
 	public void NegativeAttendanceExceptionTest() {
-		String gameData = "100|MLB|2018-05-24T13:00:00+06:00|Arizona|Diamondbacks|Baltimore|Orioles|1|4|-1|PT3H2M35S";
+		String gameData = "MLB|100|2018-05-24T13:00:00+06:00|Arizona|Diamondbacks|Baltimore|Orioles|1|4|-1|PT3H2M35S";
 		boolean thrown = false;
 		try {
 			gr.readFromStringForList(gameData, listofTeams, listofPlayers, listofGames);
@@ -106,7 +106,7 @@ public class GamesFileReaderTest {
 	
 	@Test
 	public void TeamNotFoundException() {
-		String gameData = "100|MLB|2018-05-24T13:00:00+06:00|Arizona|Diamonds|Baltimore|Orioles|1|4|12000|PT3H2M35S";
+		String gameData = "MLB|100|2018-05-24T13:00:00+06:00|Arizona|Diamonds|Baltimore|Orioles|1|4|12000|PT3H2M35S";
 		boolean thrown = false;
 		try {
 			gr.readFromStringForList(gameData, listofTeams, listofPlayers, listofGames);
@@ -120,7 +120,7 @@ public class GamesFileReaderTest {
 	
 	@Test
 	public void MismatchPlayerandGameSportExceptionTest() {
-		String gameData = "100|MLB|2018-05-24T13:00:00+06:00|Arizona|Diamondbacks|Baltimore|Orioles|5|4|11,2|13,14|12589|PT3H2M35S";
+		String gameData = "MLB|100|2018-05-24T13:00:00+06:00|Arizona|Diamondbacks|Baltimore|Orioles|5|4|11,2|13,14|12589|PT3H2M35S";
 		boolean thrown = false;
 		try {
 			gr.readFromStringForList(gameData, listofTeams, listofPlayers, listofGames);
@@ -133,7 +133,7 @@ public class GamesFileReaderTest {
 	
 	@Test
 	public void InvalidPlayersExceptionTest() {
-		String gameData = "100|MLB|2018-05-24T13:00:00+06:00|Arizona|Diamondbacks|Baltimore|Orioles|5|4|11,20000|13,14|12589|PT3H2M35S";
+		String gameData = "MLB|100|2018-05-24T13:00:00+06:00|Arizona|Diamondbacks|Baltimore|Orioles|5|4|11,20000|13,14|12589|PT3H2M35S";
 		boolean thrown = false;
 		try {
 			gr.readFromStringForList(gameData, listofTeams, listofPlayers, listofGames);
@@ -146,7 +146,7 @@ public class GamesFileReaderTest {
 	
 	@Test
 	public void MismatchPlayerandTeamSportExceptionTest() {
-		String gameData = "100|MLB|2018-05-24T13:00:00+06:00|Arizona|Diamondbacks|Baltimore|Orioles|5|4|1,12|13,14|12589|PT3H2M35S";
+		String gameData = "MLB|100|2018-05-24T13:00:00+06:00|Arizona|Diamondbacks|Baltimore|Orioles|5|4|1,12|13,14|12589|PT3H2M35S";
 		boolean thrown = false;
 		try {
 			gr.readFromStringForList(gameData, listofTeams, listofPlayers, listofGames);
@@ -159,7 +159,7 @@ public class GamesFileReaderTest {
 	
 	@Test
 	public void PlayerNotOnTeamExceptionTest() {
-		String gameData = "100|MLB|2018-05-24T13:00:00+06:00|Arizona|Diamondbacks|Baltimore|Orioles|1|4|13,12|11,14|12000|PT3H2M35S";
+		String gameData = "MLB|100|2018-05-24T13:00:00+06:00|Arizona|Diamondbacks|Baltimore|Orioles|1|4|13,12|11,14|12000|PT3H2M35S";
 		boolean thrown = false;
 		try {
 			gr.readFromStringForList(gameData, listofTeams, listofPlayers, listofGames);
