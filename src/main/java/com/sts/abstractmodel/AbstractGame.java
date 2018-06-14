@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 
 // Class to represent game of a sport
-public  class Game implements Comparable<Game>, InterfaceModel {
+public abstract class AbstractGame implements InterfaceModel {
 
 	//Unique ID for this game
 	private int gameUID;
@@ -39,11 +39,11 @@ public  class Game implements Comparable<Game>, InterfaceModel {
      *Constructor: Used for upcoming game
      */
     
-    public Game() {
+    public AbstractGame() {
     	super();
     }
     
-    public Game(ZonedDateTime startTime_, AbstractTeam home_, AbstractTeam away_)
+    public AbstractGame(ZonedDateTime startTime_, AbstractTeam home_, AbstractTeam away_)
     {
         setStartTime(startTime_);
         setHomeTeam(home_);
@@ -54,7 +54,7 @@ public  class Game implements Comparable<Game>, InterfaceModel {
     /*
      * Constructor: Used for finished game
      */
-    public Game(ZonedDateTime startTime_, AbstractTeam home_, AbstractTeam away_, int homeScore_, int awayScore_, int attendance_, Duration duration_) {
+    public AbstractGame(ZonedDateTime startTime_, AbstractTeam home_, AbstractTeam away_, int homeScore_, int awayScore_, int attendance_, Duration duration_) {
     	ZonedDateTime finish;
     	setStartTime(startTime_);
     	setHomeTeam(home_);
@@ -263,20 +263,6 @@ public  class Game implements Comparable<Game>, InterfaceModel {
         }
         return str.toString();
 
-    }
-
-    @Override
-    public int compareTo(Game game_) {
-    	
-    	
-    	if(this.startTime == game_.getStartTime() && this.finishTime == game_.getFinishTime() && 
-    			this.duration == game_.getDuration() && this.homeTeam == game_.getHomeTeam() &&
-    			this.awayTeam == game_.getAwayTeam() && this.attendance == game_.getAttendance()) {
-    		return 1;
-    	}
-    	else
-    		return 0;
-    	
     }
 
     /**

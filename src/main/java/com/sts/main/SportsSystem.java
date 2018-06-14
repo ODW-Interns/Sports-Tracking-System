@@ -15,7 +15,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.sts.abstractmodel.AbstractTeam;
-import com.sts.abstractmodel.Game;
+import com.sts.abstractmodel.AbstractGame;
 import com.sts.concretemodel.GamesList;
 import com.sts.concretemodel.Key;
 import com.sts.concretemodel.PlayersList;
@@ -48,8 +48,8 @@ public class SportsSystem {
  	    		timeNow = ZonedDateTime.now();
  	    		int tempUID = -1;
  	    		Key lowestkey = new Key(timeNow,tempUID);
- 	    		SortedMap<Key, Game> pastGames = _listofGames_.getGamesMap().tailMap(lowestkey);
- 	    		for(Entry<Key, Game> entry : pastGames.entrySet()) {
+ 	    		SortedMap<Key, AbstractGame> pastGames = _listofGames_.getGamesMap().tailMap(lowestkey);
+ 	    		for(Entry<Key, AbstractGame> entry : pastGames.entrySet()) {
  	    			if(entry.getValue().getDuration() == null) {
  	    				//Set players that played in game to current rosters of each team
  	    				awayTeam = _listofTeams.getTeamMap().get(entry.getValue().getAwayTeam().fullTeamName());
@@ -167,7 +167,7 @@ public class SportsSystem {
 	public void updateGames(GamesList _listofGames_) {
 	    Iterator<Key> KeyIterator;
 		Key currentKey;
-		Game gameUpdating = null;
+		AbstractGame gameUpdating = null;
 	    int durationHours;
 	    int durationMinutes;
 	    int durationSeconds;
