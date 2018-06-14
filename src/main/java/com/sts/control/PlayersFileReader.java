@@ -120,7 +120,7 @@ public class PlayersFileReader {
     			for(int i=0;i<temp1.size();i++) {
     			tempPlayer=playerlist_.returnPlayersMap().get(temp1.get(i));
     			int tempJnumb=tempPlayer.getJerseyNum();
-    			if(tempJnumb==player_.getJerseyNum()) {
+    			if(tempJnumb==player_.getJerseyNum() && tempJnumb != playerlist_.returnPlayersMap().get(player_.get_playerID()).getJerseyNum()) {
     				throw new Exception ("Duplicate Jersey Number");
     					
     			}

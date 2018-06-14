@@ -1,12 +1,13 @@
 package com.sts.main;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.text.ParseException;
 import java.time.Duration;
 import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.Scanner;
 import java.util.SortedMap;
 import java.util.Map.Entry;
 import java.util.concurrent.ScheduledExecutorService;
@@ -33,20 +34,19 @@ public class SportsSystem {
     private Logger _logger;
     //Current date and time
     private ZonedDateTime timeNow;
-    //Scanner
-    private Scanner input;
     //Object to store map of all games
     private GamesList _listofGames;
     //Object to store map of all teams
     private TeamsList _listofTeams;
     //Object to store map of all players
     private PlayersList _listofPlayers;
+    private BufferedReader reader;
     
     //Constructor
 	SportsSystem() throws RuntimeException, IOException, ParseException{
 	    _logger = LoggerFactory.getLogger(getClass().getSimpleName());
 	    _GamesThatNeedUpdating = new ArrayList<Key>();
-	    input= new Scanner(System.in);
+	    reader = new BufferedReader(new InputStreamReader(System.in));
 	}
 	
 	//Thread to run every specified time interval to check if any new games have started
@@ -119,18 +119,13 @@ public class SportsSystem {
 						_logger.info("4: Enter 4 to update game(s)");
 						_logger.info("5: Enter 5 to exit");
 
-						if (input.hasNextInt()) {
-
-							choice = input.nextInt();
-							isNumber = true;
-
-						} else {
-
-							_logger.info("Please choose an integer value from the above options");
-							isNumber = false;
-							input.next();
-
+						try {
+							choice = Integer.parseInt(reader.readLine());
 						}
+						catch(Exception e_) {
+							_logger.error("Please choose an integer value from the above options");
+							continue;
+						}	
 
 						switch (choice) {
 						case 1: // Log all finished games
@@ -144,10 +139,8 @@ public class SportsSystem {
 
 							break;
 						case 3: //prompts user for a file of all players who need updating with the player's new data
-							
-							input.nextLine();
 							_logger.info("Enter the file name to update player(s) you want");
-							fileName = input.nextLine();
+							fileName = reader.readLine();
 							String path = "/";
 							path = path + fileName;
 							try {
@@ -177,7 +170,6 @@ public class SportsSystem {
 					}
 				
 			} while (!isNumber);
-		input.close();
 
 	}
 	
@@ -200,8 +192,7 @@ public class SportsSystem {
 			_logger.info("Enter Duration of the game"); // Prompt User for the duration of the game
 			_logger.info("Hour(s):"); // Hours the game lasted
 			try {
-				durationHours = input.nextInt();
-				input.nextLine();
+				durationHours = Integer.parseInt(reader.readLine());
 			}
 			catch(Exception e_) {
 				_logger.error(e_.toString());
@@ -209,8 +200,7 @@ public class SportsSystem {
 			}
 			_logger.info("Minutes(s):"); // Minutes the game lasted
 			try {
-				durationMinutes = input.nextInt();
-				input.nextLine();
+				durationMinutes = Integer.parseInt(reader.readLine());
 			}
 			catch(Exception e_) {
 				_logger.error(e_.toString());
@@ -218,8 +208,7 @@ public class SportsSystem {
 			}
 			_logger.info("Second(s):"); // Seconds the game lasted
 			try {
-				durationSeconds = input.nextInt();
-				input.nextLine();
+				durationSeconds = Integer.parseInt(reader.readLine());
 			}
 			catch(Exception e_) {
 				_logger.error(e_.toString());
@@ -234,8 +223,7 @@ public class SportsSystem {
 			_logger.info("Update final scores");
 			_logger.info("Home Team Final Score:"); // Final Score for home team
 			try {
-				gameUpdating.setHomeTeamScore(input.nextInt());
-				input.nextLine();
+				gameUpdating.setHomeTeamScore(Integer.parseInt(reader.readLine()));
 			}
 			catch(Exception e_) {
 				_logger.error(e_.toString());
@@ -243,8 +231,7 @@ public class SportsSystem {
 			}
 			_logger.info("Away Team Final Score:"); // Final Score for away team
 			try {
-				gameUpdating.setAwayTeamScore(input.nextInt());
-				input.nextLine();
+				gameUpdating.setAwayTeamScore(Integer.parseInt(reader.readLine()));
 			}
 			catch(Exception e_) {
 				_logger.error(e_.toString());
@@ -254,8 +241,7 @@ public class SportsSystem {
 			_listofGames_.getGamesMap().get(currentKey).setHomeTeamScore(gameUpdating.getHomeTeamScore());
 			_logger.info("Enter attendance of game:");
 			try {
-				gameUpdating.setAttendance(input.nextInt()); // attendance of game
-				input.nextLine();
+				gameUpdating.setAttendance(Integer.parseInt(reader.readLine())); // attendance of game
 			}
 			catch(Exception e_) {
 				_logger.error(e_.toString());

@@ -1,5 +1,6 @@
 package com.sts.control;
 
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.BeforeClass;
@@ -71,6 +72,21 @@ public class PlayersFileReaderTest {
 		}
 			assertTrue(thrown);
 		
+	}
+	
+	@Test
+	public void TeamChangeWithSameJerseyTest() {
+		String playerData = "NBA|1|28|F1|L1|Boston Celtics|2018-07-01";
+		boolean thrown = false;
+		try {
+			pr.readFromStringForList(playerData,  listofPlayers, listofTeams);
+			}
+		catch(Exception e_) {
+			thrown = true;
+		}
+			assertFalse(thrown);
+		
+				
 	}
 	
 }
