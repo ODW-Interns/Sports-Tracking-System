@@ -19,7 +19,7 @@ import com.sts.nba.models.TeamNBA;
 import com.sts.nfl.models.TeamNFL;
 import com.sts.nhl.models.TeamNHL;
 
-/*
+/**
  * The class will read from an input file and add to the list of teams
  */
 	public class TeamsFileReader {

@@ -28,7 +28,7 @@ import com.sts.model.exception.TeamNotFoundException;
 import com.sts.nba.models.NBAPlayer;
 import com.sts.nfl.models.NFLPlayer;
 import com.sts.nhl.models.NHLPlayer;
-/*
+/**
  * This class will read from the players list input, and will deal with switching teams and changing Jersey numbers.
  * We will store all the players in a hash map when the ID is the key for the map.
  * We also reading the sport category and declare if the player in NFl, NHl, NBA, or MLB. We map each player to his category defined class

@@ -1,6 +1,8 @@
 package com.sts.nba.models;
 
-//Concrete class extending from Team
+/**
+ * Concrete class extending from Team
+ */
 
 public  class TeamNBA extends com.sts.abstractmodel.AbstractTeam{
 	

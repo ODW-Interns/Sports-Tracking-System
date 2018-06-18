@@ -4,7 +4,10 @@ import java.util.concurrent.ConcurrentHashMap;
 
 import com.sts.abstractmodel.AbstractTeam;
 
-//Class holding structure(Concurrent Hash Map) to hold all teams tracked
+/**
+ * Class holding structure(Concurrent Hash Map) to hold all teams tracked
+ *
+ */
 public class TeamsList{
 	
 	private ConcurrentHashMap<String,AbstractTeam> TeamMap_;

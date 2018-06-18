@@ -40,7 +40,10 @@ import com.sts.nba.models.NBAGame;
 import com.sts.nfl.models.NFLGame;
 import com.sts.nhl.models.NHLGame;
 
-// class to read from file with upcoming/finished games
+/**
+ *  class to read from file with upcoming/finished games
+ *
+ */
 public class GamesFileReader {
     private Logger _logger;
 

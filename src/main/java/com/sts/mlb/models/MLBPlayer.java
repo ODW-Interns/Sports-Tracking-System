@@ -2,7 +2,9 @@ package com.sts.mlb.models;
 
 import com.sts.abstractmodel.AbstractPlayer;
 
-//Concrete class extending from Player 
+/**
+ * Concrete class extending from Player 
+ */
 public  class MLBPlayer extends AbstractPlayer {
 	
 	public MLBPlayer() {

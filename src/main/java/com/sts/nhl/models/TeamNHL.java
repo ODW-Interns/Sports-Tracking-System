@@ -2,7 +2,9 @@ package com.sts.nhl.models;
 
 import com.sts.abstractmodel.AbstractTeam;
 
-//Concrete class extending from Team
+/**
+ * Concrete class extending from Team
+ */
 
 public class TeamNHL extends AbstractTeam {
 
