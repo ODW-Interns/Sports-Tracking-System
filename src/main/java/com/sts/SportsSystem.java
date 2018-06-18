@@ -21,6 +21,7 @@ import com.sts.concretemodel.GamesList;
 import com.sts.concretemodel.Key;
 import com.sts.concretemodel.PlayersList;
 import com.sts.concretemodel.TeamsList;
+import com.sts.control.Service;
 import com.sts.control.StoreDataFromInputFile;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
@@ -42,11 +43,14 @@ public class SportsSystem {
     private PlayersList _listofPlayers;
     private BufferedReader reader;
     
+    private Service eventHandler;
+    
     //Constructor
 	SportsSystem() throws RuntimeException, IOException, ParseException{
 	    _logger = LoggerFactory.getLogger(getClass().getSimpleName());
 	    _GamesThatNeedUpdating = new ArrayList<Key>();
 	    reader = new BufferedReader(new InputStreamReader(System.in));
+	    eventHandler = new Service();
 	}
 	
 	//Thread to run every specified time interval to check if any new games have started
@@ -165,7 +169,11 @@ public class SportsSystem {
 							_logger.info("Wrong choice input. Please choose from the following options");
 
 							break;
-
+							
+						case 18:
+							eventHandler.createTeam(_listofTeams);
+							break;
+						
 						}
 					}
 				
