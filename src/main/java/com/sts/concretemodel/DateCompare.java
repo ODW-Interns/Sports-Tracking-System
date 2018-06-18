@@ -2,7 +2,7 @@ package com.sts.concretemodel;
 
 import java.util.Comparator;
 
-/*
+/**
  * Class to allow comparisons to sort the key object by their date and time.
  * If the date and time are equal, then it will compare the two games's UID.
  */
