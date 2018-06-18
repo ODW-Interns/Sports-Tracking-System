@@ -11,7 +11,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.sts.abstractmodel.AbstractTeam;
-import com.sts.abstractmodel.SPORTS_CAT;
+import com.sts.abstractmodel.SportsCategory;
 import com.sts.concretemodel.GamesList;
 import com.sts.concretemodel.TeamMLB;
 import com.sts.concretemodel.TeamNBA;
@@ -55,7 +55,7 @@ import com.sts.concretemodel.TeamsList;
 			try (BufferedReader reader = new BufferedReader(is_)) {
 				StringTokenizer tokenizer;
 				String line;
-				SPORTS_CAT category;
+				SportsCategory category;
 				AbstractTeam team = null;
 				
 				while ((line = reader.readLine()) != null) {
@@ -65,20 +65,20 @@ import com.sts.concretemodel.TeamsList;
 					tokenizer = new StringTokenizer(line, DELIM);
 
 					try {
-						category = SPORTS_CAT.valueOf(tokenizer.nextToken());
+						category = SportsCategory.valueOf(tokenizer.nextToken());
 					} catch (Exception e_) {
 						System.err.println("Reading Sport Category:" + e_.toString());
 						continue;
 					}
 					
 					try {
-						if(category.equals(SPORTS_CAT.valueOf("NBA")))
+						if(category.equals(SportsCategory.valueOf("NBA")))
 							team = new TeamNBA();
-						else if(category.equals(SPORTS_CAT.valueOf("NHL")))
+						else if(category.equals(SportsCategory.valueOf("NHL")))
 							team = new TeamNHL();
-						else if(category.equals(SPORTS_CAT.valueOf("NFL")))
+						else if(category.equals(SportsCategory.valueOf("NFL")))
 							team = new TeamNFL();
-						else if(category.equals(SPORTS_CAT.valueOf("MLB")))
+						else if(category.equals(SportsCategory.valueOf("MLB")))
 							team = new TeamMLB();
 					}
 					catch(Exception e_) {
@@ -120,7 +120,7 @@ import com.sts.concretemodel.TeamsList;
 		
 		public void readFromStringforList(String line, TeamsList listofTeams_) {
 			StringTokenizer tokenizer = new StringTokenizer(line, "|");
-			SPORTS_CAT category = null;
+			SportsCategory category = null;
 			AbstractTeam team = null;
 			
 			if ("".equals(line))
@@ -128,7 +128,7 @@ import com.sts.concretemodel.TeamsList;
 			tokenizer = new StringTokenizer(line, DELIM);
 
 			try {
-				category = SPORTS_CAT.valueOf(tokenizer.nextToken());
+				category = SportsCategory.valueOf(tokenizer.nextToken());
 			} catch (Exception e_) {
 				System.err.println("Reading Sport Category:" + e_.toString());
 			}

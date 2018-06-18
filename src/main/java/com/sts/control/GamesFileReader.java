@@ -21,7 +21,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.sts.abstractmodel.AbstractGame;
-import com.sts.abstractmodel.SPORTS_CAT;
+import com.sts.abstractmodel.SportsCategory;
 import com.sts.concretemodel.GamesList;
 import com.sts.concretemodel.Key;
 import com.sts.concretemodel.MLBGame;
@@ -123,7 +123,7 @@ public class GamesFileReader {
      * If it does already exist, team found
      * Else, throw team not found exception
      */
-    private AbstractTeam parseTeam(SPORTS_CAT category, String cityStr_,String teamStr_, TeamsList teamsList_) throws TeamNotFoundException, MismatchGameandTeamSportException {
+    private AbstractTeam parseTeam(SportsCategory category, String cityStr_,String teamStr_, TeamsList teamsList_) throws TeamNotFoundException, MismatchGameandTeamSportException {
         String searchString = cityStr_ + " " + teamStr_;
     	AbstractTeam lclTeam = teamsList_.getTeamMap().get(searchString);
         if(lclTeam != null){
@@ -227,7 +227,7 @@ public class GamesFileReader {
             String teamName;
             AbstractGame game = null;
             AbstractTeam home;
-            SPORTS_CAT category;
+            SportsCategory category;
             Set<Key> keys;
             
             while ((line = reader.readLine()) != null) {
@@ -240,7 +240,7 @@ public class GamesFileReader {
 
                 //Parse Game's Sport
                 try {
-                	category = SPORTS_CAT.valueOf(tokenizer.nextToken());
+                	category = SportsCategory.valueOf(tokenizer.nextToken());
                 }
                 catch(Exception e_) {
                 	_logger.error("setCategory:" + e_.toString());
@@ -249,19 +249,19 @@ public class GamesFileReader {
                 
                 //Instantiate game object based on sport
                 try {
-	                if(category.equals(SPORTS_CAT.valueOf("NBA"))) {
+	                if(category.equals(SportsCategory.valueOf("NBA"))) {
 	                	game = new NBAGame();
 	                	game.setCategory(category);
 	                }
-	                else if(category.equals(SPORTS_CAT.valueOf("NFL"))) {
+	                else if(category.equals(SportsCategory.valueOf("NFL"))) {
 	                	game = new NFLGame();
 	                	game.setCategory(category);
 	                }
-	                else if(category.equals(SPORTS_CAT.valueOf("NHL"))) {
+	                else if(category.equals(SportsCategory.valueOf("NHL"))) {
 	                	game = new NHLGame();
 	                	game.setCategory(category);
 	                }
-	                else if(category.equals(SPORTS_CAT.valueOf("MLB"))) {
+	                else if(category.equals(SportsCategory.valueOf("MLB"))) {
 	                	game = new MLBGame();
 	                	game.setCategory(category);
 	                }
@@ -432,7 +432,7 @@ public class GamesFileReader {
             String teamName = null;
             AbstractGame game = null;
             AbstractTeam home;
-            SPORTS_CAT category = null;
+            SportsCategory category = null;
             String playerIDs = null;
             Set<Key> keys;
          
@@ -443,7 +443,7 @@ public class GamesFileReader {
 
                 //Parse Game's Sport
                 try {
-                	category = SPORTS_CAT.valueOf(tokenizer.nextToken());
+                	category = SportsCategory.valueOf(tokenizer.nextToken());
                 }
                 catch(Exception e_) {
                 	_logger.error("setCategory:" + e_.toString());
@@ -452,19 +452,19 @@ public class GamesFileReader {
                 
                 //Instantiate game object based on sport
                 try {
-	                if(category.equals(SPORTS_CAT.valueOf("NBA"))) {
+	                if(category.equals(SportsCategory.valueOf("NBA"))) {
 	                	game = new NBAGame();
 	                	game.setCategory(category);
 	                }
-	                else if(category.equals(SPORTS_CAT.valueOf("NFL"))) {
+	                else if(category.equals(SportsCategory.valueOf("NFL"))) {
 	                	game = new NFLGame();
 	                	game.setCategory(category);
 	                }
-	                else if(category.equals(SPORTS_CAT.valueOf("NHL"))) {
+	                else if(category.equals(SportsCategory.valueOf("NHL"))) {
 	                	game = new NHLGame();
 	                	game.setCategory(category);
 	                }
-	                else if(category.equals(SPORTS_CAT.valueOf("MLB"))) {
+	                else if(category.equals(SportsCategory.valueOf("MLB"))) {
 	                	game = new MLBGame();
 	                	game.setCategory(category);
 	                }

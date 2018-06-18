@@ -31,7 +31,7 @@ public abstract class AbstractGame implements InterfaceModel {
     // Attendance of game
     private int attendance;
     // Sport of the game
-    private SPORTS_CAT category;
+    private SportsCategory category;
 
     //List of players on the away team
     private ArrayList<Integer> listOfAwayPlayers = new ArrayList<Integer>();
@@ -230,11 +230,11 @@ public abstract class AbstractGame implements InterfaceModel {
 	/**
 	 * 
 	 */
-    public SPORTS_CAT getCategory() {
+    public SportsCategory getCategory() {
 		return category;
 	}
 
-	public void setCategory(SPORTS_CAT category_) {
+	public void setCategory(SportsCategory category_) {
 		category = category_;
 	}
 

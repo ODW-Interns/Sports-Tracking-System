@@ -17,7 +17,7 @@ import org.slf4j.LoggerFactory;
 
 import com.sts.abstractmodel.AbstractPlayer;
 import com.sts.abstractmodel.AbstractTeam;
-import com.sts.abstractmodel.SPORTS_CAT;
+import com.sts.abstractmodel.SportsCategory;
 import com.sts.concretemodel.GamesList;
 import com.sts.concretemodel.MLBPlayer;
 import com.sts.concretemodel.NBAPlayer;
@@ -184,7 +184,7 @@ public class PlayersFileReader {
 	         AbstractPlayer player = null;
 	         TeamHistory currentTeamHistory = null;
 			 String line;
-			 SPORTS_CAT category;
+			 SportsCategory category;
 	            while ((line = reader.readLine()) != null) {
 	                // don't process empty lines
 	                if ("".equals(line))
@@ -195,7 +195,7 @@ public class PlayersFileReader {
 	                //
 	                //
 	                try {
-	                	category = SPORTS_CAT.valueOf(tokenizer.nextToken());
+	                	category = SportsCategory.valueOf(tokenizer.nextToken());
 	                }
 	                catch(Exception e_) {
 	                	_logger.error("Read in category:" + e_.toString());
@@ -203,16 +203,16 @@ public class PlayersFileReader {
 	                }
 	                //Instantiate player based on their sport
 	                try {
-		                if(category.equals(SPORTS_CAT.valueOf("NBA"))) {
+		                if(category.equals(SportsCategory.valueOf("NBA"))) {
 		                	player = new NBAPlayer();
 		                }
-		                else if(category.equals(SPORTS_CAT.valueOf("NFL"))) {
+		                else if(category.equals(SportsCategory.valueOf("NFL"))) {
 		                	player = new NFLPlayer();
 		                }
-		                else if(category.equals(SPORTS_CAT.valueOf("NHL"))) {
+		                else if(category.equals(SportsCategory.valueOf("NHL"))) {
 		                	player = new NHLPlayer();
 		                }
-		                else if(category.equals(SPORTS_CAT.valueOf("MLB"))) {
+		                else if(category.equals(SportsCategory.valueOf("MLB"))) {
 		                	player = new MLBPlayer();
 		                }
 		                
@@ -336,7 +336,7 @@ public class PlayersFileReader {
 		
 		 StringTokenizer tokenizer;   
 		 TeamHistory currentTeamHistory = null;
-		 SPORTS_CAT category = null;
+		 SportsCategory category = null;
          AbstractPlayer player = null;
 		
 		if ("".equals(line))
@@ -345,7 +345,7 @@ public class PlayersFileReader {
 		tokenizer = new StringTokenizer(line, DELIM);
 
         try {
-        	category = SPORTS_CAT.valueOf(tokenizer.nextToken());
+        	category = SportsCategory.valueOf(tokenizer.nextToken());
         }
         catch(Exception e_) {
         	_logger.error("Read in category:" + e_.toString());
@@ -353,16 +353,16 @@ public class PlayersFileReader {
         }
         
         try {
-            if(category.equals(SPORTS_CAT.valueOf("NBA"))) {
+            if(category.equals(SportsCategory.valueOf("NBA"))) {
             	player = new NBAPlayer();
             }
-            else if(category.equals(SPORTS_CAT.valueOf("NFL"))) {
+            else if(category.equals(SportsCategory.valueOf("NFL"))) {
             	player = new NFLPlayer();
             }
-            else if(category.equals(SPORTS_CAT.valueOf("NHL"))) {
+            else if(category.equals(SportsCategory.valueOf("NHL"))) {
             	player = new NHLPlayer();
             }
-            else if(category.equals(SPORTS_CAT.valueOf("MLB"))) {
+            else if(category.equals(SportsCategory.valueOf("MLB"))) {
             	player = new MLBPlayer();
             }
             

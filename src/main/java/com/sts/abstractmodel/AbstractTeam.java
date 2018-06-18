@@ -11,7 +11,7 @@ import java.util.ArrayList;
 public abstract class AbstractTeam implements InterfaceModel{
 
 	//The sport of the team
-	private SPORTS_CAT _teamSport;
+	private SportsCategory _teamSport;
 	//The name(mascot) of the team
 	private String _teamName;
 	//The city of the team
@@ -64,14 +64,14 @@ public abstract class AbstractTeam implements InterfaceModel{
 	/*
 	 * Return: the sport of the team
 	 */
-	public SPORTS_CAT getTeamSport() {
+	public SportsCategory getTeamSport() {
 		return _teamSport;
 	}
 
 	/*
 	 * method to set the team's sport
 	 */
-	public void setTeamSport(SPORTS_CAT category) {
+	public void setTeamSport(SportsCategory category) {
 		this._teamSport = category;
 	}
 
