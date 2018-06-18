@@ -24,12 +24,9 @@ import com.sts.abstractmodel.AbstractGame;
 import com.sts.abstractmodel.SportsCategory;
 import com.sts.concretemodel.GamesList;
 import com.sts.concretemodel.Key;
-import com.sts.concretemodel.MLBGame;
-import com.sts.concretemodel.NBAGame;
-import com.sts.concretemodel.NFLGame;
-import com.sts.concretemodel.NHLGame;
 import com.sts.concretemodel.PlayersList;
 import com.sts.concretemodel.TeamsList;
+import com.sts.mlb.models.MLBGame;
 import com.sts.abstractmodel.AbstractTeam;
 import com.sts.model.exception.DuplicateTeamException;
 import com.sts.model.exception.InvalidPlayersException;
@@ -39,6 +36,9 @@ import com.sts.model.exception.NegativeAttendanceException;
 import com.sts.model.exception.NegativeScoreException;
 import com.sts.model.exception.PlayerNotOnTeamException;
 import com.sts.model.exception.TeamNotFoundException;
+import com.sts.nba.models.NBAGame;
+import com.sts.nfl.models.NFLGame;
+import com.sts.nhl.models.NHLGame;
 
 // class to read from file with upcoming/finished games
 public class GamesFileReader {

@@ -1,4 +1,4 @@
-package com.sts.concretemodel;
+package com.sts.nba.models;
 
 //Concrete class extending from Team
 

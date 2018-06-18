@@ -1,4 +1,4 @@
-package com.sts.main;
+package com.sts;
 
 import java.io.BufferedReader;
 import java.io.IOException;

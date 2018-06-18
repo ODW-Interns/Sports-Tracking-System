@@ -1,4 +1,4 @@
-package com.sts.concretemodel;
+package com.sts.mlb.models;
 
 import com.sts.abstractmodel.AbstractPlayer;
 

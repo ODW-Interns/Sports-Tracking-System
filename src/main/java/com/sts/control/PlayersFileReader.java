@@ -19,15 +19,15 @@ import com.sts.abstractmodel.AbstractPlayer;
 import com.sts.abstractmodel.AbstractTeam;
 import com.sts.abstractmodel.SportsCategory;
 import com.sts.concretemodel.GamesList;
-import com.sts.concretemodel.MLBPlayer;
-import com.sts.concretemodel.NBAPlayer;
-import com.sts.concretemodel.NFLPlayer;
-import com.sts.concretemodel.NHLPlayer;
 import com.sts.concretemodel.PlayersList;
 import com.sts.concretemodel.TeamHistory;
 import com.sts.concretemodel.TeamsList;
+import com.sts.mlb.models.MLBPlayer;
 import com.sts.model.exception.MismatchPlayerandTeamSportException;
 import com.sts.model.exception.TeamNotFoundException;
+import com.sts.nba.models.NBAPlayer;
+import com.sts.nfl.models.NFLPlayer;
+import com.sts.nhl.models.NHLPlayer;
 /*
  * This class will read from the players list input, and will deal with switching teams and changing Jersey numbers.
  * We will store all the players in a hash map when the ID is the key for the map.

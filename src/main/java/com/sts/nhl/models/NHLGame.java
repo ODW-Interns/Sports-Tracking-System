@@ -1,4 +1,4 @@
-package com.sts.concretemodel;
+package com.sts.nhl.models;
 
 import com.sts.abstractmodel.AbstractGame;
 
