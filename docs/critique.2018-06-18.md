@@ -139,4 +139,4 @@
 	}
    
 ```
-- **IMPORTANT**: please check project documentation on github. This solution is not event driven.
+- **IMPORTANT**: please check project documentation on github. This solution is not event driven. There should be point which offers e.g. service, available for some client that can send messages, like create new games, create new players, move player to another team, create team, etc. 
