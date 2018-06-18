@@ -1,5 +1,8 @@
 package com.sts.abstractmodel;
 
+/**
+ * Interface for the games & players & teams
+ */
 public interface InterfaceModel {
 	
 	boolean isValid();

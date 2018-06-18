@@ -4,7 +4,7 @@ package com.sts.abstractmodel;
 import java.util.ArrayList;
 
 
-/*
+/**
  * Abstract class to represent a team for a sport
  */
 

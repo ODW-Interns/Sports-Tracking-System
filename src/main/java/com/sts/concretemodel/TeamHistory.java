@@ -2,9 +2,11 @@ package com.sts.concretemodel;
 
 import java.util.Date;
 
+/**
+ * Class for storing player's team history  including dates
+ */
 public class TeamHistory {
 
-	//TODO: Add start date and finished date
 	String _TeamCity;
 	String _TeamName;
 	Date _StartDate;

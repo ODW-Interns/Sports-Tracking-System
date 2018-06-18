@@ -1,5 +1,8 @@
 package com.sts.concretemodel;
 
+/**
+ * Generating a key for the TreeMap (Games)
+ */
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.ZonedDateTime;
