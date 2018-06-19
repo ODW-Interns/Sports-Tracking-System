@@ -84,7 +84,7 @@ public class GamesFileReader {
      * Parse the date with the given string and returns the date and time
      * in the current system's time zone
      */
-    private ZonedDateTime parseDate(String str_) {
+    public ZonedDateTime parseDate(String str_) {
         try {
             DateTimeFormatter formatter =DateTimeFormatter.ISO_DATE_TIME;
             // Get current system's time zone

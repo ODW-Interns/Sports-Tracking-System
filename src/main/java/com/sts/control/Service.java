@@ -3,6 +3,11 @@ package com.sts.control;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -25,8 +30,70 @@ public class Service {
 	 	    reader = new BufferedReader(new InputStreamReader(System.in));
 	    }
 	    
+	    public ZonedDateTime parseDate(String str_) {
+	        try {
+	            DateTimeFormatter formatter =DateTimeFormatter.ISO_DATE_TIME;
+	            // Get current system's time zone
+	            ZoneId defaultZone = ZoneId.systemDefault();
+	            ZonedDateTime inputTime = ZonedDateTime.parse(str_,  formatter);
+	            ZonedDateTime currentTime = inputTime.withZoneSameInstant(defaultZone);
+	            return currentTime;
+	        }
+	        catch (DateTimeParseException exc) {
+	            _logger.error("{} is not parsable!", str_);
+	            throw exc;
+	        }
+	    }
+	    
+	    
 		public void createGames() {
-			
+				SportsCategory category;
+				int gameID;
+				ZonedDateTime dateTime;
+				String awayCity;
+				
+				_logger.info("Enter the Game Details: ");
+				
+				/*
+				 * Reading Game Category
+				 */
+				_logger.info("Enter the Game Category");
+				try {
+					category=SportsCategory.valueOf(reader.readLine());
+				} catch (IOException e) {
+					_logger.error("The entered category is : " + e.toString());
+				}
+				
+				/*
+				 * Reading Game ID
+				 */
+				_logger .info("Enter the Game ID");
+				try {
+					gameID=reader.read();
+				} catch (IOException e) {
+					_logger.error("The entered ID is : " + e.toString() );
+				}
+				
+				/*
+				 * Reading Date
+				 */
+				_logger.info("Enter the Game Date");
+				try {
+					dateTime=parseDate(reader.readLine());
+				} catch (IOException e) {
+					_logger.error("The entered Date and Time is : " + e.toString());
+				}
+				
+				/*
+				 * Reading the Away city 
+				 */
+				_logger.info("Enter the away city ");
+				try {
+					awayCity=reader.readLine();
+				} catch (IOException e) {
+					_logger.info("Entered away city is : " +e.toString());
+				}
+				
 		}
 		
 		public void createPlayers(TeamsList listofTeams_, PlayersList listofPlayers_) throws IOException {
