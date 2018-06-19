@@ -126,19 +126,19 @@ public class Service {
 				
 			//set team category
 			  try {
-	                if(category.equals(category.valueOf("NBA"))) {
+	                if(category.equals(SportsCategory.valueOf("NBA"))) {
 	                	team = new TeamNBA();
 	                	team.setTeamSport(SportsCategory.valueOf("NBA"));
 	                }
-	                else if(category.equals(category.valueOf("NFL"))) {
+	                else if(category.equals(SportsCategory.valueOf("NFL"))) {
 	                	team = new TeamNFL();
 	                	team.setTeamSport(SportsCategory.valueOf("NFL"));
 	                }
-	                else if(category.equals(category.valueOf("NHL"))) {
+	                else if(category.equals(SportsCategory.valueOf("NHL"))) {
 	                	team = new TeamNHL();
 	                	team.setTeamSport(SportsCategory.valueOf("NHL"));
 	                }
-	                else if(category.equals(category.valueOf("MLB"))) {
+	                else if(category.equals(SportsCategory.valueOf("MLB"))) {
 	                	team = new TeamMLB();
 	                	team.setTeamSport(SportsCategory.valueOf("MLB"));
 	                }
