@@ -7,10 +7,12 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.sts.abstractmodel.AbstractPlayer;
+import com.sts.abstractmodel.AbstractTeam;
 import com.sts.abstractmodel.SportsCategory;
 import com.sts.concretemodel.PlayersList;
 import com.sts.concretemodel.TeamsList;
 import com.sts.mlb.models.MLBPlayer;
+import com.sts.model.exception.TeamNotFoundException;
 import com.sts.nba.models.NBAPlayer;
 import com.sts.nfl.models.NFLPlayer;
 import com.sts.nhl.models.NHLPlayer;
@@ -29,13 +31,17 @@ public class Service {
 			
 		}
 		
+		/**
+		 * TODO: Finish this method to handle event of creating and tracking a player
+		 */
 		public void createPlayers(TeamsList listofTeams_, PlayersList listofPlayers_) throws IOException {
-			String category;
+			SportsCategory category;
+			AbstractTeam teamOfPlayer = null;
 			AbstractPlayer player = null;
 			String lineForTeam = null;
 			
 			_logger.info("Enter Sport of Player");
-			category = reader.readLine();
+			category = SportsCategory.valueOf(reader.readLine());
 			
 			//Prompt for which sport the player being created plays
 		      try {
@@ -90,16 +96,34 @@ public class Service {
 			
 			_logger.info("Enter Player's Current Team: ");
 			_logger.info("If player is currently not on a team, then leave blank");
-			
+			lineForTeam = reader.readLine();
 			try {
 				if(lineForTeam == "") {
 					listofPlayers_.returnPlayersMap().put(player.get_playerID(), player);
 					_logger.trace("New player successfully created and added to player's map");
+					return;
 				}
+				else {
+					if(listofTeams_.getTeamMap().get(lineForTeam) != null) {
+						player.setCurrentTeam(listofTeams_.getTeamMap().get(lineForTeam));
+					}
+					else {
+						throw new TeamNotFoundException(lineForTeam);
+					}
+				}
+			}
+			catch(Exception e_) {
+				_logger.error("Player not created: " + e_.toString());
+				return;
+			}
+			
+			try {
+				
 			}
 			catch(Exception e_) {
 				
 			}
+			
 			
 		}
 		public void createTeam() {
