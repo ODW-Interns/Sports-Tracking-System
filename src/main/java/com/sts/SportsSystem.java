@@ -20,6 +20,7 @@ import com.sts.abstractmodel.AbstractGame;
 import com.sts.concretemodel.GamesList;
 import com.sts.concretemodel.Key;
 import com.sts.concretemodel.PlayersList;
+import com.sts.concretemodel.TeamPlayer;
 import com.sts.concretemodel.TeamsList;
 import com.sts.control.Service;
 import com.sts.control.StoreDataFromInputFile;
@@ -60,6 +61,7 @@ public class SportsSystem {
  	    	public void run() {
  	    		AbstractTeam awayTeam;
  	    		AbstractTeam homeTeam;
+ 	    		ArrayList<TeamPlayer> listofPlayersOnTeam = new ArrayList<TeamPlayer>();
  	    		timeNow = ZonedDateTime.now();
  	    		int tempUID = -1;
  	    		Key lowestkey = new Key(timeNow,tempUID);
@@ -69,9 +71,17 @@ public class SportsSystem {
  	    			if(entry.getValue().getDuration() == null) {
  	    				//Set players that played in game to current rosters of each team
  	    				awayTeam = _listofTeams.getTeamMap().get(entry.getValue().getAwayTeam().fullTeamName());
+ 	    				listofPlayersOnTeam = awayTeam.getCurrentPlayers();
+ 	    				for(int i = 0 ; i < listofPlayersOnTeam.size(); i++) {
+ 	    					entry.getValue().getListOfAwayPlayers().add(listofPlayersOnTeam.get(i).getPlayer().get_playerID());
+ 	    				}
  	    				homeTeam = _listofTeams.getTeamMap().get(entry.getValue().getHomeTeam().fullTeamName());
- 	    				entry.getValue().setListOfAwayPlayers(awayTeam.getListOfPLayers());
- 	    				entry.getValue().setListofHomePlayers(homeTeam.getListOfPLayers());
+ 	    				listofPlayersOnTeam = homeTeam.getCurrentPlayers();
+ 	    				for(int i = 0 ; i < listofPlayersOnTeam.size(); i++) {
+ 	    					entry.getValue().getListofHomePlayers().add(listofPlayersOnTeam.get(i).getPlayer().get_playerID());
+ 	    				}
+ 	    				//entry.getValue().setListOfAwayPlayers(awayTeam.getCurrentPlayers());
+ 	    				//entry.getValue().setListofHomePlayers(homeTeam.getListOfPLayers());
  	    				//Set default duration to 4 hours until updated
  	    				entry.getValue().setDuration(Duration.parse("PT4H"));
  	    				

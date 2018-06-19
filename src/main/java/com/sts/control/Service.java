@@ -3,6 +3,9 @@ package com.sts.control;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -10,6 +13,7 @@ import com.sts.abstractmodel.AbstractPlayer;
 import com.sts.abstractmodel.AbstractTeam;
 import com.sts.abstractmodel.SportsCategory;
 import com.sts.concretemodel.PlayersList;
+import com.sts.concretemodel.TeamPlayer;
 import com.sts.concretemodel.TeamsList;
 import com.sts.mlb.models.MLBPlayer;
 import com.sts.model.exception.TeamNotFoundException;
@@ -20,7 +24,6 @@ import com.sts.nfl.models.NFLPlayer;
 import com.sts.nfl.models.TeamNFL;
 import com.sts.nhl.models.NHLPlayer;
 import com.sts.nhl.models.TeamNHL;
-import com.sts.control.TeamsFileReader;
 
 public class Service {
 	
@@ -41,10 +44,10 @@ public class Service {
 		 */
 		public void createPlayers(TeamsList listofTeams_, PlayersList listofPlayers_) throws IOException {
 			SportsCategory category;
-			AbstractTeam teamOfPlayer = null;
 			AbstractPlayer player = null;
 			String lineForTeam = null;
-			
+			TeamPlayer currentHistory = null;
+			Date StartDate;
 			_logger.info("Enter Sport of Player");
 			category = SportsCategory.valueOf(reader.readLine());
 			
@@ -110,7 +113,8 @@ public class Service {
 				}
 				else {
 					if(listofTeams_.getTeamMap().get(lineForTeam) != null) {
-						player.setCurrentTeam(listofTeams_.getTeamMap().get(lineForTeam));
+						currentHistory = new TeamPlayer();
+						currentHistory.setTeam(listofTeams_.getTeamMap().get(lineForTeam));
 					}
 					else {
 						throw new TeamNotFoundException(lineForTeam);
@@ -122,14 +126,21 @@ public class Service {
 				return;
 			}
 			
+			
+			_logger.info("Enter the start date of the player on this team in this format(yyyy-mm-dd):");
 			try {
-				
+	           	StartDate = new SimpleDateFormat("yyyy-MM-dd").parse(reader.readLine());
+	           	currentHistory.setStartDate(StartDate);
+	           	currentHistory.setStatus(true);
 			}
 			catch(Exception e_) {
-				
+				_logger.error("Setting Start Date on team: " + e_.toString());
 			}
 			
-			
+			currentHistory.setPlayer(player);
+			player.setCurrentTeamHistory(currentHistory);
+			listofPlayers_.returnPlayersMap().put(player.get_playerID(), player);
+			_logger.trace("Successfully added player to player's map");
 		}
 		public void createTeam(TeamsList listofTeams) throws IOException {
 			SportsCategory category;

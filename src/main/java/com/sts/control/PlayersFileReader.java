@@ -20,7 +20,7 @@ import com.sts.abstractmodel.AbstractTeam;
 import com.sts.abstractmodel.SportsCategory;
 import com.sts.concretemodel.GamesList;
 import com.sts.concretemodel.PlayersList;
-import com.sts.concretemodel.TeamHistory;
+import com.sts.concretemodel.TeamPlayer;
 import com.sts.concretemodel.TeamsList;
 import com.sts.mlb.models.MLBPlayer;
 import com.sts.model.exception.MismatchPlayerandTeamSportException;
@@ -98,10 +98,11 @@ public class PlayersFileReader {
     /**
      * method to parse the team from the data file
      */
-    private void parseCurrentTeam(TeamsList teamList_, String teamStr_, AbstractPlayer player_, PlayersList playerlist_) throws Exception {
+    private void parseCurrentTeam(TeamsList teamList_, String teamStr_, AbstractPlayer player_, PlayersList playerlist_, TeamPlayer currentTeamHistory_) throws Exception {
     	AbstractPlayer tempPlayer;
-    	ArrayList<Integer> temp1;
+    	ArrayList<TeamPlayer> temp1;
     	AbstractTeam temp;
+    	int tempJnumb;
     	
     	//Check to see if team actually exists for the player to be on
     	if(teamList_.getTeamMap().get(teamStr_) == null) {
@@ -113,13 +114,13 @@ public class PlayersFileReader {
     			throw new MismatchPlayerandTeamSportException();
     		}
     		else {
-    			
+    	
     			temp = teamList_.getTeamMap().get(teamStr_);
-    			temp1 = temp.getListOfPLayers();
+    			temp1 = temp.getCurrentPlayers();
     			//Check for duplicate Jersey #'s on the same team
     			for(int i=0;i<temp1.size();i++) {
-    			tempPlayer=playerlist_.returnPlayersMap().get(temp1.get(i));
-    			int tempJnumb=tempPlayer.getJerseyNum();
+    			tempPlayer=playerlist_.returnPlayersMap().get(temp1.get(i).getPlayer().get_playerID());
+    			tempJnumb=tempPlayer.getJerseyNum();
     			if(tempJnumb==player_.getJerseyNum() && tempJnumb != playerlist_.returnPlayersMap().get(player_.get_playerID()).getJerseyNum()) {
     				throw new Exception ("Duplicate Jersey Number");
     					
@@ -127,10 +128,12 @@ public class PlayersFileReader {
     		}
     			
     	}
-    		player_.setCurrentTeam(teamList_.getTeamMap().get(teamStr_));
+    		currentTeamHistory_.setTeam(teamList_.getTeamMap().get(teamStr_));
+    		player_.setCurrentTeamHistory(currentTeamHistory_);
+    		player_.getPlayerTeams().add(currentTeamHistory_);
+
     }
   }
-    
     
     
     /**
@@ -141,8 +144,10 @@ public class PlayersFileReader {
 		 try (BufferedReader reader = new BufferedReader(is_)) {
 	         StringTokenizer tokenizer;   
 	         AbstractPlayer player = null;
-	         TeamHistory currentTeamHistory = null;
 			 String line;
+			 String teamOfPlayer;
+			 Date StartDate;
+			 TeamPlayer currentTeam;
 			 SportsCategory category;
 	            while ((line = reader.readLine()) != null) {
 	                // don't process empty lines
@@ -241,7 +246,12 @@ public class PlayersFileReader {
 	                
 	                //Player's current team
 	                try {
-	                	parseCurrentTeam(teamsList_, tokenizer.nextToken(), player, playerlist_);
+	                	teamOfPlayer = tokenizer.nextToken();
+	                   	StartDate = new SimpleDateFormat("yyyy-MM-dd").parse(tokenizer.nextToken());
+	                	currentTeam = new TeamPlayer();
+	                	currentTeam.setStartDate(StartDate);
+	                	currentTeam.setStatus(true);
+	                	parseCurrentTeam(teamsList_, teamOfPlayer, player, playerlist_, currentTeam);
 	               
 	                }
 	                catch(Exception e_) {
@@ -251,10 +261,10 @@ public class PlayersFileReader {
 	                
 	            	 // Add new player to players map
 	            	 try {
-	            		 player.get_HistoryOfTeamsForPlayers().add(currentTeamHistory);
 	            		 addPlayer(player, playerlist_);
 	            		 // Add player to their current team
-	            		 teamsList_.getTeamMap().get(player.getCurrentTeam().fullTeamName()).getListOfPLayers().add(player.get_playerID());
+	            		 currentTeam.setPlayer(player);
+	            		 teamsList_.getTeamMap().get(player.getCurrentTeamHistory().getTeam().fullTeamName()).getEntireHistoryPlayers().add(currentTeam);
 	            	 }
 	            	 catch(Exception e_) {
 	            		 _logger.error("Player's current team is not a valid team: " + e_.toString());
@@ -265,9 +275,10 @@ public class PlayersFileReader {
 	}
 	
 	public void readFromStringForList(String line, PlayersList playersList_, TeamsList teamsList_) throws Exception {
-		
+		 String teamOfPlayer;
+		 Date StartDate;
+		 TeamPlayer currentTeam;
 		 StringTokenizer tokenizer;   
-		 TeamHistory currentTeamHistory = null;
 		 SportsCategory category = null;
          AbstractPlayer player = null;
 		
@@ -346,7 +357,12 @@ public class PlayersFileReader {
         }
         
         try {
-        	parseCurrentTeam(teamsList_, tokenizer.nextToken(), player, playersList_);	           
+        	teamOfPlayer = tokenizer.nextToken();
+           	StartDate = new SimpleDateFormat("yyyy-MM-dd").parse(tokenizer.nextToken());
+        	currentTeam = new TeamPlayer();
+        	currentTeam.setStartDate(StartDate);
+        	currentTeam.setStatus(true);
+        	parseCurrentTeam(teamsList_, teamOfPlayer, player, playersList_, currentTeam);
         }
         catch(Exception e_) {
         	_logger.error("setTeam:" + e_.toString());
@@ -355,10 +371,10 @@ public class PlayersFileReader {
 
     	 // Add new player to players map
     	 try {
-    		 player.get_HistoryOfTeamsForPlayers().add(currentTeamHistory);
     		 addPlayer(player, playersList_);
     		 // Add player to their current team
-    		 teamsList_.getTeamMap().get(player.getCurrentTeam().fullTeamName()).getListOfPLayers().add(player.get_playerID());
+    		 currentTeam.setPlayer(player);
+    		 teamsList_.getTeamMap().get(player.getCurrentTeamHistory().getTeam().fullTeamName()).getEntireHistoryPlayers().add(currentTeam);
     	 }
     	 catch(Exception e_) {
     		 _logger.error("Player's current team is not a valid team: " + e_.toString());
