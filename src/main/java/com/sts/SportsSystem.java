@@ -129,7 +129,7 @@ public class SportsSystem {
 
 						_logger.info("1: Enter 1 to display list of finished games");
 						_logger.info("2: Enter 2 to display list of upcoming games");
-						_logger.info("3: Enter 3 to update player(s)");
+						_logger.info("3: Enter 3 to create a player");
 						_logger.info("4: Enter 4 to update game(s)");
 						_logger.info("5: Enter 5 to exit");
 
@@ -152,18 +152,8 @@ public class SportsSystem {
 							_listofGames.logUpcomingGames(_listofPlayers);
 
 							break;
-						case 3: //prompts user for a file of all players who need updating with the player's new data
-							_logger.info("Enter the file name to update player(s) you want");
-							fileName = reader.readLine();
-							String path = "/";
-							path = path + fileName;
-							try {
-								//Parse file line by line to update player's data
-								StoreDataFromInputFile.storeDataIntoPlayerList(path, _listofGames, _listofTeams,
-										_listofPlayers);
-							} catch (Exception e_) {
-								_logger.error("File not found: " + e_.toString());
-							}
+						case 3: //prompts user for a data to create and player and keep track of player in player's map
+							eventHandler.createPlayers(_listofTeams, _listofPlayers);
 
 							break;
 						case 4: // Update games

@@ -39,8 +39,10 @@ public class Service {
 			
 		}
 		
+		
 		/*
 		 * Method for creating and adding new player
+		 * TODO: Add exceptions for adding player
 		 */
 		public void createPlayers(TeamsList listofTeams_, PlayersList listofPlayers_) throws IOException {
 			SportsCategory category;
@@ -140,6 +142,7 @@ public class Service {
 			currentHistory.setPlayer(player);
 			player.setCurrentTeamHistory(currentHistory);
 			listofPlayers_.returnPlayersMap().put(player.get_playerID(), player);
+			listofTeams_.getTeamMap().get(player.getCurrentTeamHistory().getTeam().fullTeamName()).getEntireHistoryPlayers().add(player.getCurrentTeamHistory());
 			_logger.trace("Successfully added player to player's map");
 		}
 		
