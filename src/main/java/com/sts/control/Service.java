@@ -12,13 +12,19 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.sts.abstractmodel.AbstractPlayer;
+import com.sts.abstractmodel.AbstractTeam;
 import com.sts.abstractmodel.SportsCategory;
 import com.sts.concretemodel.PlayersList;
 import com.sts.concretemodel.TeamsList;
 import com.sts.mlb.models.MLBPlayer;
+import com.sts.mlb.models.TeamMLB;
 import com.sts.nba.models.NBAPlayer;
+import com.sts.nba.models.TeamNBA;
 import com.sts.nfl.models.NFLPlayer;
+import com.sts.nfl.models.TeamNFL;
 import com.sts.nhl.models.NHLPlayer;
+import com.sts.nhl.models.TeamNHL;
+import com.sts.control.TeamsFileReader;
 
 public class Service {
 	
@@ -169,9 +175,69 @@ public class Service {
 			}
 			
 		}
-		public void createTeam() {
+		public void createTeam(TeamsList listofTeams) throws IOException {
+			SportsCategory category;
+			AbstractTeam team = null;
+			String newTeam;
 			
+			_logger.info("Enter Team's Sport Category");
+			category =  SportsCategory.valueOf(reader.readLine());
+								
+			  try {
+	                if(category.equals(category.valueOf("NBA"))) {
+	                	team = new TeamNBA();
+	                	team.setTeamSport(SportsCategory.valueOf("NBA"));
+	                }
+	                else if(category.equals(category.valueOf("NFL"))) {
+	                	team = new TeamNFL();
+	                	team.setTeamSport(SportsCategory.valueOf("NFL"));
+	                }
+	                else if(category.equals(category.valueOf("NHL"))) {
+	                	team = new TeamNHL();
+	                	team.setTeamSport(SportsCategory.valueOf("NHL"));
+	                }
+	                else if(category.equals(category.valueOf("MLB"))) {
+	                	team = new TeamMLB();
+	                	team.setTeamSport(SportsCategory.valueOf("MLB"));
+	                }
+	                else
+	                	throw new Exception("Invalid category.");
+            }
+            catch(Exception e_) {
+            	_logger.error("Failed to initialize Team:" + e_.toString());
+            }
+			  
+			  _logger.info("Enter Team Location");
+			  try {
+				  team.setLocation(reader.readLine());
+			  }
+			  catch (Exception e_){
+				  _logger.error("Entering Location" + e_.toString());
+			  }
+			  
+			  _logger.info("Enter Team Name");
+			  try {
+				  team.setTeamName(reader.readLine());
+			  }
+			  catch (Exception e_) {
+				  _logger.error("Entering Team Name" + e_.toString());
+			  }
 			
+			  if (!team.isValid())
+		        {
+		            _logger.error("Refusing to add invalid team: {}", team);
+		            return;
+		        }
+		        
+		        //
+		        //Add game object to the list of games provided
+		        //
+		        listofTeams.getTeamMap().put(team.fullTeamName(), team);
+
+		        if (_logger.isTraceEnabled())
+		            _logger.trace("Adding new team to team map: {}", team.toString());
+		    
+
 		}
 		public void movePlayer() {
 			
