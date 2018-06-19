@@ -35,6 +35,9 @@ public class Service {
 			
 		}
 		
+		/*
+		 * Method for creating and addig new player
+		 */
 		public void createPlayers(TeamsList listofTeams_, PlayersList listofPlayers_) throws IOException {
 			String category;
 			AbstractPlayer player = null;
@@ -108,14 +111,20 @@ public class Service {
 			}
 			
 		}
+		
+		/*
+		 * method for creating & adding a new team 
+		 */
 		public void createTeam(TeamsList listofTeams) throws IOException {
 			SportsCategory category;
 			AbstractTeam team = null;
 			String newTeam;
 			
+			//promt for new team sport
 			_logger.info("Enter Team's Sport Category");
 			category =  SportsCategory.valueOf(reader.readLine());
-								
+				
+			//set team category
 			  try {
 	                if(category.equals(category.valueOf("NBA"))) {
 	                	team = new TeamNBA();
@@ -140,7 +149,10 @@ public class Service {
             	_logger.error("Failed to initialize Team:" + e_.toString());
             }
 			  
+			  //promt for new team location
 			  _logger.info("Enter Team Location");
+			  
+			  //set team location
 			  try {
 				  team.setLocation(reader.readLine());
 			  }
@@ -148,7 +160,10 @@ public class Service {
 				  _logger.error("Entering Location" + e_.toString());
 			  }
 			  
+			  //promt for new team name
 			  _logger.info("Enter Team Name");
+			  
+			  //set team name
 			  try {
 				  team.setTeamName(reader.readLine());
 			  }
