@@ -3,6 +3,7 @@ package com.sts.control;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
@@ -53,9 +54,12 @@ public class GamesFileReader {
 	private ZonedDateTime tempStartTime;
 
     private static final String DELIM = "|";
+    
+    private BufferedReader reader;
 
     //Constructor
     public GamesFileReader() {
+    	reader = new BufferedReader(new InputStreamReader(System.in));
         _logger = LoggerFactory.getLogger(getClass().getSimpleName());
     }
 
@@ -85,7 +89,7 @@ public class GamesFileReader {
      * Parse the date with the given string and returns the date and time
      * in the current system's time zone
      */
-    private ZonedDateTime parseDate(String str_) {
+    public ZonedDateTime parseDate(String str_) {
         try {
             DateTimeFormatter formatter =DateTimeFormatter.ISO_DATE_TIME;
             // Get current system's time zone
@@ -621,6 +625,277 @@ public class GamesFileReader {
                 addGame(game, gamesList_);
                 
     }
+    
+	public void createGames(GamesList gamesList_, TeamsList teamsList_, PlayersList playersList_) throws Exception {
+		SportsCategory category = null;
+		int gameID = 0;
+		ZonedDateTime dateTime = null;
+		String awayCity = null;
+		String awayTeamName = null;
+		
+		String homeCity = null;
+		String homeTeamName = null;
+		String teamName = null;
+		int homeTeamScore;
+		int awayTeamScore;
+		
+		int awayTeamCount = 0;
+		int homeTeamCount = 0;
+		
+		int gameAttendance;
+		
+		Duration gameDuration;
+		Set<Key> keys;
+		
+		AbstractGame game = null;
+		AbstractTeam home=null;
+		
+		String tempPlayerID;		
+		
+		_logger.info("Enter the Game Details: ");
+		
+		/*
+		 * Reading Game Category
+		 */
+		_logger.info("Enter the Game Category");
+		try {
+			category=SportsCategory.valueOf(reader.readLine());
+			
+		} catch (IOException e) {
+			_logger.error("The entered category is : " + e.toString());
+		}
+		
+		/*
+		 * Instantiate game object based on sport
+		 */
+        try {
+            if(category.equals(SportsCategory.valueOf("NBA"))) {
+            	game = new NBAGame();
+            	game.setCategory(category);
+            }
+            else if(category.equals(SportsCategory.valueOf("NFL"))) {
+            	game = new NFLGame();
+            	game.setCategory(category);
+            }
+            else if(category.equals(SportsCategory.valueOf("NHL"))) {
+            	game = new NHLGame();
+            	game.setCategory(category);
+            }
+            else if(category.equals(SportsCategory.valueOf("MLB"))) {
+            	game = new MLBGame();
+            	game.setCategory(category);
+            }
+            
+        }
+        catch(Exception e_) {
+        	_logger.error("Failed to initialize game:" + e_.toString());
+        }
+		
+		
+		/*
+		 * Check Game ID
+		 */
+		try {
+			keys = gamesList_.getGamesMap().keySet();
+			gameID=gamesList_.getGamesMap().size() + 1;
+			for(Key key: keys) {
+        		
+        		if(key.getGameUID()==gameID) {
+        			
+        			throw new Exception("Game ID already exists");
+        			
+        		}
+        	}
+			game.setGameUID(gameID);
+
+		} catch (IOException e) {
+			_logger.error("The ePlayerIsOnTeamntered ID is : " + e.toString() );
+		}
+		
+		
+		/*
+		 * Reading Date
+		 */
+		_logger.info("Enter the Game Date");
+		try {
+			dateTime=parseDate(reader.readLine());
+		} catch (IOException e) {
+			_logger.error("The entered Date and Time is : " + e.toString());
+		}
+		game.setStartTime(dateTime);
+		
+		/*
+		 * Reading the Away city 
+		 */
+		_logger.info("Enter the away city ");
+		try {
+			awayCity=reader.readLine();
+			
+		} catch (IOException e) {
+			_logger.info("Entered away city is : " +e.toString());
+		}
+		
+		/*
+		 * Reading the Away Team Name 
+		 */
+		_logger.info("Enter the away team name: ");
+		try {
+			awayTeamName=reader.readLine();
+			game.setAwayTeam(parseTeam(category,awayCity,awayTeamName, teamsList_));
+		} catch (IOException e) {
+			_logger.error("The entered away team is : " +e.toString());
+		}
+		
+		/*
+		 * Reading the Home city 
+		 */
+		_logger.info("Enter the home city ");
+		try {
+			homeCity=reader.readLine();
+			
+		} catch (IOException e) {
+			_logger.info("Entered away city is : " +e.toString());
+		}
+		
+		/*
+		 * Reading the Home Team Name 
+		 */
+		_logger.info("Enter the home team name: ");
+		try {
+			homeTeamName=reader.readLine();
+			home=(parseTeam(category,homeCity,homeTeamName, teamsList_));
+		} catch (IOException e) {
+			_logger.error("The entered home team is : " +e.toString());
+		}
+		if (home.equals(game.getAwayTeam()))
+            throw new DuplicateTeamException("Home team cannot be the same as away", home);
+		game.setHomeTeam(home);
+			
+		/*
+		 * Checking if future game or past game
+		 */
+			if (game.getStartTime().isAfter(ZonedDateTime.now())) {
+                // this is a game in the future, do not process any more data
+            	
+            	addGame(game, gamesList_);
+            	return;
+            }          
+		
+		
+		/*
+		 * Reading the away team score
+		 */
+		_logger.info("Enter the away team score");
+		try {
+			awayTeamScore=Integer.parseInt(reader.readLine());
+			if(awayTeamScore < 0) {
+        		throw new NegativeScoreException();
+        	}
+			game.setAwayTeamScore(awayTeamScore);
+			
+		} catch (IOException e) {
+			_logger.error("The entered score is : " +e.toString() );
+			
+		}
+		
+		/*
+		 * Reading the home team score
+		 */
+		_logger.info("Enter the home team score");
+		try {
+			homeTeamScore=Integer.parseInt(reader.readLine());
+			if(homeTeamScore < 0) {
+        		throw new NegativeScoreException();
+        	}
+            game.setHomeTeamScore(homeTeamScore);
+		} catch (IOException e) {
+			_logger.error("The entered score is : " +e.toString() );
+			
+		}
+		
+		/*
+		 * Asking user about how many AWAY team ID's he want to enter 
+		 */
+		_logger.info("How many members are there in the away team?");
+		try {
+			awayTeamCount=Integer.parseInt(reader.readLine());
+			if(awayTeamCount <= 0)
+				throw new Exception("Players played for away team should be greater than 0");
+		} catch (IOException e) {
+			_logger.error("The count for away team members is : " + e.toString());
+		}
+		
+		/*
+		 * User Entering the player ID's 
+		 */
+		_logger.info("Enter the player ID's of AWAY team");
+		for(int i=0;i<awayTeamCount;i++) {
+			try {
+				tempPlayerID=reader.readLine();
+                teamName = game.getAwayTeam().fullTeamName();
+				parsePlayerIDs(tempPlayerID, game, playersList_, teamsList_, teamName, game.getListOfAwayPlayers());				
+			} catch (IOException e) {
+				_logger.error("Entered away team ID is : " + e.toString());
+			}
+		}
+		
+		/*
+		 * Asking user about how many HOME team ID's he want to enter 
+		 */
+		_logger.info("How many members are there in the HOME team");
+		try {
+			homeTeamCount=Integer.parseInt(reader.readLine());
+			if(homeTeamCount <= 0)
+				throw new Exception("Players played for home team should be greater than 0");
+		} catch (IOException e) {
+			_logger.error("The count for home team members is : " + e.toString());
+		}
+		
+		/*
+		 * User Entering the player ID's 
+		 */
+		_logger.info("Enter the player ID's of HOME team");
+		for(int i=0;i<homeTeamCount;i++) {
+			try {
+				tempPlayerID=reader.readLine();
+                teamName = game.getHomeTeam().fullTeamName();
+				parsePlayerIDs(tempPlayerID, game, playersList_, teamsList_, teamName, game.getListOfAwayPlayers());
+				
+			} catch (IOException e) {
+				_logger.error("Entered HOME team ID is : " + e.toString());
+			}
+		}
+		
+		/*
+		 * Reading the Attendance
+		 */
+		_logger.info("Enter the game attendence ");
+		try {
+			gameAttendance=Integer.parseInt(reader.readLine());
+			if(gameAttendance < 0) {
+        		throw new NegativeAttendanceException();
+        	}
+			game.setAttendance(gameAttendance);
+		} catch (IOException e) {
+			_logger.error("Entered Game Attendence is " + e.toString());
+		}
+		
+		/*
+		 * Reading the Duration
+		 */
+		_logger.info("Enter the Game Duration");
+		try {
+			gameDuration=Duration.parse(reader.readLine());
+			game.setDuration(gameDuration);
+        	game.setFinishTime(game.getStartTime().plus(game.getDuration()));
+		} catch (IOException e) {
+			_logger.error("Entered duration is : " + e.toString());
+		}
+		
+    	addGame(game, gamesList_);						
+}
+	
+	
     /**
      * Add the game to the map of games if the game is valid
      */

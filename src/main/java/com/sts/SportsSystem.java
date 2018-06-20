@@ -22,9 +22,12 @@ import com.sts.concretemodel.Key;
 import com.sts.concretemodel.PlayersList;
 import com.sts.concretemodel.TeamPlayer;
 import com.sts.concretemodel.TeamsList;
+import com.sts.control.GamesFileReader;
 import com.sts.control.PlayersFileReader;
 import com.sts.control.Service;
 import com.sts.control.StoreDataFromInputFile;
+import com.sts.control.TeamsFileReader;
+
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
@@ -114,8 +117,12 @@ public class SportsSystem {
 		_listofPlayers = new PlayersList();
 		//Read from input files; initiating maps
 		
+		//Initialize object to read data for a team
+		TeamsFileReader teamsReader = new TeamsFileReader();
 		//Initialize object to read data for a player 
 		PlayersFileReader playersReader = new PlayersFileReader();
+		//Initialize object to read data for a game
+		GamesFileReader gamesReader = new GamesFileReader();
 
 		StoreDataFromInputFile.storeDataIntoTeamList("/Teams.csv", _listofGames, _listofTeams);
 		StoreDataFromInputFile.storeDataIntoPlayerList("/Players.csv", _listofGames, _listofTeams, _listofPlayers);
@@ -134,8 +141,12 @@ public class SportsSystem {
 						_logger.info("1: Enter 1 to display list of finished games");
 						_logger.info("2: Enter 2 to display list of upcoming games");
 						_logger.info("3: Enter 3 to create a player");
-						_logger.info("4: Enter 4 to update game(s)");
-						_logger.info("5: Enter 5 to exit");
+						_logger.info("4: Enter 4 to create a team");
+						_logger.info("5: Enter 5 to create a game");
+						_logger.info("6: Enter 6 to update game(s)");
+						_logger.info("7: Enter 7 to exit");
+						
+						
 
 						try {
 							choice = Integer.parseInt(reader.readLine());
@@ -147,34 +158,43 @@ public class SportsSystem {
 
 						switch (choice) {
 						case 1: // Log all finished games
-
 							_listofGames.logFinishedGames(_listofPlayers);
-
 							break;
+							
 						case 2: // Log all upcoming games
-
 							_listofGames.logUpcomingGames(_listofPlayers);
-
 							break;
-						case 3: //prompts user for a data to create and player and keep track of player in player's map
+						
+						case 3: //prompts user for data to create a player and keep track of player in player's map
 							playersReader.createPlayers(_listofTeams, _listofPlayers);
 							break;
-						case 4: // Update games
+							
+						case 4://prompts user for data to create a team and keep track of team
+							teamsReader.createTeam(_listofTeams);
+							break;
+						
+						case 5://prompts user for data to create a game and keep track of game
+							try {
+								gamesReader.createGames(_listofGames, _listofTeams, _listofPlayers);
+							} catch (Exception e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}
+							break;
+							
+						case 6: // Update finished games that have are missing data such as final scores and total attendance
 							
 							_logger.info("There are {} game(s) that need to be updated", _GamesThatNeedUpdating.size());
 							updateGames(_listofGames);
 							break;
-						case 5:
+							
+						case 7: // Shut off system
 							System.exit(0);
-							break;
+							break;	
 						default:
 
 							_logger.info("Wrong choice input. Please choose from the following options");
 
-							break;
-							
-						case 18:
-							eventHandler.createTeam(_listofTeams);
 							break;
 						
 						}

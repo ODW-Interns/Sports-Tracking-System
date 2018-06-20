@@ -121,6 +121,7 @@ public class PlayersFileReader {
     			temp1 = temp.getCurrentPlayers();
     			//Check for duplicate Jersey #'s on the same team
     			for(int i=0;i<temp1.size();i++) {
+
     				tempPlayer=playerlist_.returnPlayersMap().get(temp1.get(i).getPlayer().get_playerID());
     				tempJnumb=tempPlayer.getJerseyNum();
     				if(tempJnumb==player_.getJerseyNum()) {
@@ -129,6 +130,7 @@ public class PlayersFileReader {
     				}
     			}
     			
+
     		}
     		currentTeamHistory_.setTeam(teamList_.getTeamMap().get(teamStr_));
     		player_.setCurrentTeamHistory(currentTeamHistory_);
