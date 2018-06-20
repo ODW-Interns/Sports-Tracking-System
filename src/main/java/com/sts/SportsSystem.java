@@ -20,6 +20,7 @@ import com.sts.abstractmodel.AbstractGame;
 import com.sts.concretemodel.GamesList;
 import com.sts.concretemodel.Key;
 import com.sts.concretemodel.PlayersList;
+import com.sts.concretemodel.TeamPlayer;
 import com.sts.concretemodel.TeamsList;
 import com.sts.control.Service;
 import com.sts.control.StoreDataFromInputFile;
@@ -60,6 +61,7 @@ public class SportsSystem {
  	    	public void run() {
  	    		AbstractTeam awayTeam;
  	    		AbstractTeam homeTeam;
+ 	    		ArrayList<TeamPlayer> listofPlayersOnTeam = new ArrayList<TeamPlayer>();
  	    		timeNow = ZonedDateTime.now();
  	    		int tempUID = -1;
  	    		Key lowestkey = new Key(timeNow,tempUID);
@@ -69,9 +71,17 @@ public class SportsSystem {
  	    			if(entry.getValue().getDuration() == null) {
  	    				//Set players that played in game to current rosters of each team
  	    				awayTeam = _listofTeams.getTeamMap().get(entry.getValue().getAwayTeam().fullTeamName());
+ 	    				listofPlayersOnTeam = awayTeam.getCurrentPlayers();
+ 	    				for(int i = 0 ; i < listofPlayersOnTeam.size(); i++) {
+ 	    					entry.getValue().getListOfAwayPlayers().add(listofPlayersOnTeam.get(i).getPlayer().get_playerID());
+ 	    				}
  	    				homeTeam = _listofTeams.getTeamMap().get(entry.getValue().getHomeTeam().fullTeamName());
- 	    				entry.getValue().setListOfAwayPlayers(awayTeam.getListOfPLayers());
- 	    				entry.getValue().setListofHomePlayers(homeTeam.getListOfPLayers());
+ 	    				listofPlayersOnTeam = homeTeam.getCurrentPlayers();
+ 	    				for(int i = 0 ; i < listofPlayersOnTeam.size(); i++) {
+ 	    					entry.getValue().getListofHomePlayers().add(listofPlayersOnTeam.get(i).getPlayer().get_playerID());
+ 	    				}
+ 	    				//entry.getValue().setListOfAwayPlayers(awayTeam.getCurrentPlayers());
+ 	    				//entry.getValue().setListofHomePlayers(homeTeam.getListOfPLayers());
  	    				//Set default duration to 4 hours until updated
  	    				entry.getValue().setDuration(Duration.parse("PT4H"));
  	    				
@@ -119,9 +129,12 @@ public class SportsSystem {
 
 						_logger.info("1: Enter 1 to display list of finished games");
 						_logger.info("2: Enter 2 to display list of upcoming games");
-						_logger.info("3: Enter 3 to update player(s)");
+						_logger.info("3: Enter 3 to create a player");
 						_logger.info("4: Enter 4 to update game(s)");
-						_logger.info("5: Enter 5 to exit");
+						_logger.info("5: Enter 5 for creating a game");
+						_logger.info("6: Enter 6 to exit");
+						
+						
 
 						try {
 							choice = Integer.parseInt(reader.readLine());
@@ -142,18 +155,8 @@ public class SportsSystem {
 							_listofGames.logUpcomingGames(_listofPlayers);
 
 							break;
-						case 3: //prompts user for a file of all players who need updating with the player's new data
-							_logger.info("Enter the file name to update player(s) you want");
-							fileName = reader.readLine();
-							String path = "/";
-							path = path + fileName;
-							try {
-								//Parse file line by line to update player's data
-								StoreDataFromInputFile.storeDataIntoPlayerList(path, _listofGames, _listofTeams,
-										_listofPlayers);
-							} catch (Exception e_) {
-								_logger.error("File not found: " + e_.toString());
-							}
+						case 3: //prompts user for a data to create and player and keep track of player in player's map
+							eventHandler.createPlayers(_listofTeams, _listofPlayers);
 
 							break;
 						case 4: // Update games
@@ -162,8 +165,17 @@ public class SportsSystem {
 							updateGames(_listofGames);
 							break;
 						case 5:
-							System.exit(0);
+							
+							try {
+								eventHandler.createGames(_listofGames,_listofTeams, _listofPlayers);
+							} catch (Exception e) {
+								_logger.error(e.toString());
+							}
 							break;
+							
+						case 6:
+							System.exit(0);
+							break;	
 						default:
 
 							_logger.info("Wrong choice input. Please choose from the following options");

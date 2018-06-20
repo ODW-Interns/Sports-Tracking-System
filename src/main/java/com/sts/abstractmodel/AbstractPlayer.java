@@ -1,8 +1,9 @@
 package com.sts.abstractmodel;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
-import com.sts.concretemodel.TeamHistory;
+import com.sts.concretemodel.TeamPlayer;
 
 /**
  * Abstract class to represent a player for a sport
@@ -19,14 +20,14 @@ public abstract class AbstractPlayer implements InterfaceModel{
 	private int _jerseyNum;
 	//Player's Unique ID
 	private int _playerID;	
-	//The player's current team
-	private AbstractTeam _currentTeam;
-	//The sport the player plays
 
+	//The sport the player plays
 	private SportsCategory _sportCategory;
 	
-	//List of teams the player has played for
-	private ArrayList<TeamHistory> _HistoryOfTeamsForPlayer;
+	TeamPlayer _currentTeamHistory;
+
+
+	private ArrayList<TeamPlayer> playerTeams;
 		
 	/*Default Constructor*/
 	public AbstractPlayer() {
@@ -40,7 +41,7 @@ public abstract class AbstractPlayer implements InterfaceModel{
 		_lastName = lastName_;
 		_playerID = playerID_;
 		_jerseyNum = jerseyNum_;
-		_HistoryOfTeamsForPlayer = new ArrayList<TeamHistory>();
+		playerTeams = new ArrayList<TeamPlayer>();
 	}
 
 	
@@ -54,16 +55,6 @@ public abstract class AbstractPlayer implements InterfaceModel{
 		this._sportCategory = _sportCategory;
 	}
 	
-
-	/* Return: the player's current team*/
-	public AbstractTeam getCurrentTeam() {
-		return _currentTeam;
-	}
-
-	/*Set the player's current team*/
-	public void setCurrentTeam(AbstractTeam currentTeam) {
-		this._currentTeam = currentTeam;
-	}
 	
 	/*Return: The player's first name*/
 	public String getFirstName() {
@@ -106,14 +97,36 @@ public abstract class AbstractPlayer implements InterfaceModel{
 		this._playerID = _playerID;
 	}
 	
-	/*Return: List of teams player previously played for*/
-	public ArrayList<TeamHistory> get_HistoryOfTeamsForPlayers() {
-		return _HistoryOfTeamsForPlayer;
+	public void setCurrentTeamHistory(TeamPlayer currentTeam) {
+		this._currentTeamHistory = currentTeam;
+	}
+		
+	public TeamPlayer getCurrentTeamHistory() {
+		return _currentTeamHistory;
+	}
+	
+	public AbstractTeam getCurrentTeam() {
+		// TODO filter team players by status/enddate.
+		Iterator<TeamPlayer> i;
+		i = playerTeams.iterator();
+		TeamPlayer tempTeamPlayer = null;
+		
+		while(i.hasNext()) {
+			tempTeamPlayer = i.next();
+			if(tempTeamPlayer.isStatus() == true) {
+				return tempTeamPlayer.getTeam();
+			}
+		}
+		return tempTeamPlayer.getTeam();
 	}
 
-	/*Set list of teams player previously played for*/
-	public void set_HistoryOfTeamsForPlayers(ArrayList<TeamHistory> HistoryOfTeamsForPlayer_) {
-		_HistoryOfTeamsForPlayer = HistoryOfTeamsForPlayer_;
+	
+	public ArrayList<TeamPlayer> getPlayerTeams() {
+		return playerTeams;
+	}
+
+	public void setPlayerTeams(ArrayList<TeamPlayer> playerTeams) {
+		this.playerTeams = playerTeams;
 	}
 
 	/**
@@ -126,7 +139,6 @@ public abstract class AbstractPlayer implements InterfaceModel{
                 (this.getFirstName() != null) &&
                 (this.getLastName() != null) && this.get_sportCategory() != null);
     }
-
     /*Return: String with player's info */
 	@Override
 	public String toString() {
@@ -141,7 +153,7 @@ public abstract class AbstractPlayer implements InterfaceModel{
 		return _firstName == ((AbstractPlayer)obj).getFirstName() &&
 				_lastName == ((AbstractPlayer)obj).getLastName() &&
 				_jerseyNum == ((AbstractPlayer)obj).getJerseyNum() &&
-				_currentTeam.equals(((AbstractPlayer)obj).getCurrentTeam());
+				getCurrentTeam().equals(((AbstractPlayer)obj).getCurrentTeam());
 	}
 		
 }

@@ -20,7 +20,7 @@ import com.sts.abstractmodel.AbstractTeam;
 import com.sts.abstractmodel.SportsCategory;
 import com.sts.concretemodel.GamesList;
 import com.sts.concretemodel.PlayersList;
-import com.sts.concretemodel.TeamHistory;
+import com.sts.concretemodel.TeamPlayer;
 import com.sts.concretemodel.TeamsList;
 import com.sts.mlb.models.MLBPlayer;
 import com.sts.model.exception.MismatchPlayerandTeamSportException;
@@ -98,10 +98,11 @@ public class PlayersFileReader {
     /**
      * method to parse the team from the data file
      */
-    private void parseCurrentTeam(TeamsList teamList_, String teamStr_, AbstractPlayer player_, PlayersList playerlist_) throws Exception {
+    private void parseCurrentTeam(TeamsList teamList_, String teamStr_, AbstractPlayer player_, PlayersList playerlist_, TeamPlayer currentTeamHistory_) throws Exception {
     	AbstractPlayer tempPlayer;
-    	ArrayList<Integer> temp1;
+    	ArrayList<TeamPlayer> temp1;
     	AbstractTeam temp;
+    	int tempJnumb;
     	
     	//Check to see if team actually exists for the player to be on
     	if(teamList_.getTeamMap().get(teamStr_) == null) {
@@ -113,13 +114,13 @@ public class PlayersFileReader {
     			throw new MismatchPlayerandTeamSportException();
     		}
     		else {
-    			
+    	
     			temp = teamList_.getTeamMap().get(teamStr_);
-    			temp1 = temp.getListOfPLayers();
+    			temp1 = temp.getCurrentPlayers();
     			//Check for duplicate Jersey #'s on the same team
     			for(int i=0;i<temp1.size();i++) {
-    			tempPlayer=playerlist_.returnPlayersMap().get(temp1.get(i));
-    			int tempJnumb=tempPlayer.getJerseyNum();
+    			tempPlayer=playerlist_.returnPlayersMap().get(temp1.get(i).getPlayer().get_playerID());
+    			tempJnumb=tempPlayer.getJerseyNum();
     			if(tempJnumb==player_.getJerseyNum() && tempJnumb != playerlist_.returnPlayersMap().get(player_.get_playerID()).getJerseyNum()) {
     				throw new Exception ("Duplicate Jersey Number");
     					
@@ -127,51 +128,12 @@ public class PlayersFileReader {
     		}
     			
     	}
-    		player_.setCurrentTeam(teamList_.getTeamMap().get(teamStr_));
+    		currentTeamHistory_.setTeam(teamList_.getTeamMap().get(teamStr_));
+    		player_.setCurrentTeamHistory(currentTeamHistory_);
+    		player_.getPlayerTeams().add(currentTeamHistory_);
+
     }
   }
-    
-    
-    /**
-     * Method to update a player if their jersey number or team has changed
-     * @throws Exception 
-     */
-    public void updatePlayer(AbstractPlayer player_, AbstractPlayer existingPlayer_, PlayersList playersList_, TeamHistory currentTeamHistory_, TeamsList teamsList_) throws Exception {
-		 int sizeOfTeamHistoryList = existingPlayer_.get_HistoryOfTeamsForPlayers().size();
-
-    	//Update jersey number if the player's jersey has changed
-    	if(player_.getJerseyNum() != existingPlayer_.getJerseyNum()) {
-    		_logger.info("Updating Player Jersey Number:");
-    		_logger.info("Changing Player Jersey Number from {} to Jersey Number {}", existingPlayer_.getJerseyNum(), player_.getJerseyNum());
-         	playersList_.returnPlayersMap().get(existingPlayer_.get_playerID()).set_jerseyNum(player_.getJerseyNum());
-    	}
-    	//Update player's current team if they moved team
-    	if(!player_.getCurrentTeam().equals(existingPlayer_.getCurrentTeam())) {
-    		_logger.info("Updating Player's Current Team:");
-    		_logger.info("Changing Player's Current Team from {} to {}", existingPlayer_.getCurrentTeam().fullTeamName(), player_.getCurrentTeam().fullTeamName());
-   		 	teamsList_.getTeamMap().get(existingPlayer_.getCurrentTeam().fullTeamName()).getListOfPLayers().remove(Integer.valueOf(existingPlayer_.get_playerID()));
-    		playersList_.returnPlayersMap().get(existingPlayer_.get_playerID()).setCurrentTeam(player_.getCurrentTeam());
-    		teamsList_.getTeamMap().get(playersList_.returnPlayersMap().get(existingPlayer_.get_playerID()).getCurrentTeam().fullTeamName()).getListOfPLayers().add(Integer.valueOf(existingPlayer_.get_playerID()));
-
-    		if(sizeOfTeamHistoryList > 0) {
-    			 try {
-    				 //Makes sure that the start date of the new team is not before the start date of the previous team
-    				 if(!(currentTeamHistory_.get_StartDate().before(existingPlayer_.get_HistoryOfTeamsForPlayers().get(sizeOfTeamHistoryList-1).get_StartDate()))) {
-    					 //If everything is valid, make the start date of the new team as the end date of the previous team
- 	             		playersList_.returnPlayersMap().get(existingPlayer_.get_playerID()).get_HistoryOfTeamsForPlayers().get(sizeOfTeamHistoryList-1).set_EndDate(currentTeamHistory_.get_StartDate());
- 	            		playersList_.returnPlayersMap().get(existingPlayer_.get_playerID()).get_HistoryOfTeamsForPlayers().add(currentTeamHistory_);
-
-    				 }
-    				 else 
-    					 throw new Exception("New Team's start date is before the Old Team's end date");
-    			 }
-    			 catch(Exception e_) {
-    				 _logger.error(e_.toString());
-    				 throw e_;
-    			 }
-    	   	}
-    	}	
-    }
     
     
     /**
@@ -182,8 +144,10 @@ public class PlayersFileReader {
 		 try (BufferedReader reader = new BufferedReader(is_)) {
 	         StringTokenizer tokenizer;   
 	         AbstractPlayer player = null;
-	         TeamHistory currentTeamHistory = null;
 			 String line;
+			 String teamOfPlayer;
+			 Date StartDate;
+			 TeamPlayer currentTeam;
 			 SportsCategory category;
 	            while ((line = reader.readLine()) != null) {
 	                // don't process empty lines
@@ -282,7 +246,12 @@ public class PlayersFileReader {
 	                
 	                //Player's current team
 	                try {
-	                	parseCurrentTeam(teamsList_, tokenizer.nextToken(), player, playerlist_);
+	                	teamOfPlayer = tokenizer.nextToken();
+	                   	StartDate = new SimpleDateFormat("yyyy-MM-dd").parse(tokenizer.nextToken());
+	                	currentTeam = new TeamPlayer();
+	                	currentTeam.setStartDate(StartDate);
+	                	currentTeam.setStatus(true);
+	                	parseCurrentTeam(teamsList_, teamOfPlayer, player, playerlist_, currentTeam);
 	               
 	                }
 	                catch(Exception e_) {
@@ -290,52 +259,26 @@ public class PlayersFileReader {
 	                	continue;
 	                }
 	                
-	                //Potentially add this team to the player's history
-	                try {
-	                	currentTeamHistory = new TeamHistory(player.getCurrentTeam().getLocation(), player.getCurrentTeam().getTeamName());
-	                	currentTeamHistory.set_StartDate(convertStringToDate(tokenizer.nextToken()));
-	                }
-	                catch(Exception e_){
-	                	_logger.error(e_.toString());
-	                }
-	            
-	                //If the player already exists in the players map, then update player if
-	                //player needs updating
-	             if(playerlist_.returnPlayersMap().get(player.get_playerID()) != null) {
-	            	 AbstractPlayer existingPlayer = playerlist_.returnPlayersMap().get(player.get_playerID());
-	            	 if(!existingPlayer.equals(player)) { // If either the player's jersey changed or they moved team	            		
-	            		 //update existing player with new data
-	            		 try {
-	            			 updatePlayer(player, existingPlayer, playerlist_, currentTeamHistory, teamsList_);
-
-	            		 }
-	            		 catch(Exception e_) {
-	            			 _logger.error("Something went wrong: Player has not been updated");
-	            		 }
-
-	            	 }
-	            }
-	            //Else if player does not already exist in players map
-	             else {
 	            	 // Add new player to players map
 	            	 try {
-	            		 player.get_HistoryOfTeamsForPlayers().add(currentTeamHistory);
 	            		 addPlayer(player, playerlist_);
 	            		 // Add player to their current team
-	            		 teamsList_.getTeamMap().get(player.getCurrentTeam().fullTeamName()).getListOfPLayers().add(player.get_playerID());
+	            		 currentTeam.setPlayer(player);
+	            		 teamsList_.getTeamMap().get(player.getCurrentTeamHistory().getTeam().fullTeamName()).getEntireHistoryPlayers().add(currentTeam);
 	            	 }
 	            	 catch(Exception e_) {
 	            		 _logger.error("Player's current team is not a valid team: " + e_.toString());
 	            	 }
-	             }    
+	                
 	           }
 		 } 
 	}
 	
 	public void readFromStringForList(String line, PlayersList playersList_, TeamsList teamsList_) throws Exception {
-		
+		 String teamOfPlayer;
+		 Date StartDate;
+		 TeamPlayer currentTeam;
 		 StringTokenizer tokenizer;   
-		 TeamHistory currentTeamHistory = null;
 		 SportsCategory category = null;
          AbstractPlayer player = null;
 		
@@ -414,52 +357,30 @@ public class PlayersFileReader {
         }
         
         try {
-        	parseCurrentTeam(teamsList_, tokenizer.nextToken(), player, playersList_);	           
+        	teamOfPlayer = tokenizer.nextToken();
+           	StartDate = new SimpleDateFormat("yyyy-MM-dd").parse(tokenizer.nextToken());
+        	currentTeam = new TeamPlayer();
+        	currentTeam.setStartDate(StartDate);
+        	currentTeam.setStatus(true);
+        	parseCurrentTeam(teamsList_, teamOfPlayer, player, playersList_, currentTeam);
         }
         catch(Exception e_) {
         	_logger.error("setTeam:" + e_.toString());
         	throw e_;
         }
-        //Potentially add this team to the player's history
-        try {
-        	currentTeamHistory = new TeamHistory(player.getCurrentTeam().getLocation(), player.getCurrentTeam().getTeamName());
-        	currentTeamHistory.set_StartDate(convertStringToDate(tokenizer.nextToken()));
-        }
-        catch(Exception e_){
-        	_logger.error(e_.toString());
-        }
-    
-        //If the player already exists in the players map, then update player if
-        //player needs updating
-     if(playersList_.returnPlayersMap().get(player.get_playerID()) != null) {
-    	 AbstractPlayer existingPlayer = playersList_.returnPlayersMap().get(player.get_playerID());
-    	 if(!existingPlayer.equals(player)) { // If either the player's jersey changed or they moved team
-    		
-    		 //update existing player with new data
-    		 try {
-    			 updatePlayer(player, existingPlayer, playersList_, currentTeamHistory, teamsList_);
-    		 }
-    		 catch(Exception e_) {
-    			 _logger.error("Something went wrong: Player has not been updated");
-    			 throw e_;
-    		 }
 
-    	 }
-    }
-    //Else if player does not already exist in players map
-     else {
     	 // Add new player to players map
     	 try {
-    		 player.get_HistoryOfTeamsForPlayers().add(currentTeamHistory);
     		 addPlayer(player, playersList_);
     		 // Add player to their current team
-    		 teamsList_.getTeamMap().get(player.getCurrentTeam().fullTeamName()).getListOfPLayers().add(player.get_playerID());
+    		 currentTeam.setPlayer(player);
+    		 teamsList_.getTeamMap().get(player.getCurrentTeamHistory().getTeam().fullTeamName()).getEntireHistoryPlayers().add(currentTeam);
     	 }
     	 catch(Exception e_) {
     		 _logger.error("Player's current team is not a valid team: " + e_.toString());
     		 throw e_;
     	 }
-     }    
+        
    
 	}
 	

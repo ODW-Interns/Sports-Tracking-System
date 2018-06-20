@@ -2,6 +2,9 @@
 package com.sts.abstractmodel;
 
 import java.util.ArrayList;
+import java.util.Iterator;
+
+import com.sts.concretemodel.TeamPlayer;
 
 
 /**
@@ -18,7 +21,9 @@ public abstract class AbstractTeam implements InterfaceModel{
 	private String _location;
 	
 	//The current team's roster represented by a list of player IDs
-	private ArrayList<Integer> listofPlayers;
+	//private ArrayList<Integer> listofPlayers;
+	private ArrayList<TeamPlayer> teamPlayers;
+	
 	
 	public AbstractTeam() {
 		// Default Constructor
@@ -30,7 +35,7 @@ public abstract class AbstractTeam implements InterfaceModel{
 		setTeamName(team_);
 		setLocation(loc_);
 	
-		listofPlayers = new ArrayList<Integer>();
+		teamPlayers = new ArrayList<TeamPlayer>();
 	}
 
 	/*
@@ -76,13 +81,6 @@ public abstract class AbstractTeam implements InterfaceModel{
 	}
 
 	/*
-	 * Return: the current roster of the team
-	 */
-	public ArrayList<Integer> getListOfPLayers() {
-		return listofPlayers;
-	}
-
-	/*
 	 * method to check if the required fields for the team has been initialized
 	 */
 	@Override
@@ -103,6 +101,26 @@ public abstract class AbstractTeam implements InterfaceModel{
 		
 		return fullTeamName;
 		
+	}
+	
+	public ArrayList<TeamPlayer> getCurrentPlayers() {
+		ArrayList<TeamPlayer> filteredPlayersList = new ArrayList<>();
+		// TODO filter team players by status/enddate.
+		Iterator<TeamPlayer> i;
+		i = teamPlayers.iterator();
+		TeamPlayer tempTeamPlayer = null;
+		while(i.hasNext()) {
+			tempTeamPlayer = i.next();
+			if(tempTeamPlayer.isStatus() == true && tempTeamPlayer.getTeam().equals(this)) {
+				filteredPlayersList.add(tempTeamPlayer);
+			}
+			
+		}
+		return filteredPlayersList; 
+	}
+	
+	public ArrayList<TeamPlayer> getEntireHistoryPlayers(){
+		return teamPlayers;
 	}
 	
 	/*

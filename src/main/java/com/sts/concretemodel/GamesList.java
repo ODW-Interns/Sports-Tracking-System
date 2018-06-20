@@ -56,9 +56,9 @@ public class GamesList{
     */
    public void logUpcomingGames(PlayersList playersList_) {
 	   ZonedDateTime timeNow = ZonedDateTime.now();
-	   int playerID;
-	   Iterator<Integer> homeIterator;
-	   Iterator<Integer> awayIterator;
+	   TeamPlayer teamPlayer;
+	   Iterator<TeamPlayer> homeIterator;
+	   Iterator<TeamPlayer> awayIterator;
 	   int tempUID = -1;
 	   Key lowestKey = new Key(timeNow,tempUID);
 	   AbstractTeam homeTeam;
@@ -70,17 +70,17 @@ public class GamesList{
 		   _logger.trace(entry.getValue().toString());
 		   homeTeam = entry.getValue().getHomeTeam();
 		   awayTeam = entry.getValue().getAwayTeam();
-		   homeIterator = homeTeam.getListOfPLayers().iterator();
-		   awayIterator = awayTeam.getListOfPLayers().iterator();
+		   homeIterator = homeTeam.getEntireHistoryPlayers().iterator();
+		   awayIterator = awayTeam.getEntireHistoryPlayers().iterator();
 		   _logger.trace("Home Players:");
 		   while(homeIterator.hasNext()) {
-			   playerID = homeIterator.next();
-			   _logger.info(playersList_.returnPlayersMap().get(playerID).toString());
+			   teamPlayer = homeIterator.next();
+			   _logger.info(playersList_.returnPlayersMap().get(teamPlayer.getPlayer().get_playerID()).toString());
 		   }
 		   _logger.trace("Away Players:");
 		   while(awayIterator.hasNext()) {
-			   playerID = awayIterator.next();
-			   _logger.info(playersList_.returnPlayersMap().get(playerID).toString());
+			   teamPlayer = awayIterator.next();
+			   _logger.info(playersList_.returnPlayersMap().get(teamPlayer.getPlayer().get_playerID()).toString());
 		   }
 		   
 	   }

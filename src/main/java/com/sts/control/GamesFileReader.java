@@ -21,6 +21,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.sts.abstractmodel.AbstractGame;
+import com.sts.abstractmodel.AbstractPlayer;
 import com.sts.abstractmodel.SportsCategory;
 import com.sts.concretemodel.GamesList;
 import com.sts.concretemodel.Key;
@@ -189,7 +190,7 @@ public class GamesFileReader {
     				throw new MismatchPlayerandGameSportException();
     			else {
     				//Check if the player is on the corresponding team
-    				if(!PlayerIsOnTeam(playerID, teamsList_, teamName_)) {
+    				if(!PlayerIsOnTeam(playerID, teamsList_, teamName_, playersList_)) {
     					throw new PlayerNotOnTeamException();		
     				}
     				else {
@@ -205,9 +206,9 @@ public class GamesFileReader {
     /**
      *  Method to check if a player is on a specified team
      */
-    private boolean PlayerIsOnTeam(int playerID_,TeamsList teamsList_, String teamName_) {
-    	if(teamsList_.getTeamMap().get(teamName_).getListOfPLayers().contains(playerID_)) {
-
+    private boolean PlayerIsOnTeam(int playerID_,TeamsList teamsList_, String teamName_, PlayersList playersList_) {
+    	AbstractPlayer player = playersList_.returnPlayersMap().get(playerID_);
+    	if(player.getCurrentTeamHistory().getTeam().equals(teamsList_.getTeamMap().get(teamName_))){
     		return true;
     	}
     	else
