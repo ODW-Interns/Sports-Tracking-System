@@ -36,11 +36,13 @@ import com.sts.nhl.models.NHLPlayer;
  */
 public class PlayersFileReader {
 	private Logger _logger;
+	private BufferedReader reader;
 
     private static final String DELIM = "|";
     //Constructor
     public PlayersFileReader() {
         _logger = LoggerFactory.getLogger(getClass().getSimpleName());
+        reader = new BufferedReader(new InputStreamReader(System.in));
     }
     
     /**
@@ -110,7 +112,7 @@ public class PlayersFileReader {
     	}
     	else {
     		//checks to see if the team and player are of the same sport type
-    		if(!teamList_.getTeamMap().get(teamStr_).getTeamSport().equals(player_.get_sportCategory())) {
+    		if(teamList_.getTeamMap().get(teamStr_).getTeamSport() != player_.get_sportCategory()) {
     			throw new MismatchPlayerandTeamSportException();
     		}
     		else {
@@ -382,6 +384,129 @@ public class PlayersFileReader {
     	 }
         
    
+	}
+	public void createPlayers(TeamsList listofTeams_, PlayersList listofPlayers_) throws IOException {
+		SportsCategory category;
+		AbstractPlayer player = null;
+		String lineForTeam = null;
+		TeamPlayer currentHistory = null;
+		Date StartDate;
+		_logger.info("Enter Sport of Player");
+		category = SportsCategory.valueOf(reader.readLine());
+		
+		//Prompt for which sport the player being created plays
+	      try {
+                if(category.equals(SportsCategory.valueOf("NBA"))) {
+                	player = new NBAPlayer();
+                	
+                }
+                else if(category.equals(SportsCategory.valueOf("NFL"))) {
+                	player = new NFLPlayer();
+                }
+                else if(category.equals(SportsCategory.valueOf("NHL"))) {
+                	player = new NHLPlayer();
+                }
+                else if(category.equals(SportsCategory.valueOf("MLB"))) {
+                	player = new MLBPlayer();
+                }
+                else
+                	throw new Exception("Invalid category.");
+          }
+          catch(Exception e_) {
+          	_logger.error("Failed to initialize player:" + e_.toString());
+          }
+	      try {
+          	player.set_sportCategory(category);
+          }
+          catch(Exception e_) {
+          	_logger.error("setCategory:" + e_.toString());
+          	
+          }
+	      
+	      // Set player ID
+	    player.set_playerID(listofPlayers_.returnPlayersMap().size() + 1);
+		
+	    //Prompt for Player's first name
+		_logger.info("Enter Player's First Name: ");
+		try {
+			player.setFirstName(reader.readLine());
+		}
+		catch(Exception e_) {
+			_logger.error("Entering First Name: " + e_.toString());
+		}
+		
+		//Prompt for Player's last name
+		_logger.info("Enter Player's Last Name: ");
+		try {
+			player.setLastName(reader.readLine());
+		}
+		catch(Exception e_){
+			_logger.error("Entering Last Name: " + e_.toString());
+		}
+		
+	     try {
+         	//Check here if player ID has already been used for another player
+         	if(listofPlayers_.returnPlayersMap().containsKey(player.get_playerID()) && 
+         			(!(listofPlayers_.returnPlayersMap().get(player.get_playerID()).getFirstName().equals(player.getFirstName())) || 
+         			!listofPlayers_.returnPlayersMap().get(player.get_playerID()).getLastName().equals(player.getLastName()))) {
+         		throw new Exception("Player ID already exists for another player in map");}
+         }
+         catch(Exception e_) {
+         	_logger.error(e_.toString());
+         }
+		
+		//Prompt for Player's jersey number
+		_logger.info("Enter Player's Jersey Number: ");
+		try {
+			player.set_jerseyNum(Integer.parseInt(reader.readLine()));
+		}
+		catch(Exception e_) {
+			_logger.error("Entering Jersey Number: " + e_.toString());
+		}
+		
+		_logger.info("Enter Player's Current Team: ");
+		_logger.info("If player is currently not on a team, then leave blank");
+		lineForTeam = reader.readLine();
+		try {
+			if(lineForTeam == "") {
+				listofPlayers_.returnPlayersMap().put(player.get_playerID(), player);
+				_logger.trace("New player successfully created and added to player's map");
+				return;
+			}
+			else {
+				if(listofTeams_.getTeamMap().get(lineForTeam) != null) {
+					currentHistory = new TeamPlayer();
+					currentHistory.setTeam(listofTeams_.getTeamMap().get(lineForTeam));
+				}
+				else {
+					throw new TeamNotFoundException(lineForTeam);
+				}
+			}
+		}
+		
+  
+		catch(Exception e_) {
+			_logger.error("Player not created: " + e_.toString());
+			return;
+		}
+		
+		
+		_logger.info("Enter the start date of the player on this team in this format(yyyy-mm-dd):");
+		try {
+           	StartDate = new SimpleDateFormat("yyyy-MM-dd").parse(reader.readLine());
+           	currentHistory.setStartDate(StartDate);
+           	currentHistory.setStatus(true);
+           	parseCurrentTeam(listofTeams_, lineForTeam, player, listofPlayers_,currentHistory);
+		}
+		catch(Exception e_) {
+			_logger.error("Setting Start Date on team: " + e_.toString());
+		}
+		 // Add player to their current team		
+		currentHistory.setPlayer(player);
+		player.setCurrentTeamHistory(currentHistory);
+		addPlayer(player, listofPlayers_);
+		listofTeams_.getTeamMap().get(player.getCurrentTeamHistory().getTeam().fullTeamName()).getEntireHistoryPlayers().add(player.getCurrentTeamHistory());
+		_logger.trace("Successfully added player to player's map");
 	}
 	
 	private void addPlayer(AbstractPlayer player_, PlayersList PlayersList_)

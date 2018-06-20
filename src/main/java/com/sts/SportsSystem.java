@@ -22,6 +22,7 @@ import com.sts.concretemodel.Key;
 import com.sts.concretemodel.PlayersList;
 import com.sts.concretemodel.TeamPlayer;
 import com.sts.concretemodel.TeamsList;
+import com.sts.control.PlayersFileReader;
 import com.sts.control.Service;
 import com.sts.control.StoreDataFromInputFile;
 import java.util.concurrent.Executors;
@@ -153,8 +154,8 @@ public class SportsSystem {
 
 							break;
 						case 3: //prompts user for a data to create and player and keep track of player in player's map
-							eventHandler.createPlayers(_listofTeams, _listofPlayers);
-
+							PlayersFileReader playersReader = new PlayersFileReader();
+							playersReader.createPlayers(_listofTeams, _listofPlayers);
 							break;
 						case 4: // Update games
 							
