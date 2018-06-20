@@ -165,12 +165,7 @@ public class SportsSystem {
 							updateGames(_listofGames);
 							break;
 						case 5:
-							
-							try {
-								eventHandler.createGames(_listofGames,_listofTeams, _listofPlayers);
-							} catch (Exception e) {
-								_logger.error(e.toString());
-							}
+				
 							break;
 							
 						case 6:
