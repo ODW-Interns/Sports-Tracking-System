@@ -62,7 +62,7 @@ public class PlayersFileReaderTest {
 	
 	@Test
 	public void InvalidStartDateExceptionTest() {
-		String playerData = "NBA|1|28|F1|L1|Atlanta Hawks|2018-01-35";
+		String playerData = "NBA|1|28|F2|L2|Atlanta Hawks|2018-19-45";
 		boolean thrown = false;
 		try {
 			pr.readFromStringForList(playerData,  listofPlayers, listofTeams);
@@ -70,6 +70,7 @@ public class PlayersFileReaderTest {
 		catch(Exception e_) {
 			thrown = true;
 		}
+		System.out.println(listofPlayers.returnPlayersMap().get(1).getCurrentTeamHistory().getStartDate());
 			assertTrue(thrown);
 		
 	}

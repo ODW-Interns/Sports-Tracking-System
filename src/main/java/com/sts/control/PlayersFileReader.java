@@ -67,15 +67,17 @@ public class PlayersFileReader {
     /**
      * Method to convert a given date string to a formatted date object and returns the date
      */
-    public Date convertStringToDate(String dateString_)
+    public Date convertStringToDate(String dateString_) throws Exception
     {
         Date date = null;
         DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+        df.setLenient(false);
         try{
             date = ((Date)df.parse(dateString_));
         }
         catch ( Exception e_ ){
         	_logger.error(e_.toString());
+        	throw e_;
         }
         return date;
     }
@@ -249,7 +251,7 @@ public class PlayersFileReader {
 	                //Player's current team
 	                try {
 	                	teamOfPlayer = tokenizer.nextToken();
-	                   	StartDate = new SimpleDateFormat("yyyy-MM-dd").parse(tokenizer.nextToken());
+	                   	StartDate = convertStringToDate(tokenizer.nextToken());
 	                	currentTeam = new TeamPlayer();
 	                	currentTeam.setStartDate(StartDate);
 	                	currentTeam.setStatus(true);
@@ -365,7 +367,7 @@ public class PlayersFileReader {
         
         try {
         	teamOfPlayer = tokenizer.nextToken();
-           	StartDate = new SimpleDateFormat("yyyy-MM-dd").parse(tokenizer.nextToken());
+           	StartDate = convertStringToDate(tokenizer.nextToken());
         	currentTeam = new TeamPlayer();
         	currentTeam.setStartDate(StartDate);
         	currentTeam.setStatus(true);
@@ -516,7 +518,7 @@ public class PlayersFileReader {
 		//Prompt for date of when the player started on this team
 		_logger.info("Enter the start date of the player on this team in this format(yyyy-mm-dd):");
 		try {
-           	StartDate = new SimpleDateFormat("yyyy-MM-dd").parse(reader.readLine());
+           	StartDate = convertStringToDate(reader.readLine());
            	currentHistory.setStartDate(StartDate);
            	currentHistory.setStatus(true);
            	parseCurrentTeam(listofTeams_, lineForTeam, player, listofPlayers_,currentHistory);
