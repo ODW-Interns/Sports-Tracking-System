@@ -22,6 +22,7 @@ import com.sts.concretemodel.Key;
 import com.sts.concretemodel.PlayersList;
 import com.sts.concretemodel.TeamPlayer;
 import com.sts.concretemodel.TeamsList;
+import com.sts.control.PlayersFileReader;
 import com.sts.control.Service;
 import com.sts.control.StoreDataFromInputFile;
 import java.util.concurrent.Executors;
@@ -112,6 +113,10 @@ public class SportsSystem {
 		//Create a PlayersList object to hold all players
 		_listofPlayers = new PlayersList();
 		//Read from input files; initiating maps
+		
+		//Initialize object to read data for a player 
+		PlayersFileReader playersReader = new PlayersFileReader();
+
 		StoreDataFromInputFile.storeDataIntoTeamList("/Teams.csv", _listofGames, _listofTeams);
 		StoreDataFromInputFile.storeDataIntoPlayerList("/Players.csv", _listofGames, _listofTeams, _listofPlayers);
 	    StoreDataFromInputFile.storeDataIntoGameList("/games.csv", _listofGames, _listofTeams, _listofPlayers);
@@ -120,7 +125,6 @@ public class SportsSystem {
 
 	    boolean isNumber = false; // used to make sure correct input has been chosen
 	    int choice = 0;   
-	    String fileName;
 	    boolean c = true;
 
 			do {
@@ -153,8 +157,7 @@ public class SportsSystem {
 
 							break;
 						case 3: //prompts user for a data to create and player and keep track of player in player's map
-							eventHandler.createPlayers(_listofTeams, _listofPlayers);
-
+							playersReader.createPlayers(_listofTeams, _listofPlayers);
 							break;
 						case 4: // Update games
 							
