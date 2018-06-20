@@ -643,6 +643,7 @@ public class GamesFileReader {
 		int homeTeamCount = 0;
 		
 		int gameAttendance;
+		int playerCounter = 0;
 		
 		Duration gameDuration;
 		Set<Key> keys;
@@ -650,7 +651,10 @@ public class GamesFileReader {
 		AbstractGame game = null;
 		AbstractTeam home=null;
 		
-		String tempPlayerID;		
+		String tempPlayerID;	
+		String date;
+		String time;
+		String dateAndTime;
 		
 		_logger.info("Enter the Game Details: ");
 		
@@ -662,7 +666,8 @@ public class GamesFileReader {
 			category=SportsCategory.valueOf(reader.readLine());
 			
 		} catch (IOException e) {
-			_logger.error("The entered category is : " + e.toString());
+			_logger.error("Invalid Category : " + e.toString());
+			return;
 		}
 		
 		/*
@@ -689,6 +694,7 @@ public class GamesFileReader {
         }
         catch(Exception e_) {
         	_logger.error("Failed to initialize game:" + e_.toString());
+        	return;
         }
 		
 		
@@ -709,18 +715,24 @@ public class GamesFileReader {
 			game.setGameUID(gameID);
 
 		} catch (IOException e) {
-			_logger.error("The ePlayerIsOnTeamntered ID is : " + e.toString() );
+			_logger.error("Invalid Game ID : " + e.toString() );
+			return;
 		}
 		
 		
 		/*
 		 * Reading Date
 		 */
-		_logger.info("Enter the Game Date");
 		try {
-			dateTime=parseDate(reader.readLine());
+			_logger.info("Enter the Game Date in this format (yyyy-mm-dd)");
+			date = reader.readLine();
+			_logger.info("Enter the time of the game in this format (hh:mm:ss)");
+			time = reader.readLine();
+			dateAndTime = date + "T" + time + "+00:00";
+			dateTime=parseDate(dateAndTime);
 		} catch (IOException e) {
-			_logger.error("The entered Date and Time is : " + e.toString());
+			_logger.error("Date Error : " + e.toString());
+			return;
 		}
 		game.setStartTime(dateTime);
 		
@@ -732,7 +744,8 @@ public class GamesFileReader {
 			awayCity=reader.readLine();
 			
 		} catch (IOException e) {
-			_logger.info("Entered away city is : " +e.toString());
+			_logger.info("Invalid city : " +e.toString());
+			return;
 		}
 		
 		/*
@@ -743,7 +756,8 @@ public class GamesFileReader {
 			awayTeamName=reader.readLine();
 			game.setAwayTeam(parseTeam(category,awayCity,awayTeamName, teamsList_));
 		} catch (IOException e) {
-			_logger.error("The entered away team is : " +e.toString());
+			_logger.error("Invalid Team Name : " +e.toString());
+			return;
 		}
 		
 		/*
@@ -754,7 +768,8 @@ public class GamesFileReader {
 			homeCity=reader.readLine();
 			
 		} catch (IOException e) {
-			_logger.info("Entered away city is : " +e.toString());
+			_logger.info("Invalid City : " +e.toString());
+			return;
 		}
 		
 		/*
@@ -765,9 +780,10 @@ public class GamesFileReader {
 			homeTeamName=reader.readLine();
 			home=(parseTeam(category,homeCity,homeTeamName, teamsList_));
 		} catch (IOException e) {
-			_logger.error("The entered home team is : " +e.toString());
+			_logger.error("Invalid Team: " +e.toString());
+			return;
 		}
-		if (home.equals(game.getAwayTeam()))
+		if (home.equals(game.getAwayTeam())) 
             throw new DuplicateTeamException("Home team cannot be the same as away", home);
 		game.setHomeTeam(home);
 			
@@ -794,8 +810,8 @@ public class GamesFileReader {
 			game.setAwayTeamScore(awayTeamScore);
 			
 		} catch (IOException e) {
-			_logger.error("The entered score is : " +e.toString() );
-			
+			_logger.error("Invalid Score : " +e.toString() );
+			return;
 		}
 		
 		/*
@@ -809,8 +825,8 @@ public class GamesFileReader {
         	}
             game.setHomeTeamScore(homeTeamScore);
 		} catch (IOException e) {
-			_logger.error("The entered score is : " +e.toString() );
-			
+			_logger.error("Invalid Score : " +e.toString() );
+			return;
 		}
 		
 		/*
@@ -822,7 +838,8 @@ public class GamesFileReader {
 			if(awayTeamCount <= 0)
 				throw new Exception("Players played for away team should be greater than 0");
 		} catch (IOException e) {
-			_logger.error("The count for away team members is : " + e.toString());
+			_logger.error(e.toString());
+			return;
 		}
 		
 		/*
@@ -834,8 +851,9 @@ public class GamesFileReader {
 				tempPlayerID=reader.readLine();
                 teamName = game.getAwayTeam().fullTeamName();
 				parsePlayerIDs(tempPlayerID, game, playersList_, teamsList_, teamName, game.getListOfAwayPlayers());				
+				
 			} catch (IOException e) {
-				_logger.error("Entered away team ID is : " + e.toString());
+				_logger.error("Invalid Player ID : " + e.toString());
 			}
 		}
 		
@@ -848,7 +866,8 @@ public class GamesFileReader {
 			if(homeTeamCount <= 0)
 				throw new Exception("Players played for home team should be greater than 0");
 		} catch (IOException e) {
-			_logger.error("The count for home team members is : " + e.toString());
+			_logger.error(e.toString());
+			return;
 		}
 		
 		/*
@@ -862,7 +881,7 @@ public class GamesFileReader {
 				parsePlayerIDs(tempPlayerID, game, playersList_, teamsList_, teamName, game.getListOfAwayPlayers());
 				
 			} catch (IOException e) {
-				_logger.error("Entered HOME team ID is : " + e.toString());
+				_logger.error("Invalid Player ID : " + e.toString());
 			}
 		}
 		
@@ -877,7 +896,8 @@ public class GamesFileReader {
         	}
 			game.setAttendance(gameAttendance);
 		} catch (IOException e) {
-			_logger.error("Entered Game Attendence is " + e.toString());
+			_logger.error("Invalid Attendance " + e.toString());
+			return;
 		}
 		
 		/*
@@ -889,7 +909,8 @@ public class GamesFileReader {
 			game.setDuration(gameDuration);
         	game.setFinishTime(game.getStartTime().plus(game.getDuration()));
 		} catch (IOException e) {
-			_logger.error("Entered duration is : " + e.toString());
+			_logger.error("Invalid Duration: " + e.toString());
+			return;
 		}
 		
     	addGame(game, gamesList_);						
