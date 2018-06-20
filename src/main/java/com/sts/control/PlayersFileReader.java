@@ -36,11 +36,13 @@ import com.sts.nhl.models.NHLPlayer;
  */
 public class PlayersFileReader {
 	private Logger _logger;
+	private BufferedReader reader;
 
     private static final String DELIM = "|";
     //Constructor
     public PlayersFileReader() {
         _logger = LoggerFactory.getLogger(getClass().getSimpleName());
+        reader = new BufferedReader(new InputStreamReader(System.in));
     }
     
     /**
@@ -110,7 +112,7 @@ public class PlayersFileReader {
     	}
     	else {
     		//checks to see if the team and player are of the same sport type
-    		if(!teamList_.getTeamMap().get(teamStr_).getTeamSport().equals(player_.get_sportCategory())) {
+    		if(teamList_.getTeamMap().get(teamStr_).getTeamSport() != player_.get_sportCategory()) {
     			throw new MismatchPlayerandTeamSportException();
     		}
     		else {
@@ -119,15 +121,17 @@ public class PlayersFileReader {
     			temp1 = temp.getCurrentPlayers();
     			//Check for duplicate Jersey #'s on the same team
     			for(int i=0;i<temp1.size();i++) {
-    			tempPlayer=playerlist_.returnPlayersMap().get(temp1.get(i).getPlayer().get_playerID());
-    			tempJnumb=tempPlayer.getJerseyNum();
-    			if(tempJnumb==player_.getJerseyNum() && tempJnumb != playerlist_.returnPlayersMap().get(player_.get_playerID()).getJerseyNum()) {
-    				throw new Exception ("Duplicate Jersey Number");
+
+    				tempPlayer=playerlist_.returnPlayersMap().get(temp1.get(i).getPlayer().get_playerID());
+    				tempJnumb=tempPlayer.getJerseyNum();
+    				if(tempJnumb==player_.getJerseyNum()) {
+    					throw new Exception ("Duplicate Jersey Number");
     					
+    				}
     			}
-    		}
     			
-    	}
+
+    		}
     		currentTeamHistory_.setTeam(teamList_.getTeamMap().get(teamStr_));
     		player_.setCurrentTeamHistory(currentTeamHistory_);
     		player_.getPlayerTeams().add(currentTeamHistory_);
@@ -274,6 +278,11 @@ public class PlayersFileReader {
 		 } 
 	}
 	
+	/*
+	 * Method to read in player data to add player, from a string of data. It does this 
+	 * in a way similar to reading from a data file in the method readFromFileForLists.
+	 */
+	
 	public void readFromStringForList(String line, PlayersList playersList_, TeamsList teamsList_) throws Exception {
 		 String teamOfPlayer;
 		 Date StartDate;
@@ -382,6 +391,150 @@ public class PlayersFileReader {
     	 }
         
    
+	}
+	
+	/*
+	 * Method used to satisfy user's request to create and track a new player.
+	 * It will prompt for all the necessary data to create a player and
+	 * will check exceptions such as
+	 * 1) Making sure the team the player is on actually exists in the team's map
+	 * 2) No 2 players on the same team can have the same jersey number
+	 * 3) Making sure that this newly created player has its own unique player ID
+	 * 4) Making sure the sport this player plays matches the team's sport
+	 */
+	public void createPlayers(TeamsList listofTeams_, PlayersList listofPlayers_) throws IOException {
+		SportsCategory category; // Sport the player plays
+		AbstractPlayer player = null;
+		String lineForTeam = null;
+		TeamPlayer currentHistory = null;   // Will store the current history of the team for this player
+		Date StartDate;  // Start Date of this player on this team
+		_logger.info("Enter Sport of Player"); // User enter in which sport the player plays
+		category = SportsCategory.valueOf(reader.readLine());
+		
+		//Prompt for which sport the player being created plays
+	      try {
+                if(category.equals(SportsCategory.valueOf("NBA"))) {
+                	player = new NBAPlayer();
+                	
+                }
+                else if(category.equals(SportsCategory.valueOf("NFL"))) {
+                	player = new NFLPlayer();
+                }
+                else if(category.equals(SportsCategory.valueOf("NHL"))) {
+                	player = new NHLPlayer();
+                }
+                else if(category.equals(SportsCategory.valueOf("MLB"))) {
+                	player = new MLBPlayer();
+                }
+                else
+                	throw new Exception("Invalid category.");
+          }
+          catch(Exception e_) {
+          	_logger.error("Failed to initialize player:" + e_.toString());
+          	return;
+          }
+	      
+	      try {
+          	player.set_sportCategory(category);
+          }
+          catch(Exception e_) {
+          	_logger.error("setCategory:" + e_.toString());
+          	return;
+          	
+          }
+	      
+	      // Set player ID
+	    player.set_playerID(listofPlayers_.returnPlayersMap().size() + 1);
+		
+	    //Prompt for Player's first name
+		_logger.info("Enter Player's First Name: ");
+		try {
+			player.setFirstName(reader.readLine());
+		}
+		catch(Exception e_) {
+			_logger.error("Entering First Name: " + e_.toString());
+			return;
+		}
+		
+		//Prompt for Player's last name
+		_logger.info("Enter Player's Last Name: ");
+		try {
+			player.setLastName(reader.readLine());
+		}
+		catch(Exception e_){
+			_logger.error("Entering Last Name: " + e_.toString());
+			return;
+		}
+		
+	     try {
+         	//Check here if player ID has already been used for another player
+         	if(listofPlayers_.returnPlayersMap().containsKey(player.get_playerID()) && 
+         			(!(listofPlayers_.returnPlayersMap().get(player.get_playerID()).getFirstName().equals(player.getFirstName())) || 
+         			!listofPlayers_.returnPlayersMap().get(player.get_playerID()).getLastName().equals(player.getLastName()))) {
+         		throw new Exception("Player ID already exists for another player in map");}
+         }
+         catch(Exception e_) {
+         	_logger.error(e_.toString());
+         	return;
+         }
+		
+		_logger.info("Enter Player's Current Team: ");
+		_logger.info("If player is currently not on a team, then leave blank"); //Will track player without a team as well (free agent)
+		lineForTeam = reader.readLine();
+		try {
+			if(lineForTeam.equals("")) {   // Player without a team
+				listofPlayers_.returnPlayersMap().put(player.get_playerID(), player);
+				_logger.trace("New player successfully created and added to player's map");
+				return;
+			}
+			else { 
+				if(listofTeams_.getTeamMap().get(lineForTeam) != null) { // If player does have a team, make sure the team exists
+					currentHistory = new TeamPlayer();
+					currentHistory.setTeam(listofTeams_.getTeamMap().get(lineForTeam));
+				}
+				else {
+					throw new TeamNotFoundException(lineForTeam);
+				}
+			}
+		}
+		
+  
+		catch(Exception e_) {
+			_logger.error("Player not created: " + e_.toString());
+			return;
+		}
+		
+		//Prompt for Player's jersey number
+		_logger.info("Enter Player's Jersey Number: ");
+		try {
+			player.set_jerseyNum(Integer.parseInt(reader.readLine()));
+			System.out.println("Setting Jersey Num" + player.getJerseyNum());
+		}
+		catch(Exception e_) {
+			_logger.error("Entering Jersey Number: " + e_.toString());
+			return;
+		}
+		
+		//Prompt for date of when the player started on this team
+		_logger.info("Enter the start date of the player on this team in this format(yyyy-mm-dd):");
+		try {
+           	StartDate = new SimpleDateFormat("yyyy-MM-dd").parse(reader.readLine());
+           	currentHistory.setStartDate(StartDate);
+           	currentHistory.setStatus(true);
+           	parseCurrentTeam(listofTeams_, lineForTeam, player, listofPlayers_,currentHistory);
+		}
+		catch(Exception e_) {
+			_logger.error("Setting Start Date on team: " + e_.toString());
+			_logger.error("Player was not created");
+			return;
+		}
+		 // Add player to their current team		
+		currentHistory.setPlayer(player);
+		player.setCurrentTeamHistory(currentHistory);  // This is the player's current team
+		addPlayer(player, listofPlayers_); // Add player to player's map
+		//Add player to the team's history of players
+		listofTeams_.getTeamMap().get(player.getCurrentTeamHistory().getTeam().fullTeamName()).getEntireHistoryPlayers().add(player.getCurrentTeamHistory()); 
+		_logger.trace("Successfully added player to player's map");
 	}
 	
 	private void addPlayer(AbstractPlayer player_, PlayersList PlayersList_)
