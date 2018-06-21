@@ -193,9 +193,8 @@ import com.sts.nhl.models.TeamNHL;
 	    public void createTeam(TeamsList listofTeams) throws IOException {
 			SportsCategory category;
 			AbstractTeam team = null;
-			String newTeam;
 			
-			//promt for new team sport
+			//prompt for new team sport
 			_logger.info("Enter Team's Sport Category");
 			category =  SportsCategory.valueOf(reader.readLine());
 				

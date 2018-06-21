@@ -7,6 +7,7 @@ import java.text.ParseException;
 import java.time.Duration;
 import java.time.ZonedDateTime;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.SortedMap;
 import java.util.Map.Entry;
@@ -17,6 +18,7 @@ import org.slf4j.LoggerFactory;
 
 import com.sts.abstractmodel.AbstractTeam;
 import com.sts.abstractmodel.AbstractGame;
+import com.sts.abstractmodel.AbstractPlayer;
 import com.sts.concretemodel.GamesList;
 import com.sts.concretemodel.Key;
 import com.sts.concretemodel.PlayersList;
@@ -26,6 +28,8 @@ import com.sts.control.GamesFileReader;
 import com.sts.control.PlayersFileReader;
 import com.sts.control.StoreDataFromInputFile;
 import com.sts.control.TeamsFileReader;
+import com.sts.model.exception.PlayerNotFoundException;
+import com.sts.model.exception.TeamNotFoundException;
 
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
@@ -129,6 +133,10 @@ public class SportsSystem {
 	    boolean isNumber = false; // used to make sure correct input has been chosen
 	    int choice = 0;   
 	    boolean c = true;
+	    
+	    String city;
+	    String teamName;
+	    String fullTeamName;
 
 			do {
 				
@@ -140,7 +148,10 @@ public class SportsSystem {
 						_logger.info("4: Enter 4 to create a team");
 						_logger.info("5: Enter 5 to create a game");
 						_logger.info("6: Enter 6 to update game(s)");
-						_logger.info("7: Enter 7 to exit");
+						_logger.info("7: Enter 7 to move a player to another team");
+						_logger.info("8: Enter 8 to view all players being tracked");
+						_logger.info("9: Enter 9 to view all players for a specified team");
+						_logger.info("10: Enter 10 to exit");
 						
 						
 
@@ -184,9 +195,38 @@ public class SportsSystem {
 							updateGames(_listofGames);
 							break;
 							
-						case 7: // Shut off system
+						case 7: // Move a player to another team
+							movePlayer(_listofTeams, _listofPlayers);
+							break;
+							
+						case 8: // Log all players 
+							   for(Entry<Integer, AbstractPlayer> entry : _listofPlayers.returnPlayersMap().entrySet()) {
+								   _logger.info(entry.getValue().toString());
+							   }
+							   break;
+						case 9:
+							_logger.info("Enter the team whose roster you would like to see");
+							_logger.info("Enter city of team:");
+							city = reader.readLine();
+							_logger.info("Enter name of the team:");
+							teamName = reader.readLine();
+							fullTeamName = city + " " + teamName;
+							try {
+								if(_listofTeams.getTeamMap().containsKey(fullTeamName)) 
+									logTeamRoster(_listofTeams.getTeamMap().get(fullTeamName), _listofTeams);
+								else
+									throw new TeamNotFoundException(fullTeamName);
+							}
+							catch(Exception e_) {
+								_logger.error("Invalid Team Input: " + e_.toString());
+							}
+							
+							break;
+						case 10: // Shut off system
 							System.exit(0);
 							break;	
+							
+							
 						default:
 
 							_logger.info("Wrong choice input. Please choose from the following options");
@@ -198,6 +238,84 @@ public class SportsSystem {
 				
 			} while (!isNumber);
 
+	}
+	
+	public void logTeamRoster(AbstractTeam team_, TeamsList listofTeams_) {
+		Iterator<TeamPlayer> teamPlayerIterator;
+		teamPlayerIterator = team_.getCurrentPlayers().iterator();
+		TeamPlayer player = new TeamPlayer();
+		_logger.trace("These are the current players on the team {}" , team_.fullTeamName());
+		System.out.println(team_.getCurrentPlayers().size());
+		while(teamPlayerIterator.hasNext()) {
+			_logger.info(teamPlayerIterator.next().getPlayer().toString());
+		}	
+	}
+	
+	public void movePlayer(TeamsList listofTeams_, PlayersList listofPlayers_) throws IOException {
+		int playerID = -1;
+		AbstractPlayer playerBeingMoved = null;
+		AbstractTeam oldTeam = null;
+		int indexOfCurrentTeamHistory;
+		String teamCity = null;
+		String teamName = null;
+		String fullTeamName = null;
+		TeamPlayer newTeamHistory = null;
+		
+		_logger.info("Enter the player ID for the player you wish you move:");
+		try {
+			playerID = Integer.parseInt(reader.readLine());
+		} 
+		catch (NumberFormatException e_) {
+			_logger.error("Could not parse the ID entered: " + e_.toString());
+		} 
+		try {
+			if(!listofPlayers_.returnPlayersMap().containsKey(playerID)) {
+				throw new PlayerNotFoundException(playerID);
+			}
+			else
+				playerBeingMoved = listofPlayers_.returnPlayersMap().get(playerID);
+		}
+		catch(Exception e_) {
+			_logger.error("Error finding player: " + e_.toString());
+		}
+		if(listofTeams_.getTeamMap().get(playerBeingMoved.getCurrentTeam().fullTeamName()).getEntireHistoryPlayers().contains(playerBeingMoved.getCurrentTeamHistory())) {
+			oldTeam = listofTeams_.getTeamMap().get(playerBeingMoved.getCurrentTeam().fullTeamName());
+			indexOfCurrentTeamHistory = oldTeam.getEntireHistoryPlayers().indexOf(playerBeingMoved.getCurrentTeamHistory());
+			oldTeam.getEntireHistoryPlayers().get(indexOfCurrentTeamHistory).setStatus(false);
+			oldTeam.getEntireHistoryPlayers().get(indexOfCurrentTeamHistory).setEndDate(new Date());
+		}
+		playerBeingMoved.getCurrentTeamHistory().setStatus(false);
+		if(playerBeingMoved.getPlayerTeams().contains(playerBeingMoved.getCurrentTeamHistory())) {
+			indexOfCurrentTeamHistory = playerBeingMoved.getPlayerTeams().indexOf(playerBeingMoved.getCurrentTeamHistory());
+			playerBeingMoved.getPlayerTeams().get(indexOfCurrentTeamHistory).setStatus(false);
+			playerBeingMoved.getPlayerTeams().get(indexOfCurrentTeamHistory).setEndDate(new Date());
+		}
+		try {
+			_logger.info("Enter the team the player is moving to");
+			_logger.info("Enter the city first: ");
+			teamCity = reader.readLine();
+			_logger.info("Enter the team name: ");
+			teamName = reader.readLine();
+			fullTeamName = teamCity + " " + teamName;
+		}
+		catch(Exception e_) {
+			_logger.error("Something went wrong with reading the team: " + e_.toString());
+		}
+		
+		try {
+			if(listofTeams_.getTeamMap().containsKey(fullTeamName)) {
+				newTeamHistory = new TeamPlayer(playerBeingMoved, listofTeams_.getTeamMap().get(fullTeamName), new Date(), true);
+				playerBeingMoved.setCurrentTeamHistory(newTeamHistory);
+				playerBeingMoved.getPlayerTeams().add(newTeamHistory);
+				listofTeams_.getTeamMap().get(fullTeamName).getEntireHistoryPlayers().add(newTeamHistory);
+			}
+			else
+				throw new TeamNotFoundException(fullTeamName);
+		}
+		catch(Exception e_) {
+			_logger.error("Invalid Team: " + e_.toString());
+		}
+		
 	}
 	
 	/**

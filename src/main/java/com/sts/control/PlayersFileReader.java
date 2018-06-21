@@ -267,10 +267,11 @@ public class PlayersFileReader {
 	                
 	            	 // Add new player to players map
 	            	 try {
-	            		 addPlayer(player, playerlist_);
-	            		 // Add player to their current team
 	            		 currentTeam.setPlayer(player);
 	            		 teamsList_.getTeamMap().get(player.getCurrentTeamHistory().getTeam().fullTeamName()).getEntireHistoryPlayers().add(currentTeam);
+
+	            		 addPlayer(player, playerlist_);
+	            		 // Add player to their current team
 	            	 }
 	            	 catch(Exception e_) {
 	            		 _logger.error("Player's current team is not a valid team: " + e_.toString());
@@ -382,9 +383,9 @@ public class PlayersFileReader {
 
     	 // Add new player to players map
     	 try {
+    		 currentTeam.setPlayer(player);
     		 addPlayer(player, playersList_);
     		 // Add player to their current team
-    		 currentTeam.setPlayer(player);
     		 teamsList_.getTeamMap().get(player.getCurrentTeamHistory().getTeam().fullTeamName()).getEntireHistoryPlayers().add(currentTeam);
     	 }
     	 catch(Exception e_) {

@@ -17,6 +17,18 @@ public class TeamPlayer {
 	 * This contains information if player is still active in team.
 	 */
 	private boolean status;
+	
+	public TeamPlayer() {
+		super();
+	}
+	
+	public TeamPlayer(AbstractPlayer player_, AbstractTeam team_, Date startDate_, boolean status_) {
+		player = player_;
+		team = team_;
+		startDate = startDate_;
+		status = status_;
+	}
+	
 	public AbstractPlayer getPlayer() {
 		return player;
 	}
@@ -32,8 +44,8 @@ public class TeamPlayer {
 	public Date getStartDate() {
 		return startDate;
 	}
-	public void setStartDate(Date startDate) {
-		this.startDate = startDate;
+	public void setStartDate(Date date) {
+		this.startDate = date;
 	}
 	public Date getEndDate() {
 		return endDate;
