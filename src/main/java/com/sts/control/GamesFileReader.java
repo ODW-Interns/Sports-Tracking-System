@@ -846,17 +846,20 @@ public class GamesFileReader {
 		 * User Entering the player ID's 
 		 */
 		_logger.info("Enter the player ID's of AWAY team");
-		for(int i=0;i<awayTeamCount;i++) {
+		while(playerCounter != awayTeamCount) {
 			try {
 				tempPlayerID=reader.readLine();
                 teamName = game.getAwayTeam().fullTeamName();
 				parsePlayerIDs(tempPlayerID, game, playersList_, teamsList_, teamName, game.getListOfAwayPlayers());				
-				
-			} catch (IOException e) {
+				playerCounter++;
+			} catch (Exception e) {
 				_logger.error("Invalid Player ID : " + e.toString());
+				_logger.info("Enter valid player ID:");
+				continue;
 			}
 		}
 		
+		playerCounter = 0;
 		/*
 		 * Asking user about how many HOME team ID's he want to enter 
 		 */
@@ -874,14 +877,16 @@ public class GamesFileReader {
 		 * User Entering the player ID's 
 		 */
 		_logger.info("Enter the player ID's of HOME team");
-		for(int i=0;i<homeTeamCount;i++) {
+		while(playerCounter != homeTeamCount){
 			try {
 				tempPlayerID=reader.readLine();
                 teamName = game.getHomeTeam().fullTeamName();
 				parsePlayerIDs(tempPlayerID, game, playersList_, teamsList_, teamName, game.getListOfAwayPlayers());
 				
-			} catch (IOException e) {
+			} catch (Exception e) {
 				_logger.error("Invalid Player ID : " + e.toString());
+				_logger.info("Enter valid player ID:");
+				continue;
 			}
 		}
 		
