@@ -98,7 +98,8 @@ public class GamesList{
 	   Key highestKey = new Key(timeNow,tempUID);
 
 	   SortedMap<Key, AbstractGame> finishedGames = map.tailMap(highestKey);
-	   
+	   System.out.println("Finished game size");
+	   System.out.println(finishedGames.size());
 	   _logger.info("ALL FINISHED GAMES");
 	   for(Entry<Key, AbstractGame> entry : finishedGames.entrySet()) {
 		   if(entry.getValue().getFinishTime() != null) {

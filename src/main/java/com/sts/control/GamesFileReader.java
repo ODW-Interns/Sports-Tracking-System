@@ -645,7 +645,6 @@ public class GamesFileReader {
 		int gameAttendance;
 		int playerCounter = 0;
 		
-		Duration gameDuration;
 		Set<Key> keys;
 		
 		AbstractGame game = null;
@@ -655,6 +654,10 @@ public class GamesFileReader {
 		String date;
 		String time;
 		String dateAndTime;
+        int durationHours;
+        int durationMinutes;
+        int durationSeconds;
+	    StringBuilder durationString = new StringBuilder("PT");
 		
 		_logger.info("Enter the Game Details: ");
 		
@@ -881,8 +884,8 @@ public class GamesFileReader {
 			try {
 				tempPlayerID=reader.readLine();
                 teamName = game.getHomeTeam().fullTeamName();
-				parsePlayerIDs(tempPlayerID, game, playersList_, teamsList_, teamName, game.getListOfAwayPlayers());
-				
+				parsePlayerIDs(tempPlayerID, game, playersList_, teamsList_, teamName, game.getListofHomePlayers());
+				playerCounter++;
 			} catch (Exception e) {
 				_logger.error("Invalid Player ID : " + e.toString());
 				_logger.info("Enter valid player ID:");
@@ -908,17 +911,35 @@ public class GamesFileReader {
 		/*
 		 * Reading the Duration
 		 */
-		_logger.info("Enter the Game Duration");
+		_logger.info("Enter Duration of the game"); // Prompt User for the duration of the game
+		_logger.info("Hour(s):"); // Hours the game lasted
 		try {
-			gameDuration=Duration.parse(reader.readLine());
-			game.setDuration(gameDuration);
-        	game.setFinishTime(game.getStartTime().plus(game.getDuration()));
-		} catch (IOException e) {
-			_logger.error("Invalid Duration: " + e.toString());
+			durationHours = Integer.parseInt(reader.readLine());
+		}
+		catch(Exception e_) {
+			_logger.error(e_.toString());
 			return;
 		}
-		
-    	addGame(game, gamesList_);						
+		_logger.info("Minutes(s):"); // Minutes the game lasted
+		try {
+			durationMinutes = Integer.parseInt(reader.readLine());
+		}
+		catch(Exception e_) {
+			_logger.error(e_.toString());
+			return;
+		}
+		_logger.info("Second(s):"); // Seconds the game lasted
+		try {
+			durationSeconds = Integer.parseInt(reader.readLine());
+		}
+		catch(Exception e_) {
+			_logger.error(e_.toString());
+			return;
+		}
+		durationString.append(durationHours).append("H").append(durationMinutes).append("M").append(durationSeconds).append("S");
+		game.setDuration(Duration.parse(durationString)); // set the duration for the game
+		game.setFinishTime(game.getStartTime().plus(game.getDuration()));
+    	addGame(game, gamesList_);	
 }
 	
 	

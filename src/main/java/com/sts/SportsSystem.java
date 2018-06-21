@@ -24,7 +24,6 @@ import com.sts.concretemodel.TeamPlayer;
 import com.sts.concretemodel.TeamsList;
 import com.sts.control.GamesFileReader;
 import com.sts.control.PlayersFileReader;
-import com.sts.control.Service;
 import com.sts.control.StoreDataFromInputFile;
 import com.sts.control.TeamsFileReader;
 
@@ -47,15 +46,12 @@ public class SportsSystem {
     //Object to store map of all players
     private PlayersList _listofPlayers;
     private BufferedReader reader;
-    
-    private Service eventHandler;
-    
+        
     //Constructor
 	SportsSystem() throws RuntimeException, IOException, ParseException{
 	    _logger = LoggerFactory.getLogger(getClass().getSimpleName());
 	    _GamesThatNeedUpdating = new ArrayList<Key>();
 	    reader = new BufferedReader(new InputStreamReader(System.in));
-	    eventHandler = new Service();
 	}
 	
 	//Thread to run every specified time interval to check if any new games have started
