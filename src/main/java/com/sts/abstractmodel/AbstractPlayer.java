@@ -24,9 +24,11 @@ public abstract class AbstractPlayer implements InterfaceModel{
 	//The sport the player plays
 	private SportsCategory _sportCategory;
 	
+	//Data that connects the history between a player and a team
+	//This keeps track of the current team the player is on
 	TeamPlayer _currentTeamHistory;
 
-
+	//A list that contains all the history of a player (All the teams the player have played for)
 	private ArrayList<TeamPlayer> playerTeams;
 		
 	/*Default Constructor*/
@@ -97,14 +99,19 @@ public abstract class AbstractPlayer implements InterfaceModel{
 		this._playerID = _playerID;
 	}
 	
+	//Sets the current team history for the player
 	public void setCurrentTeamHistory(TeamPlayer currentTeam) {
 		this._currentTeamHistory = currentTeam;
 	}
 		
+	//get the current team history of the player
 	public TeamPlayer getCurrentTeamHistory() {
 		return _currentTeamHistory;
 	}
 	
+	//This returns the current team the player plays on by 
+	//going through the players history and checking which team
+	//he currently is on
 	public AbstractTeam getCurrentTeam() {
 		// TODO filter team players by status/enddate.
 		Iterator<TeamPlayer> i;
@@ -120,11 +127,12 @@ public abstract class AbstractPlayer implements InterfaceModel{
 		return tempTeamPlayer.getTeam();
 	}
 
-	
+	// Returns entire history of a player
 	public ArrayList<TeamPlayer> getPlayerTeams() {
 		return playerTeams;
 	}
 
+	//Set player's history
 	public void setPlayerTeams(ArrayList<TeamPlayer> playerTeams) {
 		this.playerTeams = playerTeams;
 	}

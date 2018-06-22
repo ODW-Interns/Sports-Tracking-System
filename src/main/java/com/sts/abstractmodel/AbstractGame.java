@@ -3,7 +3,6 @@ package com.sts.abstractmodel;
 import java.time.Duration;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
 
 
 /**
@@ -33,11 +32,6 @@ public abstract class AbstractGame implements InterfaceModel {
     // Sport of the game
     private SportsCategory category;
 
-    //List of players on the away team
-    private ArrayList<Integer> listOfAwayPlayers = new ArrayList<Integer>();
-    //List of players on the home team
-    private ArrayList<Integer> listofHomePlayers = new ArrayList<Integer>();
-    
     /**
      *Constructor: Used for upcoming game
      */
@@ -70,33 +64,6 @@ public abstract class AbstractGame implements InterfaceModel {
     	setFinishTime(finish);
     }
 
-    /*
-     * Return: List of Away Players
-     */
-    public ArrayList<Integer> getListOfAwayPlayers() {
-		return listOfAwayPlayers;
-	}
-
-    /*
-     * Set list of away players
-     */
-	public void setListOfAwayPlayers(ArrayList<Integer> listOfAwayPlayers) {
-		this.listOfAwayPlayers = listOfAwayPlayers;
-	}
-
-	/*
-	 * Return: List of home players
-	 */
-	public ArrayList<Integer> getListofHomePlayers() {
-		return listofHomePlayers;
-	}
-
-	/*
-	 * Set list of home players
-	 */
-	public void setListofHomePlayers(ArrayList<Integer> listofHomePlayers) {
-		this.listofHomePlayers = listofHomePlayers;
-	}
 
 	/**
      * method to set the date and start time of the game
@@ -257,6 +224,7 @@ public abstract class AbstractGame implements InterfaceModel {
     	str.append(", homeTeam=").append(getHomeTeam());
     	str.append(", awayTeam=").append(getAwayTeam());
     	
+    	//If the game has finished, return the additional information
         if(getFinishTime() != null) {
         	str.append(", Finish Time=");
             str.append(DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ssZZZZZ").format(getFinishTime()));

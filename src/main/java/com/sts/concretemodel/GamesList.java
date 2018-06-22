@@ -56,17 +56,25 @@ public class GamesList{
     * Log games in the future. Roster of each team are also logged
     */
    public void logUpcomingGames(PlayersList playersList_) {
+	   //timeNow is used to partition the gamesMap to retrieve just the upcoming games
 	   ZonedDateTime timeNow = ZonedDateTime.now();
+	   
 	   TeamPlayer teamPlayer;
+	   
+	   //Iterators to iterate through the away and home teams players
 	   Iterator<TeamPlayer> homeIterator;
 	   Iterator<TeamPlayer> awayIterator;
+	  
 	   int tempUID = -1;
 	   Key lowestKey = new Key(timeNow,tempUID);
 	   AbstractTeam homeTeam;
 	   AbstractTeam awayTeam;
-	   SortedMap<Key, AbstractGame> upcomingGames = map.headMap(lowestKey);
+	   SortedMap<Key, AbstractGame> upcomingGames = map.headMap(lowestKey); // Partition for just the upcoming games 
+	   																		// from the gamesMap by using headMap
 	   
 	   _logger.info("ALL UPCOMING GAMES:");
+	   
+	   //Iterate through the upcoming games
 	   for(Entry<Key, AbstractGame> entry : upcomingGames.entrySet()) {
 		   _logger.trace(entry.getValue().toString());
 		   homeTeam = entry.getValue().getHomeTeam();
@@ -74,11 +82,15 @@ public class GamesList{
 		   homeIterator = homeTeam.getCurrentPlayers().iterator();
 		   awayIterator = awayTeam.getCurrentPlayers().iterator();
 		   _logger.trace("Home Players:");
+		   
+		   //For each game, iterate through the home teams current roster and log these players 
 		   while(homeIterator.hasNext()) {
 			   teamPlayer = homeIterator.next();
 			   _logger.info(playersList_.returnPlayersMap().get(teamPlayer.getPlayer().get_playerID()).toString());
 		   }
+		   
 		   _logger.trace("Away Players:");
+		   //Now log the away team's current roster as well
 		   while(awayIterator.hasNext()) {
 			   teamPlayer = awayIterator.next();
 			   _logger.info(playersList_.returnPlayersMap().get(teamPlayer.getPlayer().get_playerID()).toString());
@@ -90,34 +102,44 @@ public class GamesList{
    /**
     * Log games that are finished. Players that have were on these teams in the game are also logged
     */
-
    public void logFinishedGames(PlayersList playersList_) {
-	   ZonedDateTime timeNow = ZonedDateTime.now();
+	   //timeNow used to partition the gamesMap to retrieve the finished games only
+	   ZonedDateTime timeNow = ZonedDateTime.now(); 
+	   
+	   //Iterators to iterator through the home and away teams players
 	   Iterator<TeamPlayer> homeIterator;
 	   Iterator<TeamPlayer> awayIterator;
+	   
 	   int tempUID = -1;
 	   Key highestKey = new Key(timeNow,tempUID);
 	   AbstractTeam awayTeam = null;
 	   AbstractTeam homeTeam = null;
 	   TeamPlayer player = null;
 
-	   SortedMap<Key, AbstractGame> finishedGames = map.tailMap(highestKey);
+	   // tailMap used to partition the entire games map to retrieve just the finished games
+	   SortedMap<Key, AbstractGame> finishedGames = map.tailMap(highestKey); 
+	   
 	   _logger.info("ALL FINISHED GAMES");
 	   for(Entry<Key, AbstractGame> entry : finishedGames.entrySet()) {
-		   if(entry.getValue().getFinishTime() != null) {
+		   if(entry.getValue().getFinishTime() != null) { // the game has finished, then
 			   _logger.trace(entry.getValue().toString());
-			   homeTeam = entry.getValue().getHomeTeam();
-			   awayTeam = entry.getValue().getAwayTeam();
+			   homeTeam = entry.getValue().getHomeTeam(); // home team of game
+			   awayTeam = entry.getValue().getAwayTeam(); //away team of game
 
 			   homeIterator = homeTeam.getEntireHistoryPlayers().iterator();
 			   _logger.trace("Home Players:");
+			   
+			   //Iterate through the entire history of the home team(history of players)
+			   //If this player was on the team at the time of the game, then log this player
+			   //as a player on the team at the time of the game
 			   while(homeIterator.hasNext()) {
 				   player = homeIterator.next();
-				   if(player.getEndDate() != null)
 				   if(player.getStartDate().before(Date.from(entry.getValue().getStartTime().toInstant())) && 
 						  ( player.getEndDate() == null || player.getEndDate().after(Date.from(entry.getValue().getStartTime().toInstant()))))
 						  _logger.info(player.getPlayer().toString());
 			   }
+			   
+			   //Do the same for the away team
 			   awayIterator = awayTeam.getEntireHistoryPlayers().iterator();
 			   _logger.trace("Away Players:");
 			   while(awayIterator.hasNext()) {

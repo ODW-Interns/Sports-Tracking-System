@@ -1,7 +1,7 @@
 package com.sts.abstractmodel;
 
 /**
- * Enum ro differentiate sport's games & players & teams
+ * Enum to differentiate sports of games & players & teams
  */
 
 public enum SportsCategory {

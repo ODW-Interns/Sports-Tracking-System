@@ -20,8 +20,11 @@ public abstract class AbstractTeam implements InterfaceModel{
 	//The city of the team
 	private String _location;
 	
-	//The current team's roster represented by a list of player IDs
-	//private ArrayList<Integer> listofPlayers;
+	/*
+	 * This is a list that contains the entire history of team
+	 * (All the players that have played on this team)
+	 * TeamPlayer: Data object that connects a team and a player
+	 */
 	private ArrayList<TeamPlayer> teamPlayers;
 	
 	
@@ -103,6 +106,10 @@ public abstract class AbstractTeam implements InterfaceModel{
 		
 	}
 	
+	/*
+	 * Returns the current players on this team by filtering through the entire history
+	 * and grabbing only players that are on this team
+	 */
 	public ArrayList<TeamPlayer> getCurrentPlayers() {
 		ArrayList<TeamPlayer> filteredPlayersList = new ArrayList<>();
 		// TODO filter team players by status/enddate.
@@ -119,6 +126,7 @@ public abstract class AbstractTeam implements InterfaceModel{
 		return filteredPlayersList; 
 	}
 	
+	//Returns the entire history of the team
 	public ArrayList<TeamPlayer> getEntireHistoryPlayers(){
 		return teamPlayers;
 	}

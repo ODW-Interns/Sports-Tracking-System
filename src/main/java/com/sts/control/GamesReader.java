@@ -143,33 +143,7 @@ public class GamesReader {
         }
         else 
         	throw new TeamNotFoundException(teamStr_);
-       /* if (lclTeam == null) {
-        	if(category.equals("NBA")) {
-        		lclTeam = new TeamNBA();
-        	}
-        	else if(category.equals("NFL")) {
-        		lclTeam = new TeamNFL();
-        	}
-        	else if(category.equals("NHL")) {
-        		lclTeam = new TeamNHL();
-        	}
-        	else if(category.equals("MLB")) {
-        		lclTeam = new TeamMLB();
-        	}
-            lclTeam.setTeamName(teamStr_);
-            lclTeam.setLocation(cityStr_);
-            lclTeam.setTeamSport(category);
-            teamsList_.getTeamMap().put(teamStr_, lclTeam);
-            if (_logger.isInfoEnabled())
-                _logger.info("New team identified:{}. adding to mapping Team:{}", teamStr_, lclTeam);
-        }
-
-        // log it
-        if (_logger.isTraceEnabled())
-            _logger.trace("found team for key: {}", teamStr_);
-
-        // done
-        return lclTeam;*/
+       
     }
 
     /**
@@ -177,6 +151,7 @@ public class GamesReader {
      *  These are the players that have played in the
      *  game.
      */
+    @Deprecated
     private void parsePlayerIDs(String playerIDs_, AbstractGame game_, PlayersList playersList_, TeamsList teamsList_, String teamName_, ArrayList<Integer> listOfPlayers_) throws InvalidPlayersException, MismatchPlayerandGameSportException, PlayerNotOnTeamException {
     	StringTokenizer tokenizer;
     	tokenizer = new StringTokenizer(playerIDs_, ",");
@@ -231,8 +206,6 @@ public class GamesReader {
             String line;
             String team;
             String city;
-            String playerIDs;
-            String teamName;
             AbstractGame game = null;
             AbstractTeam home;
             SportsCategory category;
@@ -373,28 +346,7 @@ public class GamesReader {
                 }
                 catch (Exception e_) {
                     _logger.error("sethTeamScore:" + e_.toString());
-                }
-                
-                // Parse Player IDs that played in the game
-                try {
-                	playerIDs = tokenizer.nextToken();
-                    teamName = game.getAwayTeam().fullTeamName();
-                	parsePlayerIDs(playerIDs, game, playersList_, teamsList_, teamName, game.getListOfAwayPlayers());
-                }
-                catch(Exception e_) {
-                	_logger.error("There were invalid player IDs:" + e_.toString());
-                	throw e_;
-                }
-                
-                try {
-                	playerIDs = tokenizer.nextToken();
-                    teamName = game.getHomeTeam().fullTeamName();
-                	parsePlayerIDs(playerIDs, game, playersList_, teamsList_, teamName, game.getListofHomePlayers() );
-                }
-                catch(Exception e_) {
-                	_logger.error("There were invalid player IDs:" + e_.toString());
-                	throw e_;
-                }
+                }               
                 
                 //Parse the attendance of the game
                 try {
@@ -437,11 +389,9 @@ public class GamesReader {
             StringTokenizer tokenizer;
             String team = null;
             String city = null;
-            String teamName = null;
             AbstractGame game = null;
             AbstractTeam home;
             SportsCategory category = null;
-            String playerIDs = null;
             Set<Key> keys;
          
                 if ("".equals(line))
@@ -578,28 +528,7 @@ public class GamesReader {
                     _logger.error("sethTeamScore:" + e_.toString());
                     throw e_;
                 }
-                
-                // Parse Player IDs who played in the game
-                try {
-                	playerIDs = tokenizer.nextToken();
-                	teamName = city + " " + team;
-                	parsePlayerIDs(playerIDs, game, playersList_, teamsList_, teamName, game.getListOfAwayPlayers());
-                }
-                catch(Exception e_) {
-                	_logger.error("There were invalid player IDs:" + e_.toString());
-                	throw e_;
-                }
 
-                try {
-                	playerIDs = tokenizer.nextToken();
-                	teamName = city + " " + team;
-                	parsePlayerIDs(playerIDs, game, playersList_, teamsList_, teamName, game.getListofHomePlayers());
-                }
-                catch(Exception e_) {
-                	_logger.error("There were invalid player IDs:" + e_.toString());
-                	throw e_;
-                }
-                
                 // Parse Attendance
                 try {
                 	int attendance = parseInteger(tokenizer.nextToken());
@@ -635,22 +564,15 @@ public class GamesReader {
 		
 		String homeCity = null;
 		String homeTeamName = null;
-		String teamName = null;
 		int homeTeamScore;
 		int awayTeamScore;
-		
-		int awayTeamCount = 0;
-		int homeTeamCount = 0;
-		
+				
 		int gameAttendance;
-		int playerCounter = 0;
 		
 		Set<Key> keys;
 		
 		AbstractGame game = null;
 		AbstractTeam home=null;
-		
-		String tempPlayerID;	
 		String date;
 		String time;
 		String dateAndTime;
@@ -830,67 +752,6 @@ public class GamesReader {
 		} catch (IOException e) {
 			_logger.error("Invalid Score : " +e.toString() );
 			return;
-		}
-		
-		/*
-		 * Asking user about how many AWAY team ID's he want to enter 
-		 */
-		_logger.info("How many members are there in the away team?");
-		try {
-			awayTeamCount=Integer.parseInt(reader.readLine());
-			if(awayTeamCount <= 0)
-				throw new Exception("Players played for away team should be greater than 0");
-		} catch (IOException e) {
-			_logger.error(e.toString());
-			return;
-		}
-		
-		/*
-		 * User Entering the player ID's 
-		 */
-		_logger.info("Enter the player ID's of AWAY team");
-		while(playerCounter != awayTeamCount) {
-			try {
-				tempPlayerID=reader.readLine();
-                teamName = game.getAwayTeam().fullTeamName();
-				parsePlayerIDs(tempPlayerID, game, playersList_, teamsList_, teamName, game.getListOfAwayPlayers());				
-				playerCounter++;
-			} catch (Exception e) {
-				_logger.error("Invalid Player ID : " + e.toString());
-				_logger.info("Enter valid player ID:");
-				continue;
-			}
-		}
-		
-		playerCounter = 0;
-		/*
-		 * Asking user about how many HOME team ID's he want to enter 
-		 */
-		_logger.info("How many members are there in the HOME team");
-		try {
-			homeTeamCount=Integer.parseInt(reader.readLine());
-			if(homeTeamCount <= 0)
-				throw new Exception("Players played for home team should be greater than 0");
-		} catch (IOException e) {
-			_logger.error(e.toString());
-			return;
-		}
-		
-		/*
-		 * User Entering the player ID's 
-		 */
-		_logger.info("Enter the player ID's of HOME team");
-		while(playerCounter != homeTeamCount){
-			try {
-				tempPlayerID=reader.readLine();
-                teamName = game.getHomeTeam().fullTeamName();
-				parsePlayerIDs(tempPlayerID, game, playersList_, teamsList_, teamName, game.getListofHomePlayers());
-				playerCounter++;
-			} catch (Exception e) {
-				_logger.error("Invalid Player ID : " + e.toString());
-				_logger.info("Enter valid player ID:");
-				continue;
-			}
 		}
 		
 		/*

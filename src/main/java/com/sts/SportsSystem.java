@@ -7,8 +7,6 @@ import java.text.ParseException;
 import java.time.Duration;
 import java.time.ZonedDateTime;
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.Iterator;
 import java.util.SortedMap;
 import java.util.Map.Entry;
 import java.util.concurrent.ScheduledExecutorService;
@@ -16,25 +14,25 @@ import java.util.concurrent.ScheduledExecutorService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.sts.abstractmodel.AbstractTeam;
 import com.sts.abstractmodel.AbstractGame;
-import com.sts.abstractmodel.AbstractPlayer;
 import com.sts.concretemodel.GamesList;
 import com.sts.concretemodel.Key;
 import com.sts.concretemodel.PlayersList;
-import com.sts.concretemodel.TeamPlayer;
 import com.sts.concretemodel.TeamsList;
+import com.sts.control.EventHandler;
 import com.sts.control.GamesReader;
 import com.sts.control.PlayersReader;
 import com.sts.control.StoreDataFromInputFile;
 import com.sts.control.TeamsReader;
-import com.sts.model.exception.PlayerNotFoundException;
 import com.sts.model.exception.TeamNotFoundException;
 
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
-//Class that starts the system
+/*Class that starts the system
+ * Main resides in this class that will call a method to display options for user
+ * to use the system.
+ */
 public class SportsSystem {
 	
 	//List to keep track of games that have started that needs to be updated when the game finishes
@@ -50,12 +48,15 @@ public class SportsSystem {
     //Object to store map of all players
     private PlayersList _listofPlayers;
     private BufferedReader reader;
-	//Initialize object to read data for a team
+	// object to read data for a team
 	private TeamsReader teamsReader;
-	//Initialize object to read data for a player 
+	// object to read data for a player 
 	private PlayersReader playersReader;
-	//Initialize object to read data for a game
+	// object to read data for a game
 	private GamesReader gamesReader;
+
+	//Handler to handle requests
+	private EventHandler handler;
         
     //Constructor
 	SportsSystem() throws RuntimeException, IOException, ParseException{
@@ -65,43 +66,44 @@ public class SportsSystem {
 	    teamsReader = new TeamsReader();
 	    playersReader = new PlayersReader();
 	    gamesReader = new GamesReader();
+	    handler = new EventHandler();
 	    
 	}
 	
-	//Thread to run every specified time interval to check if any new games have started
-	//If a game has started, then add game to list of games that need updating
-    public void RunThreadToCheckForGamesThatStarted(GamesList _listofGames_){
+	/*Thread to run every specified time interval to check if any new games have started
+	 * 	If a game has started, then add game to list of games that need updating.
+	 * The game that have started will need the following data when the game is finished:
+	 * 1. Home team final score
+	 * 2. Away team final score
+	 * 3. Attendance for the game
+	 * 4. Duration of the game
+	 */
+	public void RunThreadToCheckForGamesThatStarted(GamesList _listofGames_){
  	    Runnable runnable = new Runnable() {
  	    	public void run() {
- 	    		AbstractTeam awayTeam;
- 	    		AbstractTeam homeTeam;
- 	    		ArrayList<TeamPlayer> listofPlayersOnTeam = new ArrayList<TeamPlayer>();
- 	    		timeNow = ZonedDateTime.now();
+ 	    		timeNow = ZonedDateTime.now();  /* Get the time now in the current time zone
+ 	    										* This is used to partition the map into games that
+ 	    										* have passed or games that have not passed
+ 	    										*/
  	    		int tempUID = -1;
  	    		Key lowestkey = new Key(timeNow,tempUID);
  	    		//Map of all games who's start time is past the current time
+ 	    		
+ 	    		//This sorted map is a subset of the whole games map. It uses tailMap to retrieve only the games
+ 	    		// whose start times have passed from the entire gamesMap
  	    		SortedMap<Key, AbstractGame> pastGames = _listofGames_.getGamesMap().tailMap(lowestkey);
+ 	    		
+ 	    		//Iterate through all these games that have started and find the ones that have not been updated as finished
  	    		for(Entry<Key, AbstractGame> entry : pastGames.entrySet()) {
  	    			if(entry.getValue().getDuration() == null) {
- 	    				//Set players that played in game to current rosters of each team
- 	    				awayTeam = _listofTeams.getTeamMap().get(entry.getValue().getAwayTeam().fullTeamName());
- 	    				listofPlayersOnTeam = awayTeam.getCurrentPlayers();
- 	    				for(int i = 0 ; i < listofPlayersOnTeam.size(); i++) {
- 	    					entry.getValue().getListOfAwayPlayers().add(listofPlayersOnTeam.get(i).getPlayer().get_playerID());
- 	    				}
- 	    				homeTeam = _listofTeams.getTeamMap().get(entry.getValue().getHomeTeam().fullTeamName());
- 	    				listofPlayersOnTeam = homeTeam.getCurrentPlayers();
- 	    				for(int i = 0 ; i < listofPlayersOnTeam.size(); i++) {
- 	    					entry.getValue().getListofHomePlayers().add(listofPlayersOnTeam.get(i).getPlayer().get_playerID());
- 	    				}
- 	    				//entry.getValue().setListOfAwayPlayers(awayTeam.getCurrentPlayers());
- 	    				//entry.getValue().setListofHomePlayers(homeTeam.getListOfPLayers());
+ 	    				 	    				
  	    				//Set default duration to 4 hours until updated
  	    				entry.getValue().setDuration(Duration.parse("PT4H"));
  	    				
  	    				_logger.trace("A new game has started(GameID: {} , Start Time:{})", entry.getKey().getGameUID(), entry.getKey().getStartTime());
  	    				_logger.info("Please update the game when it is finished");
- 	    				//Add game to list of games that need updating
+ 	    				
+ 	    				//Add game to list of games that need updating. This list contains all the keys of the gamesMap for games that need updating.
  	    				_GamesThatNeedUpdating.add(entry.getKey());
  	    				_logger.info("There are {} game that needs updating", _GamesThatNeedUpdating.size());
  	    			}
@@ -113,7 +115,7 @@ public class SportsSystem {
  	    };
  	    
  	    ScheduledExecutorService service = Executors.newSingleThreadScheduledExecutor();
- 	    //Run every 10 seconds
+ 	    //This method is ran every 10 seconds
  	    service.scheduleAtFixedRate(runnable, 0, 10, TimeUnit.SECONDS);
     }
 
@@ -127,33 +129,62 @@ public class SportsSystem {
 		_listofPlayers = new PlayersList();
 		//Read from input files; initiating maps
 
+		//Initialize some data from files
+		
+		//Read in data from file that have a list of teams
 		StoreDataFromInputFile.storeDataIntoTeamList("/Teams.csv", _listofGames, _listofTeams);
+		
+		//Read in data from file that have a list of players
 		StoreDataFromInputFile.storeDataIntoPlayerList("/Players.csv", _listofGames, _listofTeams, _listofPlayers);
-	    StoreDataFromInputFile.storeDataIntoGameList("/games.csv", _listofGames, _listofTeams, _listofPlayers);
-	    RunThreadToCheckForGamesThatStarted(_listofGames);
+	    
+		//Read in data from file that have a list of games
+		StoreDataFromInputFile.storeDataIntoGameList("/games.csv", _listofGames, _listofTeams, _listofPlayers);
+	   
+		//Run method with thread to keep checking for if any games have started while system has been running
+		//If a game has started, the user needs to update the game when the game has finished
+		RunThreadToCheckForGamesThatStarted(_listofGames);
 	    _logger.info("Welcome to sports Tracking system");
 
 	    boolean isNumber = false; // used to make sure correct input has been chosen
 	    int choice = 0;   
 	    boolean c = true;
 	    
-	    String city;
-	    String teamName;
-	    String fullTeamName;
+	    String city;  // city of the team Ex: Boston
+	    String teamName; // name of the team Ex: Celtics
+	    String fullTeamName; // Boston Celtics
 
 			do {
 				
 					while (c) {
-
-						_logger.info("1: Enter 1 to display list of finished games");
-						_logger.info("2: Enter 2 to display list of upcoming games");
+						//Log all games that have finished
+						_logger.info("1: Enter 1 to log list of finished games");
+						
+						//Log all upcoming games
+						_logger.info("2: Enter 2 to log list of upcoming games");
+						
+						//This option allows the user to create and add a player to be tracked by system
 						_logger.info("3: Enter 3 to create a player");
+						
+						//This option allows the user to create and add a team to be tracked by system
 						_logger.info("4: Enter 4 to create a team");
+						
+						//This option allows the user to create and add a game to be tracked by system
 						_logger.info("5: Enter 5 to create a game");
+						
+						//Allows user to update any games that have started while the system has been running
+						//With the needed data for when the game has finished
 						_logger.info("6: Enter 6 to update game(s)");
+						
+						//Handles even when a player is moved to another team
 						_logger.info("7: Enter 7 to move a player to another team");
-						_logger.info("8: Enter 8 to view all players being tracked");
-						_logger.info("9: Enter 9 to view all players for a specified team");
+						
+						//Option to log all players being tracked in playersMap
+						_logger.info("8: Enter 8 to log all players being tracked");
+						
+						//Option to log the current roster for a specified team
+						_logger.info("9: Enter 9 to log all players for a specified team");
+						
+						//Turn off system
 						_logger.info("10: Enter 10 to exit");
 						
 						
@@ -186,28 +217,26 @@ public class SportsSystem {
 						case 5://prompts user for data to create a game and keep track of game
 							try {
 								gamesReader.createGames(_listofGames, _listofTeams, _listofPlayers);
-							} catch (Exception e) {
-								// TODO Auto-generated catch block
-								e.printStackTrace();
+							} catch (Exception e_) {
+								_logger.error("Game was not created: " + e_.toString());
 							}
 							break;
 							
-						case 6: // Update finished games that have are missing data such as final scores and total attendance
+						case 6: // Update finished games
 							
 							_logger.info("There are {} game(s) that need to be updated", _GamesThatNeedUpdating.size());
-							updateGames(_listofGames);
+							handler.updateGames(_listofGames, _GamesThatNeedUpdating);
 							break;
 							
 						case 7: // Move a player to another team
-							movePlayer(_listofTeams, _listofPlayers);
+							handler.movePlayer(_listofTeams, _listofPlayers);
 							break;
 							
 						case 8: // Log all players 
-							   for(Entry<Integer, AbstractPlayer> entry : _listofPlayers.returnPlayersMap().entrySet()) {
-								   _logger.info(entry.getValue().toString());
-							   }
+							handler.logAllPlayersInPlayerMap(_listofPlayers);
 							   break;
 						case 9:
+							// Log all players on a current team that the user specifies
 							_logger.info("Enter the team whose roster you would like to see");
 							_logger.info("Enter city of team:");
 							city = reader.readLine();
@@ -216,7 +245,7 @@ public class SportsSystem {
 							fullTeamName = city + " " + teamName;
 							try {
 								if(_listofTeams.getTeamMap().containsKey(fullTeamName)) 
-									logTeamRoster(_listofTeams.getTeamMap().get(fullTeamName), _listofTeams);
+									handler.logTeamRoster(_listofTeams.getTeamMap().get(fullTeamName), _listofTeams);
 								else
 									throw new TeamNotFoundException(fullTeamName);
 							}
@@ -243,176 +272,6 @@ public class SportsSystem {
 
 	}
 	
-	public void logTeamRoster(AbstractTeam team_, TeamsList listofTeams_) {
-		Iterator<TeamPlayer> teamPlayerIterator;
-		teamPlayerIterator = team_.getCurrentPlayers().iterator();
-		_logger.trace("These are the current players on the team {}" , team_.fullTeamName());
-		System.out.println(team_.getCurrentPlayers().size());
-		while(teamPlayerIterator.hasNext()) {
-			_logger.info(teamPlayerIterator.next().getPlayer().toString());
-		}	
-	}
-	
-	public void movePlayer(TeamsList listofTeams_, PlayersList listofPlayers_) throws IOException {
-		int playerID = -1;
-		AbstractPlayer playerBeingMoved = null;
-		AbstractTeam oldTeam = null;
-		int indexOfCurrentTeamHistory = -1;
-		int indexofCurrentPlayerHistory = -1;
-		String teamCity = null;
-		String teamName = null;
-		String fullTeamName = null;
-		TeamPlayer newTeamHistory = null;
-		String oldTeamNameStr = null;
-		
-		_logger.info("Enter the player ID for the player you wish you move:");
-		try {
-			playerID = Integer.parseInt(reader.readLine());
-		} 
-		catch (NumberFormatException e_) {
-			_logger.error("Could not parse the ID entered: " + e_.toString());
-		} 
-		try {
-			if(!listofPlayers_.returnPlayersMap().containsKey(playerID)) {
-				throw new PlayerNotFoundException(playerID);
-			}
-			else {
-				playerBeingMoved = listofPlayers_.returnPlayersMap().get(playerID);
-				oldTeamNameStr = playerBeingMoved.getCurrentTeam().fullTeamName();
-			}
-			
-		}
-		catch(Exception e_) {
-			_logger.error("Error finding player: " + e_.toString());
-			return;
-		}
-		if(listofTeams_.getTeamMap().get(playerBeingMoved.getCurrentTeam().fullTeamName()).getEntireHistoryPlayers().contains(playerBeingMoved.getCurrentTeamHistory())) {
-			oldTeam = listofTeams_.getTeamMap().get(oldTeamNameStr);
-			indexOfCurrentTeamHistory = oldTeam.getEntireHistoryPlayers().indexOf(playerBeingMoved.getCurrentTeamHistory());
-		}
-		//playerBeingMoved.getCurrentTeamHistory().setStatus(false);
-		if(playerBeingMoved.getPlayerTeams().contains(playerBeingMoved.getCurrentTeamHistory())) {
-			indexofCurrentPlayerHistory = playerBeingMoved.getPlayerTeams().indexOf(playerBeingMoved.getCurrentTeamHistory());
-		}
-		
-		try {
-			_logger.info("Enter the player's jersey number for the new team");
-			playerBeingMoved.set_jerseyNum(Integer.parseInt(reader.readLine()));
-		}
-		catch(Exception e_) {
-			_logger.error("Error occured for jersey number input: " + e_.toString());
-		}
-		try {
-			_logger.info("Enter the team the player is moving to");
-			_logger.info("Enter the city first: ");
-			teamCity = reader.readLine();
-			_logger.info("Enter the team name: ");
-			teamName = reader.readLine();
-			fullTeamName = teamCity + " " + teamName;
-		}
-		catch(Exception e_) {
-			_logger.error("Something went wrong with reading the team: " + e_.toString());
-			return;
-		}
-		
-		try {
-				newTeamHistory = new TeamPlayer();
-				newTeamHistory.setStartDate(new Date());
-				newTeamHistory.setStatus(true);
-				playersReader.parseCurrentTeam(_listofTeams, fullTeamName, playerBeingMoved, _listofPlayers, newTeamHistory);
-				listofTeams_.getTeamMap().get(oldTeamNameStr).getEntireHistoryPlayers().get(indexOfCurrentTeamHistory).setStatus(false);
-				listofTeams_.getTeamMap().get(oldTeamNameStr).getEntireHistoryPlayers().get(indexOfCurrentTeamHistory).setEndDate(new Date());
-				playerBeingMoved.getPlayerTeams().get(indexofCurrentPlayerHistory).setStatus(false);
-				playerBeingMoved.getPlayerTeams().get(indexofCurrentPlayerHistory).setEndDate(new Date());;
-				newTeamHistory.setPlayer(playerBeingMoved);
-				listofTeams_.getTeamMap().get(fullTeamName).getEntireHistoryPlayers().add(newTeamHistory);
-
-		}
-		catch(Exception e_) {
-			_logger.error("Error with moving this player to this team: " + e_.toString());
-			return;
-		}
-		_logger.trace("{} {} was successfully moved to team {}", playerBeingMoved.getFirstName(), playerBeingMoved.getLastName(), playerBeingMoved.getCurrentTeam().fullTeamName());
-	}
-	
-	/**
-	 * Method to update games that finished and need results of game
-	 */
-	public void updateGames(GamesList _listofGames_) {
-	    Iterator<Key> KeyIterator;
-		Key currentKey;
-		AbstractGame gameUpdating = null;
-	    int durationHours;
-	    int durationMinutes;
-	    int durationSeconds;
-	    StringBuilder durationString = new StringBuilder("PT");
-		KeyIterator = _GamesThatNeedUpdating.iterator();		
-		while(KeyIterator.hasNext()) {
-			currentKey = KeyIterator.next();
-			gameUpdating = _listofGames_.getGamesMap().get(currentKey);
-			_logger.info("Updating Game - GameID: {} , Start Time: {}", currentKey.getGameUID(), currentKey.getStartTime());
-			_logger.info("Enter Duration of the game"); // Prompt User for the duration of the game
-			_logger.info("Hour(s):"); // Hours the game lasted
-			try {
-				durationHours = Integer.parseInt(reader.readLine());
-			}
-			catch(Exception e_) {
-				_logger.error(e_.toString());
-				continue;
-			}
-			_logger.info("Minutes(s):"); // Minutes the game lasted
-			try {
-				durationMinutes = Integer.parseInt(reader.readLine());
-			}
-			catch(Exception e_) {
-				_logger.error(e_.toString());
-				continue;
-			}
-			_logger.info("Second(s):"); // Seconds the game lasted
-			try {
-				durationSeconds = Integer.parseInt(reader.readLine());
-			}
-			catch(Exception e_) {
-				_logger.error(e_.toString());
-				continue;
-			}
-			durationString.append(durationHours).append("H").append(durationMinutes).append("M").append(durationSeconds).append("S");
-			gameUpdating.setDuration(Duration.parse(durationString)); // set the duration for the game
-			
-			gameUpdating.setFinishTime(gameUpdating.getStartTime().plus(gameUpdating.getDuration())); // Finish time = start time + duration
-			_listofGames_.getGamesMap().get(currentKey).setDuration(gameUpdating.getDuration()); 
-			_listofGames_.getGamesMap().get(currentKey).setFinishTime(gameUpdating.getFinishTime());
-			_logger.info("Update final scores");
-			_logger.info("Home Team Final Score:"); // Final Score for home team
-			try {
-				gameUpdating.setHomeTeamScore(Integer.parseInt(reader.readLine()));
-			}
-			catch(Exception e_) {
-				_logger.error(e_.toString());
-				continue;
-			}
-			_logger.info("Away Team Final Score:"); // Final Score for away team
-			try {
-				gameUpdating.setAwayTeamScore(Integer.parseInt(reader.readLine()));
-			}
-			catch(Exception e_) {
-				_logger.error(e_.toString());
-				continue;
-			}
-			_listofGames_.getGamesMap().get(currentKey).setAwayTeamScore(gameUpdating.getaTeamScore());
-			_listofGames_.getGamesMap().get(currentKey).setHomeTeamScore(gameUpdating.getHomeTeamScore());
-			_logger.info("Enter attendance of game:");
-			try {
-				gameUpdating.setAttendance(Integer.parseInt(reader.readLine())); // attendance of game
-			}
-			catch(Exception e_) {
-				_logger.error(e_.toString());
-				continue;
-			}
-			_logger.trace("Game successfully updated:");
-			_logger.info(_listofGames_.getGamesMap().get(currentKey).toString());
-		}
-	}
 	
 	//MAIN
 	public static void main(String[] args) throws RuntimeException, IOException, ParseException {
