@@ -143,8 +143,22 @@ public abstract class AbstractPlayer implements InterfaceModel{
 	@Override
 	public String toString() {
 
-		return "Player [_firstName=" + _firstName + ", _lastName=" + _lastName + ", _jerseyNum=" + _jerseyNum
-				+ ", _playerID=" + _playerID + ", current team= " + _currentTeamHistory.getTeam().fullTeamName() + "]";
+		StringBuilder playerString = new StringBuilder();
+		
+		playerString.append("Player [_firstName=").append(_firstName).append(", _lastName=").append(_lastName).append(", _jerseyNum=");
+		
+		if(_jerseyNum == -1)
+			playerString.append("N/A");
+		else
+			playerString.append(_jerseyNum);
+		playerString.append(", _playerID=").append(_playerID).append(", current team= ");
+		if(_currentTeamHistory == null) {
+			playerString.append("N/A").append("]");
+		}
+		else
+			playerString.append(_currentTeamHistory.getTeam().fullTeamName()).append("]");
+		return playerString.toString();
+
 	}
 
 	/*Returns true if the two players are equal*/

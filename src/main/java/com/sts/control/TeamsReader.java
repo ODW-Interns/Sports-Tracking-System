@@ -23,12 +23,12 @@ import com.sts.nhl.models.TeamNHL;
 /**
  * The class will read from an input file and add to the list of teams
  */
-	public class TeamsFileReader {
+	public class TeamsReader {
 		private static final String DELIM = "|";
 		private Logger _logger;
 		private BufferedReader reader;
 
-		public TeamsFileReader() {
+		public TeamsReader() {
 	        reader = new BufferedReader(new InputStreamReader(System.in));
 			_logger = LoggerFactory.getLogger(getClass().getSimpleName());
 		}

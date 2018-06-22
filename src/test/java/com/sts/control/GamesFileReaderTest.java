@@ -14,7 +14,7 @@ public class GamesFileReaderTest {
 	 public static GamesList listofGames = new GamesList();
 	 public static TeamsList listofTeams = new TeamsList();
 	 public static PlayersList listofPlayers = new PlayersList();
-	 public static GamesFileReader gr = new GamesFileReader();
+	 public static GamesReader gr = new GamesReader();
 
 	@BeforeClass
 	public static void runBeforeTests() {

@@ -1,6 +1,7 @@
 package com.sts.concretemodel;
 
 import java.time.ZonedDateTime;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.Map.Entry;
 import java.util.SortedMap;
@@ -70,8 +71,8 @@ public class GamesList{
 		   _logger.trace(entry.getValue().toString());
 		   homeTeam = entry.getValue().getHomeTeam();
 		   awayTeam = entry.getValue().getAwayTeam();
-		   homeIterator = homeTeam.getEntireHistoryPlayers().iterator();
-		   awayIterator = awayTeam.getEntireHistoryPlayers().iterator();
+		   homeIterator = homeTeam.getCurrentPlayers().iterator();
+		   awayIterator = awayTeam.getCurrentPlayers().iterator();
 		   _logger.trace("Home Players:");
 		   while(homeIterator.hasNext()) {
 			   teamPlayer = homeIterator.next();
@@ -87,38 +88,45 @@ public class GamesList{
    }
    
    /**
-    * Log games that are finished. Players that have played in the game are also logged
+    * Log games that are finished. Players that have were on these teams in the game are also logged
     */
+
    public void logFinishedGames(PlayersList playersList_) {
 	   ZonedDateTime timeNow = ZonedDateTime.now();
-	   int playerID;
-	   Iterator<Integer> homeIterator;
-	   Iterator<Integer> awayIterator;
+	   Iterator<TeamPlayer> homeIterator;
+	   Iterator<TeamPlayer> awayIterator;
 	   int tempUID = -1;
 	   Key highestKey = new Key(timeNow,tempUID);
+	   AbstractTeam awayTeam = null;
+	   AbstractTeam homeTeam = null;
+	   TeamPlayer player = null;
 
 	   SortedMap<Key, AbstractGame> finishedGames = map.tailMap(highestKey);
-	   System.out.println("Finished game size");
-	   System.out.println(finishedGames.size());
 	   _logger.info("ALL FINISHED GAMES");
 	   for(Entry<Key, AbstractGame> entry : finishedGames.entrySet()) {
 		   if(entry.getValue().getFinishTime() != null) {
 			   _logger.trace(entry.getValue().toString());
-			   homeIterator = entry.getValue().getListofHomePlayers().iterator();
-			   awayIterator = entry.getValue().getListOfAwayPlayers().iterator();
+			   homeTeam = entry.getValue().getHomeTeam();
+			   awayTeam = entry.getValue().getAwayTeam();
 
+			   homeIterator = homeTeam.getEntireHistoryPlayers().iterator();
 			   _logger.trace("Home Players:");
 			   while(homeIterator.hasNext()) {
-				   playerID = homeIterator.next();
-				   _logger.info(playersList_.returnPlayersMap().get(playerID).toString());
+				   player = homeIterator.next();
+				   if(player.getEndDate() != null)
+				   if(player.getStartDate().before(Date.from(entry.getValue().getStartTime().toInstant())) && 
+						  ( player.getEndDate() == null || player.getEndDate().after(Date.from(entry.getValue().getStartTime().toInstant()))))
+						  _logger.info(player.getPlayer().toString());
 			   }
+			   awayIterator = awayTeam.getEntireHistoryPlayers().iterator();
 			   _logger.trace("Away Players:");
 			   while(awayIterator.hasNext()) {
-				   playerID = awayIterator.next();
-				   _logger.info(playersList_.returnPlayersMap().get(playerID).toString());
-			   }
+				   player = awayIterator.next();
+				   if(player.getStartDate().before(Date.from(entry.getValue().getStartTime().toInstant())) && 
+							  ( player.getEndDate() == null || player.getEndDate().after(Date.from(entry.getValue().getStartTime().toInstant()))))
+							  _logger.info(player.getPlayer().toString());			
+				   }
 		   }
 	   }
    }
-
 }

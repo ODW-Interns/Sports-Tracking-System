@@ -46,7 +46,7 @@ import com.sts.nhl.models.NHLGame;
  *  class to read from file with upcoming/finished games
  *
  */
-public class GamesFileReader {
+public class GamesReader {
     private Logger _logger;
 
 	private int tempGameId;
@@ -58,7 +58,7 @@ public class GamesFileReader {
     private BufferedReader reader;
 
     //Constructor
-    public GamesFileReader() {
+    public GamesReader() {
     	reader = new BufferedReader(new InputStreamReader(System.in));
         _logger = LoggerFactory.getLogger(getClass().getSimpleName());
     }

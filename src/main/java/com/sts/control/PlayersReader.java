@@ -34,13 +34,13 @@ import com.sts.nhl.models.NHLPlayer;
  * We also reading the sport category and declare if the player in NFl, NHl, NBA, or MLB. We map each player to his category defined class
  * so we can update unique statistics in the future.
  */
-public class PlayersFileReader {
+public class PlayersReader {
 	private Logger _logger;
 	private BufferedReader reader;
 
     private static final String DELIM = "|";
     //Constructor
-    public PlayersFileReader() {
+    public PlayersReader() {
         _logger = LoggerFactory.getLogger(getClass().getSimpleName());
         reader = new BufferedReader(new InputStreamReader(System.in));
     }
@@ -102,7 +102,7 @@ public class PlayersFileReader {
     /**
      * method to parse the team from the data file
      */
-    private void parseCurrentTeam(TeamsList teamList_, String teamStr_, AbstractPlayer player_, PlayersList playerlist_, TeamPlayer currentTeamHistory_) throws Exception {
+    public void parseCurrentTeam(TeamsList teamList_, String teamStr_, AbstractPlayer player_, PlayersList playerlist_, TeamPlayer currentTeamHistory_) throws Exception {
     	AbstractPlayer tempPlayer;
     	ArrayList<TeamPlayer> temp1;
     	AbstractTeam temp;
@@ -118,16 +118,14 @@ public class PlayersFileReader {
     			throw new MismatchPlayerandTeamSportException();
     		}
     		else {
-    	
     			temp = teamList_.getTeamMap().get(teamStr_);
     			temp1 = temp.getCurrentPlayers();
     			//Check for duplicate Jersey #'s on the same team
     			for(int i=0;i<temp1.size();i++) {
-
     				tempPlayer=playerlist_.returnPlayersMap().get(temp1.get(i).getPlayer().get_playerID());
     				tempJnumb=tempPlayer.getJerseyNum();
     				if(tempJnumb==player_.getJerseyNum()) {
-    					throw new Exception ("Duplicate Jersey Number");
+    					throw new Exception ("Duplicate Jersey Number found for the same team, this is not allowed");
     					
     				}
     			}
@@ -145,7 +143,7 @@ public class PlayersFileReader {
     /**
      * Read all the players from a file and store into a players map
      */
-	private void readFromFileForLists(Reader is_, PlayersList playerlist_, TeamsList teamsList_) throws IOException {
+	public void readFromFileForLists(Reader is_, PlayersList playerlist_, TeamsList teamsList_) throws IOException {
 		// TODO Auto-generated method stub
 		 try (BufferedReader reader = new BufferedReader(is_)) {
 	         StringTokenizer tokenizer;   
@@ -491,6 +489,7 @@ public class PlayersFileReader {
 				return;
 			}
 			else { 
+				
 				if(listofTeams_.getTeamMap().get(lineForTeam) != null) { // If player does have a team, make sure the team exists
 					currentHistory = new TeamPlayer();
 					currentHistory.setTeam(listofTeams_.getTeamMap().get(lineForTeam));
