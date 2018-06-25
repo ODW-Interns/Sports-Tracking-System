@@ -24,8 +24,6 @@ import com.sts.control.GamesReader;
 import com.sts.control.PlayersReader;
 import com.sts.control.StoreDataFromInputFile;
 import com.sts.control.TeamsReader;
-import com.sts.model.exception.TeamNotFoundException;
-
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
@@ -149,11 +147,7 @@ public class SportsSystem {
 	    int choice = 0;   
 	    boolean c = true;
 	    
-	    String city;  // city of the team Ex: Boston
-	    String teamName; // name of the team Ex: Celtics
-	    String fullTeamName; // Boston Celtics
-
-			do {
+	    do {
 				
 					while (c) {
 						//Log all games that have finished
@@ -233,25 +227,11 @@ public class SportsSystem {
 							break;
 							
 						case 8: // Log all players 
-							handler.logAllPlayersInPlayerMap(_listofPlayers);
+							handler.requestToLogAllPlayersInPlayerMap(_listofPlayers);
 							   break;
 						case 9:
 							// Log all players on a current team that the user specifies
-							_logger.info("Enter the team whose roster you would like to see");
-							_logger.info("Enter city of team:");
-							city = reader.readLine();
-							_logger.info("Enter name of the team:");
-							teamName = reader.readLine();
-							fullTeamName = city + " " + teamName;
-							try {
-								if(_listofTeams.getTeamMap().containsKey(fullTeamName)) 
-									handler.logTeamRoster(_listofTeams.getTeamMap().get(fullTeamName), _listofTeams);
-								else
-									throw new TeamNotFoundException(fullTeamName);
-							}
-							catch(Exception e_) {
-								_logger.error("Invalid Team Input: " + e_.toString());
-							}
+							handler.requestToLogAllPlayersOnTeam(_listofTeams);
 							
 							break;
 						case 10: // Shut off system

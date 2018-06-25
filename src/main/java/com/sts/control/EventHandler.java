@@ -7,8 +7,6 @@ import java.time.Duration;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
-import java.util.Map.Entry;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -21,6 +19,8 @@ import com.sts.concretemodel.PlayersList;
 import com.sts.concretemodel.TeamPlayer;
 import com.sts.concretemodel.TeamsList;
 import com.sts.model.exception.PlayerNotFoundException;
+import com.sts.model.exception.TeamNotFoundException;
+import com.sts.view.LogRequest;
 
 /*
  * Class that is used to handle all the requests/events from the system
@@ -35,25 +35,18 @@ public class EventHandler {
 	
 		private Logger _logger;
 	    private BufferedReader reader;
-	
+	    private LogRequest logReq;
+	    
 	    //Constructor
 	    public EventHandler() {
 	    	_logger = LoggerFactory.getLogger(getClass().getSimpleName());
 	 	    reader = new BufferedReader(new InputStreamReader(System.in));
+	 	    logReq = new LogRequest();
 	    }
-	    
-	    //Method to log the roster of a team specified by user
-		public void logTeamRoster(AbstractTeam team_, TeamsList listofTeams_) {
-			Iterator<TeamPlayer> teamPlayerIterator;
-			teamPlayerIterator = team_.getCurrentPlayers().iterator();
-			_logger.trace("These are the current players on the team {}" , team_.fullTeamName());
-			while(teamPlayerIterator.hasNext()) {
-				_logger.info(teamPlayerIterator.next().getPlayer().toString());
-			}	
-		}
 		
 		//Method to move one player from one team to another
 		public void movePlayer(TeamsList listofTeams_, PlayersList listofPlayers_) throws IOException {
+			System.out.println("HERE");
 			int playerID = -1;
 			AbstractPlayer playerBeingMoved = null; // player that is being moved
 			AbstractTeam oldTeam = null; // player's old team
@@ -219,9 +212,38 @@ public class EventHandler {
 		}
 
 	//Method to log all players that are being tracked by the system
-	public void logAllPlayersInPlayerMap(PlayersList listofPlayers_) {
-		   for(Entry<Integer, AbstractPlayer> entry : listofPlayers_.returnPlayersMap().entrySet()) {
-			   _logger.info(entry.getValue().toString());
-		   }
+	public void requestToLogAllPlayersInPlayerMap(PlayersList listofPlayers_) {
+		   logReq.logAllPlayersInPlayerMap(listofPlayers_);
+	}
+
+	public void requestToLogAllPlayersOnTeam(TeamsList listofTeams_) {
+		String city;
+		String teamName;
+		String fullTeamName;
+		_logger.info("Enter the team whose roster you would like to see");
+		_logger.info("Enter city of team:");
+		try {
+			city = reader.readLine();
+		} catch (IOException e_) {
+			_logger.error("Error reading in city: " + e_.toString());
+			return;
+		}
+		_logger.info("Enter name of the team:");
+		try {
+			teamName = reader.readLine();
+		} catch (IOException e_) {
+			_logger.error("Error reading in team name: " + e_.toString());
+			return;
+		}
+		fullTeamName = city + " " + teamName;
+		try {
+			if(listofTeams_.getTeamMap().containsKey(fullTeamName)) 
+				logReq.logTeamRoster(listofTeams_.getTeamMap().get(fullTeamName), listofTeams_);
+			else
+				throw new TeamNotFoundException(fullTeamName);
+		}
+		catch(Exception e_) {
+			_logger.error("Invalid Team Input: " + e_.toString());
+		}
 	}
 }

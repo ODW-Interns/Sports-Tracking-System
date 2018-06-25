@@ -9,7 +9,7 @@ import com.sts.concretemodel.GamesList;
 import com.sts.concretemodel.PlayersList;
 import com.sts.concretemodel.TeamsList;
 
-public class GamesFileReaderTest {
+public class GamesReaderTest {
 
 	 public static GamesList listofGames = new GamesList();
 	 public static TeamsList listofTeams = new TeamsList();
