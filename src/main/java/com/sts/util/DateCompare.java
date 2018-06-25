@@ -1,6 +1,8 @@
-package com.sts.concretemodel;
+package com.sts.util;
 
 import java.util.Comparator;
+
+import com.sts.concretemodel.Key;
 
 /**
  * Class to allow comparisons to sort the key object by their date and time.
