@@ -250,7 +250,20 @@ import com.sts.nhl.models.TeamNHL;
 		            _logger.error("Refusing to add invalid team: {}", team);
 		            return;
 		        }
-		        
+		     
+			  //checking if the team is already exists in the system
+			   
+			  if(listofTeams.getTeamMap().containsValue(team)) {
+				try {
+					throw new Exception ("Team is already exists");
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				return;
+			  } 
+			
+			  
 		        //
 		        //Add game object to the list of games provided
 		        //
@@ -261,7 +274,7 @@ import com.sts.nhl.models.TeamNHL;
 		    
 
 		}
-		
+	
 	}
 	
 	
