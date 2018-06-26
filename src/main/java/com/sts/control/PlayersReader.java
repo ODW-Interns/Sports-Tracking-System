@@ -17,11 +17,8 @@ import org.slf4j.LoggerFactory;
 import com.sts.abstractmodel.AbstractPlayer;
 import com.sts.abstractmodel.AbstractTeam;
 import com.sts.abstractmodel.SportsCategory;
-import com.sts.concretemodel.GamesList;
 import com.sts.concretemodel.KeyForTeamsMap;
-import com.sts.concretemodel.PlayersList;
-import com.sts.concretemodel.TeamPlayer;
-import com.sts.concretemodel.TeamsList;
+import com.sts.concretemodel.TeamPlayerHistory;
 import com.sts.mlb.models.MLBPlayer;
 import com.sts.mlb.models.TeamMLB;
 import com.sts.model.exception.MismatchPlayerandTeamSportException;
@@ -106,9 +103,9 @@ public class PlayersReader {
     /**
      * method to parse the team from the data file
      */
-    public void parseCurrentTeam(TeamsList teamList_, KeyForTeamsMap teamKey_, AbstractPlayer player_, PlayersList playerlist_, TeamPlayer currentTeamHistory_) throws Exception {
+    public void parseCurrentTeam(TeamsList teamList_, KeyForTeamsMap teamKey_, AbstractPlayer player_, PlayersList playerlist_, TeamPlayerHistory currentTeamHistory_) throws Exception {
     	AbstractPlayer tempPlayer;
-    	ArrayList<TeamPlayer> temp1;
+    	ArrayList<TeamPlayerHistory> temp1;
     	AbstractTeam temp;
     	int tempJnumb;
    
@@ -158,7 +155,7 @@ public class PlayersReader {
 			 String teamName;
 			 KeyForTeamsMap teamKey = null;
 			 Date StartDate;
-			 TeamPlayer currentTeam;
+			 TeamPlayerHistory currentTeam;
 			 SportsCategory category;
 	            while ((line = reader.readLine()) != null) {
 	                // don't process empty lines
@@ -265,7 +262,7 @@ public class PlayersReader {
 	                	teamName = tokenizer.nextToken();
 	                	teamKey = new KeyForTeamsMap(teamCity, teamName);
 	                   	StartDate = convertStringToDate(tokenizer.nextToken());
-	                	currentTeam = new TeamPlayer();
+	                	currentTeam = new TeamPlayerHistory();
 	                	currentTeam.setStartDate(StartDate);
 	                	currentTeam.setStatus(true);
 	                	parseCurrentTeam(teamsList_, teamKey, player, playerlist_, currentTeam);
@@ -302,7 +299,7 @@ public class PlayersReader {
 		 String teamName;
 		 KeyForTeamsMap teamKey = null;
 		 Date StartDate;
-		 TeamPlayer currentTeam;
+		 TeamPlayerHistory currentTeam;
 		 StringTokenizer tokenizer;   
 		 SportsCategory category = null;
          AbstractPlayer player = null;
@@ -389,7 +386,7 @@ public class PlayersReader {
         	teamCity = tokenizer.nextToken();
         	teamName = tokenizer.nextToken();
            	StartDate = convertStringToDate(tokenizer.nextToken());
-        	currentTeam = new TeamPlayer();
+        	currentTeam = new TeamPlayerHistory();
         	currentTeam.setStartDate(StartDate);
         	currentTeam.setStatus(true);
         	teamKey = new KeyForTeamsMap(teamCity, teamName);
@@ -429,7 +426,7 @@ public class PlayersReader {
 		AbstractPlayer player = null;
 		AbstractTeam teamofPlayer = null;
 		String lineForTeam = null;
-		TeamPlayer currentHistory = null;   // Will store the current history of the team for this player
+		TeamPlayerHistory currentHistory = null;   // Will store the current history of the team for this player
 		Date StartDate;  // Start Date of this player on this team
 		KeyForTeamsMap teamKey;
 		_logger.info("Enter Sport of Player"); // User enter in which sport the player plays
@@ -526,7 +523,7 @@ public class PlayersReader {
 				player.getCurrentTeamHistory().setTeam(teamofPlayer);
 				teamKey = new KeyForTeamsMap(player.getCurrentTeamHistory().getTeam().getLocation(), player.getCurrentTeamHistory().getTeam().getTeamName());
 				if(listofTeams_.getTeamMap().get(teamKey) != null) { // If player does have a team, make sure the team exists
-					currentHistory = new TeamPlayer();
+					currentHistory = new TeamPlayerHistory();
 					currentHistory.setTeam(listofTeams_.getTeamMap().get(teamKey));
 				}
 				else {

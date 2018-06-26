@@ -15,14 +15,14 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.sts.abstractmodel.AbstractGame;
-import com.sts.concretemodel.GamesList;
 import com.sts.concretemodel.KeyForGamesMap;
-import com.sts.concretemodel.PlayersList;
-import com.sts.concretemodel.TeamsList;
 import com.sts.control.EventHandler;
+import com.sts.control.GamesList;
 import com.sts.control.GamesReader;
+import com.sts.control.PlayersList;
 import com.sts.control.PlayersReader;
 import com.sts.control.StoreDataFromInputFile;
+import com.sts.control.TeamsList;
 import com.sts.control.TeamsReader;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;

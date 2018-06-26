@@ -11,10 +11,6 @@ import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import com.sts.concretemodel.GamesList;
-import com.sts.concretemodel.PlayersList;
-import com.sts.concretemodel.TeamsList;
-
 public class GamesReaderTest {
 
 	 public static GamesList listofGames = new GamesList();
