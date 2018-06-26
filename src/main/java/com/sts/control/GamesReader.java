@@ -139,7 +139,7 @@ public class GamesReader {
         		throw new MismatchGameandTeamSportException();
         }
         else 
-        	throw new TeamNotFoundException(teamStr_);
+        	throw new TeamNotFoundException(cityStr_ + " " + teamStr_);
        
     }
 
@@ -550,7 +550,7 @@ public class GamesReader {
 		 */
 		_logger.info("Enter the Game Category");
 		try {
-			category=SportsCategory.valueOf(reader.readLine());
+			category=SportsCategory.valueOf(reader.readLine().trim());
 			
 		} catch (IOException e) {
 			_logger.error("Invalid Category : " + e.toString());
@@ -612,9 +612,9 @@ public class GamesReader {
 		 */
 		try {
 			_logger.info("Enter the Game Date in this format (yyyy-mm-dd)");
-			date = reader.readLine();
+			date = reader.readLine().trim();
 			_logger.info("Enter the time of the game in this format (hh:mm:ss)");
-			time = reader.readLine();
+			time = reader.readLine().trim();
 			dateAndTime = date + "T" + time + "+00:00";
 			dateTime=parseDate(dateAndTime);
 		} catch (IOException e) {
@@ -628,7 +628,7 @@ public class GamesReader {
 		 */
 		_logger.info("Enter the away city ");
 		try {
-			awayCity=reader.readLine();
+			awayCity=reader.readLine().trim();
 			
 		} catch (IOException e) {
 			_logger.info("Invalid city : " +e.toString());
@@ -640,7 +640,7 @@ public class GamesReader {
 		 */
 		_logger.info("Enter the away team name: ");
 		try {
-			awayTeamName=reader.readLine();
+			awayTeamName=reader.readLine().trim();
 			game.setAwayTeam(parseTeam(category,awayCity,awayTeamName, teamsList_));
 		} catch (IOException e) {
 			_logger.error("Invalid Team Name : " +e.toString());
@@ -652,7 +652,7 @@ public class GamesReader {
 		 */
 		_logger.info("Enter the home city ");
 		try {
-			homeCity=reader.readLine();
+			homeCity=reader.readLine().trim();
 			
 		} catch (IOException e) {
 			_logger.info("Invalid City : " +e.toString());
@@ -664,7 +664,7 @@ public class GamesReader {
 		 */
 		_logger.info("Enter the home team name: ");
 		try {
-			homeTeamName=reader.readLine();
+			homeTeamName=reader.readLine().trim();
 			home=(parseTeam(category,homeCity,homeTeamName, teamsList_));
 		} catch (IOException e) {
 			_logger.error("Invalid Team: " +e.toString());
@@ -690,7 +690,7 @@ public class GamesReader {
 		 */
 		_logger.info("Enter the away team score");
 		try {
-			awayTeamScore=Integer.parseInt(reader.readLine());
+			awayTeamScore=Integer.parseInt(reader.readLine().trim());
 			if(awayTeamScore < 0) {
         		throw new NegativeScoreException();
         	}
@@ -706,7 +706,7 @@ public class GamesReader {
 		 */
 		_logger.info("Enter the home team score");
 		try {
-			homeTeamScore=Integer.parseInt(reader.readLine());
+			homeTeamScore=Integer.parseInt(reader.readLine().trim());
 			if(homeTeamScore < 0) {
         		throw new NegativeScoreException();
         	}
@@ -721,7 +721,7 @@ public class GamesReader {
 		 */
 		_logger.info("Enter the game attendence ");
 		try {
-			gameAttendance=Integer.parseInt(reader.readLine());
+			gameAttendance=Integer.parseInt(reader.readLine().trim());
 			if(gameAttendance < 0) {
         		throw new NegativeAttendanceException();
         	}
@@ -737,7 +737,7 @@ public class GamesReader {
 		_logger.info("Enter Duration of the game"); // Prompt User for the duration of the game
 		_logger.info("Hour(s):"); // Hours the game lasted
 		try {
-			durationHours = Integer.parseInt(reader.readLine());
+			durationHours = Integer.parseInt(reader.readLine().trim());
 		}
 		catch(Exception e_) {
 			_logger.error(e_.toString());
@@ -745,7 +745,7 @@ public class GamesReader {
 		}
 		_logger.info("Minutes(s):"); // Minutes the game lasted
 		try {
-			durationMinutes = Integer.parseInt(reader.readLine());
+			durationMinutes = Integer.parseInt(reader.readLine().trim());
 		}
 		catch(Exception e_) {
 			_logger.error(e_.toString());
@@ -753,7 +753,7 @@ public class GamesReader {
 		}
 		_logger.info("Second(s):"); // Seconds the game lasted
 		try {
-			durationSeconds = Integer.parseInt(reader.readLine());
+			durationSeconds = Integer.parseInt(reader.readLine().trim());
 		}
 		catch(Exception e_) {
 			_logger.error(e_.toString());

@@ -431,12 +431,13 @@ public class PlayersReader {
 		String lineForTeam = null;
 		TeamPlayer currentHistory = null;   // Will store the current history of the team for this player
 		Date StartDate;  // Start Date of this player on this team
-		_logger.info("Enter Sport of Player"); // User enter in which sport the player plays
-		category = SportsCategory.valueOf(reader.readLine());
 		KeyForTeamsMap teamKey;
+		_logger.info("Enter Sport of Player"); // User enter in which sport the player plays
 		
 		//Prompt for which sport the player being created plays
 	      try {
+	  			category = SportsCategory.valueOf(reader.readLine());
+
                 if(category.equals(SportsCategory.valueOf("NBA"))) {
                 	player = new NBAPlayer();
                 	teamofPlayer = new TeamNBA();
@@ -477,7 +478,7 @@ public class PlayersReader {
 	    //Prompt for Player's first name
 		_logger.info("Enter Player's First Name: ");
 		try {
-			player.setFirstName(reader.readLine());
+			player.setFirstName(reader.readLine().trim());
 		}
 		catch(Exception e_) {
 			_logger.error("Entering First Name: " + e_.toString());
@@ -487,7 +488,7 @@ public class PlayersReader {
 		//Prompt for Player's last name
 		_logger.info("Enter Player's Last Name: ");
 		try {
-			player.setLastName(reader.readLine());
+			player.setLastName(reader.readLine().trim());
 		}
 		catch(Exception e_){
 			_logger.error("Entering Last Name: " + e_.toString());
@@ -509,7 +510,7 @@ public class PlayersReader {
 		_logger.info("Enter Player's Current Team: ");
 		_logger.info("If player is currently not on a team, then leave blank"); //Will track player without a team as well (free agent)
 		_logger.info("Enter team's city: ");
-		lineForTeam = reader.readLine();
+		lineForTeam = reader.readLine().trim();
 		try {
 			if(lineForTeam.equals("")) {   // Player without a team
 				listofPlayers_.returnPlayersMap().put(player.get_playerID(), player);
@@ -520,7 +521,7 @@ public class PlayersReader {
 				
 				teamofPlayer.setLocation(lineForTeam);
 				_logger.info("Enter the team's name: ");
-				teamofPlayer.setTeamName(reader.readLine());
+				teamofPlayer.setTeamName(reader.readLine().trim());
 				teamofPlayer.setTeamSport(category);
 				player.getCurrentTeamHistory().setTeam(teamofPlayer);
 				teamKey = new KeyForTeamsMap(player.getCurrentTeamHistory().getTeam().getLocation(), player.getCurrentTeamHistory().getTeam().getTeamName());
@@ -529,7 +530,7 @@ public class PlayersReader {
 					currentHistory.setTeam(listofTeams_.getTeamMap().get(teamKey));
 				}
 				else {
-					throw new TeamNotFoundException(lineForTeam);
+					throw new TeamNotFoundException(teamofPlayer.getLocation() + " " + teamofPlayer.getTeamName());
 				}
 			}
 		}
@@ -543,7 +544,7 @@ public class PlayersReader {
 		//Prompt for Player's jersey number
 		_logger.info("Enter Player's Jersey Number: ");
 		try {
-			player.set_jerseyNum(Integer.parseInt(reader.readLine()));
+			player.set_jerseyNum(Integer.parseInt(reader.readLine().trim()));
 		}
 		catch(Exception e_) {
 			_logger.error("Entering Jersey Number: " + e_.toString());
@@ -553,7 +554,7 @@ public class PlayersReader {
 		//Prompt for date of when the player started on this team
 		_logger.info("Enter the start date of the player on this team in this format(yyyy-mm-dd):");
 		try {
-           	StartDate = convertStringToDate(reader.readLine());
+           	StartDate = convertStringToDate(reader.readLine().trim());
            	currentHistory.setStartDate(StartDate);
            	currentHistory.setStatus(true);
            	parseCurrentTeam(listofTeams_, teamKey, player, listofPlayers_,currentHistory);
