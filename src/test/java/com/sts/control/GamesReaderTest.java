@@ -1,7 +1,13 @@
 package com.sts.control;
 
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
+
+import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -170,6 +176,17 @@ public class GamesReaderTest {
 		assertTrue(thrown);
 	}
 	
+	@Test
+	public void parseDateMethodTest() {
+		boolean sameDate = false;
+		String date = "2018-05-24T00:00-07:00"; // Pacific Time - should convert to 00:00 PT
+		  DateTimeFormatter formatter =DateTimeFormatter.ISO_DATE_TIME;
+          ZonedDateTime date1 = ZonedDateTime.parse(date,  formatter);	
+         ZonedDateTime date2 = gr.parseDate("2018-05-24T03:00-04:00"); // Eastern time is 3 hours ahead
+		if(date1.withZoneSameInstant(ZoneId.systemDefault()).equals(date2))
+			sameDate = true;
+		assertTrue(sameDate);
+	}
 	
 	
 }

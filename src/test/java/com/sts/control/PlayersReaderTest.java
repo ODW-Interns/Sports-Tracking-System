@@ -1,6 +1,5 @@
 package com.sts.control;
 
-import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.BeforeClass;
@@ -34,7 +33,7 @@ public class PlayersReaderTest {
 	
 	@Test
 	public void MismatchPlayerandTeamSportExceptionTest() {
-		String playerData = "NFL|1000000|29|F1|L1|Brooklyn Nets";
+		String playerData = "NFL|1000000|29|F1|L1|Brooklyn|Nets|2017-01-01";
 		boolean thrown = false;
 		try {
 			pr.readFromStringForList(playerData, listofPlayers, listofTeams);
@@ -48,7 +47,7 @@ public class PlayersReaderTest {
 
 	@Test
 	public void TeamNotFoundExceptionTest() {
-		String playerData = "NBA|10000001|28|F1|L1|Brook Nets";
+		String playerData = "NBA|10000001|28|F1|L1|Brook|Nets|2017-01-01";
 		boolean thrown = false;
 		try {
 			pr.readFromStringForList(playerData, listofPlayers, listofTeams);
@@ -62,7 +61,7 @@ public class PlayersReaderTest {
 	
 	@Test
 	public void InvalidStartDateExceptionTest() {
-		String playerData = "NBA|1|28|F2|L2|Atlanta Hawks|2018-19-45";
+		String playerData = "NBA|78|28|F2|L2|Atlanta|Hawks|2018-14-15";
 		boolean thrown = false;
 		try {
 			pr.readFromStringForList(playerData,  listofPlayers, listofTeams);
@@ -71,7 +70,6 @@ public class PlayersReaderTest {
 			thrown = true;
 		}
 			assertTrue(thrown);
-		
 	}
 	
 	@Test
