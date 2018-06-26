@@ -152,6 +152,7 @@ public class PlayersReader {
 		 try (BufferedReader reader = new BufferedReader(is_)) {
 	         StringTokenizer tokenizer;   
 	         AbstractPlayer player = null;
+	         int playerID;
 			 String line;
 			 String teamCity;
 			 String teamName;
@@ -205,7 +206,11 @@ public class PlayersReader {
 	                
 	                //Player ID, used as key in players map
 	                try {
-	                	player.set_playerID(Integer.parseInt(tokenizer.nextToken()));
+	                	playerID = Integer.parseInt(tokenizer.nextToken());
+	                	if(playerlist_.returnPlayersMap().containsKey(playerID))
+	                		throw new Exception("This player ID has already been used for another player");
+	                	else
+	                		player.set_playerID(playerID);
 	     	
 	                }	                
 	                catch(Exception e_){
@@ -301,6 +306,7 @@ public class PlayersReader {
 		 StringTokenizer tokenizer;   
 		 SportsCategory category = null;
          AbstractPlayer player = null;
+         int playerID;
 		
 		if ("".equals(line))
 			throw new Exception();
@@ -344,7 +350,11 @@ public class PlayersReader {
         }
         
         try {
-        	player.set_playerID(Integer.parseInt(tokenizer.nextToken()));
+        	playerID = Integer.parseInt(tokenizer.nextToken());
+        	if(playersList_.returnPlayersMap().containsKey(playerID))
+        		throw new Exception("This player ID has already been used for another player");
+        	else
+        		player.set_playerID(playerID);
         }
         catch(Exception e_){
         	_logger.error("setPlayerID:" + e_.toString());
@@ -366,7 +376,6 @@ public class PlayersReader {
         catch(Exception e_) {
         	_logger.error("setFirstName:" + e_.toString());
         	throw e_;
-        
         }
         try {
         	player.setLastName(tokenizer.nextToken());

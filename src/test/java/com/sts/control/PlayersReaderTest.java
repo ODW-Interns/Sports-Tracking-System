@@ -70,13 +70,12 @@ public class PlayersReaderTest {
 		catch(Exception e_) {
 			thrown = true;
 		}
-		System.out.println(listofPlayers.returnPlayersMap().get(1).getCurrentTeamHistory().getStartDate());
 			assertTrue(thrown);
 		
 	}
 	
 	@Test
-	public void TeamChangeWithSameJerseyTest() {
+	public void samePlayerIDBeingUsed() {
 		String playerData = "NBA|1|28|F1|L1|Boston Celtics|2018-07-01";
 		boolean thrown = false;
 		try {
@@ -85,7 +84,7 @@ public class PlayersReaderTest {
 		catch(Exception e_) {
 			thrown = true;
 		}
-			assertFalse(thrown);
+			assertTrue(thrown);
 		
 				
 	}
