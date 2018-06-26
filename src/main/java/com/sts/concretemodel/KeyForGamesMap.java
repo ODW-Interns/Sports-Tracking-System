@@ -7,13 +7,13 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.ZonedDateTime;
 
-public class Key{
+public class KeyForGamesMap{
 
     private final ZonedDateTime _startTime;
     private final int _UID;
     
 
-    public Key(ZonedDateTime x_, int y_) {
+    public KeyForGamesMap(ZonedDateTime x_, int y_) {
         _startTime = x_;
         _UID = y_;
     }
@@ -21,8 +21,8 @@ public class Key{
     @Override
     public boolean equals(Object o_) {
         if (this == o_) return true;
-        if (!(o_ instanceof Key)) return false;
-        Key key = (Key) o_;
+        if (!(o_ instanceof KeyForGamesMap)) return false;
+        KeyForGamesMap key = (KeyForGamesMap) o_;
         return _startTime == key._startTime && _UID == key._UID;
     }
 

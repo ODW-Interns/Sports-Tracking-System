@@ -10,15 +10,15 @@ import com.sts.abstractmodel.AbstractTeam;
  */
 public class TeamsList{
 	
-	private ConcurrentHashMap<String,AbstractTeam> TeamMap_;
+	private ConcurrentHashMap<KeyForTeamsMap,AbstractTeam> TeamMap_;
 
 	//Constructor
 	public TeamsList() {
-		TeamMap_ = new ConcurrentHashMap<String, AbstractTeam>();
+		TeamMap_ = new ConcurrentHashMap<KeyForTeamsMap, AbstractTeam>();
 	}
 	
 	//Return: Teams Map
-	public ConcurrentHashMap<String, AbstractTeam> getTeamMap(){
+	public ConcurrentHashMap<KeyForTeamsMap, AbstractTeam> getTeamMap(){
 		return TeamMap_;
 	}
 

@@ -12,21 +12,21 @@ import org.slf4j.LoggerFactory;
 
 import com.sts.abstractmodel.AbstractGame;
 import com.sts.abstractmodel.AbstractTeam;
-import com.sts.util.DateCompare;
+import com.sts.util.GameKeyCompare;
 
 
 /**
  * Class to hold structure (Tree Map) to map all games being tracked
  */
 public class GamesList{
-	private TreeMap<Key, AbstractGame> map;
+	private TreeMap<KeyForGamesMap, AbstractGame> map;
     private Logger _logger;
 
     /**
      * Constructor
      */
     public GamesList(){
-    	map = new TreeMap<Key, AbstractGame>(new DateCompare());
+    	map = new TreeMap<KeyForGamesMap, AbstractGame>(new GameKeyCompare());
         _logger = LoggerFactory.getLogger(getClass().getSimpleName());
 
     }
@@ -49,7 +49,7 @@ public class GamesList{
     * @return
     * tree map(Map of Games Sorted by Time)
     */
-   public TreeMap<Key, AbstractGame> getGamesMap() {
+   public TreeMap<KeyForGamesMap, AbstractGame> getGamesMap() {
 	   return map;
    }
    
@@ -67,16 +67,16 @@ public class GamesList{
 	   Iterator<TeamPlayer> awayIterator;
 	  
 	   int tempUID = -1;
-	   Key lowestKey = new Key(timeNow,tempUID);
+	   KeyForGamesMap lowestKey = new KeyForGamesMap(timeNow,tempUID);
 	   AbstractTeam homeTeam;
 	   AbstractTeam awayTeam;
-	   SortedMap<Key, AbstractGame> upcomingGames = map.headMap(lowestKey); // Partition for just the upcoming games 
+	   SortedMap<KeyForGamesMap, AbstractGame> upcomingGames = map.headMap(lowestKey); // Partition for just the upcoming games 
 	   																		// from the gamesMap by using headMap
 	   
 	   _logger.info("ALL UPCOMING GAMES:");
 	   
 	   //Iterate through the upcoming games
-	   for(Entry<Key, AbstractGame> entry : upcomingGames.entrySet()) {
+	   for(Entry<KeyForGamesMap, AbstractGame> entry : upcomingGames.entrySet()) {
 		   _logger.trace(entry.getValue().toString());
 		   homeTeam = entry.getValue().getHomeTeam();
 		   awayTeam = entry.getValue().getAwayTeam();
@@ -112,16 +112,16 @@ public class GamesList{
 	   Iterator<TeamPlayer> awayIterator;
 	   
 	   int tempUID = -1;
-	   Key highestKey = new Key(timeNow,tempUID);
+	   KeyForGamesMap highestKey = new KeyForGamesMap(timeNow,tempUID);
 	   AbstractTeam awayTeam = null;
 	   AbstractTeam homeTeam = null;
 	   TeamPlayer player = null;
 
 	   // tailMap used to partition the entire games map to retrieve just the finished games
-	   SortedMap<Key, AbstractGame> finishedGames = map.tailMap(highestKey); 
+	   SortedMap<KeyForGamesMap, AbstractGame> finishedGames = map.tailMap(highestKey); 
 	   
 	   _logger.info("ALL FINISHED GAMES");
-	   for(Entry<Key, AbstractGame> entry : finishedGames.entrySet()) {
+	   for(Entry<KeyForGamesMap, AbstractGame> entry : finishedGames.entrySet()) {
 		   if(entry.getValue().getFinishTime() != null) { // the game has finished, then
 			   _logger.trace(entry.getValue().toString());
 			   homeTeam = entry.getValue().getHomeTeam(); // home team of game

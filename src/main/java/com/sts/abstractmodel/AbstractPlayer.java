@@ -34,6 +34,7 @@ public abstract class AbstractPlayer implements InterfaceModel{
 	/*Default Constructor*/
 	public AbstractPlayer() {
 		this(-1,-1,"N/A", "N/A");
+		_currentTeamHistory = new TeamPlayer();
 	}
 
 	/*Constructor*/
@@ -160,11 +161,12 @@ public abstract class AbstractPlayer implements InterfaceModel{
 		else
 			playerString.append(_jerseyNum);
 		playerString.append(", _playerID=").append(_playerID).append(", current team= ");
-		if(_currentTeamHistory.equals(null)) {
+		if(_currentTeamHistory.getTeam() == null) {
 			playerString.append("N/A").append("]");
 		}
-		else
+		else {
 			playerString.append(_currentTeamHistory.getTeam().fullTeamName()).append("]");
+			}
 		return playerString.toString();
 
 	}

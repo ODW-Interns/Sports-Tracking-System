@@ -14,7 +14,6 @@ import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
-import java.util.ArrayList;
 import java.util.Locale;
 import java.util.Set;
 import java.util.StringTokenizer;
@@ -25,18 +24,16 @@ import com.sts.abstractmodel.AbstractGame;
 import com.sts.abstractmodel.AbstractPlayer;
 import com.sts.abstractmodel.SportsCategory;
 import com.sts.concretemodel.GamesList;
-import com.sts.concretemodel.Key;
+import com.sts.concretemodel.KeyForGamesMap;
+import com.sts.concretemodel.KeyForTeamsMap;
 import com.sts.concretemodel.PlayersList;
 import com.sts.concretemodel.TeamsList;
 import com.sts.mlb.models.MLBGame;
 import com.sts.abstractmodel.AbstractTeam;
 import com.sts.model.exception.DuplicateTeamException;
-import com.sts.model.exception.InvalidPlayersException;
 import com.sts.model.exception.MismatchGameandTeamSportException;
-import com.sts.model.exception.MismatchPlayerandGameSportException;
 import com.sts.model.exception.NegativeAttendanceException;
 import com.sts.model.exception.NegativeScoreException;
-import com.sts.model.exception.PlayerNotOnTeamException;
 import com.sts.model.exception.TeamNotFoundException;
 import com.sts.nba.models.NBAGame;
 import com.sts.nfl.models.NFLGame;
@@ -132,8 +129,8 @@ public class GamesReader {
      * Else, throw team not found exception
      */
     private AbstractTeam parseTeam(SportsCategory category, String cityStr_,String teamStr_, TeamsList teamsList_) throws TeamNotFoundException, MismatchGameandTeamSportException {
-        String searchString = cityStr_ + " " + teamStr_;
-    	AbstractTeam lclTeam = teamsList_.getTeamMap().get(searchString);
+    	KeyForTeamsMap teamKey = new KeyForTeamsMap(cityStr_, teamStr_);
+    	AbstractTeam lclTeam = teamsList_.getTeamMap().get(teamKey);
         if(lclTeam != null){
         	if(lclTeam.getTeamSport().equals(category)){
         		return lclTeam;
@@ -146,48 +143,13 @@ public class GamesReader {
        
     }
 
-    /**
-     *  Parse the players from the tokenized string.
-     *  These are the players that have played in the
-     *  game.
-     */
-    @Deprecated
-    private void parsePlayerIDs(String playerIDs_, AbstractGame game_, PlayersList playersList_, TeamsList teamsList_, String teamName_, ArrayList<Integer> listOfPlayers_) throws InvalidPlayersException, MismatchPlayerandGameSportException, PlayerNotOnTeamException {
-    	StringTokenizer tokenizer;
-    	tokenizer = new StringTokenizer(playerIDs_, ",");
-    	int playerID;
-    	while(tokenizer.hasMoreTokens()) {
-    		playerID = Integer.parseInt(tokenizer.nextToken());
-    		//Check to see if the player exists in the player map
-    		if(playersList_.returnPlayersMap().get(playerID) == null) {
-    			_logger.error("There does not exist a player with the ID:" + playerID + ". Player was not added to game");
-    			throw new InvalidPlayersException();
-    		}
-    		else {
-    			//Check if the player found matches the sport as the game
-    			if(!playersList_.returnPlayersMap().get(playerID).get_sportCategory().equals(game_.getCategory()))
-    				throw new MismatchPlayerandGameSportException();
-    			else {
-    				//Check if the player is on the corresponding team
-    				if(!PlayerIsOnTeam(playerID, teamsList_, teamName_, playersList_)) {
-    					throw new PlayerNotOnTeamException();		
-    				}
-    				else {
-    					//Player is validated, add to the list of players for that game 
-    					listOfPlayers_.add(playerID);
-    				}
-    			}
-    		}
-    	}
-    }
-
 
     /**
      *  Method to check if a player is on a specified team
      */
-    private boolean PlayerIsOnTeam(int playerID_,TeamsList teamsList_, String teamName_, PlayersList playersList_) {
+    private boolean PlayerIsOnTeam(int playerID_,TeamsList teamsList_, KeyForTeamsMap teamKey_, PlayersList playersList_) {
     	AbstractPlayer player = playersList_.returnPlayersMap().get(playerID_);
-    	if(player.getCurrentTeamHistory().getTeam().equals(teamsList_.getTeamMap().get(teamName_))){
+    	if(player.getCurrentTeamHistory().getTeam().equals(teamsList_.getTeamMap().get(teamKey_))){
     		return true;
     	}
     	else
@@ -209,7 +171,7 @@ public class GamesReader {
             AbstractGame game = null;
             AbstractTeam home;
             SportsCategory category;
-            Set<Key> keys;
+            Set<KeyForGamesMap> keys;
             
             while ((line = reader.readLine()) != null) {
                 // don't process empty lines
@@ -257,7 +219,7 @@ public class GamesReader {
                 try {
                 	tempGameId = Integer.parseInt(tokenizer.nextToken());
                 	keys = gamesList_.getGamesMap().keySet();
-                	for(Key key: keys) {
+                	for(KeyForGamesMap key: keys) {
                 		
                 		if(key.getGameUID()==tempGameId) {
                 			
@@ -392,7 +354,7 @@ public class GamesReader {
             AbstractGame game = null;
             AbstractTeam home;
             SportsCategory category = null;
-            Set<Key> keys;
+            Set<KeyForGamesMap> keys;
          
                 if ("".equals(line))
                     return;
@@ -437,7 +399,7 @@ public class GamesReader {
                 try {
                 	tempGameId = Integer.parseInt(tokenizer.nextToken());
                 	keys = gamesList_.getGamesMap().keySet();
-                	for(Key key: keys) {
+                	for(KeyForGamesMap key: keys) {
                 		
                 		if(key.getGameUID()==tempGameId) {
                 			
@@ -569,7 +531,7 @@ public class GamesReader {
 				
 		int gameAttendance;
 		
-		Set<Key> keys;
+		Set<KeyForGamesMap> keys;
 		
 		AbstractGame game = null;
 		AbstractTeam home=null;
@@ -629,7 +591,7 @@ public class GamesReader {
 		try {
 			keys = gamesList_.getGamesMap().keySet();
 			gameID=gamesList_.getGamesMap().size() + 1;
-			for(Key key: keys) {
+			for(KeyForGamesMap key: keys) {
         		
         		if(key.getGameUID()==gameID) {
         			
@@ -818,7 +780,7 @@ public class GamesReader {
         //
         //Add game object to the map of games provided
         //
-        gamesList_.getGamesMap().put(new Key(game_.getStartTime(), game_.getGameUID()), game_);
+        gamesList_.getGamesMap().put(new KeyForGamesMap(game_.getStartTime(), game_.getGameUID()), game_);
 
         if (_logger.isTraceEnabled())
             _logger.trace("Adding new game to game mapt: {}", game_.toString());

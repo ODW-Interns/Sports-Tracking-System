@@ -14,6 +14,7 @@ import org.slf4j.LoggerFactory;
 import com.sts.abstractmodel.AbstractTeam;
 import com.sts.abstractmodel.SportsCategory;
 import com.sts.concretemodel.GamesList;
+import com.sts.concretemodel.KeyForTeamsMap;
 import com.sts.concretemodel.TeamsList;
 import com.sts.mlb.models.TeamMLB;
 import com.sts.nba.models.TeamNBA;
@@ -183,7 +184,7 @@ import com.sts.nhl.models.TeamNHL;
 	        //
 	        //Add game object to the list of games provided
 	        //
-	        listOfTeams_.getTeamMap().put(team_.fullTeamName(), team_);
+	        listOfTeams_.getTeamMap().put(new KeyForTeamsMap(team_.getLocation(), team_.getTeamName()), team_);
 
 	        if (_logger.isTraceEnabled())
 	            _logger.trace("Adding new team to team map: {}", team_.toString());
@@ -267,7 +268,7 @@ import com.sts.nhl.models.TeamNHL;
 		        //
 		        //Add game object to the list of games provided
 		        //
-		        listofTeams.getTeamMap().put(team.fullTeamName(), team);
+		        listofTeams.getTeamMap().put(new KeyForTeamsMap(team.getLocation(), team.getTeamName()), team);
 
 		        if (_logger.isTraceEnabled())
 		            _logger.trace("Adding new team to team map: {}", team.toString());

@@ -14,7 +14,8 @@ import com.sts.abstractmodel.AbstractGame;
 import com.sts.abstractmodel.AbstractPlayer;
 import com.sts.abstractmodel.AbstractTeam;
 import com.sts.concretemodel.GamesList;
-import com.sts.concretemodel.Key;
+import com.sts.concretemodel.KeyForGamesMap;
+import com.sts.concretemodel.KeyForTeamsMap;
 import com.sts.concretemodel.PlayersList;
 import com.sts.concretemodel.TeamPlayer;
 import com.sts.concretemodel.TeamsList;
@@ -54,9 +55,9 @@ public class EventHandler {
 			int indexofCurrentPlayerHistory = -1;
 			String teamCity = null;
 			String teamName = null;
-			String fullTeamName = null;
+			KeyForTeamsMap teamKey = null;
 			TeamPlayer newTeamHistory = null;
-			String oldTeamNameStr = null;
+			KeyForTeamsMap oldTeamKey = null;
 			PlayersReader playersReader = new PlayersReader();
 			
 			_logger.info("Enter the player ID for the player you wish you move:");
@@ -73,7 +74,7 @@ public class EventHandler {
 				}
 				else {
 					playerBeingMoved = listofPlayers_.returnPlayersMap().get(playerID);
-					oldTeamNameStr = playerBeingMoved.getCurrentTeam().fullTeamName();
+					oldTeamKey = new KeyForTeamsMap(playerBeingMoved.getCurrentTeamHistory().getTeam().getLocation(), playerBeingMoved.getCurrentTeamHistory().getTeam().getTeamName());
 				}
 				
 			}
@@ -81,8 +82,8 @@ public class EventHandler {
 				_logger.error("Error finding player: " + e_.toString());
 				return;
 			}
-			if(listofTeams_.getTeamMap().get(playerBeingMoved.getCurrentTeam().fullTeamName()).getEntireHistoryPlayers().contains(playerBeingMoved.getCurrentTeamHistory())) {
-				oldTeam = listofTeams_.getTeamMap().get(oldTeamNameStr);
+			if(listofTeams_.getTeamMap().get(oldTeamKey).getEntireHistoryPlayers().contains(playerBeingMoved.getCurrentTeamHistory())) {
+				oldTeam = listofTeams_.getTeamMap().get(oldTeamKey);
 				indexOfCurrentTeamHistory = oldTeam.getEntireHistoryPlayers().indexOf(playerBeingMoved.getCurrentTeamHistory());
 			}
 			//playerBeingMoved.getCurrentTeamHistory().setStatus(false);
@@ -104,7 +105,7 @@ public class EventHandler {
 				teamCity = reader.readLine();
 				_logger.info("Enter the team name: ");
 				teamName = reader.readLine();
-				fullTeamName = teamCity + " " + teamName;
+				teamKey = new KeyForTeamsMap(teamCity, teamName);
 			}
 			catch(Exception e_) {
 				_logger.error("Something went wrong with reading the team: " + e_.toString());
@@ -115,13 +116,13 @@ public class EventHandler {
 					newTeamHistory = new TeamPlayer();
 					newTeamHistory.setStartDate(new Date());
 					newTeamHistory.setStatus(true);
-					playersReader.parseCurrentTeam(listofTeams_, fullTeamName, playerBeingMoved, listofPlayers_, newTeamHistory);
-					listofTeams_.getTeamMap().get(oldTeamNameStr).getEntireHistoryPlayers().get(indexOfCurrentTeamHistory).setStatus(false);
-					listofTeams_.getTeamMap().get(oldTeamNameStr).getEntireHistoryPlayers().get(indexOfCurrentTeamHistory).setEndDate(new Date());
+					playersReader.parseCurrentTeam(listofTeams_, teamKey, playerBeingMoved, listofPlayers_, newTeamHistory);
+					listofTeams_.getTeamMap().get(oldTeamKey).getEntireHistoryPlayers().get(indexOfCurrentTeamHistory).setStatus(false);
+					listofTeams_.getTeamMap().get(oldTeamKey).getEntireHistoryPlayers().get(indexOfCurrentTeamHistory).setEndDate(new Date());
 					playerBeingMoved.getPlayerTeams().get(indexofCurrentPlayerHistory).setStatus(false);
 					playerBeingMoved.getPlayerTeams().get(indexofCurrentPlayerHistory).setEndDate(new Date());;
 					newTeamHistory.setPlayer(playerBeingMoved);
-					listofTeams_.getTeamMap().get(fullTeamName).getEntireHistoryPlayers().add(newTeamHistory);
+					listofTeams_.getTeamMap().get(teamKey).getEntireHistoryPlayers().add(newTeamHistory);
 
 			}
 			catch(Exception e_) {
@@ -135,9 +136,9 @@ public class EventHandler {
 		/**
 		 * Method to update games that finished and need results of game
 		 */
-		public void updateGames(GamesList _listofGames_, ArrayList<Key> GamesThatNeedUpdating_) {
-		    Iterator<Key> KeyIterator;
-			Key currentKey;
+		public void updateGames(GamesList _listofGames_, ArrayList<KeyForGamesMap> GamesThatNeedUpdating_) {
+		    Iterator<KeyForGamesMap> KeyIterator;
+			KeyForGamesMap currentKey;
 			AbstractGame gameUpdating = null;
 		    int durationHours;
 		    int durationMinutes;
@@ -219,7 +220,7 @@ public class EventHandler {
 	public void requestToLogAllPlayersOnTeam(TeamsList listofTeams_) {
 		String city;
 		String teamName;
-		String fullTeamName;
+		KeyForTeamsMap teamKey = null;
 		_logger.info("Enter the team whose roster you would like to see");
 		_logger.info("Enter city of team:");
 		try {
@@ -235,12 +236,12 @@ public class EventHandler {
 			_logger.error("Error reading in team name: " + e_.toString());
 			return;
 		}
-		fullTeamName = city + " " + teamName;
+		teamKey = new KeyForTeamsMap(city, teamName);
 		try {
-			if(listofTeams_.getTeamMap().containsKey(fullTeamName)) 
-				logReq.logTeamRoster(listofTeams_.getTeamMap().get(fullTeamName), listofTeams_);
+			if(listofTeams_.getTeamMap().containsKey(teamKey)) 
+				logReq.logTeamRoster(listofTeams_.getTeamMap().get(teamKey), listofTeams_);
 			else
-				throw new TeamNotFoundException(fullTeamName);
+				throw new TeamNotFoundException(teamKey.toString());
 		}
 		catch(Exception e_) {
 			_logger.error("Invalid Team Input: " + e_.toString());
