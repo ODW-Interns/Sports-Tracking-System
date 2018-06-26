@@ -3,7 +3,7 @@ package com.sts.abstractmodel;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-import com.sts.concretemodel.TeamPlayerHistory;
+import com.sts.concretemodel.TeamPlayer;
 
 /**
  * Abstract class to represent a player for a sport
@@ -26,15 +26,15 @@ public abstract class AbstractPlayer implements InterfaceModel{
 	
 	//Data that connects the history between a player and a team
 	//This keeps track of the current team the player is on
-	TeamPlayerHistory _currentTeamHistory;
+	TeamPlayer _currentTeamHistory;
 
 	//A list that contains all the history of a player (All the teams the player have played for)
-	private ArrayList<TeamPlayerHistory> playerTeams;
+	private ArrayList<TeamPlayer> playerTeams;
 		
 	/*Default Constructor*/
 	public AbstractPlayer() {
 		this(-1,-1,"N/A", "N/A");
-		_currentTeamHistory = new TeamPlayerHistory();
+		_currentTeamHistory = new TeamPlayer();
 	}
 
 	/*Constructor*/
@@ -44,7 +44,7 @@ public abstract class AbstractPlayer implements InterfaceModel{
 		_lastName = lastName_;
 		_playerID = playerID_;
 		_jerseyNum = jerseyNum_;
-		playerTeams = new ArrayList<TeamPlayerHistory>();
+		playerTeams = new ArrayList<TeamPlayer>();
 	}
 
 	
@@ -101,12 +101,12 @@ public abstract class AbstractPlayer implements InterfaceModel{
 	}
 	
 	//Sets the current team history for the player
-	public void setCurrentTeamHistory(TeamPlayerHistory currentTeam) {
+	public void setCurrentTeamHistory(TeamPlayer currentTeam) {
 		this._currentTeamHistory = currentTeam;
 	}
 		
 	//get the current team history of the player
-	public TeamPlayerHistory getCurrentTeamHistory() {
+	public TeamPlayer getCurrentTeamHistory() {
 		return _currentTeamHistory;
 	}
 	
@@ -115,9 +115,9 @@ public abstract class AbstractPlayer implements InterfaceModel{
 	//he currently is on
 	public AbstractTeam getCurrentTeam() {
 		// TODO filter team players by status/enddate.
-		Iterator<TeamPlayerHistory> i;
+		Iterator<TeamPlayer> i;
 		i = playerTeams.iterator();
-		TeamPlayerHistory tempTeamPlayer = null;
+		TeamPlayer tempTeamPlayer = null;
 		
 		while(i.hasNext()) {
 			tempTeamPlayer = i.next();
@@ -129,12 +129,12 @@ public abstract class AbstractPlayer implements InterfaceModel{
 	}
 
 	// Returns entire history of a player
-	public ArrayList<TeamPlayerHistory> getPlayerTeams() {
+	public ArrayList<TeamPlayer> getPlayerTeams() {
 		return playerTeams;
 	}
 
 	//Set player's history
-	public void setPlayerTeams(ArrayList<TeamPlayerHistory> playerTeams) {
+	public void setPlayerTeams(ArrayList<TeamPlayer> playerTeams) {
 		this.playerTeams = playerTeams;
 	}
 

@@ -8,7 +8,7 @@ import com.sts.abstractmodel.AbstractTeam;
 /**
  * This class contains connection between team and player and player's engagement.
  */
-public class TeamPlayerHistory {
+public class TeamPlayer {
 	// The player involved in the connection
 	private AbstractPlayer player; 
 	
@@ -26,12 +26,12 @@ public class TeamPlayerHistory {
 	private boolean status;
 	
 	//Default Constructor
-	public TeamPlayerHistory() {
+	public TeamPlayer() {
 		super();
 	}
 	
 	//Constructor
-	public TeamPlayerHistory(AbstractPlayer player_, AbstractTeam team_, Date startDate_, boolean status_) {
+	public TeamPlayer(AbstractPlayer player_, AbstractTeam team_, Date startDate_, boolean status_) {
 		player = player_;
 		team = team_;
 		startDate = startDate_;
@@ -91,9 +91,9 @@ public class TeamPlayerHistory {
 	//Method used to compare two of TeamPlayer objects
 	@Override
 	public boolean equals(Object obj) {
-		return this.player.equals(((TeamPlayerHistory)obj).getPlayer()) &&
-				this.startDate.equals(((TeamPlayerHistory)obj).getStartDate()) &&
-				this.team.equals(((TeamPlayerHistory)obj).getTeam());
+		return this.player.equals(((TeamPlayer)obj).getPlayer()) &&
+				this.startDate.equals(((TeamPlayer)obj).getStartDate()) &&
+				this.team.equals(((TeamPlayer)obj).getTeam());
 	}
 	
 }

@@ -1,4 +1,4 @@
-package com.sts.control;
+package com.sts.concretemodel;
 
 import java.util.concurrent.ConcurrentHashMap;
 

@@ -1,9 +1,8 @@
-package com.sts.control;
+package com.sts.concretemodel;
 
 import java.util.concurrent.ConcurrentHashMap;
 
 import com.sts.abstractmodel.AbstractTeam;
-import com.sts.concretemodel.KeyForTeamsMap;
 
 /**
  * Class holding structure(Concurrent Hash Map) to hold all teams tracked
