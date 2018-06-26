@@ -58,7 +58,7 @@ public class EventHandler {
 			
 			_logger.info("Enter the player ID for the player you wish you move:");
 			try {
-				playerID = Integer.parseInt(reader.readLine().trim());
+				playerID = Integer.parseInt(reader.readLine());
 			} 
 			catch (NumberFormatException e_) {
 				_logger.error("Could not parse the ID entered: " + e_.toString());
@@ -89,7 +89,7 @@ public class EventHandler {
 			
 			try {
 				_logger.info("Enter the player's jersey number for the new team");
-				playerBeingMoved.set_jerseyNum(Integer.parseInt(reader.readLine().trim()));
+				playerBeingMoved.set_jerseyNum(Integer.parseInt(reader.readLine()));
 			}
 			catch(Exception e_) {
 				_logger.error("Error occured for jersey number input: " + e_.toString());
@@ -98,9 +98,9 @@ public class EventHandler {
 			try {
 				_logger.info("Enter the team the player is moving to");
 				_logger.info("Enter the city first: ");
-				teamCity = reader.readLine().trim();
+				teamCity = reader.readLine();
 				_logger.info("Enter the team name: ");
-				teamName = reader.readLine().trim();
+				teamName = reader.readLine();
 				teamKey = new KeyForTeamsMap(teamCity, teamName);
 			}
 			catch(Exception e_) {
@@ -148,7 +148,7 @@ public class EventHandler {
 				_logger.info("Enter Duration of the game"); // Prompt User for the duration of the game
 				_logger.info("Hour(s):"); // Hours the game lasted
 				try {
-					durationHours = Integer.parseInt(reader.readLine().trim());
+					durationHours = Integer.parseInt(reader.readLine());
 				}
 				catch(Exception e_) {
 					_logger.error(e_.toString());
@@ -156,7 +156,7 @@ public class EventHandler {
 				}
 				_logger.info("Minutes(s):"); // Minutes the game lasted
 				try {
-					durationMinutes = Integer.parseInt(reader.readLine().trim());
+					durationMinutes = Integer.parseInt(reader.readLine());
 				}
 				catch(Exception e_) {
 					_logger.error(e_.toString());
@@ -164,7 +164,7 @@ public class EventHandler {
 				}
 				_logger.info("Second(s):"); // Seconds the game lasted
 				try {
-					durationSeconds = Integer.parseInt(reader.readLine().trim());
+					durationSeconds = Integer.parseInt(reader.readLine());
 				}
 				catch(Exception e_) {
 					_logger.error(e_.toString());
@@ -179,7 +179,7 @@ public class EventHandler {
 				_logger.info("Update final scores");
 				_logger.info("Home Team Final Score:"); // Final Score for home team
 				try {
-					gameUpdating.setHomeTeamScore(Integer.parseInt(reader.readLine().trim()));
+					gameUpdating.setHomeTeamScore(Integer.parseInt(reader.readLine()));
 				}
 				catch(Exception e_) {
 					_logger.error(e_.toString());
@@ -187,7 +187,7 @@ public class EventHandler {
 				}
 				_logger.info("Away Team Final Score:"); // Final Score for away team
 				try {
-					gameUpdating.setAwayTeamScore(Integer.parseInt(reader.readLine().trim()));
+					gameUpdating.setAwayTeamScore(Integer.parseInt(reader.readLine()));
 				}
 				catch(Exception e_) {
 					_logger.error(e_.toString());
@@ -197,7 +197,7 @@ public class EventHandler {
 				_listofGames_.getGamesMap().get(currentKey).setHomeTeamScore(gameUpdating.getHomeTeamScore());
 				_logger.info("Enter attendance of game:");
 				try {
-					gameUpdating.setAttendance(Integer.parseInt(reader.readLine().trim())); // attendance of game
+					gameUpdating.setAttendance(Integer.parseInt(reader.readLine())); // attendance of game
 				}
 				catch(Exception e_) {
 					_logger.error(e_.toString());
@@ -220,14 +220,14 @@ public class EventHandler {
 		_logger.info("Enter the team whose roster you would like to see");
 		_logger.info("Enter city of team:");
 		try {
-			city = reader.readLine().trim();
+			city = reader.readLine();
 		} catch (IOException e_) {
 			_logger.error("Error reading in city: " + e_.toString());
 			return;
 		}
 		_logger.info("Enter name of the team:");
 		try {
-			teamName = reader.readLine().trim();
+			teamName = reader.readLine();
 		} catch (IOException e_) {
 			_logger.error("Error reading in team name: " + e_.toString());
 			return;

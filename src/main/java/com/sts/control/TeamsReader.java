@@ -195,11 +195,10 @@ import com.sts.nhl.models.TeamNHL;
 			
 			//prompt for new team sport
 			_logger.info("Enter Team's Sport Category");
+			category =  SportsCategory.valueOf(reader.readLine());
 				
 			//set team category
 			  try {
-					category =  SportsCategory.valueOf(reader.readLine().trim());
-
 	                if(category.equals(SportsCategory.valueOf("NBA"))) {
 	                	team = new TeamNBA();
 	                	team.setTeamSport(SportsCategory.valueOf("NBA"));
@@ -221,7 +220,6 @@ import com.sts.nhl.models.TeamNHL;
             }
             catch(Exception e_) {
             	_logger.error("Failed to initialize Team:" + e_.toString());
-            	return;
             }
 			  
 			  //promt for new team location
@@ -229,11 +227,10 @@ import com.sts.nhl.models.TeamNHL;
 			  
 			  //set team location
 			  try {
-				  team.setLocation(reader.readLine().trim());
+				  team.setLocation(reader.readLine());
 			  }
 			  catch (Exception e_){
 				  _logger.error("Entering Location" + e_.toString());
-				  return;
 			  }
 			  
 			  //promt for new team name
@@ -241,11 +238,10 @@ import com.sts.nhl.models.TeamNHL;
 			  
 			  //set team name
 			  try {
-				  team.setTeamName(reader.readLine().trim());
+				  team.setTeamName(reader.readLine());
 			  }
 			  catch (Exception e_) {
 				  _logger.error("Entering Team Name" + e_.toString());
-				  return;
 			  }
 			
 			  if (!team.isValid())
