@@ -1,10 +1,6 @@
 package com.sts.control;
 import java.io.IOException;
 import java.io.InputStream;
-
-import com.sts.concretemodel.GamesList;
-import com.sts.concretemodel.PlayersList;
-import com.sts.concretemodel.TeamsList;
 /**
  * Class to store data from input files into Game/ Players/ Teams maps
  */

@@ -13,12 +13,9 @@ import org.slf4j.LoggerFactory;
 import com.sts.abstractmodel.AbstractGame;
 import com.sts.abstractmodel.AbstractPlayer;
 import com.sts.abstractmodel.AbstractTeam;
-import com.sts.concretemodel.GamesList;
 import com.sts.concretemodel.KeyForGamesMap;
 import com.sts.concretemodel.KeyForTeamsMap;
-import com.sts.concretemodel.PlayersList;
-import com.sts.concretemodel.TeamPlayer;
-import com.sts.concretemodel.TeamsList;
+import com.sts.concretemodel.TeamPlayerHistory;
 import com.sts.model.exception.PlayerNotFoundException;
 import com.sts.model.exception.TeamNotFoundException;
 import com.sts.view.LogRequest;
@@ -47,7 +44,6 @@ public class EventHandler {
 		
 		//Method to move one player from one team to another
 		public void movePlayer(TeamsList listofTeams_, PlayersList listofPlayers_) throws IOException {
-			System.out.println("HERE");
 			int playerID = -1;
 			AbstractPlayer playerBeingMoved = null; // player that is being moved
 			AbstractTeam oldTeam = null; // player's old team
@@ -56,7 +52,7 @@ public class EventHandler {
 			String teamCity = null;
 			String teamName = null;
 			KeyForTeamsMap teamKey = null;
-			TeamPlayer newTeamHistory = null;
+			TeamPlayerHistory newTeamHistory = null;
 			KeyForTeamsMap oldTeamKey = null;
 			PlayersReader playersReader = new PlayersReader();
 			
@@ -113,7 +109,7 @@ public class EventHandler {
 			}
 			
 			try {
-					newTeamHistory = new TeamPlayer();
+					newTeamHistory = new TeamPlayerHistory();
 					newTeamHistory.setStartDate(new Date());
 					newTeamHistory.setStatus(true);
 					playersReader.parseCurrentTeam(listofTeams_, teamKey, playerBeingMoved, listofPlayers_, newTeamHistory);

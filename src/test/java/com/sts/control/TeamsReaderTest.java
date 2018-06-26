@@ -7,10 +7,6 @@ package com.sts.control;
 
 import org.junit.BeforeClass;
 
-import com.sts.concretemodel.GamesList;
-import com.sts.concretemodel.PlayersList;
-import com.sts.concretemodel.TeamsList;
-
 public class TeamsReaderTest {
 
 	   public static GamesList listofGames = new GamesList();

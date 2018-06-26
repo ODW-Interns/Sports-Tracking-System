@@ -5,10 +5,6 @@ import static org.junit.Assert.assertTrue;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import com.sts.concretemodel.GamesList;
-import com.sts.concretemodel.PlayersList;
-import com.sts.concretemodel.TeamsList;
-
 public class PlayersReaderTest {
 
 	 public static GamesList listofGames = new GamesList();
