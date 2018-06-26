@@ -16,7 +16,7 @@ import org.slf4j.LoggerFactory;
 
 import com.sts.abstractmodel.AbstractGame;
 import com.sts.concretemodel.GamesList;
-import com.sts.concretemodel.Key;
+import com.sts.concretemodel.KeyForGamesMap;
 import com.sts.concretemodel.PlayersList;
 import com.sts.concretemodel.TeamsList;
 import com.sts.control.EventHandler;
@@ -34,7 +34,7 @@ import java.util.concurrent.TimeUnit;
 public class SportsSystem {
 	
 	//List to keep track of games that have started that needs to be updated when the game finishes
-	private ArrayList<Key> _GamesThatNeedUpdating;
+	private ArrayList<KeyForGamesMap> _GamesThatNeedUpdating;
 	//Logger
     private Logger _logger;
     //Current date and time
@@ -59,7 +59,7 @@ public class SportsSystem {
     //Constructor
 	SportsSystem() throws RuntimeException, IOException, ParseException{
 	    _logger = LoggerFactory.getLogger(getClass().getSimpleName());
-	    _GamesThatNeedUpdating = new ArrayList<Key>();
+	    _GamesThatNeedUpdating = new ArrayList<KeyForGamesMap>();
 	    reader = new BufferedReader(new InputStreamReader(System.in));
 	    teamsReader = new TeamsReader();
 	    playersReader = new PlayersReader();
@@ -84,15 +84,15 @@ public class SportsSystem {
  	    										* have passed or games that have not passed
  	    										*/
  	    		int tempUID = -1;
- 	    		Key lowestkey = new Key(timeNow,tempUID);
+ 	    		KeyForGamesMap lowestkey = new KeyForGamesMap(timeNow,tempUID);
  	    		//Map of all games who's start time is past the current time
  	    		
  	    		//This sorted map is a subset of the whole games map. It uses tailMap to retrieve only the games
  	    		// whose start times have passed from the entire gamesMap
- 	    		SortedMap<Key, AbstractGame> pastGames = _listofGames_.getGamesMap().tailMap(lowestkey);
+ 	    		SortedMap<KeyForGamesMap, AbstractGame> pastGames = _listofGames_.getGamesMap().tailMap(lowestkey);
  	    		
  	    		//Iterate through all these games that have started and find the ones that have not been updated as finished
- 	    		for(Entry<Key, AbstractGame> entry : pastGames.entrySet()) {
+ 	    		for(Entry<KeyForGamesMap, AbstractGame> entry : pastGames.entrySet()) {
  	    			if(entry.getValue().getDuration() == null) {
  	    				 	    				
  	    				//Set default duration to 4 hours until updated
@@ -197,7 +197,7 @@ public class SportsSystem {
 							break;
 							
 						case 2: // Log all upcoming games
-							_listofGames.logFinishedGames(_listofPlayers);
+							_listofGames.logUpcomingGames(_listofPlayers);
 							break;
 						
 						case 3: //prompts user for data to create a player and keep track of player in player's map

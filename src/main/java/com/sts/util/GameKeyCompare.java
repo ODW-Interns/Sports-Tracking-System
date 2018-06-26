@@ -2,20 +2,16 @@ package com.sts.util;
 
 import java.util.Comparator;
 
-import com.sts.concretemodel.Key;
+import com.sts.concretemodel.KeyForGamesMap;
 
 /**
  * Class to allow comparisons to sort the key object by their date and time.
  * If the date and time are equal, then it will compare the two games's UID.
  */
-public class DateCompare implements Comparator<Key>{
-
-	public DateCompare() {
-		// TODO Auto-generated constructor stub
-	}
+public class GameKeyCompare implements Comparator<KeyForGamesMap>{
 
 	@Override
-	public int compare(Key key1_, Key key2_) {
+	public int compare(KeyForGamesMap key1_, KeyForGamesMap key2_) {
 		// TODO Auto-generated method stub
 		
 		if(key1_.getStartTime().isBefore(key2_.getStartTime())) {

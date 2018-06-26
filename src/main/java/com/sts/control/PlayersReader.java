@@ -11,7 +11,6 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.StringTokenizer;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -19,15 +18,20 @@ import com.sts.abstractmodel.AbstractPlayer;
 import com.sts.abstractmodel.AbstractTeam;
 import com.sts.abstractmodel.SportsCategory;
 import com.sts.concretemodel.GamesList;
+import com.sts.concretemodel.KeyForTeamsMap;
 import com.sts.concretemodel.PlayersList;
 import com.sts.concretemodel.TeamPlayer;
 import com.sts.concretemodel.TeamsList;
 import com.sts.mlb.models.MLBPlayer;
+import com.sts.mlb.models.TeamMLB;
 import com.sts.model.exception.MismatchPlayerandTeamSportException;
 import com.sts.model.exception.TeamNotFoundException;
 import com.sts.nba.models.NBAPlayer;
+import com.sts.nba.models.TeamNBA;
 import com.sts.nfl.models.NFLPlayer;
+import com.sts.nfl.models.TeamNFL;
 import com.sts.nhl.models.NHLPlayer;
+import com.sts.nhl.models.TeamNHL;
 /**
  * This class will read from the players list input, and will deal with switching teams and changing Jersey numbers.
  * We will store all the players in a hash map when the ID is the key for the map.
@@ -102,23 +106,23 @@ public class PlayersReader {
     /**
      * method to parse the team from the data file
      */
-    public void parseCurrentTeam(TeamsList teamList_, String teamStr_, AbstractPlayer player_, PlayersList playerlist_, TeamPlayer currentTeamHistory_) throws Exception {
+    public void parseCurrentTeam(TeamsList teamList_, KeyForTeamsMap teamKey_, AbstractPlayer player_, PlayersList playerlist_, TeamPlayer currentTeamHistory_) throws Exception {
     	AbstractPlayer tempPlayer;
     	ArrayList<TeamPlayer> temp1;
     	AbstractTeam temp;
     	int tempJnumb;
-    	
+   
     	//Check to see if team actually exists for the player to be on
-    	if(teamList_.getTeamMap().get(teamStr_) == null) {
-    		throw new TeamNotFoundException(teamStr_);
+    	if(teamList_.getTeamMap().get(teamKey_) == null) {
+    		throw new TeamNotFoundException(teamKey_.toString());
     	}
     	else {
     		//checks to see if the team and player are of the same sport type
-    		if(teamList_.getTeamMap().get(teamStr_).getTeamSport() != player_.get_sportCategory()) {
+    		if(teamList_.getTeamMap().get(teamKey_).getTeamSport() != player_.get_sportCategory()) {
     			throw new MismatchPlayerandTeamSportException();
     		}
     		else {
-    			temp = teamList_.getTeamMap().get(teamStr_);
+    			temp = teamList_.getTeamMap().get(teamKey_);
     			temp1 = temp.getCurrentPlayers();
     			//Check for duplicate Jersey #'s on the same team
     			for(int i=0;i<temp1.size();i++) {
@@ -132,7 +136,7 @@ public class PlayersReader {
     			
 
     		}
-    		currentTeamHistory_.setTeam(teamList_.getTeamMap().get(teamStr_));
+    		currentTeamHistory_.setTeam(teamList_.getTeamMap().get(teamKey_));
     		player_.setCurrentTeamHistory(currentTeamHistory_);
     		player_.getPlayerTeams().add(currentTeamHistory_);
 
@@ -149,7 +153,9 @@ public class PlayersReader {
 	         StringTokenizer tokenizer;   
 	         AbstractPlayer player = null;
 			 String line;
-			 String teamOfPlayer;
+			 String teamCity;
+			 String teamName;
+			 KeyForTeamsMap teamKey = null;
 			 Date StartDate;
 			 TeamPlayer currentTeam;
 			 SportsCategory category;
@@ -250,13 +256,14 @@ public class PlayersReader {
 	                
 	                //Player's current team
 	                try {
-	                	teamOfPlayer = tokenizer.nextToken();
+	                	teamCity = tokenizer.nextToken();
+	                	teamName = tokenizer.nextToken();
+	                	teamKey = new KeyForTeamsMap(teamCity, teamName);
 	                   	StartDate = convertStringToDate(tokenizer.nextToken());
 	                	currentTeam = new TeamPlayer();
 	                	currentTeam.setStartDate(StartDate);
 	                	currentTeam.setStatus(true);
-	                	parseCurrentTeam(teamsList_, teamOfPlayer, player, playerlist_, currentTeam);
-	               
+	                	parseCurrentTeam(teamsList_, teamKey, player, playerlist_, currentTeam);
 	                }
 	                catch(Exception e_) {
 	                	_logger.error("setTeam:" + e_.toString());
@@ -266,9 +273,10 @@ public class PlayersReader {
 	            	 // Add new player to players map
 	            	 try {
 	            		 currentTeam.setPlayer(player);
-	            		 teamsList_.getTeamMap().get(player.getCurrentTeamHistory().getTeam().fullTeamName()).getEntireHistoryPlayers().add(currentTeam);
+	            		 teamsList_.getTeamMap().get(teamKey).getEntireHistoryPlayers().add(currentTeam);
 
 	            		 addPlayer(player, playerlist_);
+
 	            		 // Add player to their current team
 	            	 }
 	            	 catch(Exception e_) {
@@ -285,7 +293,9 @@ public class PlayersReader {
 	 */
 	
 	public void readFromStringForList(String line, PlayersList playersList_, TeamsList teamsList_) throws Exception {
-		 String teamOfPlayer;
+		 String teamCity;
+		 String teamName;
+		 KeyForTeamsMap teamKey = null;
 		 Date StartDate;
 		 TeamPlayer currentTeam;
 		 StringTokenizer tokenizer;   
@@ -367,12 +377,14 @@ public class PlayersReader {
         }
         
         try {
-        	teamOfPlayer = tokenizer.nextToken();
+        	teamCity = tokenizer.nextToken();
+        	teamName = tokenizer.nextToken();
            	StartDate = convertStringToDate(tokenizer.nextToken());
         	currentTeam = new TeamPlayer();
         	currentTeam.setStartDate(StartDate);
         	currentTeam.setStatus(true);
-        	parseCurrentTeam(teamsList_, teamOfPlayer, player, playersList_, currentTeam);
+        	teamKey = new KeyForTeamsMap(teamCity, teamName);
+        	parseCurrentTeam(teamsList_, teamKey, player, playersList_, currentTeam);
         }
         catch(Exception e_) {
         	_logger.error("setTeam:" + e_.toString());
@@ -384,7 +396,7 @@ public class PlayersReader {
     		 currentTeam.setPlayer(player);
     		 addPlayer(player, playersList_);
     		 // Add player to their current team
-    		 teamsList_.getTeamMap().get(player.getCurrentTeamHistory().getTeam().fullTeamName()).getEntireHistoryPlayers().add(currentTeam);
+    		 teamsList_.getTeamMap().get(teamKey).getEntireHistoryPlayers().add(currentTeam);
     	 }
     	 catch(Exception e_) {
     		 _logger.error("Player's current team is not a valid team: " + e_.toString());
@@ -406,26 +418,32 @@ public class PlayersReader {
 	public void createPlayers(TeamsList listofTeams_, PlayersList listofPlayers_) throws IOException {
 		SportsCategory category; // Sport the player plays
 		AbstractPlayer player = null;
+		AbstractTeam teamofPlayer = null;
 		String lineForTeam = null;
 		TeamPlayer currentHistory = null;   // Will store the current history of the team for this player
 		Date StartDate;  // Start Date of this player on this team
 		_logger.info("Enter Sport of Player"); // User enter in which sport the player plays
 		category = SportsCategory.valueOf(reader.readLine());
+		KeyForTeamsMap teamKey;
 		
 		//Prompt for which sport the player being created plays
 	      try {
                 if(category.equals(SportsCategory.valueOf("NBA"))) {
                 	player = new NBAPlayer();
+                	teamofPlayer = new TeamNBA();
                 	
                 }
                 else if(category.equals(SportsCategory.valueOf("NFL"))) {
                 	player = new NFLPlayer();
+                	teamofPlayer = new TeamNFL();
                 }
                 else if(category.equals(SportsCategory.valueOf("NHL"))) {
                 	player = new NHLPlayer();
+                	teamofPlayer = new TeamNHL();
                 }
                 else if(category.equals(SportsCategory.valueOf("MLB"))) {
                 	player = new MLBPlayer();
+                	teamofPlayer = new TeamMLB();
                 }
                 else
                 	throw new Exception("Invalid category.");
@@ -481,6 +499,7 @@ public class PlayersReader {
 		
 		_logger.info("Enter Player's Current Team: ");
 		_logger.info("If player is currently not on a team, then leave blank"); //Will track player without a team as well (free agent)
+		_logger.info("Enter team's city: ");
 		lineForTeam = reader.readLine();
 		try {
 			if(lineForTeam.equals("")) {   // Player without a team
@@ -490,9 +509,15 @@ public class PlayersReader {
 			}
 			else { 
 				
-				if(listofTeams_.getTeamMap().get(lineForTeam) != null) { // If player does have a team, make sure the team exists
+				teamofPlayer.setLocation(lineForTeam);
+				_logger.info("Enter the team's name: ");
+				teamofPlayer.setTeamName(reader.readLine());
+				teamofPlayer.setTeamSport(category);
+				player.getCurrentTeamHistory().setTeam(teamofPlayer);
+				teamKey = new KeyForTeamsMap(player.getCurrentTeamHistory().getTeam().getLocation(), player.getCurrentTeamHistory().getTeam().getTeamName());
+				if(listofTeams_.getTeamMap().get(teamKey) != null) { // If player does have a team, make sure the team exists
 					currentHistory = new TeamPlayer();
-					currentHistory.setTeam(listofTeams_.getTeamMap().get(lineForTeam));
+					currentHistory.setTeam(listofTeams_.getTeamMap().get(teamKey));
 				}
 				else {
 					throw new TeamNotFoundException(lineForTeam);
@@ -510,7 +535,6 @@ public class PlayersReader {
 		_logger.info("Enter Player's Jersey Number: ");
 		try {
 			player.set_jerseyNum(Integer.parseInt(reader.readLine()));
-			System.out.println("Setting Jersey Num" + player.getJerseyNum());
 		}
 		catch(Exception e_) {
 			_logger.error("Entering Jersey Number: " + e_.toString());
@@ -523,7 +547,7 @@ public class PlayersReader {
            	StartDate = convertStringToDate(reader.readLine());
            	currentHistory.setStartDate(StartDate);
            	currentHistory.setStatus(true);
-           	parseCurrentTeam(listofTeams_, lineForTeam, player, listofPlayers_,currentHistory);
+           	parseCurrentTeam(listofTeams_, teamKey, player, listofPlayers_,currentHistory);
 		}
 		catch(Exception e_) {
 			_logger.error("Setting Start Date on team: " + e_.toString());
@@ -535,7 +559,7 @@ public class PlayersReader {
 		player.setCurrentTeamHistory(currentHistory);  // This is the player's current team
 		addPlayer(player, listofPlayers_); // Add player to player's map
 		//Add player to the team's history of players
-		listofTeams_.getTeamMap().get(player.getCurrentTeamHistory().getTeam().fullTeamName()).getEntireHistoryPlayers().add(player.getCurrentTeamHistory()); 
+		listofTeams_.getTeamMap().get(teamKey).getEntireHistoryPlayers().add(player.getCurrentTeamHistory()); 
 		_logger.trace("Successfully added player to player's map");
 	}
 	
@@ -551,7 +575,6 @@ public class PlayersReader {
         //Add game object to the map of games provided
         //
         PlayersList_.returnPlayersMap().put(player_.get_playerID(),player_);
-
         if (_logger.isTraceEnabled())
             _logger.trace("Adding new player to player map: {}", player_.toString());
     }
