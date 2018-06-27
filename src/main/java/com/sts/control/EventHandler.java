@@ -248,4 +248,57 @@ public class EventHandler {
 			_logger.error("Invalid Team Input: " + e_.toString());
 		}
 	}
+	
+	public void deleteGame(GamesList listofGames_) {
+		
+	}
+	
+	public void removePlayerFromTeam(TeamsList listofTeams_, PlayersList listofPlayers_) {
+		int playerID;
+		AbstractPlayer playerBeingRemoved = null;
+		KeyForTeamsMap teamKey = null;
+		
+		_logger.info("Enter the player ID to remove this player from his team");
+		_logger.info("Players that can be chosen from are listed below:");
+		logReq.logAllPlayersInPlayerMap(listofPlayers_);
+		
+		try {
+			playerID = Integer.parseInt(reader.readLine());
+			playerBeingRemoved = listofPlayers_.returnPlayersMap().get(playerID);
+
+		} catch (NumberFormatException | IOException e_) {
+			_logger.error("There was an error with this player ID: " + e_.toString());
+		}
+		
+		if(playerBeingRemoved.getCurrentTeamHistory().getTeam() == null) {
+			return;
+		}
+		
+		try {
+			//Set end date and status to false for the the team in the player's entire team history he's played for
+			int indexOfCurrentTeam = playerBeingRemoved.getPlayerTeams().indexOf(playerBeingRemoved.getCurrentTeamHistory());
+			playerBeingRemoved.getPlayerTeams().get(indexOfCurrentTeam).setEndDate(new Date());
+			playerBeingRemoved.getPlayerTeams().get(indexOfCurrentTeam).setStatus(false);
+			
+			//Remove player from the team
+			teamKey = new KeyForTeamsMap(playerBeingRemoved.getCurrentTeamHistory().getTeam().getLocation(), playerBeingRemoved.getCurrentTeamHistory().getTeam().getTeamName());
+			int indexOfCurrentPlayer = listofTeams_.getTeamMap().get(teamKey).getEntireHistoryPlayers().indexOf(playerBeingRemoved.getCurrentTeamHistory());
+			listofTeams_.getTeamMap().get(teamKey).getEntireHistoryPlayers().get(indexOfCurrentPlayer).setEndDate(new Date());
+			listofTeams_.getTeamMap().get(teamKey).getEntireHistoryPlayers().get(indexOfCurrentPlayer).setStatus(false);
+			
+			//Mark the player's current history with the updated info.
+			// His current team  and start date is now null
+			// His status on a team is false
+			playerBeingRemoved.getCurrentTeamHistory().setTeam(null);
+			playerBeingRemoved.getCurrentTeamHistory().setStartDate(null);
+			playerBeingRemoved.getCurrentTeamHistory().setStatus(false);
+		}
+		catch(Exception e_) {
+			_logger.error("Error occurred while removing this player: " + e_.toString());
+			return;
+		}
+			
+		_logger.trace("Player {} {} has been removed from their team", playerBeingRemoved.getFirstName(), playerBeingRemoved.getLastName());	
+		
+	}
 }

@@ -39,7 +39,6 @@ private Logger _logger;
 		    
 		    }
 			
-		
 	    }
 	
     }
