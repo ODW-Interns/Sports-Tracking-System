@@ -179,8 +179,11 @@ public class SportsSystem {
 						//Option to log the current roster for a specified team
 						_logger.info("9: Enter 9 to log all players for a specified team");
 						
+						// Option to remove a player off their team
+						_logger.info("10: Enter 10 to remove a player from his current team");
+						
 						//Turn off system
-						_logger.info("10: Enter 10 to exit");
+						_logger.info("11: Enter 11 to exit");
 						
 						
 
@@ -235,7 +238,11 @@ public class SportsSystem {
 							handler.requestToLogAllPlayersOnTeam(_listofTeams);
 							
 							break;
-						case 10: // Shut off system
+						case 10:
+							//Remove a player off of his current team
+							handler.removePlayerFromTeam(_listofTeams, _listofPlayers);
+							break;
+						case 11: // Shut off system
 							System.exit(0);
 							break;	
 							
