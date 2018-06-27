@@ -15,6 +15,7 @@ import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.Locale;
+import java.util.Locale.Category;
 import java.util.Set;
 import java.util.StringTokenizer;
 import org.slf4j.Logger;
@@ -38,6 +39,7 @@ import com.sts.model.exception.TeamNotFoundException;
 import com.sts.nba.models.NBAGame;
 import com.sts.nfl.models.NFLGame;
 import com.sts.nhl.models.NHLGame;
+import com.sts.view.TeamsRequest;
 
 /**
  *  class to read from file with upcoming/finished games
@@ -627,6 +629,10 @@ public class GamesReader {
 		 * Reading the Away city 
 		 */
 		_logger.info("Enter the away city ");
+		_logger.info("The valid Cities for "+ category.toString()+ " are" );
+		TeamsRequest a=new TeamsRequest();
+		a.displayTeams(teamsList_,category );
+		
 		try {
 			awayCity=reader.readLine();
 			
@@ -639,6 +645,7 @@ public class GamesReader {
 		 * Reading the Away Team Name 
 		 */
 		_logger.info("Enter the away team name: ");
+		
 		try {
 			awayTeamName=reader.readLine();
 			game.setAwayTeam(parseTeam(category,awayCity,awayTeamName, teamsList_));
@@ -651,6 +658,8 @@ public class GamesReader {
 		 * Reading the Home city 
 		 */
 		_logger.info("Enter the home city ");
+		_logger.info("The valid Cities for "+ category.toString()+ " are" );
+		a.displayTeams(teamsList_,category );
 		try {
 			homeCity=reader.readLine();
 			
