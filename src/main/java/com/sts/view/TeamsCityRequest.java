@@ -1,9 +1,7 @@
 package com.sts.view;
 
-import java.util.Locale.Category;
+import java.util.Iterator;
 import java.util.Map.Entry;
-import java.util.concurrent.ConcurrentHashMap;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -24,9 +22,11 @@ private Logger _logger;
 	
 	public void displayTeams(TeamsList teamsList_, SportsCategory category, Boolean city){
 	
-		ConcurrentHashMap<KeyForTeamsMap, AbstractTeam> teammap = teamsList_.getTeamMap();
-		for (Entry<KeyForTeamsMap, AbstractTeam> entry : teammap.entrySet()) {
-			
+		Iterator<Entry<KeyForTeamsMap, AbstractTeam>> teamIterator;
+		teamIterator = teamsList_.getTeamMap().entrySet().iterator();
+		Entry<KeyForTeamsMap, AbstractTeam> entry;
+		while(teamIterator.hasNext()) {
+			entry = teamIterator.next();
 			if(entry.getValue().getTeamSport().equals(category)&& city) {
 	
 		        _logger.info(entry.getValue().getLocation());
@@ -43,4 +43,5 @@ private Logger _logger;
 	    }
 	
     }
+	
 }

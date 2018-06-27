@@ -623,6 +623,7 @@ public class GamesReader {
 		 */
 		_logger.info("Enter the away city ");
 		_logger.info("The valid Cities for "+ category.toString()+ " are" );
+
 		TeamsCityRequest a=new TeamsCityRequest();
 		a.displayTeams(teamsList_,category, true);
 		
@@ -653,6 +654,7 @@ public class GamesReader {
 		 */
 		_logger.info("Enter the home city ");
 		_logger.info("The valid Cities for "+ category.toString()+ " are" );
+
 		a.displayTeams(teamsList_,category, true );
 		try {
 			homeCity=reader.readLine();
