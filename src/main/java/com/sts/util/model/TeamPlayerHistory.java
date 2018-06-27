@@ -1,4 +1,4 @@
-package com.sts.concretemodel;
+package com.sts.util.model;
 
 import java.util.Date;
 
@@ -8,7 +8,7 @@ import com.sts.abstractmodel.AbstractTeam;
 /**
  * This class contains connection between team and player and player's engagement.
  */
-public class TeamPlayer {
+public class TeamPlayerHistory {
 	// The player involved in the connection
 	private AbstractPlayer player; 
 	
@@ -26,12 +26,12 @@ public class TeamPlayer {
 	private boolean status;
 	
 	//Default Constructor
-	public TeamPlayer() {
+	public TeamPlayerHistory() {
 		super();
 	}
 	
 	//Constructor
-	public TeamPlayer(AbstractPlayer player_, AbstractTeam team_, Date startDate_, boolean status_) {
+	public TeamPlayerHistory(AbstractPlayer player_, AbstractTeam team_, Date startDate_, boolean status_) {
 		player = player_;
 		team = team_;
 		startDate = startDate_;
@@ -91,9 +91,9 @@ public class TeamPlayer {
 	//Method used to compare two of TeamPlayer objects
 	@Override
 	public boolean equals(Object obj) {
-		return this.player.equals(((TeamPlayer)obj).getPlayer()) &&
-				this.startDate.equals(((TeamPlayer)obj).getStartDate()) &&
-				this.team.equals(((TeamPlayer)obj).getTeam());
+		return this.player.equals(((TeamPlayerHistory)obj).getPlayer()) &&
+				this.startDate.equals(((TeamPlayerHistory)obj).getStartDate()) &&
+				this.team.equals(((TeamPlayerHistory)obj).getTeam());
 	}
 	
 }

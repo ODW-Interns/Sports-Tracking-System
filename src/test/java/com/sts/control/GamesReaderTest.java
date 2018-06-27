@@ -1,19 +1,13 @@
 package com.sts.control;
 
-import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 
-import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
-
-import com.sts.concretemodel.GamesList;
-import com.sts.concretemodel.PlayersList;
-import com.sts.concretemodel.TeamsList;
 
 public class GamesReaderTest {
 

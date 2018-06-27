@@ -1,4 +1,4 @@
-package com.sts.concretemodel;
+package com.sts.util.model;
 
 /**
  * Generating a key for the TreeMap (Games)

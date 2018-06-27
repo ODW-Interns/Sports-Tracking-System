@@ -13,14 +13,11 @@ import org.slf4j.LoggerFactory;
 import com.sts.abstractmodel.AbstractGame;
 import com.sts.abstractmodel.AbstractPlayer;
 import com.sts.abstractmodel.AbstractTeam;
-import com.sts.concretemodel.GamesList;
-import com.sts.concretemodel.KeyForGamesMap;
-import com.sts.concretemodel.KeyForTeamsMap;
-import com.sts.concretemodel.PlayersList;
-import com.sts.concretemodel.TeamPlayer;
-import com.sts.concretemodel.TeamsList;
 import com.sts.model.exception.PlayerNotFoundException;
 import com.sts.model.exception.TeamNotFoundException;
+import com.sts.util.model.KeyForGamesMap;
+import com.sts.util.model.KeyForTeamsMap;
+import com.sts.util.model.TeamPlayerHistory;
 import com.sts.view.LogRequest;
 
 /*
@@ -56,7 +53,7 @@ public class EventHandler {
 			String teamCity = null;
 			String teamName = null;
 			KeyForTeamsMap teamKey = null;
-			TeamPlayer newTeamHistory = null;
+			TeamPlayerHistory newTeamHistory = null;
 			KeyForTeamsMap oldTeamKey = null;
 			PlayersReader playersReader = new PlayersReader();
 			
@@ -113,7 +110,7 @@ public class EventHandler {
 			}
 			
 			try {
-					newTeamHistory = new TeamPlayer();
+					newTeamHistory = new TeamPlayerHistory();
 					newTeamHistory.setStartDate(new Date());
 					newTeamHistory.setStatus(true);
 					playersReader.parseCurrentTeam(listofTeams_, teamKey, playerBeingMoved, listofPlayers_, newTeamHistory);

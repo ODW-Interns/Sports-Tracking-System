@@ -1,4 +1,4 @@
-package com.sts.concretemodel;
+package com.sts.control;
 
 import java.time.ZonedDateTime;
 import java.util.Date;
@@ -13,6 +13,8 @@ import org.slf4j.LoggerFactory;
 import com.sts.abstractmodel.AbstractGame;
 import com.sts.abstractmodel.AbstractTeam;
 import com.sts.util.GameKeyCompare;
+import com.sts.util.model.KeyForGamesMap;
+import com.sts.util.model.TeamPlayerHistory;
 
 
 /**
@@ -60,11 +62,11 @@ public class GamesList{
 	   //timeNow is used to partition the gamesMap to retrieve just the upcoming games
 	   ZonedDateTime timeNow = ZonedDateTime.now();
 	   
-	   TeamPlayer teamPlayer;
+	   TeamPlayerHistory teamPlayer;
 	   
 	   //Iterators to iterate through the away and home teams players
-	   Iterator<TeamPlayer> homeIterator;
-	   Iterator<TeamPlayer> awayIterator;
+	   Iterator<TeamPlayerHistory> homeIterator;
+	   Iterator<TeamPlayerHistory> awayIterator;
 	  
 	   int tempUID = -1;
 	   KeyForGamesMap lowestKey = new KeyForGamesMap(timeNow,tempUID);
@@ -108,14 +110,14 @@ public class GamesList{
 	   ZonedDateTime timeNow = ZonedDateTime.now(); 
 	   
 	   //Iterators to iterator through the home and away teams players
-	   Iterator<TeamPlayer> homeIterator;
-	   Iterator<TeamPlayer> awayIterator;
+	   Iterator<TeamPlayerHistory> homeIterator;
+	   Iterator<TeamPlayerHistory> awayIterator;
 	   
 	   int tempUID = -1;
 	   KeyForGamesMap highestKey = new KeyForGamesMap(timeNow,tempUID);
 	   AbstractTeam awayTeam = null;
 	   AbstractTeam homeTeam = null;
-	   TeamPlayer player = null;
+	   TeamPlayerHistory player = null;
 
 	   // tailMap used to partition the entire games map to retrieve just the finished games
 	   SortedMap<KeyForGamesMap, AbstractGame> finishedGames = map.tailMap(highestKey); 

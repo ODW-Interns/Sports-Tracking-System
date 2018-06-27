@@ -2,7 +2,7 @@ package com.sts.util;
 
 import java.util.Comparator;
 
-import com.sts.concretemodel.KeyForGamesMap;
+import com.sts.util.model.KeyForGamesMap;
 
 /**
  * Class to allow comparisons to sort the key object by their date and time.
