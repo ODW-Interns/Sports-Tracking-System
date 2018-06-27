@@ -630,8 +630,9 @@ public class GamesReader {
 				
 				isValid=true;
 			} catch (IOException e) {
-				
+			
 				isValid=false;
+				_logger.info("Please enter the time in the following format (hh:mm:ss) ");
 				
 			} 
 			dateAndTime = date + "T" + time + "+00:00";
