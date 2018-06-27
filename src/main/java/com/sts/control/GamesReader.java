@@ -504,7 +504,7 @@ public class GamesReader {
                 
     }
     
-	public void createGames(GamesList gamesList_, TeamsList teamsList_, PlayersList playersList_) throws Exception {
+	public void createGames(GamesList gamesList_, TeamsList teamsList_, PlayersList playersList_) throws Exception  {
 		SportsCategory category = null;
 		int gameID = 0;
 		ZonedDateTime dateTime = null;
@@ -530,7 +530,7 @@ public class GamesReader {
         int durationSeconds;
 	    StringBuilder durationString = new StringBuilder("PT");
 		
-	    Boolean isValid = null;
+	    Boolean isValid = false;
 		_logger.info("Enter the Game Details: ");
 		
 		/*
@@ -539,16 +539,19 @@ public class GamesReader {
 		_logger.info("Enter the Game Category");
 		
 		
-			try {
-				category = SportsCategory.valueOf(reader.readLine());
-				
-				
-			} catch (IOException e) {
-				_logger.error("Invalid Category : " + e.toString());
-				
-				return;
-			} 
-		
+			do {
+				try {
+					
+					category = SportsCategory.valueOf(reader.readLine());
+					isValid=true;
+					
+					
+				} catch (Exception e) {
+					
+					_logger.error("You have entered Invalid Category.");
+					_logger.info("Please enter from the following "+SportsCategory.values());
+				} 
+			} while (!isValid);
 		/*
 		 * Instantiate game object based on sport
 		 */
