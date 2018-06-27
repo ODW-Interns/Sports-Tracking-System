@@ -13,25 +13,32 @@ import com.sts.control.TeamsList;
 import com.sts.util.model.KeyForTeamsMap;
 
 
-public class TeamsRequest {
+public class TeamsCityRequest {
 
 private Logger _logger;
 	
-	public TeamsRequest() {
+	public TeamsCityRequest() {
 		
     	_logger = LoggerFactory.getLogger(getClass().getSimpleName());
 	}
 	
-	public void displayTeams(TeamsList teamsList_, SportsCategory category){
+	public void displayTeams(TeamsList teamsList_, SportsCategory category, Boolean city){
 	
 		ConcurrentHashMap<KeyForTeamsMap, AbstractTeam> teammap = teamsList_.getTeamMap();
 		for (Entry<KeyForTeamsMap, AbstractTeam> entry : teammap.entrySet()) {
 			
-			if(entry.getValue().getTeamSport().equals(category)) {
+			if(entry.getValue().getTeamSport().equals(category)&& city) {
 	
 		        _logger.info(entry.getValue().getLocation());
 		    
 		    }
+			
+			if(entry.getValue().getTeamSport().equals(category)&& !city) {
+				
+		        _logger.info(entry.getValue().getTeamName());
+		    
+		    }
+			
 		
 	    }
 	

@@ -33,7 +33,7 @@ import com.sts.model.exception.TeamNotFoundException;
 import com.sts.nba.models.NBAGame;
 import com.sts.nfl.models.NFLGame;
 import com.sts.nhl.models.NHLGame;
-import com.sts.view.TeamsRequest;
+import com.sts.view.TeamsCityRequest;
 import com.sts.util.model.KeyForGamesMap;
 import com.sts.util.model.KeyForTeamsMap;
 
@@ -530,19 +530,24 @@ public class GamesReader {
         int durationSeconds;
 	    StringBuilder durationString = new StringBuilder("PT");
 		
+	    Boolean isValid = null;
 		_logger.info("Enter the Game Details: ");
 		
 		/*
 		 * Reading Game Category
 		 */
 		_logger.info("Enter the Game Category");
-		try {
-			category=SportsCategory.valueOf(reader.readLine());
-			
-		} catch (IOException e) {
-			_logger.error("Invalid Category : " + e.toString());
-			return;
-		}
+		
+		
+			try {
+				category = SportsCategory.valueOf(reader.readLine());
+				
+				
+			} catch (IOException e) {
+				_logger.error("Invalid Category : " + e.toString());
+				
+				return;
+			} 
 		
 		/*
 		 * Instantiate game object based on sport
@@ -615,8 +620,8 @@ public class GamesReader {
 		 */
 		_logger.info("Enter the away city ");
 		_logger.info("The valid Cities for "+ category.toString()+ " are" );
-		TeamsRequest a=new TeamsRequest();
-		a.displayTeams(teamsList_,category );
+		TeamsCityRequest a=new TeamsCityRequest();
+		a.displayTeams(teamsList_,category, true);
 		
 		try {
 			awayCity=reader.readLine();
@@ -630,7 +635,8 @@ public class GamesReader {
 		 * Reading the Away Team Name 
 		 */
 		_logger.info("Enter the away team name: ");
-		
+		_logger.info("Valid sports team for "+category.toString()+" are: ");
+		a.displayTeams(teamsList_,category, false );
 		try {
 			awayTeamName=reader.readLine();
 			game.setAwayTeam(parseTeam(category,awayCity,awayTeamName, teamsList_));
@@ -644,7 +650,7 @@ public class GamesReader {
 		 */
 		_logger.info("Enter the home city ");
 		_logger.info("The valid Cities for "+ category.toString()+ " are" );
-		a.displayTeams(teamsList_,category );
+		a.displayTeams(teamsList_,category, true );
 		try {
 			homeCity=reader.readLine();
 			
@@ -657,6 +663,8 @@ public class GamesReader {
 		 * Reading the Home Team Name 
 		 */
 		_logger.info("Enter the home team name: ");
+		_logger.info("Valid sports team for "+category.toString()+" are: ");
+		a.displayTeams(teamsList_,category, false );
 		try {
 			homeTeamName=reader.readLine();
 			home=(parseTeam(category,homeCity,homeTeamName, teamsList_));
