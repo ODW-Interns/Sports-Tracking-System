@@ -4,7 +4,7 @@ package com.sts.abstractmodel;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-import com.sts.concretemodel.TeamPlayer;
+import com.sts.util.model.TeamPlayerHistory;
 
 
 /**
@@ -25,7 +25,7 @@ public abstract class AbstractTeam implements InterfaceModel{
 	 * (All the players that have played on this team)
 	 * TeamPlayer: Data object that connects a team and a player
 	 */
-	private ArrayList<TeamPlayer> teamPlayers;
+	private ArrayList<TeamPlayerHistory> teamPlayers;
 	
 	
 	public AbstractTeam() {
@@ -38,7 +38,7 @@ public abstract class AbstractTeam implements InterfaceModel{
 		setTeamName(team_);
 		setLocation(loc_);
 	
-		teamPlayers = new ArrayList<TeamPlayer>();
+		teamPlayers = new ArrayList<TeamPlayerHistory>();
 	}
 
 	/*
@@ -110,12 +110,12 @@ public abstract class AbstractTeam implements InterfaceModel{
 	 * Returns the current players on this team by filtering through the entire history
 	 * and grabbing only players that are on this team
 	 */
-	public ArrayList<TeamPlayer> getCurrentPlayers() {
-		ArrayList<TeamPlayer> filteredPlayersList = new ArrayList<>();
+	public ArrayList<TeamPlayerHistory> getCurrentPlayers() {
+		ArrayList<TeamPlayerHistory> filteredPlayersList = new ArrayList<>();
 		// TODO filter team players by status/enddate.
-		Iterator<TeamPlayer> i;
+		Iterator<TeamPlayerHistory> i;
 		i = teamPlayers.iterator();
-		TeamPlayer tempTeamPlayer = null;
+		TeamPlayerHistory tempTeamPlayer = null;
 		while(i.hasNext()) {
 			tempTeamPlayer = i.next();
 			if(tempTeamPlayer.isStatus() == true && tempTeamPlayer.getTeam().equals(this)) {
@@ -127,7 +127,7 @@ public abstract class AbstractTeam implements InterfaceModel{
 	}
 	
 	//Returns the entire history of the team
-	public ArrayList<TeamPlayer> getEntireHistoryPlayers(){
+	public ArrayList<TeamPlayerHistory> getEntireHistoryPlayers(){
 		return teamPlayers;
 	}
 	

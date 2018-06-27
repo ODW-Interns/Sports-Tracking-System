@@ -22,13 +22,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.sts.abstractmodel.AbstractGame;
-import com.sts.abstractmodel.AbstractPlayer;
 import com.sts.abstractmodel.SportsCategory;
-import com.sts.concretemodel.GamesList;
-import com.sts.concretemodel.KeyForGamesMap;
-import com.sts.concretemodel.KeyForTeamsMap;
-import com.sts.concretemodel.PlayersList;
-import com.sts.concretemodel.TeamsList;
 import com.sts.mlb.models.MLBGame;
 import com.sts.abstractmodel.AbstractTeam;
 import com.sts.model.exception.DuplicateTeamException;
@@ -40,6 +34,9 @@ import com.sts.nba.models.NBAGame;
 import com.sts.nfl.models.NFLGame;
 import com.sts.nhl.models.NHLGame;
 import com.sts.view.TeamsRequest;
+import com.sts.util.model.KeyForGamesMap;
+import com.sts.util.model.KeyForTeamsMap;
+
 
 /**
  *  class to read from file with upcoming/finished games
@@ -145,18 +142,6 @@ public class GamesReader {
        
     }
 
-
-    /**
-     *  Method to check if a player is on a specified team
-     */
-    private boolean PlayerIsOnTeam(int playerID_,TeamsList teamsList_, KeyForTeamsMap teamKey_, PlayersList playersList_) {
-    	AbstractPlayer player = playersList_.returnPlayersMap().get(playerID_);
-    	if(player.getCurrentTeamHistory().getTeam().equals(teamsList_.getTeamMap().get(teamKey_))){
-    		return true;
-    	}
-    	else
-    		return false;
-    }
     
     /** 
      * (non-Javadoc)

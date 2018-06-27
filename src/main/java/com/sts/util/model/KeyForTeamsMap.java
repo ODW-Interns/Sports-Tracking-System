@@ -1,4 +1,4 @@
-package com.sts.concretemodel;
+package com.sts.util.model;
 
 /**
  * Class to store data used as a key for the teams map.

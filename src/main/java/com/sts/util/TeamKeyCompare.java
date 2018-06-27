@@ -2,7 +2,7 @@ package com.sts.util;
 
 import java.util.Comparator;
 
-import com.sts.concretemodel.KeyForTeamsMap;
+import com.sts.util.model.KeyForTeamsMap;
 
 public class TeamKeyCompare implements Comparator<KeyForTeamsMap>{
 
