@@ -85,7 +85,9 @@ public class EventHandler {
 				indexOfCurrentTeamHistory = oldTeam.getEntireHistoryPlayers().indexOf(playerBeingMoved.getCurrentTeamHistory());
 			}
 			//playerBeingMoved.getCurrentTeamHistory().setStatus(false);
-			if(playerBeingMoved.getPlayerTeams().contains(playerBeingMoved.getCurrentTeamHistory())) {
+			
+			/*if the player is on a team currently*/
+			if(playerBeingMoved.getCurrentTeamHistory().getTeam() != null && playerBeingMoved.getPlayerTeams().contains(playerBeingMoved.getCurrentTeamHistory())) {
 				indexofCurrentPlayerHistory = playerBeingMoved.getPlayerTeams().indexOf(playerBeingMoved.getCurrentTeamHistory());
 			}
 			
