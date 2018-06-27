@@ -19,6 +19,7 @@ import com.sts.util.model.KeyForGamesMap;
 import com.sts.util.model.KeyForTeamsMap;
 import com.sts.util.model.TeamPlayerHistory;
 import com.sts.view.LogRequest;
+import com.sts.view.TeamsCityRequest;
 
 /*
  * Class that is used to handle all the requests/events from the system
@@ -34,17 +35,18 @@ public class EventHandler {
 		private Logger _logger;
 	    private BufferedReader reader;
 	    private LogRequest logReq;
+	    private TeamsCityRequest teamReq;
 	    
 	    //Constructor
 	    public EventHandler() {
 	    	_logger = LoggerFactory.getLogger(getClass().getSimpleName());
 	 	    reader = new BufferedReader(new InputStreamReader(System.in));
 	 	    logReq = new LogRequest();
+	 	    teamReq = new TeamsCityRequest();
 	    }
 		
 		//Method to move one player from one team to another
 		public void movePlayer(TeamsList listofTeams_, PlayersList listofPlayers_) throws IOException {
-			System.out.println("HERE");
 			int playerID = -1;
 			AbstractPlayer playerBeingMoved = null; // player that is being moved
 			AbstractTeam oldTeam = null; // player's old team
@@ -57,7 +59,8 @@ public class EventHandler {
 			KeyForTeamsMap oldTeamKey = null;
 			PlayersReader playersReader = new PlayersReader();
 			
-			_logger.info("Enter the player ID for the player you wish you move:");
+			_logger.info("Enter the player ID for the player you wish you move from the following players:");
+			logReq.logAllPlayersInPlayerMap(listofPlayers_);
 			try {
 				playerID = Integer.parseInt(reader.readLine());
 			} 
@@ -100,7 +103,11 @@ public class EventHandler {
 				return;
 			}
 			try {
-				_logger.info("Enter the team the player is moving to");
+				_logger.info("Enter the team the player is moving to. Choose from the following teams:");
+				System.out.println(playerBeingMoved.get_sportCategory().toString());
+				System.out.println("HERE ASDF");
+				teamReq.displayTeams(listofTeams_, playerBeingMoved.get_sportCategory());
+				
 				_logger.info("Enter the city first: ");
 				teamCity = reader.readLine();
 				_logger.info("Enter the team name: ");
@@ -249,10 +256,6 @@ public class EventHandler {
 		catch(Exception e_) {
 			_logger.error("Invalid Team Input: " + e_.toString());
 		}
-	}
-	
-	public void deleteGame(GamesList listofGames_) {
-		
 	}
 	
 	public void removePlayerFromTeam(TeamsList listofTeams_, PlayersList listofPlayers_) {

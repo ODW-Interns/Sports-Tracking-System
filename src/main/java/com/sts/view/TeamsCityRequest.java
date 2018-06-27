@@ -20,22 +20,14 @@ private Logger _logger;
     	_logger = LoggerFactory.getLogger(getClass().getSimpleName());
 	}
 	
-	public void displayTeams(TeamsList teamsList_, SportsCategory category, Boolean city){
-	
+	public void displayTeams(TeamsList teamsList_, SportsCategory category){
 		Iterator<Entry<KeyForTeamsMap, AbstractTeam>> teamIterator;
 		teamIterator = teamsList_.getTeamMap().entrySet().iterator();
 		Entry<KeyForTeamsMap, AbstractTeam> entry;
 		while(teamIterator.hasNext()) {
 			entry = teamIterator.next();
-			if(entry.getValue().getTeamSport().equals(category)&& city) {
-	
-		        _logger.info(entry.getValue().getLocation());
-		    
-		    }
-			
-			if(entry.getValue().getTeamSport().equals(category)&& !city) {
-				
-		        _logger.info(entry.getValue().getTeamName());
+			if(entry.getValue().getTeamSport().equals(category)) {
+		        _logger.info(entry.getValue().fullTeamName());
 		    
 		    }
 			
