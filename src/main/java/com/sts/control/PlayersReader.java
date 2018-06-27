@@ -509,6 +509,8 @@ public class PlayersReader {
 		lineForTeam = reader.readLine();
 		try {
 			if(lineForTeam.equals("")) {   // Player without a team
+				player.getCurrentTeamHistory().setStatus(false);
+				player.getCurrentTeamHistory().setPlayer(player);
 				listofPlayers_.returnPlayersMap().put(player.get_playerID(), player);
 				_logger.trace("New player successfully created and added to player's map");
 				return;

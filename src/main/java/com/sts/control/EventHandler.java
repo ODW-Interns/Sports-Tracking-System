@@ -71,7 +71,8 @@ public class EventHandler {
 				}
 				else {
 					playerBeingMoved = listofPlayers_.returnPlayersMap().get(playerID);
-					oldTeamKey = new KeyForTeamsMap(playerBeingMoved.getCurrentTeamHistory().getTeam().getLocation(), playerBeingMoved.getCurrentTeamHistory().getTeam().getTeamName());
+					if(playerBeingMoved.getCurrentTeamHistory().getTeam() != null)
+						oldTeamKey = new KeyForTeamsMap(playerBeingMoved.getCurrentTeamHistory().getTeam().getLocation(), playerBeingMoved.getCurrentTeamHistory().getTeam().getTeamName());
 				}
 				
 			}
@@ -79,7 +80,7 @@ public class EventHandler {
 				_logger.error("Error finding player: " + e_.toString());
 				return;
 			}
-			if(listofTeams_.getTeamMap().get(oldTeamKey).getEntireHistoryPlayers().contains(playerBeingMoved.getCurrentTeamHistory())) {
+			if(oldTeamKey != null && listofTeams_.getTeamMap().get(oldTeamKey).getEntireHistoryPlayers().contains(playerBeingMoved.getCurrentTeamHistory())) {
 				oldTeam = listofTeams_.getTeamMap().get(oldTeamKey);
 				indexOfCurrentTeamHistory = oldTeam.getEntireHistoryPlayers().indexOf(playerBeingMoved.getCurrentTeamHistory());
 			}
@@ -114,10 +115,13 @@ public class EventHandler {
 					newTeamHistory.setStartDate(new Date());
 					newTeamHistory.setStatus(true);
 					playersReader.parseCurrentTeam(listofTeams_, teamKey, playerBeingMoved, listofPlayers_, newTeamHistory);
+					
+					if(oldTeamKey != null) {
 					listofTeams_.getTeamMap().get(oldTeamKey).getEntireHistoryPlayers().get(indexOfCurrentTeamHistory).setStatus(false);
 					listofTeams_.getTeamMap().get(oldTeamKey).getEntireHistoryPlayers().get(indexOfCurrentTeamHistory).setEndDate(new Date());
 					playerBeingMoved.getPlayerTeams().get(indexofCurrentPlayerHistory).setStatus(false);
 					playerBeingMoved.getPlayerTeams().get(indexofCurrentPlayerHistory).setEndDate(new Date());;
+					}
 					newTeamHistory.setPlayer(playerBeingMoved);
 					listofTeams_.getTeamMap().get(teamKey).getEntireHistoryPlayers().add(newTeamHistory);
 
