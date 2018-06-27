@@ -176,8 +176,7 @@ public abstract class AbstractPlayer implements InterfaceModel{
 	public boolean equals(Object obj) {
 		return _firstName.equals(((AbstractPlayer)obj).getFirstName()) &&
 				_lastName.equals(((AbstractPlayer)obj).getLastName()) &&
-				_jerseyNum == ((AbstractPlayer)obj).getJerseyNum() &&
-				getCurrentTeam().equals(((AbstractPlayer)obj).getCurrentTeam());
+				_playerID == ((AbstractPlayer)obj).get_playerID();
 	}
 		
 }
