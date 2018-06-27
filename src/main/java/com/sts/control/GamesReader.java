@@ -620,7 +620,9 @@ public class GamesReader {
 					isValid=false;
 				} 
 			} while (!isValid);
-			
+			/*
+			 * Reading Time
+			 */
 			try {
 				
 				_logger.info("Enter the time of the game in this format (hh:mm:ss)");
@@ -689,6 +691,7 @@ public class GamesReader {
 			} 
 		} while (!isValid);
 		
+		
 		/*
 		 * Reading the Home Team Name 
 		 */
@@ -706,6 +709,7 @@ public class GamesReader {
 			} 
 		} while (!isValid);
 		if (home.equals(game.getAwayTeam())) 
+			
             throw new DuplicateTeamException("Home team cannot be the same as away", home);
 		game.setHomeTeam(home);
 			
