@@ -537,7 +537,8 @@ public class GamesReader {
 		CustomValidations cvalidations = new CustomValidations();
 	    
 	    Boolean isValid = false;
-
+	    TeamsCityRequest req = new TeamsCityRequest();
+	    
 		_logger.info("Enter the Game Details: ");
 		
 		/*
@@ -659,28 +660,28 @@ public class GamesReader {
 		/*
 		 * Reading the Away city 
 		 */
-		_logger.info("The valid teams for the "+ category.toString()+ " are" );
-
-		TeamsCityRequest req = new TeamsCityRequest();
-		req.displayTeams(teamsList_,category);
-		_logger.info("Enter the away city ");
-	
-		
 		do {
+			_logger.info("The valid cities and teams for the "+ category.toString()+ " are [Cities : Teams]" );
+			req.displayTeams(teamsList_,category);
+			_logger.info("Enter the away city from the cities above");
 			try {
 				awayCity = reader.readLine();
-				isValid=true;
-
+				if(cvalidations.cityValidation(teamsList_,awayCity)) {
+					isValid=true;
+					break;
+				}else {
+					isValid=false;
+					continue;
+				}
 			} catch (IOException e) {
-				
-				_logger.info("Invalid city : " + e.toString());
-				
+				_logger.info("Invalid city.. Please re-enter " + e.toString());
 			} 
 		} while (!isValid);
+		
+		
 		/*
 		 * Reading the Away Team Name 
 		 */
-
 		do {
 			_logger.info("Enter the away team city name: ");
 			_logger.info("Valid sports team for "+category.toString()+" are: ");
@@ -700,15 +701,20 @@ public class GamesReader {
 		 */
 
 		do {
-			_logger.info("Enter the home city ");
-			_logger.info("The valid Cities for "+ category.toString()+ " are" );
+			_logger.info("The valid cities and teams for "+ category.toString()+ " are [Cities : Teams]" );
 			req.displayTeams(teamsList_,category);
 			try {
+				_logger.info("Enter the home city from the cities above ");
 				homeCity = reader.readLine();
-
+				if(cvalidations.cityValidation(teamsList_, homeCity)) {
+					isValid=true;
+					break;
+				}else {
+					isValid=false;
+					continue;
+				}
 			} catch (IOException e) {
 				_logger.info("Invalid City : " + e.toString());
-				
 			} 
 		} while (!isValid);
 		

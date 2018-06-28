@@ -4,8 +4,14 @@ import java.sql.Time;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Iterator;
+import java.util.Map.Entry;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import com.sts.abstractmodel.AbstractTeam;
+import com.sts.control.TeamsList;
+import com.sts.util.model.KeyForTeamsMap;
 
 public class CustomValidations {
 
@@ -41,4 +47,18 @@ public class CustomValidations {
 		    return true;
 		}	
 	}
+	
+	public boolean cityValidation(TeamsList teamsList_, String city) {
+		Iterator<Entry<KeyForTeamsMap, AbstractTeam>> teamIterator;
+		teamIterator = teamsList_.getTeamMap().entrySet().iterator();
+		Entry<KeyForTeamsMap, AbstractTeam> entry;
+		while(teamIterator.hasNext()) {
+			entry = teamIterator.next();
+			if(entry.getValue().getLocation().equals(city)) {
+		        return true;
+		    }
+		}
+		return false;
+	}
 }
+	
