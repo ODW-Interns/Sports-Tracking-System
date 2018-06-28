@@ -33,6 +33,7 @@ import com.sts.nba.models.NBAGame;
 import com.sts.nfl.models.NFLGame;
 import com.sts.nhl.models.NHLGame;
 import com.sts.view.TeamsCityRequest;
+import com.sts.util.CustomValidations;
 import com.sts.util.model.KeyForGamesMap;
 import com.sts.util.model.KeyForTeamsMap;
 
@@ -517,10 +518,10 @@ public class GamesReader {
 		
 		String homeCity = null;
 		String homeTeamName = null;
-		int homeTeamScore;
-		int awayTeamScore;
+		int homeTeamScore = 0;
+		int awayTeamScore = 0;
 				
-		int gameAttendance;
+		int gameAttendance = 0;
 		
 		Set<KeyForGamesMap> keys;
 		
@@ -533,9 +534,11 @@ public class GamesReader {
         int durationMinutes=0;
         int durationSeconds=0;
 	    StringBuilder durationString = new StringBuilder("PT");
-		
+		CustomValidations cvalidations = new CustomValidations();
+	    
 	    Boolean isValid = false;
-
+	    TeamsCityRequest req = new TeamsCityRequest();
+	    
 		_logger.info("Enter the Game Details: ");
 		
 		/*
@@ -610,30 +613,44 @@ public class GamesReader {
 			 * Reading Date
 			 */		
 			do {
-
 				try {
-					_logger.info("Enter the Game Date in this format (yyyy-mm-dd)");
+					_logger.info("Enter the Game Date in this format YYYY-MM-DD");
 					date = reader.readLine();
-					isValid=true;
+		
+					if(cvalidations.dateValidation(date)) {
+						isValid=true;
+						break;
+					}else {
+						isValid=false;
+						continue;
+					}
 				} catch (Exception e) {
-					_logger.error("Please enter the date in the following format (yyyy-mm-dd)");
+					_logger.error("Please enter the date in the following format YYYY-MM-DD"+e.toString());
 					isValid=false;
 				} 
 			} while (!isValid);
+			
 			/*
 			 * Reading Time
 			 */
-			try {
-				
-				_logger.info("Enter the time of the game in this format (hh:mm:ss)");
-				time = reader.readLine();
-				
-				isValid=true;
-			} catch (IOException e) {
+			do {
+				try {
+					_logger.info("Enter the time of the game in this format (hh:mm:ss)");
+					time = reader.readLine();
+					if (cvalidations.timeValidation(time)) {
+						isValid = true;
+						break;
+					} else {
+						isValid=false;
+						continue;
+					}
+					
+				} catch (IOException e) {
+					isValid = false;
+					_logger.info("Enter time in (hh:mm:ss) format"+e.toString());
+				} 
+			} while (!isValid);
 			
-				isValid=false;
-				_logger.info("ENetr time in (hh:mm:ss)"); 
-			} 
 			dateAndTime = date + "T" + time + "+00:00";
 			dateTime = parseDate(dateAndTime);
 		
@@ -643,84 +660,99 @@ public class GamesReader {
 		/*
 		 * Reading the Away city 
 		 */
-		_logger.info("The valid teams for the "+ category.toString()+ " are" );
-
-		TeamsCityRequest req = new TeamsCityRequest();
-		req.displayTeams(teamsList_,category);
-		_logger.info("Enter the away city ");
-	
-		
 		do {
+			_logger.info("The valid cities and teams for the "+ category.toString()+ " are [Cities : Teams]" );
+			req.displayTeams(teamsList_,category);
+			_logger.info("Enter the away city from the cities above");
 			try {
 				awayCity = reader.readLine();
-				isValid=true;
-
+				if(cvalidations.cityValidation(teamsList_,awayCity)) {
+					isValid=true;
+					break;
+				}else {
+					isValid=false;
+					continue;
+				}
 			} catch (IOException e) {
-				
-				_logger.info("Invalid city : " + e.toString());
-				
+				_logger.info("Invalid city.. Please re-enter " + e.toString());
 			} 
 		} while (!isValid);
+		
+		
 		/*
 		 * Reading the Away Team Name 
 		 */
-
 		do {
-			_logger.info("Enter the away team city name: ");
-			_logger.info("Valid sports team for "+category.toString()+" are: ");
+			_logger.info("Valid sports cities and team for "+category.toString()+" are [Cities : Teams] ");
 			req.displayTeams(teamsList_,category);
 			try {
+				_logger.info("Enter the away team name corresponding to "+awayCity);
 				awayTeamName = reader.readLine();
-				isValid=true;
-				game.setAwayTeam(parseTeam(category, awayCity, awayTeamName, teamsList_));
-				
-			} catch (IOException e) {
-				_logger.error("Invalid Team Name : " + e.toString());
+				if(cvalidations.teamValidation(teamsList_, awayTeamName,awayCity)) {
+					isValid=true;
+					break;
+				}else {
+					isValid=false;
+					continue;
+				}
+			}catch (IOException e) {
+				_logger.error("Invalid Team Name. Please re-enter " + e.toString());
 				isValid=false;
 			} 
 		} while (!isValid);
+		
+		game.setAwayTeam(parseTeam(category, awayCity, awayTeamName, teamsList_));
+		
 		/*
 		 * Reading the Home city 
 		 */
-
 		do {
-			_logger.info("Enter the home city ");
-			_logger.info("The valid Cities for "+ category.toString()+ " are" );
+			_logger.info("The valid cities and teams for "+ category.toString()+ " are [Cities : Teams]" );
 			req.displayTeams(teamsList_,category);
 			try {
+				_logger.info("Enter the home city from the cities above ");
 				homeCity = reader.readLine();
-
+				if(cvalidations.cityValidation(teamsList_, homeCity)) {
+					isValid=true;
+					break;
+				}else {
+					isValid=false;
+					continue;
+				}
 			} catch (IOException e) {
 				_logger.info("Invalid City : " + e.toString());
-				
 			} 
 		} while (!isValid);
-		
-
 		
 		/*
 		 * Reading the Home Team Name 
 		 */
-
 		do {
-			_logger.info("Enter the home team name: ");
 			_logger.info("Valid sports team for "+category.toString()+" are: ");
 			req.displayTeams(teamsList_,category);
 			try {
+				_logger.info("Enter the home team name corresponding to "+homeCity);
 				homeTeamName = reader.readLine();
-				home = (parseTeam(category, homeCity, homeTeamName, teamsList_));
-				isValid=true;
+				if(cvalidations.teamValidation(teamsList_, homeTeamName, homeCity)&&!homeTeamName.equals(awayTeamName)) {
+					isValid=true;
+					break;
+				}else {
+					isValid=false;
+					continue;
+				}
 			} catch (IOException e) {
-				_logger.error("Invalid Team: " + e.toString());
-				
+				_logger.error("Invalid Team.. Please re-enter " + e.toString());
 			} 
 		} while (!isValid);
+		home = (parseTeam(category, homeCity, homeTeamName, teamsList_));
+		game.setHomeTeam(home);
 
+	/*	
 		if (home.equals(game.getAwayTeam())) 
 			
             throw new DuplicateTeamException("Home team cannot be the same as away", home);
 		game.setHomeTeam(home);
-			
+	*/		
 		/*
 		 * Checking if future game or past game
 		 */
@@ -735,60 +767,68 @@ public class GamesReader {
 		/*
 		 * Reading the away team score
 		 */
-		_logger.info("Enter the away team score");
+		
 		do {
 			try {
+				_logger.info("Please enter valid away team score");
 				awayTeamScore = Integer.parseInt(reader.readLine());
-				isValid=true;
 				if (awayTeamScore < 0) {
 					isValid=false;
-					throw new NegativeScoreException();
+					continue;
+				}else {
+					isValid=true;
+					break;
 				}
-				game.setAwayTeamScore(awayTeamScore);
-
 			} catch (IOException e) {
-				_logger.error("Invalid Score : " + e.toString());
-				
+				_logger.error("Invalid Score.. Please re-enter " + e.toString());
 			} 
-		} while (isValid);
+		} while (!isValid);
+		game.setAwayTeamScore(awayTeamScore);
+		
 		/*
 		 * Reading the home team score
 		 */
-		_logger.info("Enter the home team score");
+		
 		do {
 			try {
+				_logger.info("Enter the valid home team score");
 				homeTeamScore = Integer.parseInt(reader.readLine());
-				isValid=true;
 				if (homeTeamScore < 0) {
 					isValid=false;
-					throw new NegativeScoreException();
+					continue;
+				}else {
+					isValid=true;
+					break;
 				}
-				game.setHomeTeamScore(homeTeamScore);
 			} catch (IOException e) {
-				_logger.error("Invalid Score : " + e.toString());
-
+				_logger.error("Invalid Score.. Please re-enter " + e.toString());
 			} 
-		} while (isValid);
+		} while (!isValid);
+		game.setHomeTeamScore(homeTeamScore);
+		
+		
 		/*
 		 * Reading the Attendance
 		 */
-		_logger.info("Enter the game attendence ");
+		
 		do {
 			try {
+				_logger.info("Please enter the valid game attendence ");
 				gameAttendance = Integer.parseInt(reader.readLine());
 				isValid=true;
 				if (gameAttendance < 0) {
 					isValid=false;
-					throw new NegativeAttendanceException();
-					
+					continue;
+				}else {
+					isValid=true;
+					break;
 				}
-				game.setAttendance(gameAttendance);
 			} catch (IOException e) {
-				
-				_logger.error("Invalid Attendance " + e.toString());
-				
+				_logger.error("Invalid Attendance.. Please re-enter " + e.toString());
 			} 
-		} while (isValid);
+		} while (!isValid);
+		game.setAttendance(gameAttendance);
+		
 		/*
 		 * Reading the Duration
 		 */
@@ -797,32 +837,55 @@ public class GamesReader {
 		do {
 			try {
 				durationHours = Integer.parseInt(reader.readLine());
-				isValid=true;
-			} catch (Exception e_) {
-				_logger.error(e_.toString());
+				if(durationHours<=24) {
+					isValid=true;
+					break;
+				}else {
+					isValid=false;
+					continue;
+				}
 				
-			} 
-		} while (isValid);
-		_logger.info("Minutes(s):"); // Minutes the game lasted
-		do {
-			try {
-				durationMinutes = Integer.parseInt(reader.readLine());
-				isValid=true;
 			} catch (Exception e_) {
 				_logger.error(e_.toString());
 				
 			} 
 		} while (!isValid);
+		
+		_logger.info("Minutes(s):"); // Minutes the game lasted
+		do {
+			try {
+				durationMinutes = Integer.parseInt(reader.readLine());
+				if(durationMinutes<=60) {
+					isValid=true;
+					break;
+				}else {
+					isValid=false;
+					continue;
+				}
+				
+			} catch (Exception e_) {
+				_logger.error(e_.toString());
+				
+			} 
+		} while (!isValid);
+		
 		_logger.info("Second(s):"); // Seconds the game lasted
 		do {
 			try {
 				durationSeconds = Integer.parseInt(reader.readLine());
-				isValid=true;
+				if(durationSeconds<=60) {
+					isValid=true;
+					break;
+				}else {
+					isValid=false;
+					continue;
+				}
 			} catch (Exception e_) {
 				_logger.error(e_.toString());
 
 			} 
-		} while (isValid);
+		} while (!isValid);
+		
 		durationString.append(durationHours).append("H").append(durationMinutes).append("M").append(durationSeconds).append("S");
 		game.setDuration(Duration.parse(durationString)); // set the duration for the game
 		game.setFinishTime(game.getStartTime().plus(game.getDuration()));
