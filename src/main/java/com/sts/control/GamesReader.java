@@ -632,8 +632,7 @@ public class GamesReader {
 			} catch (IOException e) {
 			
 				isValid=false;
-				_logger.info("Please enter the time in the following format (hh:mm:ss) ");
-				
+				_logger.info("ENetr time in (hh:mm:ss)"); 
 			} 
 			dateAndTime = date + "T" + time + "+00:00";
 			dateTime = parseDate(dateAndTime);
@@ -665,26 +664,29 @@ public class GamesReader {
 		/*
 		 * Reading the Away Team Name 
 		 */
-		_logger.info("Enter the away team name: ");
-		_logger.info("Valid sports team for "+category.toString()+" are: ");
-		req.displayTeams(teamsList_,category);
+
 		do {
+			_logger.info("Enter the away team city name: ");
+			_logger.info("Valid sports team for "+category.toString()+" are: ");
+			req.displayTeams(teamsList_,category);
 			try {
 				awayTeamName = reader.readLine();
-				game.setAwayTeam(parseTeam(category, awayCity, awayTeamName, teamsList_));
 				isValid=true;
+				game.setAwayTeam(parseTeam(category, awayCity, awayTeamName, teamsList_));
+				
 			} catch (IOException e) {
 				_logger.error("Invalid Team Name : " + e.toString());
-				
+				isValid=false;
 			} 
 		} while (!isValid);
 		/*
 		 * Reading the Home city 
 		 */
-		_logger.info("Enter the home city ");
-		_logger.info("The valid Cities for "+ category.toString()+ " are" );
-		req.displayTeams(teamsList_,category);
+
 		do {
+			_logger.info("Enter the home city ");
+			_logger.info("The valid Cities for "+ category.toString()+ " are" );
+			req.displayTeams(teamsList_,category);
 			try {
 				homeCity = reader.readLine();
 
@@ -699,10 +701,11 @@ public class GamesReader {
 		/*
 		 * Reading the Home Team Name 
 		 */
-		_logger.info("Enter the home team name: ");
-		_logger.info("Valid sports team for "+category.toString()+" are: ");
-		req.displayTeams(teamsList_,category);
+
 		do {
+			_logger.info("Enter the home team name: ");
+			_logger.info("Valid sports team for "+category.toString()+" are: ");
+			req.displayTeams(teamsList_,category);
 			try {
 				homeTeamName = reader.readLine();
 				home = (parseTeam(category, homeCity, homeTeamName, teamsList_));
