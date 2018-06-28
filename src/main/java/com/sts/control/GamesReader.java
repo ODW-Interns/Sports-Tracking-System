@@ -33,6 +33,7 @@ import com.sts.nba.models.NBAGame;
 import com.sts.nfl.models.NFLGame;
 import com.sts.nhl.models.NHLGame;
 import com.sts.view.TeamsCityRequest;
+import com.sts.util.CustomValidations;
 import com.sts.util.model.KeyForGamesMap;
 import com.sts.util.model.KeyForTeamsMap;
 
@@ -533,7 +534,8 @@ public class GamesReader {
         int durationMinutes=0;
         int durationSeconds=0;
 	    StringBuilder durationString = new StringBuilder("PT");
-		
+		CustomValidations cvalidations = new CustomValidations();
+	    
 	    Boolean isValid = false;
 
 		_logger.info("Enter the Game Details: ");
@@ -610,30 +612,44 @@ public class GamesReader {
 			 * Reading Date
 			 */		
 			do {
-
 				try {
-					_logger.info("Enter the Game Date in this format (yyyy-mm-dd)");
+					_logger.info("Enter the Game Date in this format YYYY-MM-DD");
 					date = reader.readLine();
-					isValid=true;
+		
+					if(cvalidations.dateValidation(date)) {
+						isValid=true;
+						break;
+					}else {
+						isValid=false;
+						continue;
+					}
 				} catch (Exception e) {
-					_logger.error("Please enter the date in the following format (yyyy-mm-dd)");
+					_logger.error("Please enter the date in the following format YYYY-MM-DD"+e.toString());
 					isValid=false;
 				} 
 			} while (!isValid);
+			
 			/*
 			 * Reading Time
 			 */
-			try {
-				
-				_logger.info("Enter the time of the game in this format (hh:mm:ss)");
-				time = reader.readLine();
-				
-				isValid=true;
-			} catch (IOException e) {
+			do {
+				try {
+					_logger.info("Enter the time of the game in this format (hh:mm:ss)");
+					time = reader.readLine();
+					if (cvalidations.timeValidation(time)) {
+						isValid = true;
+						break;
+					} else {
+						isValid=false;
+						continue;
+					}
+					
+				} catch (IOException e) {
+					isValid = false;
+					_logger.info("Enter time in (hh:mm:ss) format"+e.toString());
+				} 
+			} while (!isValid);
 			
-				isValid=false;
-				_logger.info("ENetr time in (hh:mm:ss)"); 
-			} 
 			dateAndTime = date + "T" + time + "+00:00";
 			dateTime = parseDate(dateAndTime);
 		
