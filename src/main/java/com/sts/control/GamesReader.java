@@ -518,10 +518,10 @@ public class GamesReader {
 		
 		String homeCity = null;
 		String homeTeamName = null;
-		int homeTeamScore;
-		int awayTeamScore;
+		int homeTeamScore = 0;
+		int awayTeamScore = 0;
 				
-		int gameAttendance;
+		int gameAttendance = 0;
 		
 		Set<KeyForGamesMap> keys;
 		
@@ -745,6 +745,7 @@ public class GamesReader {
 			} 
 		} while (!isValid);
 		home = (parseTeam(category, homeCity, homeTeamName, teamsList_));
+		game.setHomeTeam(home);
 
 	/*	
 		if (home.equals(game.getAwayTeam())) 
@@ -766,60 +767,68 @@ public class GamesReader {
 		/*
 		 * Reading the away team score
 		 */
-		_logger.info("Enter the away team score");
+		
 		do {
 			try {
+				_logger.info("Please enter valid away team score");
 				awayTeamScore = Integer.parseInt(reader.readLine());
-				isValid=true;
 				if (awayTeamScore < 0) {
 					isValid=false;
-					throw new NegativeScoreException();
+					continue;
+				}else {
+					isValid=true;
+					break;
 				}
-				game.setAwayTeamScore(awayTeamScore);
-
 			} catch (IOException e) {
-				_logger.error("Invalid Score : " + e.toString());
-				
+				_logger.error("Invalid Score.. Please re-enter " + e.toString());
 			} 
-		} while (isValid);
+		} while (!isValid);
+		game.setAwayTeamScore(awayTeamScore);
+		
 		/*
 		 * Reading the home team score
 		 */
-		_logger.info("Enter the home team score");
+		
 		do {
 			try {
+				_logger.info("Enter the valid home team score");
 				homeTeamScore = Integer.parseInt(reader.readLine());
-				isValid=true;
 				if (homeTeamScore < 0) {
 					isValid=false;
-					throw new NegativeScoreException();
+					continue;
+				}else {
+					isValid=true;
+					break;
 				}
-				game.setHomeTeamScore(homeTeamScore);
 			} catch (IOException e) {
-				_logger.error("Invalid Score : " + e.toString());
-
+				_logger.error("Invalid Score.. Please re-enter " + e.toString());
 			} 
-		} while (isValid);
+		} while (!isValid);
+		game.setHomeTeamScore(homeTeamScore);
+		
+		
 		/*
 		 * Reading the Attendance
 		 */
-		_logger.info("Enter the game attendence ");
+		
 		do {
 			try {
+				_logger.info("Please enter the valid game attendence ");
 				gameAttendance = Integer.parseInt(reader.readLine());
 				isValid=true;
 				if (gameAttendance < 0) {
 					isValid=false;
-					throw new NegativeAttendanceException();
-					
+					continue;
+				}else {
+					isValid=true;
+					break;
 				}
-				game.setAttendance(gameAttendance);
 			} catch (IOException e) {
-				
-				_logger.error("Invalid Attendance " + e.toString());
-				
+				_logger.error("Invalid Attendance.. Please re-enter " + e.toString());
 			} 
-		} while (isValid);
+		} while (!isValid);
+		game.setAttendance(gameAttendance);
+		
 		/*
 		 * Reading the Duration
 		 */
@@ -828,32 +837,55 @@ public class GamesReader {
 		do {
 			try {
 				durationHours = Integer.parseInt(reader.readLine());
-				isValid=true;
-			} catch (Exception e_) {
-				_logger.error(e_.toString());
+				if(durationHours<=24) {
+					isValid=true;
+					break;
+				}else {
+					isValid=false;
+					continue;
+				}
 				
-			} 
-		} while (isValid);
-		_logger.info("Minutes(s):"); // Minutes the game lasted
-		do {
-			try {
-				durationMinutes = Integer.parseInt(reader.readLine());
-				isValid=true;
 			} catch (Exception e_) {
 				_logger.error(e_.toString());
 				
 			} 
 		} while (!isValid);
+		
+		_logger.info("Minutes(s):"); // Minutes the game lasted
+		do {
+			try {
+				durationMinutes = Integer.parseInt(reader.readLine());
+				if(durationMinutes<=60) {
+					isValid=true;
+					break;
+				}else {
+					isValid=false;
+					continue;
+				}
+				
+			} catch (Exception e_) {
+				_logger.error(e_.toString());
+				
+			} 
+		} while (!isValid);
+		
 		_logger.info("Second(s):"); // Seconds the game lasted
 		do {
 			try {
 				durationSeconds = Integer.parseInt(reader.readLine());
-				isValid=true;
+				if(durationSeconds<=60) {
+					isValid=true;
+					break;
+				}else {
+					isValid=false;
+					continue;
+				}
 			} catch (Exception e_) {
 				_logger.error(e_.toString());
 
 			} 
-		} while (isValid);
+		} while (!isValid);
+		
 		durationString.append(durationHours).append("H").append(durationMinutes).append("M").append(durationSeconds).append("S");
 		game.setDuration(Duration.parse(durationString)); // set the duration for the game
 		game.setFinishTime(game.getStartTime().plus(game.getDuration()));
