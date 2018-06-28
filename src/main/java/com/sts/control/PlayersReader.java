@@ -29,6 +29,7 @@ import com.sts.nhl.models.NHLPlayer;
 import com.sts.nhl.models.TeamNHL;
 import com.sts.util.model.KeyForTeamsMap;
 import com.sts.util.model.TeamPlayerHistory;
+import com.sts.view.TeamsCityRequest;
 /**
  * This class will read from the players list input, and will deal with switching teams and changing Jersey numbers.
  * We will store all the players in a hash map when the ID is the key for the map.
@@ -431,7 +432,7 @@ public class PlayersReader {
 		_logger.info("Enter Sport of Player"); // User enter in which sport the player plays
 		category = SportsCategory.valueOf(reader.readLine());
 		KeyForTeamsMap teamKey;
-		
+		TeamsCityRequest teamReq = new TeamsCityRequest();
 		//Prompt for which sport the player being created plays
 	      try {
                 if(category.equals(SportsCategory.valueOf("NBA"))) {
@@ -503,8 +504,9 @@ public class PlayersReader {
          	return;
          }
 		
-		_logger.info("Enter Player's Current Team: ");
-		_logger.info("If player is currently not on a team, then leave blank"); //Will track player without a team as well (free agent)
+		_logger.info("Enter the player's current team from the following valid teams: ");
+		teamReq.displayTeams(listofTeams_, category);
+		_logger.info("If player is currently not on a team, then leave blank(Press Enter)"); //Will track player without a team as well (free agent)
 		_logger.info("Enter team's city: ");
 		lineForTeam = reader.readLine();
 		try {

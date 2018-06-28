@@ -15,7 +15,6 @@ import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.Locale;
-import java.util.Locale.Category;
 import java.util.Set;
 import java.util.StringTokenizer;
 import org.slf4j.Logger;
@@ -536,6 +535,7 @@ public class GamesReader {
 	    StringBuilder durationString = new StringBuilder("PT");
 		
 	    Boolean isValid = false;
+
 		_logger.info("Enter the Game Details: ");
 		
 		/*
@@ -644,10 +644,12 @@ public class GamesReader {
 		/*
 		 * Reading the Away city 
 		 */
+		_logger.info("The valid teams for the "+ category.toString()+ " are" );
+
+		TeamsCityRequest req = new TeamsCityRequest();
+		req.displayTeams(teamsList_,category);
 		_logger.info("Enter the away city ");
-		_logger.info("The valid Cities for "+ category.toString()+ " are" );
-		TeamsCityRequest a=new TeamsCityRequest();
-		a.displayTeams(teamsList_,category, true);
+	
 		
 		do {
 			try {
@@ -665,7 +667,7 @@ public class GamesReader {
 		 */
 		_logger.info("Enter the away team name: ");
 		_logger.info("Valid sports team for "+category.toString()+" are: ");
-		a.displayTeams(teamsList_,category, false );
+		req.displayTeams(teamsList_,category);
 		do {
 			try {
 				awayTeamName = reader.readLine();
@@ -681,7 +683,7 @@ public class GamesReader {
 		 */
 		_logger.info("Enter the home city ");
 		_logger.info("The valid Cities for "+ category.toString()+ " are" );
-		a.displayTeams(teamsList_,category, true );
+		req.displayTeams(teamsList_,category);
 		do {
 			try {
 				homeCity = reader.readLine();
@@ -692,13 +694,14 @@ public class GamesReader {
 			} 
 		} while (!isValid);
 		
+
 		
 		/*
 		 * Reading the Home Team Name 
 		 */
 		_logger.info("Enter the home team name: ");
 		_logger.info("Valid sports team for "+category.toString()+" are: ");
-		a.displayTeams(teamsList_,category, false );
+		req.displayTeams(teamsList_,category);
 		do {
 			try {
 				homeTeamName = reader.readLine();
@@ -709,6 +712,7 @@ public class GamesReader {
 				
 			} 
 		} while (!isValid);
+
 		if (home.equals(game.getAwayTeam())) 
 			
             throw new DuplicateTeamException("Home team cannot be the same as away", home);
