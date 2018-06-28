@@ -48,13 +48,25 @@ public class CustomValidations {
 		}	
 	}
 	
-	public boolean cityValidation(TeamsList teamsList_, String city) {
+	public boolean cityValidation(TeamsList teamsList_, String city_) {
 		Iterator<Entry<KeyForTeamsMap, AbstractTeam>> teamIterator;
 		teamIterator = teamsList_.getTeamMap().entrySet().iterator();
 		Entry<KeyForTeamsMap, AbstractTeam> entry;
 		while(teamIterator.hasNext()) {
 			entry = teamIterator.next();
-			if(entry.getValue().getLocation().equals(city)) {
+			if(entry.getValue().getLocation().equals(city_)) {
+		        return true;
+		    }
+		}
+		return false;
+	}
+	public boolean teamValidation(TeamsList teamsList_, String teamName_, String city_) {
+		Iterator<Entry<KeyForTeamsMap, AbstractTeam>> teamIterator;
+		teamIterator = teamsList_.getTeamMap().entrySet().iterator();
+		Entry<KeyForTeamsMap, AbstractTeam> entry;
+		while(teamIterator.hasNext()) {
+			entry = teamIterator.next();
+			if(entry.getValue().getTeamName().equals(teamName_)&&entry.getValue().getLocation().equals(city_)) {
 		        return true;
 		    }
 		}

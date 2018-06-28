@@ -683,23 +683,29 @@ public class GamesReader {
 		 * Reading the Away Team Name 
 		 */
 		do {
-			_logger.info("Enter the away team city name: ");
-			_logger.info("Valid sports team for "+category.toString()+" are: ");
+			_logger.info("Valid sports cities and team for "+category.toString()+" are [Cities : Teams] ");
 			req.displayTeams(teamsList_,category);
 			try {
+				_logger.info("Enter the away team name corresponding to "+awayCity);
 				awayTeamName = reader.readLine();
-				isValid=true;
-				game.setAwayTeam(parseTeam(category, awayCity, awayTeamName, teamsList_));
-				
-			} catch (IOException e) {
-				_logger.error("Invalid Team Name : " + e.toString());
+				if(cvalidations.teamValidation(teamsList_, awayTeamName,awayCity)) {
+					isValid=true;
+					break;
+				}else {
+					isValid=false;
+					continue;
+				}
+			}catch (IOException e) {
+				_logger.error("Invalid Team Name. Please re-enter " + e.toString());
 				isValid=false;
 			} 
 		} while (!isValid);
+		
+		game.setAwayTeam(parseTeam(category, awayCity, awayTeamName, teamsList_));
+		
 		/*
 		 * Reading the Home city 
 		 */
-
 		do {
 			_logger.info("The valid cities and teams for "+ category.toString()+ " are [Cities : Teams]" );
 			req.displayTeams(teamsList_,category);
@@ -718,31 +724,34 @@ public class GamesReader {
 			} 
 		} while (!isValid);
 		
-
-		
 		/*
 		 * Reading the Home Team Name 
 		 */
-
 		do {
-			_logger.info("Enter the home team name: ");
 			_logger.info("Valid sports team for "+category.toString()+" are: ");
 			req.displayTeams(teamsList_,category);
 			try {
+				_logger.info("Enter the home team name corresponding to "+homeCity);
 				homeTeamName = reader.readLine();
-				home = (parseTeam(category, homeCity, homeTeamName, teamsList_));
-				isValid=true;
+				if(cvalidations.teamValidation(teamsList_, homeTeamName, homeCity)&&!homeTeamName.equals(awayTeamName)) {
+					isValid=true;
+					break;
+				}else {
+					isValid=false;
+					continue;
+				}
 			} catch (IOException e) {
-				_logger.error("Invalid Team: " + e.toString());
-				
+				_logger.error("Invalid Team.. Please re-enter " + e.toString());
 			} 
 		} while (!isValid);
+		home = (parseTeam(category, homeCity, homeTeamName, teamsList_));
 
+	/*	
 		if (home.equals(game.getAwayTeam())) 
 			
             throw new DuplicateTeamException("Home team cannot be the same as away", home);
 		game.setHomeTeam(home);
-			
+	*/		
 		/*
 		 * Checking if future game or past game
 		 */
