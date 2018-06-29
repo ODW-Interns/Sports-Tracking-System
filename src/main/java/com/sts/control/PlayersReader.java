@@ -27,6 +27,7 @@ import com.sts.nfl.models.NFLPlayer;
 import com.sts.nfl.models.TeamNFL;
 import com.sts.nhl.models.NHLPlayer;
 import com.sts.nhl.models.TeamNHL;
+import com.sts.util.CustomValidations;
 import com.sts.util.model.KeyForTeamsMap;
 import com.sts.util.model.TeamPlayerHistory;
 import com.sts.view.TeamsCityRequest;
@@ -423,18 +424,39 @@ public class PlayersReader {
 	 * 4) Making sure the sport this player plays matches the team's sport
 	 */
 	public void createPlayers(TeamsList listofTeams_, PlayersList listofPlayers_) throws IOException {
-		SportsCategory category; // Sport the player plays
+		SportsCategory category = null; // Sport the player plays
 		AbstractPlayer player = null;
 		AbstractTeam teamofPlayer = null;
 		String lineForTeam = null;
 		TeamPlayerHistory currentHistory = null;   // Will store the current history of the team for this player
-		Date StartDate;  // Start Date of this player on this team
-		_logger.info("Enter Sport of Player"); // User enter in which sport the player plays
-		category = SportsCategory.valueOf(reader.readLine());
-		KeyForTeamsMap teamKey;
+		Date StartDate = null;  // Start Date of this player on this team
+		KeyForTeamsMap teamKey = null;
 		TeamsCityRequest teamReq = new TeamsCityRequest();
+		boolean isValid = false; //to check if the input by the user is valid. If not, prompt
+								// for input again
+		String teamCity = null;
+		String teamName = null;
+		CustomValidations cvalidations = new CustomValidations();
+		int jerseyNumber = -1;
+		String date = null;
+		
+		_logger.info("Enter Sport of Player"); // User enter in which sport the player plays
 		//Prompt for which sport the player being created plays
-	      try {
+		do {
+			try {
+				
+				category = SportsCategory.valueOf(reader.readLine());
+				isValid=true;
+				
+				
+			} catch (Exception e) {
+				
+				_logger.error("You have entered Invalid Category.");
+				_logger.info("Please enter from the following "+java.util.Arrays.asList(SportsCategory.values()));
+			} 
+		} while (!isValid);
+	      
+		try {
                 if(category.equals(SportsCategory.valueOf("NBA"))) {
                 	player = new NBAPlayer();
                 	teamofPlayer = new TeamNBA();
@@ -506,64 +528,137 @@ public class PlayersReader {
 		
 		_logger.info("Enter the player's current team from the following valid teams: ");
 		teamReq.displayTeams(listofTeams_, category);
-		_logger.info("If player is currently not on a team, then leave blank(Press Enter)"); //Will track player without a team as well (free agent)
+		_logger.info("If player is currently not on a team, then enter 'N/A'"); //Will track player without a team as well (free agent)
 		_logger.info("Enter team's city: ");
-		lineForTeam = reader.readLine();
-		try {
-			if(lineForTeam.equals("")) {   // Player without a team
-				player.getCurrentTeamHistory().setStatus(false);
-				player.getCurrentTeamHistory().setPlayer(player);
-				listofPlayers_.returnPlayersMap().put(player.get_playerID(), player);
-				_logger.trace("New player successfully created and added to player's map");
-				return;
-			}
-			else { 
+		isValid = false;
+		/*if(lineForTeam.equals("")) {
+			try {
 				
-				teamofPlayer.setLocation(lineForTeam);
-				_logger.info("Enter the team's name: ");
-				teamofPlayer.setTeamName(reader.readLine());
-				teamofPlayer.setTeamSport(category);
-				player.getCurrentTeamHistory().setTeam(teamofPlayer);
-				teamKey = new KeyForTeamsMap(player.getCurrentTeamHistory().getTeam().getLocation(), player.getCurrentTeamHistory().getTeam().getTeamName());
-				if(listofTeams_.getTeamMap().get(teamKey) != null) { // If player does have a team, make sure the team exists
-					currentHistory = new TeamPlayerHistory();
-					currentHistory.setTeam(listofTeams_.getTeamMap().get(teamKey));
+				if(lineForTeam.equals("N/A")) {   // Player without a team
+					player.getCurrentTeamHistory().setStatus(false);
+					player.getCurrentTeamHistory().setPlayer(player);
+					listofPlayers_.returnPlayersMap().put(player.get_playerID(), player);
+					_logger.trace("New player successfully created and added to player's map");
+					return;
+					}
 				}
-				else {
-					throw new TeamNotFoundException(lineForTeam);
+				catch(Exception e_) {
+					_logger.error("Player not created:" + e_.toString());
 				}
 			}
+		else { */
+			do {
+				try {
+					teamCity = reader.readLine();
+					if(teamCity.equals("N/A")) {
+						player.getCurrentTeamHistory().setStatus(false);
+						player.getCurrentTeamHistory().setPlayer(player);
+						listofPlayers_.returnPlayersMap().put(player.get_playerID(), player);
+						_logger.trace("New player successfully created and added to player's map");
+						return;
+					}
+					else {
+						if(cvalidations.cityValidation(listofTeams_,teamCity)) {
+							isValid=true;
+							break;
+						}
+						else {
+							isValid=false;
+							continue;
+						}
+					}
+				} catch (IOException e) {
+					_logger.info("Invalid city.. Please re-enter " + e.toString());
+				} 
+			} while (!isValid);
+		
+		
+		if(isValid)
+			teamofPlayer.setLocation(lineForTeam);
+		
+		isValid = false;
+		
+		do {
+			_logger.info("Valid sports cities and team for "+category.toString()+" are [Cities : Teams] ");
+			teamReq.displayTeams(listofTeams_,category);
+			try {
+				_logger.info("Enter the team name corresponding to "+teamCity);
+				teamName = reader.readLine();
+				if(cvalidations.teamValidation(listofTeams_, teamName,teamCity)) {
+					isValid=true;
+					break;
+				}else {
+					isValid=false;
+					continue;
+				}
+			}catch (IOException e) {
+				_logger.error("Invalid Team Name. Please re-enter " + e.toString());
+				isValid=false;
+			} 
+		} while (!isValid);
+		
+		
+		if(isValid) {
+			teamofPlayer.setLocation(teamCity);
+			teamofPlayer.setTeamName(teamName);
+			teamofPlayer.setTeamSport(category);
+			player.getCurrentTeamHistory().setTeam(teamofPlayer);
+			teamKey = new KeyForTeamsMap(player.getCurrentTeamHistory().getTeam().getLocation(), player.getCurrentTeamHistory().getTeam().getTeamName());
+			currentHistory = new TeamPlayerHistory();
+			currentHistory.setTeam(listofTeams_.getTeamMap().get(teamKey));
 		}
 		
-  
-		catch(Exception e_) {
-			_logger.error("Player not created: " + e_.toString());
-			return;
-		}
+		isValid = false;
 		
 		//Prompt for Player's jersey number
-		_logger.info("Enter Player's Jersey Number: ");
-		try {
-			player.set_jerseyNum(Integer.parseInt(reader.readLine()));
-		}
-		catch(Exception e_) {
-			_logger.error("Entering Jersey Number: " + e_.toString());
-			return;
-		}
+		do {
+			_logger.info("Enter Player's Jersey Number: ");
+			try {
+				jerseyNumber = Integer.parseInt(reader.readLine());
+	           	player.set_jerseyNum(jerseyNumber);
+			 	currentHistory.setStatus(true);
+	           	parseCurrentTeam(listofTeams_, teamKey, player, listofPlayers_,currentHistory);
+				isValid = true;
+				break;
+			}
+			catch(Exception e_) {
+				_logger.error("Entering Jersey Number: " + e_.toString());
+				isValid = false;
+				
+			}
+		}while(!isValid);
 		
-		//Prompt for date of when the player started on this team
-		_logger.info("Enter the start date of the player on this team in this format(yyyy-mm-dd):");
-		try {
-           	StartDate = convertStringToDate(reader.readLine());
-           	currentHistory.setStartDate(StartDate);
-           	currentHistory.setStatus(true);
-           	parseCurrentTeam(listofTeams_, teamKey, player, listofPlayers_,currentHistory);
+		
+		do {
+			try {
+				_logger.info("Enter the Game Date in this format YYYY-MM-DD");
+				date = reader.readLine();
+	
+				if(cvalidations.dateValidation(date)) {
+					isValid=true;
+					break;
+				}else {
+					isValid=false;
+					continue;
+				}
+			} catch (Exception e) {
+				_logger.error("Please enter the date in the following format YYYY-MM-DD"+e.toString());
+				isValid=false;
+			} 
+		} while (!isValid);
+		
+		if(isValid) {
+			try {
+				StartDate = convertStringToDate(date);
+			   	currentHistory.setStartDate(StartDate);
+			} catch (Exception e_) {
+				_logger.error("Error parsing date: " + e_.toString());
+				_logger.error("Player not created");
+				return;
+			}
+        
 		}
-		catch(Exception e_) {
-			_logger.error("Setting Start Date on team: " + e_.toString());
-			_logger.error("Player was not created");
-			return;
-		}
+
 		 // Add player to their current team		
 		currentHistory.setPlayer(player);
 		player.setCurrentTeamHistory(currentHistory);  // This is the player's current team

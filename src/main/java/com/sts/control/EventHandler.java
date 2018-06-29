@@ -104,8 +104,6 @@ public class EventHandler {
 			}
 			try {
 				_logger.info("Enter the team the player is moving to. Choose from the following teams:");
-				System.out.println(playerBeingMoved.get_sportCategory().toString());
-				System.out.println("HERE ASDF");
 				teamReq.displayTeams(listofTeams_, playerBeingMoved.get_sportCategory());
 				
 				_logger.info("Enter the city first: ");
