@@ -531,22 +531,7 @@ public class PlayersReader {
 		_logger.info("If player is currently not on a team, then enter 'N/A'"); //Will track player without a team as well (free agent)
 		_logger.info("Enter team's city: ");
 		isValid = false;
-		/*if(lineForTeam.equals("")) {
-			try {
-				
-				if(lineForTeam.equals("N/A")) {   // Player without a team
-					player.getCurrentTeamHistory().setStatus(false);
-					player.getCurrentTeamHistory().setPlayer(player);
-					listofPlayers_.returnPlayersMap().put(player.get_playerID(), player);
-					_logger.trace("New player successfully created and added to player's map");
-					return;
-					}
-				}
-				catch(Exception e_) {
-					_logger.error("Player not created:" + e_.toString());
-				}
-			}
-		else { */
+
 			do {
 				try {
 					teamCity = reader.readLine();

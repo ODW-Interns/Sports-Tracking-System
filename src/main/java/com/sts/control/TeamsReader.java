@@ -68,7 +68,6 @@ import com.sts.util.model.KeyForTeamsMap;
 					try {
 						category = SportsCategory.valueOf(tokenizer.nextToken());
 					} catch (Exception e_) {
-						System.err.println("Reading Sport Category:" + e_.toString());
 						continue;
 					}
 					
@@ -190,12 +189,22 @@ import com.sts.util.model.KeyForTeamsMap;
 	    }
 	    
 	    public void createTeam(TeamsList listofTeams) throws IOException {
-			SportsCategory category;
+			SportsCategory category = null;
 			AbstractTeam team = null;
-			
-			//prompt for new team sport
-			_logger.info("Enter Team's Sport Category");
-			category =  SportsCategory.valueOf(reader.readLine());
+			boolean isValid = false;
+					
+			do {
+				_logger.info("Enter Sport of Player"); // User enter in which sport the team belongs
+				try {
+					category = SportsCategory.valueOf(reader.readLine());
+					isValid=true;
+					
+				} catch (Exception e) {
+					
+					_logger.error("You have entered Invalid Category.");
+					_logger.info("Please enter from the following "+java.util.Arrays.asList(SportsCategory.values()));
+				} 
+			} while (!isValid);
 				
 			//set team category
 			  try {
@@ -254,10 +263,9 @@ import com.sts.util.model.KeyForTeamsMap;
 			   
 			  if(listofTeams.getTeamMap().containsValue(team)) {
 				try {
-					throw new Exception ("Team is already exists");
-				} catch (Exception e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
+					throw new Exception ("Team already exists");
+				} catch (Exception e_) {
+					_logger.error("Error" + e_.toString());
 				}
 				return;
 			  } 

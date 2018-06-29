@@ -29,10 +29,20 @@ private Logger _logger;
 			if(entry.getValue().getTeamSport().equals(category)) {
 		        _logger.info(entry.getValue().fullTeamName());
 		    
-		    }
-			
+		    }		
 	    }
-	
     }
+	
+	public void displayAllTeams(TeamsList teamsList_) {
+		Iterator<Entry<KeyForTeamsMap, AbstractTeam>> teamIterator;
+		teamIterator = teamsList_.getTeamMap().entrySet().iterator();
+		Entry<KeyForTeamsMap, AbstractTeam> entry;
+
+		while(teamIterator.hasNext()) {
+			entry = teamIterator.next();
+		    _logger.info(entry.getValue().fullTeamName());
+		    		
+	    }
+	}
 	
 }

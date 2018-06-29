@@ -15,6 +15,7 @@ import com.sts.abstractmodel.AbstractPlayer;
 import com.sts.abstractmodel.AbstractTeam;
 import com.sts.model.exception.PlayerNotFoundException;
 import com.sts.model.exception.TeamNotFoundException;
+import com.sts.util.CustomValidations;
 import com.sts.util.model.KeyForGamesMap;
 import com.sts.util.model.KeyForTeamsMap;
 import com.sts.util.model.TeamPlayerHistory;
@@ -226,24 +227,54 @@ public class EventHandler {
 	}
 
 	public void requestToLogAllPlayersOnTeam(TeamsList listofTeams_) {
-		String city;
-		String teamName;
+		String city = null;
+		String teamName = null;
 		KeyForTeamsMap teamKey = null;
-		_logger.info("Enter the team whose roster you would like to see");
-		_logger.info("Enter city of team:");
-		try {
-			city = reader.readLine();
-		} catch (IOException e_) {
-			_logger.error("Error reading in city: " + e_.toString());
-			return;
-		}
-		_logger.info("Enter name of the team:");
-		try {
-			teamName = reader.readLine();
-		} catch (IOException e_) {
-			_logger.error("Error reading in team name: " + e_.toString());
-			return;
-		}
+		TeamsCityRequest req = new TeamsCityRequest();
+		CustomValidations cvalidations = new CustomValidations();
+		boolean isValid = false;
+		
+		_logger.info("Enter the team whose roster you would like to see from the following teams");
+		req.displayAllTeams(listofTeams_);
+
+		do {
+			_logger.info("Enter the city of the team");
+			try {
+				city = reader.readLine();
+				if(cvalidations.cityValidation(listofTeams_,city)) {
+					isValid=true;
+					break;
+				}else {
+					isValid=false;
+					continue;
+				}
+			} catch (IOException e) {
+				_logger.error("Invalid city.. Please re-enter " + e.toString());
+			} 
+		} while (!isValid);
+		
+		
+		/*
+		 * Reading the Team Name 
+		 */
+		do {
+			try {
+				_logger.info("Enter the away team name corresponding to "+city);
+				teamName = reader.readLine();
+				if(cvalidations.teamValidation(listofTeams_, teamName,city)) {
+					isValid=true;
+					break;
+				}else {
+					isValid=false;
+					continue;
+				}
+			}catch (IOException e) {
+				_logger.error("Invalid Team Name. Please re-enter " + e.toString());
+				isValid=false;
+			} 
+		} while (!isValid);
+		
+
 		teamKey = new KeyForTeamsMap(city, teamName);
 		try {
 			if(listofTeams_.getTeamMap().containsKey(teamKey)) 
@@ -260,22 +291,33 @@ public class EventHandler {
 		int playerID;
 		AbstractPlayer playerBeingRemoved = null;
 		KeyForTeamsMap teamKey = null;
+		boolean isValid = false;
 		
 		_logger.info("Enter the player ID to remove this player from his team");
 		_logger.info("Players that can be chosen from are listed below:");
 		logReq.logAllPlayersInPlayerMap(listofPlayers_);
+		do {
+			try {
+				playerID = Integer.parseInt(reader.readLine());
+				if(listofPlayers_.returnPlayersMap().containsKey(playerID)) {
+					playerBeingRemoved = listofPlayers_.returnPlayersMap().get(playerID);
+					isValid = true;
+				}
+				else
+					throw new NullPointerException("This player ID does not exist");
+			} catch (NumberFormatException | IOException | NullPointerException e_) {
+				_logger.error("There was an error with this player ID: " + e_.toString());
+				_logger.info("Reenter a valid player ID");
+			}
+		}while(!isValid);
 		
-		try {
-			playerID = Integer.parseInt(reader.readLine());
-			playerBeingRemoved = listofPlayers_.returnPlayersMap().get(playerID);
-
-		} catch (NumberFormatException | IOException e_) {
-			_logger.error("There was an error with this player ID: " + e_.toString());
-		}
-		
+		isValid = false;
+			
+		//Player is currently not on a team , so can't remove him from a team
 		if(playerBeingRemoved.getCurrentTeamHistory().getTeam() == null) {
 			return;
 		}
+		
 		
 		try {
 			//Set end date and status to false for the the team in the player's entire team history he's played for
