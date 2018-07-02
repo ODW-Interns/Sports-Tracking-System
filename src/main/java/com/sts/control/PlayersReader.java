@@ -442,6 +442,8 @@ public class PlayersReader {
 		CustomValidations cvalidations = new CustomValidations();
 		int jerseyNumber = -1;
 		String date = null;
+		String tempFirstName;
+		String tempLastName;
 		
 		_logger.info("Enter Sport of Player"); // User enter in which sport the player plays
 		//Prompt for which sport the player being created plays
@@ -498,24 +500,47 @@ public class PlayersReader {
 	    player.set_playerID(listofPlayers_.returnPlayersMap().size() + 1);
 		
 	    //Prompt for Player's first name
-		_logger.info("Enter Player's First Name: ");
-		try {
-			player.setFirstName(reader.readLine());
-		}
-		catch(Exception e_) {
-			_logger.error("Entering First Name: " + e_.toString());
-			return;
-		}
+		
+		do {
+			try {
+				_logger.info("Enter Player's First Name: ");
+				tempFirstName = reader.readLine();
+				if (cvalidations.nameValidation(tempFirstName)) {
+					isValid = true;
+					tempFirstName = tempFirstName.substring(0, 1).toUpperCase() + tempFirstName.substring(1);
+					break;
+				} else {
+					isValid=false;
+					continue;
+				}
+
+				
+			} catch (Exception e_) {
+				_logger.error("Entering First Name: " + e_.toString());
+				return;
+			} 
+		} while (!isValid);
+		player.setFirstName(tempFirstName);
 		
 		//Prompt for Player's last name
-		_logger.info("Enter Player's Last Name: ");
-		try {
-			player.setLastName(reader.readLine());
-		}
-		catch(Exception e_){
-			_logger.error("Entering Last Name: " + e_.toString());
-			return;
-		}
+		do {
+			try {
+				_logger.info("Enter Player's Last Name: ");
+				tempLastName = reader.readLine();
+				if (cvalidations.nameValidation(tempLastName)) {
+					isValid = true;
+					tempLastName=tempLastName.substring(0,1).toUpperCase()+tempLastName.substring(1);
+					break;
+				} else {
+					isValid = false;
+					continue;
+				}
+			} catch (Exception e_) {
+				_logger.error("Entering Last Name: " + e_.toString());
+				return;
+			} 
+		} while (!isValid);
+		player.setLastName(tempLastName);
 		
 	     try {
          	//Check here if player ID has already been used for another player

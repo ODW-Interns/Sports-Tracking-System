@@ -87,5 +87,16 @@ public class CustomValidations {
 		_logger.error("Invalid Team");
 		return false;
 	}
+	
+	public Boolean nameValidation(String name) {
+		
+		if (name.matches("[a-zA-Z_]+")) {
+			return true;
+		}
+		_logger.error("Invalid Name. Please Re-enter");
+		return false;
+		
+		
+	}
 }
 	
