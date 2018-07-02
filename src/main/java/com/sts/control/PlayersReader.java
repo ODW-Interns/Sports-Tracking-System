@@ -11,6 +11,9 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.StringTokenizer;
+
+import javax.swing.text.ChangedCharSetException;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -445,7 +448,7 @@ public class PlayersReader {
 		do {
 			try {
 				
-				category = SportsCategory.valueOf(reader.readLine());
+				category = SportsCategory.valueOf(reader.readLine().toUpperCase());
 				isValid=true;
 				
 				
